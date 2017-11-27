@@ -24,6 +24,6 @@ namespace WebAppHF.Repositories
         public DbSet<AdminAccount> AdminAccounts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Record> Records { get; set; }
-        public DbSet<RestaurantReservation> RestaurantReservations { get; set; }
+        public DbSet<RestaurantSession> RestaurantReservations { get; set; }
     }
 }
