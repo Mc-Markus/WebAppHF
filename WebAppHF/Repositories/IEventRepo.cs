@@ -8,6 +8,6 @@ namespace WebAppHF.Repositories
 {
     public interface IEventRepo
     {
-        List<Event> GetAll();
+        Event GetEventByID(int ID);
     }
 }

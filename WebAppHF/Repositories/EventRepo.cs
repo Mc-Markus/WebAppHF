@@ -8,13 +8,15 @@ namespace WebAppHF.Repositories
 {
     public class EventRepo : IEventRepo
     {
-        public List<Event> GetAll()
+        public Event GetEventByID(int ID)
         {
             using (Database database = new Database())
             {
-                List<Event> events = new List<Event>();
+                Event eventByID;
 
-                return events;
+                eventByID = database.Events.SingleOrDefault(e => e.ID == ID);
+
+                return eventByID;
             }
         }
     }
