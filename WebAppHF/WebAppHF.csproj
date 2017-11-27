@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -163,6 +164,11 @@
     <Compile Include="Models\Talk.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Database.cs" />
+    <Compile Include="Repositories\EventRepo.cs" />
+    <Compile Include="Repositories\IEventRepo.cs" />
+    <Compile Include="Repositories\ITalkRepo.cs" />
+    <Compile Include="Repositories\TalkRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
