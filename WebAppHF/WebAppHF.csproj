@@ -170,7 +170,9 @@
     <Compile Include="Repositories\Database.cs" />
     <Compile Include="Repositories\EventRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
+    <Compile Include="Repositories\IResetaurantRepo.cs" />
     <Compile Include="Repositories\ITalkRepo.cs" />
+    <Compile Include="Repositories\RestaurantRepo.cs" />
     <Compile Include="Repositories\TalkRepo.cs" />
   </ItemGroup>
   <ItemGroup>
