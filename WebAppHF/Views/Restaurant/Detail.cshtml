@@ -4,23 +4,23 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>Information about the reservation in the restaurant Café Brinkman</h3>
-                <p>Make a reservation for Grand Café Brinkmann below. </p>
+                <p>Make a reservation for @Model.Name below. </p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <h3> Grand Café Brinkmann</h3>
                 <p>
-                    <b>Cuisine:</b> European, Western
-                    <br> <b>Rating:</b> 3/5
-                    <br><b>Price:</b> 35,00 (or 17,50 for childeren under 12)
+                    <b>Cuisine:</b> @Model.FoodTypes
+                    <br> <b>Rating:</b> @Model.Stars
+                    <br><b>Price:</b> @Model.Price (or 17,50 for childeren under 12)
                     <br> <b>Duration:</b> 90 minutes
                     <br> <b>Start time:</b> 18.30
-                    <br> <b>Description:</b> Grand Café Brinkmann is well known in and around Haarlem. It is known for their good food, perfect coffee and their excellent staff.
+                    <br> <b>Description</b> @Model.Name
                     <br>
                 </p>
             </div>
-            <div class="col-md-6"> <img src="../images/patronaat1.jpg" class="img-fluid" alt="Responsive image"> </div>
+            <div class="col-md-6"> <img src="~/images/patronaat1.jpg" class="img-fluid" alt="Responsive image"> </div>
         </div>
         <div class="row">
             <div class="col-md-3">
