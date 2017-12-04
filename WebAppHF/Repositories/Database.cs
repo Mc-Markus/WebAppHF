@@ -20,10 +20,10 @@ namespace WebAppHF.Repositories
         public DbSet<Talk> Talks { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Jazz> Jazzs { get; set; }
-        public DbSet<Tour> Tour { get; set; }
+        public DbSet<Tour> Tours { get; set; }
         public DbSet<AdminAccount> AdminAccounts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Record> Records { get; set; }
-        public DbSet<RestaurantSession> RestaurantReservations { get; set; }
+        public DbSet<RestaurantSession> RestaurantSessions { get; set; }
     }
 }

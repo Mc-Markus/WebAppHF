@@ -19,5 +19,19 @@ namespace WebAppHF.Repositories
                 return restaurant;
             }
         }
+
+        public List<Restaurant> GetRestaurants()
+        {
+            using (Database database = new Database())
+            {
+                IEnumerable<Restaurant> restaurants;
+
+                restaurants = database.Restaurants.AsEnumerable();
+
+                return restaurants.ToList();
+            }
+
+            
+        }
     }
 }
