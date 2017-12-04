@@ -13,7 +13,7 @@ namespace WebAppHF.Models
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string LocationName { get; set; }
-        public double Price { get; set; }
+        public int Price { get; set; }
         public string Adress { get; set; }
         public int SeatsAvailable { get; set; }
 

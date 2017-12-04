@@ -13,15 +13,15 @@ namespace WebAppHF.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public int Stars { get; set; }
-        public double Price { get; set; }
-        public double ReducedPrice { get; set; }
+        public int Price { get; set; }
+        public int ReducedPrice { get; set; }
         public string FoodTypes { get; set; }
         public string FoodIMGString { get; set; }
         public string RestaurantIMGString { get; set; }
 
         public Restaurant() { }
 
-        public Restaurant(int ID, string Name, string Address, int Stars, double Price, double ReducedPrice, string FoodTypes, string FoodIMGString, string RestaurantIMGString)
+        public Restaurant(int ID, string Name, string Address, int Stars, int Price, int ReducedPrice, string FoodTypes, string FoodIMGString, string RestaurantIMGString)
         {
             this.ID = ID;
             this.Name = Name;

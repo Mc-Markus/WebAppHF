@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebAppHF.Models
 {
-    public class Jazz
+    public class Jazz : Event
     {
         public string Hall { get; set; }
         public string Band { get; set; }

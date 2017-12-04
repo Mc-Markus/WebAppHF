@@ -11,6 +11,6 @@ namespace WebAppHF.Models
         public int EventID { get; set; }
         public int OrderID { get; set; }
         public int Amount { get; set; }
-        public double TotalPrice { get; set; }
+        public int TotalPrice { get; set; }
     }
 }
