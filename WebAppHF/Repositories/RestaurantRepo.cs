@@ -8,7 +8,7 @@ namespace WebAppHF.Repositories
 {
     public class RestaurantRepo : IResetaurantRepo
     {
-        private Database db = new Database();
+        private HFContext db = new HFContext();
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
             IEnumerable<Restaurant> restaurant = db.Restaurants.ToList();
