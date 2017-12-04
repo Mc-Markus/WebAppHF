@@ -15,7 +15,8 @@ namespace WebAppHF.Controllers
         // GET: Restaurant
         public ActionResult Index()
         {
-            return View();
+            var restaurant = repo.GetAllRestaurants();
+            return View(restaurant.ToList());
         }
 
         public ActionResult Detail(int ID)

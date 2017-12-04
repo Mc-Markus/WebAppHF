@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<WebAppHF.Models.Restaurant>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Restaurant";
 }
-
-<h2>Index</h2>
 
 <div class="container">
     <div class="container col-md-12" id="main-body">
@@ -17,111 +15,21 @@
             <div class="col-md-2"> <img src="../images/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
         </div>
         <hr>
-        <div class="row dinner-top-row">
+        <div class="row">
             @foreach (var item in Model)
             {
                 <div class="col-md-3">
                     <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                    <h4 class="dag-header"></h4>
+                    <h4 class="dag-header">@item.Name</h4>
                     <p>
-                        <b>Cuisine:</b> Dutch, European, Modern
-                        <br> <b>Rating:</b> 3/5
-                        <br> <b>Price:</b> &euro;35,00
+                        <b>Cuisine:</b> @item.FoodTypes
+                        <br> <b>Rating:</b>@item.Stars
+                        <br> <b>Price:</b> &euro;@item.Price
                     </p>
                     <button type="button" class="btn btn-primary main-btn">I</button>
                     <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
                 </div>
             }
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
-            <div class="col-md-3">
-                <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                <h4 class="dag-header">Grand Cafe Brinkman</h4>
-                <p>
-                    <b>Cuisine:</b> Dutch, European, Modern
-                    <br> <b>Rating:</b> 3/5
-                    <br> <b>Price:</b> &euro;35,00
-                </p>
-                <button type="button" class="btn btn-primary main-btn">I</button>
-                <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
-            </div>
         </div>
     </div>
 </div>
