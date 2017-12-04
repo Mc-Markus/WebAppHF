@@ -17,9 +17,10 @@ namespace WebAppHF.Repositories
 
         public Restaurant GetRestaurant(int restaurantId)
         {
-            Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
-            Restaurant contact = db.Restaurants.Find(restaurantId);
-            return contact;
+            // Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
+            Restaurant restaurant = db.Restaurants.Find(restaurantId);
+            //Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
+            return restaurant;
         }
 
         public List<Restaurant> GetRestaurants()

@@ -4,19 +4,19 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>Information about the reservation in the restaurant Café Brinkman</h3>
-                <p>Make a reservation for @Model.Name below. </p>
+                <p>Make a reservation for @Html.DisplayFor(model => model.Name) below. </p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <h3> Grand Café Brinkmann</h3>
                 <p>
-                    <b>Cuisine:</b> @Model.FoodTypes
-                    <br> <b>Rating:</b> @Model.Stars
-                    <br><b>Price:</b> @Model.Price (or 17,50 for childeren under 12)
+                    <b>Cuisine:</b> @Html.DisplayFor(model => model.FoodTypes) 
+                    <br> <b>Rating:</b> @Html.DisplayFor(model => model.Stars)
+                    <br><b>Price:</b> @Html.DisplayFor(model => model.Price)  (or 17,50 for childeren under 12)
                     <br> <b>Duration:</b> 90 minutes
                     <br> <b>Start time:</b> 18.30
-                    <br> <b>Description</b> @Model.Name
+                    <br> <b>Description</b> @Html.DisplayFor(model => model.Name) 
                     <br>
                 </p>
             </div>
