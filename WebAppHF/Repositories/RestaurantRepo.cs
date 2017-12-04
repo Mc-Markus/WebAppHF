@@ -10,7 +10,7 @@ namespace WebAppHF.Repositories
     {
         public Restaurant GetRestaurantByID(int ID)
         {
-            using (Database database = new Database())
+            using (HFContext database = new HFContext())
             {
                 Restaurant restaurant;
 
@@ -22,7 +22,7 @@ namespace WebAppHF.Repositories
 
         public List<Restaurant> GetRestaurants()
         {
-            using (Database database = new Database())
+            using (HFContext database = new HFContext())
             {
                 IEnumerable<Restaurant> restaurants;
 

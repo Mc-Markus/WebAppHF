@@ -9,9 +9,9 @@ using System.Data.Entity;
 
 namespace WebAppHF.Repositories
 {
-    public class Database : DbContext
+    public class HFContext : DbContext
     {
-        public Database() : base("name=Database")
+        public HFContext() : base("name=HFContext")
         {
 
         }
