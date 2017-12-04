@@ -8,7 +8,7 @@ namespace WebAppHF.Repositories
 {
     public interface IResetaurantRepo
     {
-        Restaurant GetRestaurantByID(int ID);
+        Restaurant GetRestaurant(int restaurantId);
         IEnumerable<Restaurant> GetAllRestaurants();
     }
 }

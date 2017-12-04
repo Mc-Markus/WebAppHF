@@ -21,9 +21,13 @@ namespace WebAppHF.Controllers
 
         public ActionResult Detail(int ID)
         {
-            Restaurant restaurant = repo.GetRestaurantByID(ID);
-
+            Restaurant restaurant = repo.GetRestaurant(ID);
             return View(restaurant);
+        }
+
+        public ActionResult AfterDetail()
+        {
+            return View();
         }
     }
 }

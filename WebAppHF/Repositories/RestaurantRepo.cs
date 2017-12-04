@@ -15,16 +15,10 @@ namespace WebAppHF.Repositories
             return restaurant;
         }
 
-        public Restaurant GetRestaurantByID(int ID)
+        public Restaurant GetRestaurant(int restaurantId)
         {
-            using (Database database = new Database())
-            {
-                Restaurant restaurant;
-
-                restaurant = database.Restaurants.SingleOrDefault(e => e.ID == ID);
-
-                return restaurant;
-            }
+            Restaurant contact = db.Restaurants.Find(restaurantId);
+            return contact;
         }
 
         public List<Restaurant> GetRestaurants()
