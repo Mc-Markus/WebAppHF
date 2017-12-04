@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201712041153454_PopulateRestaurants.Designer.cs">
       <DependentUpon>201712041153454_PopulateRestaurants.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712041324015_PopulateAdminAccount.cs" />
+    <Compile Include="Migrations\201712041324015_PopulateAdminAccount.Designer.cs">
+      <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Event.cs" />
@@ -197,6 +201,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="IMG\haarlem1.jpg" />
+    <Content Include="IMG\haarlem2.jpg" />
+    <Content Include="IMG\haarlem3.jpg" />
+    <Content Include="IMG\patronaat1.jpg" />
+    <Content Include="IMG\patronaat2.jpg" />
+    <Content Include="IMG\patronaat3.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -233,7 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="IMG\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -249,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041153454_PopulateRestaurants.resx">
       <DependentUpon>201712041153454_PopulateRestaurants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712041324015_PopulateAdminAccount.resx">
+      <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

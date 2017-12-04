@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebAppHF.Models
 {
-    public abstract class Event
+    public abstract class Event 
     {
         public int ID { get; set; }
         public string Name { get; set; }
