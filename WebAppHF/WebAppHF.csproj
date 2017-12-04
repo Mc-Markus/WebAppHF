@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201712041153454_PopulateRestaurants.Designer.cs">
       <DependentUpon>201712041153454_PopulateRestaurants.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712041324015_PopulateAdminAccount.cs" />
+    <Compile Include="Migrations\201712041324015_PopulateAdminAccount.Designer.cs">
+      <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Event.cs" />
@@ -255,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041153454_PopulateRestaurants.resx">
       <DependentUpon>201712041153454_PopulateRestaurants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712041324015_PopulateAdminAccount.resx">
+      <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

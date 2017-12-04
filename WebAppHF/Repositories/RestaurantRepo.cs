@@ -23,7 +23,7 @@ namespace WebAppHF.Repositories
 
         public List<Restaurant> GetRestaurants()
         {
-            using (Database database = new Database())
+            using (HFContext database = new HFContext())
             {
                 IEnumerable<Restaurant> restaurants;
 

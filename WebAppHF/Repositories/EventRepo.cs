@@ -10,7 +10,7 @@ namespace WebAppHF.Repositories
     {
         public Event GetEventByID(int ID)
         {
-            using (Database database = new Database())
+            using (HFContext database = new HFContext())
             {
                 Event eventByID;
 
