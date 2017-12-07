@@ -12,5 +12,7 @@ namespace WebAppHF.Repositories
 
 
         IEnumerable<Restaurant> GetAllRestaurants();
+
+        Restaurant CreateRestaurant(Restaurant restaurant);
     }
 }

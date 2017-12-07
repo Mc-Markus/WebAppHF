@@ -9,6 +9,9 @@ namespace WebAppHF.Repositories
     public class RestaurantRepo : IResetaurantRepo
     {
         private HFContext db = new HFContext();
+
+        
+
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
             IEnumerable<Restaurant> restaurant = db.Restaurants.ToList();
@@ -22,6 +25,11 @@ namespace WebAppHF.Repositories
             //Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
             return restaurant;
         }
+        public Restaurant CreateRestaurant(Restaurant restaurant)
+        {
+            throw new NotImplementedException();
+        }
+       
 
         public List<Restaurant> GetRestaurants()
         {
