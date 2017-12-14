@@ -175,8 +175,13 @@
     <Compile Include="Migrations\201712041324015_PopulateAdminAccount.Designer.cs">
       <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712140948233_ContactmodelAdd.cs" />
+    <Compile Include="Migrations\201712140948233_ContactmodelAdd.Designer.cs">
+      <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
@@ -244,6 +249,7 @@
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Restaurant\Detail.cshtml" />
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
+    <Content Include="Views\Home\ThanksforSending.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041324015_PopulateAdminAccount.resx">
       <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712140948233_ContactmodelAdd.resx">
+      <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

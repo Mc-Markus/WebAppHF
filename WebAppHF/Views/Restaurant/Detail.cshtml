@@ -3,13 +3,13 @@
     <div class="container col-md-12">
         <div class="row">
             <div class="col-md-12">
-                <h3>Information about the reservation in the restaurant Café Brinkman</h3>
+                <h3>Information about the reservation in the restaurant @Html.DisplayFor(model => model.Name)</h3>
                 <p>Make a reservation for @Html.DisplayFor(model => model.Name) below. </p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h3> Grand Café Brinkmann</h3>
+                <h3>@Html.DisplayFor(model => model.Name)</h3>
                 <p>
                     <b>Cuisine:</b> @Html.DisplayFor(model => model.FoodTypes) 
                     <br> <b>Rating:</b> @Html.DisplayFor(model => model.Stars)
