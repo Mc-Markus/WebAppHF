@@ -196,6 +196,10 @@
     <Compile Include="Migrations\201712141840233_insertAllOtherTours.Designer.cs">
       <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712141911367_insertFamilyTickets.cs" />
+    <Compile Include="Migrations\201712141911367_insertFamilyTickets.Designer.cs">
+      <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -305,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712141840233_insertAllOtherTours.resx">
       <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141911367_insertFamilyTickets.resx">
+      <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
