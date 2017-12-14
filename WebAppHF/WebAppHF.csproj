@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JazzController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,8 +176,13 @@
     <Compile Include="Migrations\201712041324015_PopulateAdminAccount.Designer.cs">
       <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712140948233_ContactmodelAdd.cs" />
+    <Compile Include="Migrations\201712140948233_ContactmodelAdd.Designer.cs">
+      <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
@@ -190,8 +196,10 @@
     <Compile Include="Repositories\Database.cs" />
     <Compile Include="Repositories\EventRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
+    <Compile Include="Repositories\IJazzRepo.cs" />
     <Compile Include="Repositories\IResetaurantRepo.cs" />
     <Compile Include="Repositories\ITalkRepo.cs" />
+    <Compile Include="Repositories\JazzRepo.cs" />
     <Compile Include="Repositories\RestaurantRepo.cs" />
     <Compile Include="Repositories\TalkRepo.cs" />
   </ItemGroup>
@@ -242,10 +250,12 @@
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Restaurant\Detail.cshtml" />
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
+    <Content Include="Views\Home\ThanksforSending.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Jazz\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -264,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041324015_PopulateAdminAccount.resx">
       <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712140948233_ContactmodelAdd.resx">
+      <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

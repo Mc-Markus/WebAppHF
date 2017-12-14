@@ -26,5 +26,11 @@ namespace WebAppHF.Controllers
 
             return View();
         }
+
+        public ActionResult ThanksforSending()
+        {
+            return View();
+        }
+
     }
 }

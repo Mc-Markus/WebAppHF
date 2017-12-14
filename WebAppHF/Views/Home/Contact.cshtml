@@ -1,17 +1,44 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12" id="main-body">
+            <div class="row">
+                <div class="col-md-6" id="contact-border">
+                    <form>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Contact form</label>
+                            <p>Please fill in the fields below. The fields with a * are required. These fields are required so we can get in contact with you to answer your question</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="InputMail">Email address*</label>
+                            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputEmail">Name*</label>
+                            <input type="text" class="form-control" id="InputName" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputSubject">Subject</label>
+                            <input type="text" class="form-control" id="InputSubject" placeholder="Enter Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea">Question*</label>
+                            <textarea class="form-control" id="QuestionTextarea" rows="4"></textarea>
+                        </div>
+                        <button class="btn btn-primary main-btn">@Html.ActionLink("Send", "ThanksforSending", "Home")</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Contact information</label>
+                    <p>
+                        info@haarlemfestival.nl
+                        <br>+31 023 - 5241020
+                        <br>
+                        <br>Head Office
+                        <br>Zijlweg 7
+                        <br>1234 AA Haarlem
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

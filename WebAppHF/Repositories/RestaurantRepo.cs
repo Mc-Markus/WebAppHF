@@ -22,7 +22,6 @@ namespace WebAppHF.Repositories
         {
             // Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
             Restaurant restaurant = db.Restaurants.Find(restaurantId);
-            //Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
             return restaurant;
         }
         public Restaurant CreateRestaurant(Restaurant restaurant)
