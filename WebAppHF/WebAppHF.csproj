@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201712140948233_ContactmodelAdd.Designer.cs">
       <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712141109160_testDataIntoContact.cs" />
+    <Compile Include="Migrations\201712141109160_testDataIntoContact.Designer.cs">
+      <DependentUpon>201712141109160_testDataIntoContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -275,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712140948233_ContactmodelAdd.resx">
       <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141109160_testDataIntoContact.resx">
+      <DependentUpon>201712141109160_testDataIntoContact.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

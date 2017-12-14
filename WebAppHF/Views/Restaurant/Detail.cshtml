@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Booking a Restaurant</h1>
-                <p>Make a reservation for Grand Café Brinkmann below. </p>
+                <p>Make a reservation for @Html.DisplayFor(model => model.Name) below. </p>
             </div>
         </div>
         <div class="row">
@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label class="font-weight-bold">Amount of persons</label>
-                            <input type="email" class="form-control" id="InputPersons" aria-describedby="PersonsHelp" placeholder="Amount of persons">
+                            <input type="text" class="form-control" id="InputPersons" aria-describedby="PersonsHelp" placeholder="Amount of persons">
                         </div>
                         <div class="form-group col-md-4">
                             <label class="font-weight-bold">Reservation day</label>
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label class="font-weight-bold">Reservation day</label>
+                            <label class="font-weight-bold">Reservation Time</label>
                             <div class="dropdown">
                                 <button class="btn btn-primary main-btn dropdown-toggle" type="button" id="dropdown-day" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Select time </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" href="#">Thursday</a> <a class="dropdown-item" href="#">Friday</a> <a class="dropdown-item" href="#">Saturday</a> <a class="dropdown-item" href="#">Sunday</a> </div>
