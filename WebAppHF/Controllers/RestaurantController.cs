@@ -25,7 +25,6 @@ namespace WebAppHF.Controllers
             return View(restaurant);
         }
 
-
         public ActionResult AfterDetail(int id)
         {
             Restaurant restaurant = repo.GetRestaurant(id);
