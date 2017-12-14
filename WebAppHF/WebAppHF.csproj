@@ -158,6 +158,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JazzController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -189,8 +190,10 @@
     <Compile Include="Repositories\Database.cs" />
     <Compile Include="Repositories\EventRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
+    <Compile Include="Repositories\IJazzRepo.cs" />
     <Compile Include="Repositories\IResetaurantRepo.cs" />
     <Compile Include="Repositories\ITalkRepo.cs" />
+    <Compile Include="Repositories\JazzRepo.cs" />
     <Compile Include="Repositories\RestaurantRepo.cs" />
     <Compile Include="Repositories\TalkRepo.cs" />
   </ItemGroup>
@@ -244,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Jazz\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
