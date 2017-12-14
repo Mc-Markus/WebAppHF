@@ -188,6 +188,14 @@
     <Compile Include="Migrations\201712141344579_insertTalkData.Designer.cs">
       <DependentUpon>201712141344579_insertTalkData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712141820114_insertFirstTour.cs" />
+    <Compile Include="Migrations\201712141820114_insertFirstTour.Designer.cs">
+      <DependentUpon>201712141820114_insertFirstTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141840233_insertAllOtherTours.cs" />
+    <Compile Include="Migrations\201712141840233_insertAllOtherTours.Designer.cs">
+      <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -291,6 +299,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712141344579_insertTalkData.resx">
       <DependentUpon>201712141344579_insertTalkData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141820114_insertFirstTour.resx">
+      <DependentUpon>201712141820114_insertFirstTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141840233_insertAllOtherTours.resx">
+      <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
