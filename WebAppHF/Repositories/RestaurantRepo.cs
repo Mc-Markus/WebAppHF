@@ -26,7 +26,7 @@ namespace WebAppHF.Repositories
         }
         public Restaurant CreateRestaurant(Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
        
 

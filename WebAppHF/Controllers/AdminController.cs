@@ -28,7 +28,6 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     repo.CreateRestaurant(restaurant);
-                    repo.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
