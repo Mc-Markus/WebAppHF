@@ -43,5 +43,11 @@ namespace WebAppHF.Repositories
 
             
         }
+
+        public void Remove(Restaurant student)
+        {
+            db.Restaurants.Remove(student);
+            
+        }
     }
 }

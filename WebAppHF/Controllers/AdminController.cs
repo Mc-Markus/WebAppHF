@@ -38,5 +38,23 @@ namespace WebAppHF.Controllers
             }
             return View(restaurant);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                Restaurant student = repo.GetRestaurant(id);
+                repo.Remove(student);
+                
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
