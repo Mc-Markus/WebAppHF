@@ -161,6 +161,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
+    <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +181,26 @@
     <Compile Include="Migrations\201712140948233_ContactmodelAdd.Designer.cs">
       <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712141109160_testDataIntoContact.cs" />
+    <Compile Include="Migrations\201712141109160_testDataIntoContact.Designer.cs">
+      <DependentUpon>201712141109160_testDataIntoContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141344579_insertTalkData.cs" />
+    <Compile Include="Migrations\201712141344579_insertTalkData.Designer.cs">
+      <DependentUpon>201712141344579_insertTalkData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141820114_insertFirstTour.cs" />
+    <Compile Include="Migrations\201712141820114_insertFirstTour.Designer.cs">
+      <DependentUpon>201712141820114_insertFirstTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141840233_insertAllOtherTours.cs" />
+    <Compile Include="Migrations\201712141840233_insertAllOtherTours.Designer.cs">
+      <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141911367_insertFamilyTickets.cs" />
+    <Compile Include="Migrations\201712141911367_insertFamilyTickets.Designer.cs">
+      <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -193,7 +214,7 @@
     <Compile Include="Models\Talk.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Database.cs" />
+    <Compile Include="Models\HFContext.cs" />
     <Compile Include="Repositories\EventRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
     <Compile Include="Repositories\IJazzRepo.cs" />
@@ -251,6 +272,7 @@
     <Content Include="Views\Restaurant\Detail.cshtml" />
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
     <Content Include="Views\Home\ThanksforSending.cshtml" />
+    <Content Include="Views\Talk\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +299,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712140948233_ContactmodelAdd.resx">
       <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141109160_testDataIntoContact.resx">
+      <DependentUpon>201712141109160_testDataIntoContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141344579_insertTalkData.resx">
+      <DependentUpon>201712141344579_insertTalkData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141820114_insertFirstTour.resx">
+      <DependentUpon>201712141820114_insertFirstTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141840233_insertAllOtherTours.resx">
+      <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141911367_insertFamilyTickets.resx">
+      <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

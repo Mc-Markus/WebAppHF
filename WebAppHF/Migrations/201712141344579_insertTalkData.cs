@@ -3,11 +3,10 @@ namespace WebAppHF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ContactmodelAdd : DbMigration
+    public partial class insertTalkData : DbMigration
     {
         public override void Up()
         {
-            Sql("INSERT INTO Contact(Email,Name,Subject,Question) Values(Test@email.nl,Bas,Restaurant,Hello?)");
         }
         
         public override void Down()
