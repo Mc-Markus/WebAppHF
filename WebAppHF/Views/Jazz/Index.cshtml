@@ -1,0 +1,64 @@
+﻿@model List<WebAppHF.Models.Jazz>
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+@foreach (WebAppHF.Models.Jazz item in Model)
+{
+    <p>@item.Name</p>
+    <p>@item.Price</p>
+    <p>@item.Date</p>
+    <p>@item.LocationName</p>
+}*@
+
+<div class="container col-md-12" id="main-body">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Jazz @@ Patronaat</h1>
+            <p>Do you like some Jazz music? Then Jazz@Patronaat is the perfect event to go to! With over 18 bands performing in 4 days there must be something for you! </p>
+        </div>
+        <div class="col-md-2">
+            <img src="../IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image">
+        </div>
+        <div class="col-md-2">
+            <img src="../IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image">
+        </div>
+        <div class="col-md-2">
+            <img src="../IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image">
+        </div>
+    </div>
+    <hr id="ruler">
+    <h1 id="program">Programme</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
+            <h4 class="dag-header">Thursday</h4>
+            <p class="jazz-info">
+                <b>Date:</b> Thursday - 26-07-2018<br>
+                <b>Location:</b> Patronaat<br>
+                <b>Performing:</b> Gumbo Kings; Evolve; Ntjam Rosie; Wicked Jazz Sounds; Tom Thomsom Assemble; Jonna Frazer.
+            </p>
+            <button type="button" class="btn btn-primary main-btn">Details</button>
+        </div>
+        <div class="col-md-3">
+            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
+            <h4 class="dag-header">Friday</h4>
+            <p class="jazz-info"><b>Date:</b> Friday - 27-07-2018 <b>Location:</b> Patronaat <b>Performing:</b> Fox en The Mayors; Uncle Sue; Chris Allen; Myles Sanko; Ruis Soundsystem; The Family XL</p>
+            <button type="button" class="btn btn-primary main-btn">Details</button>
+        </div>
+        <div class="col-md-3">
+            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
+            <h4 class="dag-header">Saturday</h4>
+            <p class="jazz-info"><b>Date:</b> Saturday - 28-07-2018 <b>Location:</b> Patronaat <b>Performing:</b> Gare du Nord; Rilan en The Bombadiers; Soul Six; Han Bennink; The Nordanians; Lilith Merlot </p>
+            <button type="button" class="btn btn-primary main-btn">Details</button>
+        </div>
+        <div class="col-md-3">
+            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
+            <h4 class="dag-header">Sunday</h4>
+            <p class="jazz-info"><b>Date:</b> Sunday - 29-07-2018 <b>Location:</b> Patronaat <b>Performing:</b> Ruis Soundsystem; Wicked Jazz Sounds; Evolve; The Nordanians; Gumbo Kings; Gare du Nord</p>
+            <button type="button" class="btn btn-primary main-btn">Details</button>
+        </div>
+    </div>
+</div>

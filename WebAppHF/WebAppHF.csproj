@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201712141911367_insertFamilyTickets.Designer.cs">
       <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712181219585_insertJazz.cs" />
+    <Compile Include="Migrations\201712181219585_insertJazz.Designer.cs">
+      <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181403242_restaurantNotNullable.cs" />
+    <Compile Include="Migrations\201712181403242_restaurantNotNullable.Designer.cs">
+      <DependentUpon>201712181403242_restaurantNotNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -246,7 +254,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
     <Content Include="IMG\haarlem3.jpg" />
@@ -289,11 +297,12 @@
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
     <Content Include="Views\Home\ThanksforSending.cshtml" />
     <Content Include="Views\Talk\Index.cshtml" />
+    <Content Include="Views\Jazz\Detail.cshtml" />
+    <Content Include="Views\Jazz\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Jazz\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -330,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712141911367_insertFamilyTickets.resx">
       <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181219585_insertJazz.resx">
+      <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181403242_restaurantNotNullable.resx">
+      <DependentUpon>201712181403242_restaurantNotNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

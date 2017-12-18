@@ -10,13 +10,21 @@ namespace WebAppHF.Models
     {
         [Key]
         public int ID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public int Stars { get; set; }
+        [Required]
         public int Price { get; set; }
+        [Required]
         public int ReducedPrice { get; set; }
+        [Required]
         public string FoodTypes { get; set; }
+        [Required]
         public string FoodIMGString { get; set; }
+        [Required]
         public string RestaurantIMGString { get; set; }
 
         public Restaurant() { }
