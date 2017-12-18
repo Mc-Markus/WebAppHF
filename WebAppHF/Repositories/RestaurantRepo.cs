@@ -24,8 +24,9 @@ namespace WebAppHF.Repositories
             Restaurant restaurant = db.Restaurants.Find(restaurantId);
             return restaurant;
         }
-        public Restaurant CreateRestaurant(Restaurant restaurant)
+        public void CreateRestaurant(Restaurant restaurant)
         {
+            db.Restaurants.Add(restaurant);
             db.SaveChanges();
         }
        
@@ -47,6 +48,7 @@ namespace WebAppHF.Repositories
         public void Remove(Restaurant student)
         {
             db.Restaurants.Remove(student);
+            db.SaveChanges();
             
         }
 
