@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201712141911367_insertFamilyTickets.Designer.cs">
       <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712181219585_insertJazz.cs" />
+    <Compile Include="Migrations\201712181219585_insertJazz.Designer.cs">
+      <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -312,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712141911367_insertFamilyTickets.resx">
       <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181219585_insertJazz.resx">
+      <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
