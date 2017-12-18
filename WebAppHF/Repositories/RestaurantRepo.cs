@@ -49,5 +49,10 @@ namespace WebAppHF.Repositories
             db.Restaurants.Remove(student);
             
         }
+
+        public void UpdateRestaurant(Restaurant restaurant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace WebAppHF.Repositories
 
         Restaurant CreateRestaurant(Restaurant restaurant);
         void Remove(Restaurant student);
+        void UpdateRestaurant(Restaurant restaurant);
     }
 }
