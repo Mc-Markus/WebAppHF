@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201712181219585_insertJazz.Designer.cs">
       <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712181403242_restaurantNotNullable.cs" />
+    <Compile Include="Migrations\201712181403242_restaurantNotNullable.Designer.cs">
+      <DependentUpon>201712181403242_restaurantNotNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -320,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712181219585_insertJazz.resx">
       <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181403242_restaurantNotNullable.resx">
+      <DependentUpon>201712181403242_restaurantNotNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
