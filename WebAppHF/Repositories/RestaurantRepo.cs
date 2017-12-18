@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using WebAppHF.Models;
@@ -10,7 +11,7 @@ namespace WebAppHF.Repositories
     {
         private HFContext db = new HFContext();
 
-        
+
 
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
@@ -29,7 +30,7 @@ namespace WebAppHF.Repositories
             db.Restaurants.Add(restaurant);
             db.SaveChanges();
         }
-       
+
 
         public List<Restaurant> GetRestaurants()
         {
@@ -42,19 +43,21 @@ namespace WebAppHF.Repositories
                 return restaurants.ToList();
             }
 
-            
+
         }
 
         public void Remove(Restaurant student)
         {
             db.Restaurants.Remove(student);
             db.SaveChanges();
-            
+
         }
 
         public void UpdateRestaurant(Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            Restaurant temp = db.Restaurants.Find(restaurant.ID);
+            temp = restaurant;
+            db.SaveChanges();
         }
     }
 }

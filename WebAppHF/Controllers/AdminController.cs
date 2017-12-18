@@ -47,7 +47,6 @@ namespace WebAppHF.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    Restaurant student = repo.GetRestaurant(id);
                     repo.UpdateRestaurant(restaurant);
                     return RedirectToAction("Index");
                 }
