@@ -1,0 +1,37 @@
+﻿@model WebAppHF.Models.Restaurant
+<div class="container" id="main-body">
+    <div class="container col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Information about the reservation in the restaurant @Html.DisplayFor(model => model.Name)</h3>
+                <p>Make a reservation for @Html.DisplayFor(model => model.Name) below. </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>@Html.DisplayFor(model => model.Name)</h3>
+                <p>
+                    <b>Cuisine:</b> @Html.DisplayFor(model => model.FoodTypes)
+                    <br> <b>Rating:</b> @Html.DisplayFor(model => model.Stars)
+                    <br><b>Price:</b> @Html.DisplayFor(model => model.Price)  (or 17,50 for childeren under 12)
+                    <br> <b>Duration:</b> 90 minutes
+                    <br> <b>Start time:</b> 18.30
+                    <br> <b>Description</b> @Html.DisplayFor(model => model.Name)
+                    <br>
+                </p>
+            </div>
+            <div class="col-md-6"> <img src="~/images/patronaat1.jpg" class="img-fluid" alt="Responsive image"> </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-primary main-btn">Back to restaurant overview</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary main-btn">Make reservation</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

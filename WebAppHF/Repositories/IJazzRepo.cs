@@ -7,10 +7,9 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    public interface ITalkRepo
+    interface IJazzRepo
     {
-        IEnumerable<Talk> GetTalks();
-        Talk GetTalk(int id);
-        void AddTalk(Talk talk);
+        List<Jazz> GetAll();
+        Jazz GetJazzByID(int ID);
     }
 }

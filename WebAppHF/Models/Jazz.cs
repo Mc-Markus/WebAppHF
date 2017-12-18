@@ -10,7 +10,5 @@ namespace WebAppHF.Models
         public string Hall { get; set; }
         public string Band { get; set; }
         public string IMGString { get; set; }
-
-        //test
     }
 }
