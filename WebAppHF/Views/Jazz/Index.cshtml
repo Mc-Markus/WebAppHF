@@ -1,0 +1,15 @@
+﻿@model List<WebAppHF.Models.Jazz>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (WebAppHF.Models.Jazz item in Model)
+{
+    <p>@item.Name</p>
+    <p>@item.Price</p>
+    <p>@item.Date</p>
+    <p>@item.LocationName</p>
+}
+

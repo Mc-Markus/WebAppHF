@@ -23,7 +23,7 @@ namespace WebAppHF.Controllers
         public ActionResult Detail()
         {
             //TODO: ID moet nog dynamisch
-            Jazz jazz = repo.GetJazzByID(1);
+            Jazz jazz = repo.GetJazzByID(80);
 
             return View(jazz);
         }
