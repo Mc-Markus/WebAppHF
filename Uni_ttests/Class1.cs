@@ -14,7 +14,7 @@ namespace Uni_ttests
     public class Class1
     {
         [Fact]
-        public void CreateTests()
+        public void CreateTestWithEmptyRestaurant()
         {
             //arrange
             IResetaurantRepo repo = new RestaurantRepo();
@@ -22,12 +22,33 @@ namespace Uni_ttests
             AdminController controller = new AdminController();
 
             //act
-            controller.Create(input);
-            
+            bool result = controller.Create(input);
+
             //assert
-            
-            
+            Assert.False(result);
         }
+
+        //[Fact]
+        //public void CreateTest()
+        //{
+        //    //arrange
+        //    IResetaurantRepo repo = new RestaurantRepo();
+        //    Restaurant input = new Restaurant();
+        //    AdminController controller = new AdminController();
+        //    input.Name = "The Fancy Place";
+        //    input.Price = 123;
+        //    input.ReducedPrice = 12;
+        //    input.RestaurantIMGString = "Woof.img";
+        //    input.Stars = 4;
+        //    input.Address = "Waterkade";
+        //    input.FoodTypes = "Nederlands, Vis";
+        //    input.FoodIMGString = "Vis.img";
+        //    //act
+        //    bool result = controller.Create(input);
+
+        //    //assert
+        //    Assert.True(result);
+        //}
 
         [Fact]
         public void DeleteTest()
@@ -36,9 +57,9 @@ namespace Uni_ttests
             AdminController controller = new AdminController();
             IResetaurantRepo repo = new RestaurantRepo();
             //act
-            controller.Delete(13);
+            controller.Delete(17);
             //assert
-            Assert.Null(repo.GetRestaurant(13));
+            Assert.Null(repo.GetRestaurant(17));
         }
     }
 }
