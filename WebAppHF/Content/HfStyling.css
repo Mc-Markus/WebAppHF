@@ -1,0 +1,171 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+
+/* General */
+
+body {
+    padding-top: 54px;
+    padding-bottom: 0px;
+    background-color: #c1B4AE;
+}
+
+.navbar-styling {
+    background-color: #92140C;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    font-weight: 500;
+    padding-left: 40px;
+    text-align: justify;
+}
+
+.basket-nav {
+    margin-right: -20px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+
+.carousel-item {
+    max-height: 450px;
+}
+
+.carousel-holder {
+    margin-bottom: -25px;
+}
+
+#main-body {
+    background-color: #f9f9f9;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border: 1px solid #999;
+}
+
+.main-btn {
+    background-color: #353238;
+    border-radius: 0;
+    width: auto;
+    border: none;
+}
+
+.main-btn:hover {
+    background-color: aquamarine;
+}
+
+hr {
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.dag-header {
+    margin-top: 15px;
+    margin bottom: 15px;
+}
+
+
+/* Index */
+
+.topside-images {
+    margin-top: -45px;
+    border: 2px solid white;
+}
+
+.home-images {
+    margin-top: 12px;
+}
+
+.home-mid-image {
+    margin-top: 1%;
+}
+
+#home-mid-row {
+    border-top-style: solid;
+    border-top-color: black;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 134px;
+}
+
+
+/* Footer */
+
+.footer-list {
+    list-style: none;
+    text-align: left;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.footer-list a {
+    color: black;
+}
+
+.footer-container {
+    margin-top: 30px;
+    margin-bottom: 0px;
+    background-color: white;
+    border: 1px solid #999;
+}
+
+#google-iframe {
+    width: 100%;
+    height: 250px;
+}
+
+
+/* Contact */
+
+#contact-border {
+    border-right-style: solid;
+    border-right-color: #999;
+    border-right-width: 1px;
+}
+
+.contact-send-padding {
+    margin-bottom: 10%;
+}
+
+
+/* Dinner */
+
+.dinner-top-row {
+    margin-bottom: 3%;
+}
+
+.image-dinner img {
+    border: 2px solid black;
+}
+
+.filter-text {
+    float: right;
+}
+
+.filter-row {
+    margin-bottom: 2%;
+}
+
+
+/*Jazz Detail*/
+
+.border-jazz-detail {
+    border-top: 2px solid #999;
+    margin-top: 1%;
+    padding-top: 1%;
+}
+
+
+/* Basket */
+
+.basket-send-padding {
+    margin-bottom: 5%;
+}

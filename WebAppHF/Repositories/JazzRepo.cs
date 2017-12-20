@@ -14,9 +14,8 @@ namespace WebAppHF.Repositories
             using (HFContext context = new HFContext())
             {
                 Jazzs = context.Jazzs.AsEnumerable();
+                return Jazzs.ToList();
             }
-
-            return Jazzs.ToList();
         }
 
         public Jazz GetJazzByID(int ID)
@@ -25,8 +24,8 @@ namespace WebAppHF.Repositories
             using (HFContext context = new HFContext())
             {
                 jazz = context.Jazzs.SingleOrDefault(j => j.ID == ID);
+                return jazz;
             }
-            return jazz;
         }
     }
 }
