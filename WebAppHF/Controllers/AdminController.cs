@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebAppHF.Models;
 using WebAppHF.Repositories;
 
@@ -13,12 +14,36 @@ namespace WebAppHF.Controllers
     {
         private IResetaurantRepo repo = new RestaurantRepo();
 
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Account account = repository.GetAccount(model.EmailAddress, model.Password);
+            }
+            if (account != null)
+            {
+                FormsAuthentication.SetAuthCookie(account.EmailAddress, false);
+
+                Session["Loggedin_admin"] = account;
+
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                ModelState.AddModelError("login-error", "Incorrect username/password");
+            }
+
+        }
+
         // GET: Admin
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant)
@@ -38,7 +63,7 @@ namespace WebAppHF.Controllers
             }
             return View(restaurant);
         }
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Update([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant, int id)
@@ -58,7 +83,7 @@ namespace WebAppHF.Controllers
             }
             return View(restaurant);
         }
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
