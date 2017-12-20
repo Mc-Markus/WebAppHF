@@ -13,6 +13,7 @@ namespace WebAppHF.Controllers
     public class AdminController : Controller
     {
         private IResetaurantRepo repo = new RestaurantRepo();
+        private IEventRepo Erepo = new EventRepo();
 
         [HttpPost]
         public ActionResult Login(LoginModel model)
@@ -32,6 +33,7 @@ namespace WebAppHF.Controllers
             else
             {
                 ModelState.AddModelError("login-error", "Incorrect username/password");
+                return View();
             }
 
         }
@@ -46,7 +48,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant)
+        public ActionResult CreateRestaurant([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant)
         {
             try
             {
@@ -66,7 +68,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant, int id)
+        public ActionResult UpdateRestaurant([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant, int id)
         {
             try
             {
@@ -86,13 +88,72 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteRestaurant(int id)
         {
             try
             {
                 Restaurant student = repo.GetRestaurant(id);
                 repo.Remove(student);
                 
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEvent([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Event e, int eventType)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Erepo.CreateEvent(e, eventType);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateEvent([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Event e, int id)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Erepo.UpdateEvent(e);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteEvent(int id)
+        {
+            try
+            {
+                Event student = Erepo.GetEventByID(id);
+                Erepo.Remove(student);
+
             }
             catch (DataException/* dex */)
             {

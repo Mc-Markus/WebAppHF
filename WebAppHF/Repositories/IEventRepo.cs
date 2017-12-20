@@ -9,5 +9,6 @@ namespace WebAppHF.Repositories
     public interface IEventRepo
     {
         Event GetEventByID(int ID);
+        void CreateEvent(Event e, int eventType);
     }
 }

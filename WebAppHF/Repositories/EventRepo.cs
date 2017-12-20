@@ -19,5 +19,10 @@ namespace WebAppHF.Repositories
                 return eventByID;
             }
         }
+
+        public void CreateEvent (Event e, int eventType)
+        {
+
+        }
     }
 }
