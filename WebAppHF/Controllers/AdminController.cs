@@ -12,19 +12,21 @@ namespace WebAppHF.Controllers
 {
     public class AdminController : Controller
     {
+        AdminAccount account = new AdminAccount();
         private IResetaurantRepo repo = new RestaurantRepo();
         private IEventRepo Erepo = new EventRepo();
 
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
+            
             if (ModelState.IsValid)
             {
-                Account account = repository.GetAccount(model.EmailAddress, model.Password);
+                AdminAccount account = repository.GetAccount(model.EmailAddress, model.Password);
             }
             if (account != null)
             {
-                FormsAuthentication.SetAuthCookie(account.EmailAddress, false);
+                FormsAuthentication.SetAuthCookie(account.UserName, false);
 
                 Session["Loggedin_admin"] = account;
 
@@ -92,8 +94,8 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                Restaurant student = repo.GetRestaurant(id);
-                repo.Remove(student);
+                Restaurant e = repo.GetRestaurant(id);
+                repo.Remove(e);
                 
             }
             catch (DataException/* dex */)
@@ -151,8 +153,8 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                Event student = Erepo.GetEventByID(id);
-                Erepo.Remove(student);
+                Event e = Erepo.GetEventByID(id);
+                Erepo.Remove(e);
 
             }
             catch (DataException/* dex */)
