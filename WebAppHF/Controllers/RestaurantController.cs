@@ -10,24 +10,25 @@ namespace WebAppHF.Controllers
 {
     public class RestaurantController : Controller
     {
-        private IResetaurantRepo repo = new RestaurantRepo();
+        private IResetaurantRepo ResturantRepository = new RestaurantRepo();
         
         // GET: Restaurant
         public ActionResult Index()
         {
-            var restaurant = repo.GetAllRestaurants();
+            var restaurant = ResturantRepository.GetAllRestaurants();
             return View(restaurant.ToList());
         }
 
         public ActionResult Detail(int ID)
         {
-            Restaurant restaurant = repo.GetRestaurant(ID);
+            Restaurant restaurant = ResturantRepository.GetRestaurant(ID);
             return View(restaurant);
         }
 
-        public ActionResult AfterDetail()
+        public ActionResult AfterDetail(int id)
         {
-            return View();
+            Restaurant restaurant = ResturantRepository.GetRestaurant(id);
+            return View(restaurant);
         }
     }
 }
