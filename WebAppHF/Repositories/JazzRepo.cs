@@ -25,12 +25,12 @@ namespace WebAppHF.Repositories
             using (HFContext context = new HFContext())
             {
                 jazzs = context.Jazzs.AsEnumerable();
+                
                 //JazzDaySummary summary = ;
                 DateTime day;
 
-                day = (jazzs.First()).Date;
-
                 jazzs = jazzs.Reverse();
+                day = (jazzs.First()).Date;
 
                 foreach(Jazz jazz in jazzs)
                 {
@@ -41,6 +41,16 @@ namespace WebAppHF.Repositories
                 }
 
                 return summarys;
+            }
+        }
+
+        public List<Jazz> GetJazzsByDay(DateTime date)
+        {
+            IEnumerable<Jazz> Jazzs;
+            using (HFContext context = new HFContext())
+            {
+                Jazzs = context.Jazzs.Where(j => j.Date == date);
+                return Jazzs.ToList();
             }
         }
 
