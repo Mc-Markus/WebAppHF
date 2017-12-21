@@ -15,14 +15,15 @@ namespace WebAppHF.Controllers
         AdminAccount account = new AdminAccount();
         private IResetaurantRepo repo = new RestaurantRepo();
         private IEventRepo Erepo = new EventRepo();
+        private IAccountRepo repository = new AccountRepo();
 
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(AdminAccount model)
         {
-            
+
             if (ModelState.IsValid)
             {
-                AdminAccount account = repository.GetAccount(model.EmailAddress, model.Password);
+                AdminAccount account = repository.GetAccount(model.UserName, model.Password);
             }
             if (account != null)
             {
@@ -96,7 +97,7 @@ namespace WebAppHF.Controllers
             {
                 Restaurant e = repo.GetRestaurant(id);
                 repo.Remove(e);
-                
+
             }
             catch (DataException/* dex */)
             {
