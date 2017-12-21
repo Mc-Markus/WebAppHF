@@ -24,5 +24,15 @@ namespace WebAppHF.Repositories
         {
 
         }
+
+        public void UpdateEvent(Event e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Event e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
