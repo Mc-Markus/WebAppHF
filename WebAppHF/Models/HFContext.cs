@@ -16,6 +16,7 @@ namespace WebAppHF.Repositories
 
         }
 
+        public DbSet<Venue> Venues { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Talk> Talks { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
