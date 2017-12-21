@@ -18,6 +18,32 @@ namespace WebAppHF.Repositories
             }
         }
 
+        public List<JazzDaySummary> GetDaySummarys()
+        {
+            IEnumerable<Jazz> jazzs;
+            List<JazzDaySummary> summarys = new List<JazzDaySummary>();
+            using (HFContext context = new HFContext())
+            {
+                jazzs = context.Jazzs.AsEnumerable();
+                //JazzDaySummary summary = ;
+                DateTime day;
+
+                day = (jazzs.First()).Date;
+
+                jazzs = jazzs.Reverse();
+
+                foreach(Jazz jazz in jazzs)
+                {
+                    if(day == jazz.Date)
+                    {
+                   //     summary
+                    }
+                }
+
+                return summarys;
+            }
+        }
+
         public Jazz GetJazzByID(int ID)
         {
             Jazz jazz;

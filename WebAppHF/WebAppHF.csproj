@@ -214,6 +214,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
+    <Compile Include="Models\JazzDaySummary.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Models\Restaurant.cs" />
