@@ -50,7 +50,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateRestaurant([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant)
+        public ActionResult CreateRestaurant(Restaurant restaurant)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateRestaurant([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Restaurant restaurant, int id)
+        public ActionResult UpdateRestaurant(Restaurant restaurant, int id)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateEvent([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Event e, int eventType)
+        public ActionResult CreateEvent(Event e, int eventType)
         {
             try
             {
@@ -129,7 +129,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateEvent([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Event e, int id)
+        public ActionResult UpdateEvent(Event e, int id)
         {
             try
             {
