@@ -56,9 +56,9 @@ body {
     border: none;
 }
 
-.main-btn:hover {
-    background-color: aquamarine;
-}
+    .main-btn:hover {
+        background-color: aquamarine;
+    }
 
 hr {
     border-style: solid;
@@ -70,6 +70,7 @@ hr {
 .dag-header {
     margin-top: 15px;
     margin bottom: 15px;
+    height: 12%;
 }
 
 
@@ -106,9 +107,9 @@ hr {
     padding-left: 0px;
 }
 
-.footer-list a {
-    color: black;
-}
+    .footer-list a {
+        color: black;
+    }
 
 .footer-container {
     margin-top: 30px;
@@ -168,4 +169,23 @@ hr {
 
 .basket-send-padding {
     margin-bottom: 5%;
+}
+
+
+/* Talking*/
+
+.talking-red {
+    color: red;
+}
+
+.talking-height {
+    height: 10%;
+}
+
+.talking-right {
+    float: right;
+}
+
+.talking-left p {
+    float: left;
 }
