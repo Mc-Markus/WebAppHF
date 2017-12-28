@@ -23,6 +23,5 @@ namespace WebAppHF.Models
             double euro = Price / 100;
             return string.Format("{0:C}", euro);
         }
-
     }
 }
