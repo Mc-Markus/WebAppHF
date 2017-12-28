@@ -176,8 +176,41 @@
     <Compile Include="Migrations\201712041324015_PopulateAdminAccount.Designer.cs">
       <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712140948233_ContactmodelAdd.cs" />
+    <Compile Include="Migrations\201712140948233_ContactmodelAdd.Designer.cs">
+      <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141109160_testDataIntoContact.cs" />
+    <Compile Include="Migrations\201712141109160_testDataIntoContact.Designer.cs">
+      <DependentUpon>201712141109160_testDataIntoContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141344579_insertTalkData.cs" />
+    <Compile Include="Migrations\201712141344579_insertTalkData.Designer.cs">
+      <DependentUpon>201712141344579_insertTalkData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141820114_insertFirstTour.cs" />
+    <Compile Include="Migrations\201712141820114_insertFirstTour.Designer.cs">
+      <DependentUpon>201712141820114_insertFirstTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141840233_insertAllOtherTours.cs" />
+    <Compile Include="Migrations\201712141840233_insertAllOtherTours.Designer.cs">
+      <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712141911367_insertFamilyTickets.cs" />
+    <Compile Include="Migrations\201712141911367_insertFamilyTickets.Designer.cs">
+      <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181219585_insertJazz.cs" />
+    <Compile Include="Migrations\201712181219585_insertJazz.Designer.cs">
+      <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181403242_restaurantNotNullable.cs" />
+    <Compile Include="Migrations\201712181403242_restaurantNotNullable.Designer.cs">
+      <DependentUpon>201712181403242_restaurantNotNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
@@ -188,7 +221,7 @@
     <Compile Include="Models\Talk.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Database.cs" />
+    <Compile Include="Models\HFContext.cs" />
     <Compile Include="Repositories\EventRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
     <Compile Include="Repositories\IJazzRepo.cs" />
@@ -201,10 +234,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\HfStyling.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
     <Content Include="IMG\haarlem3.jpg" />
@@ -245,11 +279,9 @@
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Restaurant\Detail.cshtml" />
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
-    <Content Include="Views\Talk\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Jazz\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -268,6 +300,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041324015_PopulateAdminAccount.resx">
       <DependentUpon>201712041324015_PopulateAdminAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712140948233_ContactmodelAdd.resx">
+      <DependentUpon>201712140948233_ContactmodelAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141109160_testDataIntoContact.resx">
+      <DependentUpon>201712141109160_testDataIntoContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141344579_insertTalkData.resx">
+      <DependentUpon>201712141344579_insertTalkData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141820114_insertFirstTour.resx">
+      <DependentUpon>201712141820114_insertFirstTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141840233_insertAllOtherTours.resx">
+      <DependentUpon>201712141840233_insertAllOtherTours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712141911367_insertFamilyTickets.resx">
+      <DependentUpon>201712141911367_insertFamilyTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181219585_insertJazz.resx">
+      <DependentUpon>201712181219585_insertJazz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181403242_restaurantNotNullable.resx">
+      <DependentUpon>201712181403242_restaurantNotNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
