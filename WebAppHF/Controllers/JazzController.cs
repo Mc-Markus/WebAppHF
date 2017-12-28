@@ -15,17 +15,21 @@ namespace WebAppHF.Controllers
         // GET: Jazz
         public ActionResult Index()
         {
-            List<Jazz> JazzActs = repo.GetAll();
+            List<JazzDaySummary> summarys = repo.GetDaySummarys();
+
+            if(summarys == null)
+            {
+                return RedirectToAction("Index", "HomeController", null);
+            }
+
+            return View(summarys);
+        }
+        
+        public ActionResult Day(DateTime date)
+        {
+            List<Jazz> JazzActs = repo.GetJazzsByDay(date);
 
             return View(JazzActs);
-        }
-
-        public ActionResult Detail()
-        {
-            //TODO: ID moet nog dynamisch
-            Jazz jazz = repo.GetJazzByID(80);
-
-            return View(jazz);
         }
     }
 }
