@@ -17,6 +17,12 @@ namespace WebAppHF.Models
         public string Adress { get; set; }
         public int SeatsAvailable { get; set; }
 
+        //Returns the price as a formatted string
+        public string GetPriceString()
+        {
+            double euro = Price / 100;
+            return string.Format("{0:C}", euro);
+        }
 
     }
 }

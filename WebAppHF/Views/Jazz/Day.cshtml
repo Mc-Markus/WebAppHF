@@ -15,8 +15,8 @@
         <p>
             The new Gare du Nord band tours the Netherlands for the 35 City Live Tour. The shows feature guest appearances by classical harpist Lavinia Meijer. In january 2014 Lavinia Meijer presents a multi platinum award for the Sex 'n' Jazz album, a platinum award for Love For Lunch and a gold award for Lilywhite Soul to the band in a fully packed Muziekgebouw Eindhoven. Songwriter Barend Fransen starts writing new songs with several contemporary composers for a new 10-song songcycle to be premiered live on stage as Gare du Nord: Undressed for a clubtour kicking of October 5, 2014.
             <br>
-            <br> <strong>Time:</strong> @item.StartTime
-            <br> <strong>Price:</strong> @item.EndTime
+            <br> <strong>Time:</strong> @item.StartTime.ToShortTimeString() - @item.EndTime.ToShortTimeString()
+            <br> <strong>Price:</strong> @item.GetPriceString()
         </p>
         <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
      </div>

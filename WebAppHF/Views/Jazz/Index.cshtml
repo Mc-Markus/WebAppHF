@@ -33,7 +33,8 @@
                 <b>Performing:</b> @item.Bands
 
             </p>
-            <button type="button" class="btn btn-primary main-btn">Details</button>
+            @*<button type="button" class="btn btn-primary main-btn">Details</button>*@
+            @Html.ActionLink("Details", "Day", "Jazz", item.Date, new { @class = "btn btn-primary main-btn" })
         </div>
         }
     </div>

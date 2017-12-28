@@ -8,6 +8,8 @@ namespace WebAppHF.Repositories
 {
     public class JazzRepo : IJazzRepo
     {
+
+        //gets all jazz events
         public List<Jazz> GetAll()
         {
             IEnumerable<Jazz> Jazzs;
@@ -18,6 +20,7 @@ namespace WebAppHF.Repositories
             }
         }
 
+        //gets the summarys of what jazzs play on a day
         public List<JazzDaySummary> GetDaySummarys()
         {
             IEnumerable<Jazz> jazzs;
@@ -26,14 +29,15 @@ namespace WebAppHF.Repositories
             using (HFContext context = new HFContext())
             {
                 jazzs = context.Jazzs.AsEnumerable();
-                jazzs.OrderBy(j => j.Date);
+                jazzs.OrderBy(j =>j.Date);
                 jazzList = jazzs.ToList();
 
                 if(jazzs== null)
                 {
                     return null;
                 }
-
+                
+                //pass-partout's are not needed
                 jazzList = RemovePassPartout(jazzList);
                 
                 DateTime day;
@@ -56,18 +60,20 @@ namespace WebAppHF.Repositories
             }
         }
 
+        //gets all jazz events for a given day
         public List<Jazz> GetJazzsByDay(DateTime date)
         {
             IEnumerable<Jazz> Jazzs;
             using (HFContext context = new HFContext())
             {
-                Jazzs = context.Jazzs.Where(j => j.Date == date);
+                Jazzs = context.Jazzs.Where(j => j.Date == date).OrderBy(j=>j.StartTime);
+                Jazzs.GroupBy(j => j.StartTime.TimeOfDay);
 
-                Jazzs.OrderBy(j => j.StartTime);
-                return Jazzs.ToList();
+                return RemovePassPartout(Jazzs.ToList());
             }
         }
 
+        //gets one jazz event according to an id
         public Jazz GetJazzByID(int ID)
         {
             Jazz jazz;
@@ -78,6 +84,8 @@ namespace WebAppHF.Repositories
             }
         }
 
+
+        //removes pass-partout from results as they may not be needed in all cases
         private List<Jazz> RemovePassPartout(List<Jazz> list)
         {
             List<Jazz> newList = new List<Jazz>();
