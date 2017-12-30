@@ -1,17 +1,7 @@
-﻿@model List<WebAppHF.Models.Jazz>
+﻿@model List<WebAppHF.Models.JazzDaySummary>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Jazz";
 }
-
-@*<h2>Index</h2>
-
-@foreach (WebAppHF.Models.Jazz item in Model)
-{
-    <p>@item.Name</p>
-    <p>@item.Price</p>
-    <p>@item.Date</p>
-    <p>@item.LocationName</p>
-}*@
 
 
     <div class="row">
@@ -32,32 +22,19 @@
     <hr id="ruler">
     <h1 id="program">Programme</h1>
     <div class="row">
+        @foreach (WebAppHF.Models.JazzDaySummary item in Model)
+        {
         <div class="col-md-3">
-            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-            <h4 class="dag-header">Thursday</h4>
+            <img src="@item.IMGString" class="img-fluid" alt="Responsive image">
+            <h4 class="dag-header">@item.Day</h4>
             <p class="jazz-info">
-                <b>Date:</b> Thursday - 26-07-2018<br>
-                <b>Location:</b> Patronaat<br>
-                <b>Performing:</b> Gumbo Kings; Evolve; Ntjam Rosie; Wicked Jazz Sounds; Tom Thomsom Assemble; Jonna Frazer.
+                <b>Date:</b> @item.Day - @item.Date.ToShortDateString()<br>
+                <b>Location:</b> @item.Location<br>
+                <b>Performing:</b> @item.Bands
+
             </p>
-            <button type="button" class="btn btn-primary main-btn">Details</button>
+            @*<button type="button" class="btn btn-primary main-btn">Details</button>*@
+            @Html.ActionLink("Details", "Day", "Jazz", item.Date, new { @class = "btn btn-primary main-btn" })
         </div>
-        <div class="col-md-3">
-            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-            <h4 class="dag-header">Friday</h4>
-            <p class="jazz-info"><b>Date:</b> Friday - 27-07-2018 <b>Location:</b> Patronaat <b>Performing:</b> Fox en The Mayors; Uncle Sue; Chris Allen; Myles Sanko; Ruis Soundsystem; The Family XL</p>
-            <button type="button" class="btn btn-primary main-btn">Details</button>
-        </div>
-        <div class="col-md-3">
-            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-            <h4 class="dag-header">Saturday</h4>
-            <p class="jazz-info"><b>Date:</b> Saturday - 28-07-2018 <b>Location:</b> Patronaat <b>Performing:</b> Gare du Nord; Rilan en The Bombadiers; Soul Six; Han Bennink; The Nordanians; Lilith Merlot </p>
-            <button type="button" class="btn btn-primary main-btn">Details</button>
-        </div>
-        <div class="col-md-3">
-            <img src="../images/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-            <h4 class="dag-header">Sunday</h4>
-            <p class="jazz-info"><b>Date:</b> Sunday - 29-07-2018 <b>Location:</b> Patronaat <b>Performing:</b> Ruis Soundsystem; Wicked Jazz Sounds; Evolve; The Nordanians; Gumbo Kings; Gare du Nord</p>
-            <button type="button" class="btn btn-primary main-btn">Details</button>
-        </div>
+        }
     </div>
