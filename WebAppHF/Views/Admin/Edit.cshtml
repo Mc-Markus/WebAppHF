@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<WebAppHF.Models.Restaurant>
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +6,7 @@
 
 <h2>Edit</h2>
 
+@foreach (var restaurant in Model)
+{
+
+}
