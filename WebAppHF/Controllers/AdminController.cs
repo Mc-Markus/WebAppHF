@@ -49,6 +49,12 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateRestaurant(Restaurant restaurant)

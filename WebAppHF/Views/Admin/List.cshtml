@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebAppHF.Models.Restaurant>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stars)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReducedPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodTypes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodIMGString)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestaurantIMGString)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
