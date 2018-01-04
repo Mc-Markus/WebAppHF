@@ -11,7 +11,9 @@ namespace WebAppHF.Repositories
     {
         List<Jazz> GetAll();
         Jazz GetJazzByID(int ID);
-        List<Jazz> GetJazzsByDay(DateTime date);
+        List<Jazz> GetJazzActsByDay(DateTime date);
+        Jazz GetPassePartoutWeekend();
+        Jazz GetPassePartoutDay(DateTime date);
         List<JazzDaySummary> GetDaySummarys();
     }
 }

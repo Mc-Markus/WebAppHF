@@ -27,9 +27,17 @@ namespace WebAppHF.Controllers
         
         public ActionResult Day(DateTime date)
         {
-            List<Jazz> JazzActs = repo.GetJazzsByDay(date);
+            List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
 
             return View(JazzActs);
+        }
+
+        public ActionResult Book(DateTime date)
+        {
+            List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
+            Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
+            Jazz passePartoutDay = repo.GetPassePartoutDay(date);
+            return View();
         }
     }
 }
