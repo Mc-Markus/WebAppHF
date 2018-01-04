@@ -61,14 +61,14 @@ namespace WebAppHF.Repositories
         }
 
         //gets all jazz events for a given day
+        /*Because a deleted event or events in three halls at the same day can cause problems with
+         filtering in two columns they are not filtered in two columns*/
         public List<Jazz> GetJazzsByDay(DateTime date)
         {
             IEnumerable<Jazz> Jazzs;
             using (HFContext context = new HFContext())
             {
                 Jazzs = context.Jazzs.Where(j => j.Date == date).OrderBy(j=>j.StartTime);
-                Jazzs.GroupBy(j => j.StartTime.TimeOfDay);
-
                 return RemovePassPartout(Jazzs.ToList());
             }
         }
