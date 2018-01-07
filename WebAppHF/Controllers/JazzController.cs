@@ -31,5 +31,12 @@ namespace WebAppHF.Controllers
 
             return View(JazzActs);
         }
+
+        // View waar de kaarten worden verkocht, hardcoded
+        public ActionResult Reservation()
+        {
+            return View();
+        }
+
     }
 }
