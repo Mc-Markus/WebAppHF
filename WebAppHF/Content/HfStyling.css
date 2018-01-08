@@ -189,3 +189,28 @@ hr {
 .talking-left p {
     float: left;
 }
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.talking-button {
+    margin-bottom: -80%;
+}
+
+.table-talking {
+    background-color: #f9f9f9;
+}
+
+    .table-talking th {
+        text-align: right;
+    }
+
+
+/* Reservation*/
+
+.margin-reservation {
+    margin-top: 2%;
+}
