@@ -107,7 +107,7 @@ namespace WebAppHF.Repositories
             Jazz jazz;
             using (HFContext context = new HFContext())
             {
-                jazz = context.Jazzs.SingleOrDefault(j => j.Name.Contains("all"));
+                jazz = context.Jazzs.SingleOrDefault(j => j.Name.Contains("Passe-Partout for all Jazz Events"));
                 return jazz;
             }
         }
@@ -119,7 +119,7 @@ namespace WebAppHF.Repositories
             {
                 Jazzs = context.Jazzs.Where(j => j.Name.Contains("passe-partout"));
 
-                Jazz jazz = Jazzs.SingleOrDefault(j => j.Date == date);
+                Jazz jazz = Jazzs.SingleOrDefault(j => j.Date == date && !j.Name.Contains("Passe-Partout for all Jazz Events"));
 
                 return jazz;
             }
