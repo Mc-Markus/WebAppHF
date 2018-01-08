@@ -18,20 +18,21 @@ namespace WebAppHF.Controllers
             return View(venue);
         }
 
-        [HttpGet]
+        
         public ActionResult LoadLocation()
         {
             return PartialView("_locations");
         }
-        [HttpGet]
+        
         public ActionResult LoadMap()
         {
             return PartialView("_map");
         }
 
-        public ActionResult LoadMapVenue()
+        public ActionResult LoadMapVenue(int id)
         {
-            return View();
+            Venue venue = repo.GetVenueByID(id);
+            return PartialView("_venue", venue);
         }
     }
 }
