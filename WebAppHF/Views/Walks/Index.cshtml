@@ -1,14 +1,93 @@
 ﻿@model WebAppHF.Models.Venue
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Historic Haarlem";
 }
+@section scripts{
 
-<h2>Index</h2>
+    <script>
 
-<div class="col-md-5">
-    <div class="row">
-        <img src="@Model.ImagePath" alt="Guur Plaatje" />
-        <p>@Model.Name</p>
-        <p>@Model.InfoText</p>
+        $('#load-map').on('click',
+            function () {
+
+
+                $.ajax({
+                    url: '/Walks/LoadMap',
+                    contentType: 'application/html: charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#content').html(data);
+                    },
+                    error: function () {
+                        console.log('Something went wrong!!');
+                    }
+                });
+            });
+
+        $('#load-loc').on('click',
+            function () {
+
+
+                $.ajax({
+                    url: '/Walks/LoadLocation',
+                    contentType: 'application/html: charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#content').html(data);
+                    },
+                    error: function () {
+                        console.log('Something went wrong!!');
+                    }
+                });
+            });
+
+        function LoadVenue(IdBtn) {
+            var id = IdBtn.value;
+            console.log(id);
+            $.ajax({
+                url: '/Walks/LoadMapVenue?id=' + IdBtn,
+                contentType: 'application/html: charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#venue-content').html(data);
+                },
+                error: function () {
+                    console.log('Something went wrong!!');
+                }
+            });
+        };
+
+    </script>
+
+}
+<div class="row">
+    <div class="col-md-6">
+        <h1>Historic Haarlem</h1>
+        <p>Welcome on the Historic Haarlem page, here you will find information about the historic tour through Haarlem. Here you will find information about: the locations, the available days and the available languages.</p>
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image">
     </div>
 </div>
+<hr id="ruler_historic">
+<div class="row col-md-12">
+    <div class="btn-group center" role="group">
+        <button id="load-map" class="btn">Map</button>
+        <button id="load-loc" class="btn">Locations</button>
+    </div>
+</div>
+<div class="row col-md-12" id="content">
+    @Html.Action("LoadMap","Walks")
+</div>
+
+
+
+
