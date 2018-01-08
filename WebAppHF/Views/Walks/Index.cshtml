@@ -1,14 +1,101 @@
 ﻿@model WebAppHF.Models.Venue
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Historic Haarlem";
 }
+@section scripts{
 
-<h2>Index</h2>
+    <script>
 
-<div class="col-md-5">
-    <div class="row">
-        <img src="@Model.ImagePath" alt="Guur Plaatje" />
-        <p>@Model.Name</p>
-        <p>@Model.InfoText</p>
+        $('#load-map').on('click',
+            function () {
+
+
+                $.ajax({
+                    url: '/Walks/LoadMap',
+                    contentType: 'application/html: charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#content').html(data);
+                    },
+                    error: function () {
+                        console.log('Something went wrong!!');
+                    }
+                });
+            });
+
+        $('#load-loc').on('click',
+            function () {
+
+
+                $.ajax({
+                    url: '/Walks/LoadLocation',
+                    contentType: 'application/html: charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#content').html(data);
+                    },
+                    error: function () {
+                        console.log('Something went wrong!!');
+                    }
+                });
+            });
+
+    </script>
+
+}
+<div class="row">
+    <div class="col-md-6">
+        <h1>Historic Haarlem</h1>
+        <p>Welcome on the Historic Haarlem page, here you will find information about the historic tour through Haarlem. Here you will find information about: the locations, the available days and the available languages.</p>
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image">
     </div>
 </div>
+<hr id="ruler_historic">
+<div class="row col-md-12">
+    <div class="btn-group center" role="group">
+        <button id="load-map" class="btn">Map</button>
+        <button id="load-loc" class="btn">Locations</button>
+    </div>
+</div>
+<div class="row col-md-12" id="content">
+    <div class="row" style="margin-top: 10px">
+        <div class="col-md-8">
+            <img class="historic-map-image img-fluid" src="../IMG/IMAGES_WALKS/Map.jpg" alt="Map Image" />
+            <div class="row venue-buttons ">
+                <div class="col-md-8 btn-group">
+                    <button class="btn venue-select">1</button>
+                    <button class="btn venue-select">2</button>
+                    <button class="btn venue-select">3</button>
+                    <button class="btn venue-select">4</button>
+                    <button class="btn venue-select">5</button>
+                    <button class="btn venue-select">6</button>
+                    <button class="btn venue-select">7</button>
+                    <button class="btn venue-select">8</button>
+                    <button class="btn venue-select">9</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img class="walk-venue-image" src="../../IMG/IMAGES_WALKS/BavoKerk.jpg" alt="Guur Generic Plaatje" />
+            <h3 id="tour-location-title">
+                <b>Church of St. Bavo</b>
+            </h3>
+            <p>The Grote Kerk or St.-Bavokerk is a Protestant church and former Catholic cathedral located on the central market square in the Dutch city of Haarlem. Another Haarlem church called the Cathedral of Saint Bavo now serves as the main cathedral for the Roman Catholic Diocese of Haarlem-Amsterdam.</p>
+            <button class="btn book-button">Book tour</button>
+        </div>
+    </div>
+</div>
+
+
+
+
