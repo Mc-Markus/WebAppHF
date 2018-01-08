@@ -1,11 +1,14 @@
-﻿
+﻿@model WebAppHF.Models.AdminAccount
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>Username</h3>
-@Html.TextBox("Username", null)
-<h3>Password</h3>
-@Html.TextBox("Password", null)
-<h2>Login</h2>
+@using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+{
+    <h3>Username</h3>
+    <p>@Html.TextBoxFor(m => m.UserName) @Html.ValidationMessageFor(m => m.UserName)</p>
+    <h3>Password</h3>
+    <p>@Html.PasswordFor(m => m.Password) @Html.ValidationMessageFor(m => m.Password)</p>
+    <button type="submit">Login</button>
+}
 

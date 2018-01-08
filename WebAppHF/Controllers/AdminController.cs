@@ -48,8 +48,13 @@ namespace WebAppHF.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [Authorize]
-        public ActionResult Edit()
+        public ActionResult List()
         {
             return View();
         }

@@ -10,7 +10,14 @@ namespace WebAppHF.Repositories
     {
         public AdminAccount GetAccount(string userName, string password)
         {
-            throw new NotImplementedException();
+            using (HFContext context = new HFContext())
+            {
+                AdminAccount account;
+
+                account = context.AdminAccounts.SingleOrDefault(a => a.UserName == userName && a.Password == password);
+
+                return account;
+            }
         }
     }
 }
