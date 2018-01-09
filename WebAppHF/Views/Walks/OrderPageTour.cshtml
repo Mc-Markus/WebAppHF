@@ -3,6 +3,163 @@
     ViewBag.Title = "OrderPageTour";
 }
 
-<h2>OrderPageTour</h2>
-<p>Bla Bla Bla</p>
+@section scripts
+{
+    <script>
+        function BtnClick(Id) {
+            if (Id === 'thu') {
+                $('#table-thursday').toggle("slide");
+            }
+            else if (Id === 'fri') {
+                $('#table-friday').toggle("slide");
+            }
+            else if (Id === 'sat') {
+                $('#table-saturday').toggle("slide");
+            }
+        }
+
+        $(function () {
+            $('.order-table').hide();
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-md-6">
+        <h1>Order a ticket</h1>
+        <p>On this page you can make a reservation for a Historic Haarlem Tour. Pick a day and a time, and select the amount of ticktets you would like.</p>
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+</div>
+<hr id="ruler_historic">
+<h2>Ticket Information</h2>
+<p>The group will consist of 12 participants and one guide. Participants must at least be 12 years old and must be able to walk the entire route (no strollers are allowed).</p>
+<h3>Ticket Price</h3>
+<p>€ 17,50 per ticket per person</p>
+<h3>Group ticket</h3>
+<p>A group ticket gets you 4 tickets for only € 60,- instead of € 70,-</p>
+
+<div class="row col-md-12">
+    <i onclick="BtnClick('thu')" class="fa fa-chevron-down fa-2x btn-thurs"></i>
+    <h3 onclick="BtnClick('thu')">Thursday (26-07-2018)</h3>
+</div>
+
+<div class="row col-md-8 order-table" id="table-thursday">
+    <table class="table">
+        <tr>
+            <th>Tickets</th>
+            <th>Group tickets</th>
+            <th>Language</th>
+            <th>Time</th>
+            <th>Total price</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>Dutch</td>
+            <td>13:00</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>Dutch</td>
+            <td>12:00</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Dutch</td>
+            <td>14:00</td>
+            <td>25</td>
+        </tr>
+    </table>
+</div>
+
+<div class="row col-md-12">
+    <i onclick="BtnClick('fri')" class="fa fa-chevron-down fa-2x btn-fri"></i>
+    <h3 onclick="BtnClick('fri')" class="btn-fri">Friday (27-07-2018)</h3>
+</div>
+
+<div class="row col-md-8 order-table" id="table-friday">
+    <table class="table">
+        <tr>
+            <th>Tickets</th>
+            <th>Group tickets</th>
+            <th>Language</th>
+            <th>Time</th>
+            <th>Total price</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>Dutch</td>
+            <td>13:00</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>Dutch</td>
+            <td>12:00</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Dutch</td>
+            <td>14:00</td>
+            <td>25</td>
+        </tr>
+    </table>
+</div>
+
+<div class="row col-md-12">
+    <i onclick="BtnClick('sat')" class="fa fa-chevron-down fa-2x btn-sat"></i>
+    <h3 onclick="BtnClick('sat')" class="btn-sat">Saturday (28-07-2018)</h3>
+</div>
+
+<div class="row col-md-8 order-table" id="table-saturday">
+    <table class="table">
+        <tr>
+            <th>Tickets</th>
+            <th>Group tickets</th>
+            <th>Language</th>
+            <th>Time</th>
+            <th>Total price</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>Dutch</td>
+            <td>13:00</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>Dutch</td>
+            <td>12:00</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Dutch</td>
+            <td>14:00</td>
+            <td>25</td>
+        </tr>
+    </table>
+</div>
+
+
+
 

@@ -5,14 +5,10 @@
 @section scripts{
 
     <script>
-
         $('#load-map').on('click',
             function () {
-
-
                 $.ajax({
                     url: '/Walks/LoadMap',
-
                     success: function (data) {
                         $('#content').html(data);
                     },
@@ -24,11 +20,8 @@
 
         $('#load-loc').on('click',
             function () {
-
-
                 $.ajax({
                     url: '/Walks/LoadLocation',
-                    
                     success: function (data) {
                         $('#content').html(data);
                     },
@@ -50,6 +43,7 @@
             });
         };
 
+        
     </script>
 
 }
@@ -76,8 +70,8 @@
     </div>
 </div>
 <div class="row col-md-12" id="content">
-    @Html.Action("LoadMap", "Walks") 
-    
+    @Html.Action("LoadMap", "Walks")
+
 </div>
 <div>
     @*<button class="btn btn-primary main-btn btn-lg float-right">Book Tour</button>*@
