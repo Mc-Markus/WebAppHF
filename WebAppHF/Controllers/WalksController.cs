@@ -34,5 +34,10 @@ namespace WebAppHF.Controllers
             Venue venue = repo.GetVenueByID(id);
             return PartialView("_venue", venue);
         }
+
+        public ActionResult LoadOrderPage()
+        {
+            return View("OrderPageTour");
+        }
     }
 }
