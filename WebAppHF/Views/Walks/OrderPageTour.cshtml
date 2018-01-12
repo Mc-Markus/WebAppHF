@@ -6,21 +6,21 @@
 @section scripts
 {
     <script>
-        function BtnClick(Id) {
-            if (Id === 'thu') {
-                $('#table-thursday').toggle("slide");
-            }
-            else if (Id === 'fri') {
-                $('#table-friday').toggle("slide");
-            }
-            else if (Id === 'sat') {
-                $('#table-saturday').toggle("slide");
-            }
-        }
-
         $(function () {
             $('.order-table').hide();
         });
+
+        function BtnClick(Id) {
+            switch (Id) {
+                case 'thu': $('#table-thursday').toggle("slide");
+                    break;
+                case 'fri': $('#table-friday').toggle("slide");
+                    break;
+                case 'sat': $('#table-saturday').toggle("slide");
+                    break;
+                default:
+            }
+        }
     </script>
 }
 <div class="row">
@@ -47,117 +47,157 @@
 <p>A group ticket gets you 4 tickets for only € 60,- instead of € 70,-</p>
 
 <div class="row col-md-12">
-    <i onclick="BtnClick('thu')" class="fa fa-chevron-down fa-2x btn-thurs"></i>
+    <i onclick="BtnClick('thu')" class="fa fa-chevron-down fa-2x"></i>
     <h3 onclick="BtnClick('thu')">Thursday (26-07-2018)</h3>
 </div>
 
-<div class="row col-md-8 order-table" id="table-thursday">
-    <table class="table">
-        <tr>
-            <th>Tickets</th>
-            <th>Group tickets</th>
-            <th>Language</th>
-            <th>Time</th>
-            <th>Total price</th>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>Dutch</td>
-            <td>13:00</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>Dutch</td>
-            <td>12:00</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Dutch</td>
-            <td>14:00</td>
-            <td>25</td>
-        </tr>
-    </table>
+<div class="row order-table" id="table-thursday">
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <th>Tickets</th>
+                <th>Group tickets</th>
+                <th>Language</th>
+                <th>Time</th>
+                <th>Total price</th>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>13:00</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>
+                    <select class="selectpicker">
+                        <option>Mustard</option>
+                        <option>Ketchup</option>
+                        <option>Relish</option>
+                    </select>
+                </td>
+                <td>12:00</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>14:00</td>
+                <td>25</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <h5>Your guide will be:</h5>
+        <p>
+            Jan-Willem for the Dutch tours.<br />
+            Frederic for the English tours.
+        </p>
+    </div>
 </div>
 
 <div class="row col-md-12">
-    <i onclick="BtnClick('fri')" class="fa fa-chevron-down fa-2x btn-fri"></i>
-    <h3 onclick="BtnClick('fri')" class="btn-fri">Friday (27-07-2018)</h3>
+    <i onclick="BtnClick('fri')" class="fa fa-chevron-down fa-2x"></i>
+    <h3 onclick="BtnClick('fri')">Friday (27-07-2018)</h3>
 </div>
 
-<div class="row col-md-8 order-table" id="table-friday">
-    <table class="table">
-        <tr>
-            <th>Tickets</th>
-            <th>Group tickets</th>
-            <th>Language</th>
-            <th>Time</th>
-            <th>Total price</th>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>Dutch</td>
-            <td>13:00</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>Dutch</td>
-            <td>12:00</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Dutch</td>
-            <td>14:00</td>
-            <td>25</td>
-        </tr>
-    </table>
+<div class="row order-table" id="table-friday">
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <th>Tickets</th>
+                <th>Group tickets</th>
+                <th>Language</th>
+                <th>Time</th>
+                <th>Total price</th>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>13:00</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>12:00</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>14:00</td>
+                <td>25</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <h5>Your guide will be:</h5>
+        <p>
+            Jan-Willem for the Dutch tours.<br />
+            Frederic for the English tours.
+        </p>
+    </div>
 </div>
 
 <div class="row col-md-12">
-    <i onclick="BtnClick('sat')" class="fa fa-chevron-down fa-2x btn-sat"></i>
-    <h3 onclick="BtnClick('sat')" class="btn-sat">Saturday (28-07-2018)</h3>
+    <i onclick="BtnClick('sat')" class="fa fa-chevron-down fa-2x"></i>
+    <h3 onclick="BtnClick('sat')">Saturday (28-07-2018)</h3>
 </div>
 
-<div class="row col-md-8 order-table" id="table-saturday">
-    <table class="table">
-        <tr>
-            <th>Tickets</th>
-            <th>Group tickets</th>
-            <th>Language</th>
-            <th>Time</th>
-            <th>Total price</th>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>Dutch</td>
-            <td>13:00</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>Dutch</td>
-            <td>12:00</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Dutch</td>
-            <td>14:00</td>
-            <td>25</td>
-        </tr>
-    </table>
+<div class="row order-table" id="table-saturday">
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <th>Tickets</th>
+                <th>Group tickets</th>
+                <th>Language</th>
+                <th>Time</th>
+                <th>Total price</th>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>13:00</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>12:00</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td><input type="number" defaultValue="0" min="0" size="1" /></td>
+                <td>Dutch</td>
+                <td>14:00</td>
+                <td>25</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <h5>Your guide will be:</h5>
+        <p>
+            Jan-Willem for the Dutch tours.<br />
+            Frederic for the English tours.
+        </p>
+    </div>
+
+</div>
+<div class="row bottom-row">
+    <div class="col-md-12">
+        <button class="btn btn-primary main-btn"><i class="fa fa-chevron-left back-icon"></i>Back</button>
+        <button class="btn btn-primary main-btn shopping-btn">Add to basket<i class="fa fa-shopping-cart shopping-cart"></i></button>
+    </div>
 </div>
 
 

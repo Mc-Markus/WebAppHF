@@ -65,7 +65,7 @@ body {
 }
 
     .main-btn:hover {
-        background-color: aquamarine;
+        background-color: #92140C;
     }
 
 hr {
@@ -253,4 +253,26 @@ hr {
     padding-right: 10px;
 }
 
+.ticket-input {
+    width: 50px;
+}
 
+.back-icon {
+    margin-right: 10px;
+}
+
+.shopping-cart {
+    margin-left: 10px;
+}
+
+.shopping-btn {
+    float: right;
+}
+
+input[type="number"] {
+    width: 40px;
+}
+
+.bottom-row {
+    margin-top: 15px;
+}
