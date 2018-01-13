@@ -1,0 +1,22 @@
+﻿<div class="row" style="margin-top: 10px">
+    <div class="col-md-8">
+        <img class="historic-map-image img-fluid" src="~/IMG/IMAGES_WALKS/MAPANDGRID/Map.jpg" alt="Map Image" />
+        <div class="row venue-buttons ">
+            <div class="col-md-8 btn-group">
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(1)'>1</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(2)'>2</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(3)'>3</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(4)'>4</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(5)'>5</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(6)'>6</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(7)'>7</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(8)'>8</button>
+                <button class="btn btn-primary main-btn" onclick='LoadVenue(9)'>9</button>
+            </div>
+        </div>
+    </div>
+    <div id="venue-content" class="col-md-4">
+        @Html.Action("LoadMapVenue", new { id = 1})
+    </div>
+</div>
+

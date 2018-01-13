@@ -61,14 +61,14 @@ namespace WebAppHF.Repositories
         }
 
         //gets all jazz events for a given day
-        public List<Jazz> GetJazzsByDay(DateTime date)
+        /*Because a deleted event or events in three halls at the same day can cause problems with
+         filtering in two columns they are not filtered in two columns*/
+        public List<Jazz> GetJazzActsByDay(DateTime date)
         {
             IEnumerable<Jazz> Jazzs;
             using (HFContext context = new HFContext())
             {
                 Jazzs = context.Jazzs.Where(j => j.Date == date).OrderBy(j=>j.StartTime);
-                Jazzs.GroupBy(j => j.StartTime.TimeOfDay);
-
                 return RemovePassPartout(Jazzs.ToList());
             }
         }
@@ -92,13 +92,37 @@ namespace WebAppHF.Repositories
 
             foreach(Jazz jazz in list)
             {
-                if (!jazz.Band.ToLower().Contains("pass-partout"))
+                if (!jazz.Band.ToLower().Contains("passe-partout"))
                 {
                     newList.Add(jazz);
                 }
             }
 
             return newList;
+        }
+
+
+        public Jazz GetPassePartoutWeekend()
+        {
+            Jazz jazz;
+            using (HFContext context = new HFContext())
+            {
+                jazz = context.Jazzs.SingleOrDefault(j => j.Name.Contains("Passe-Partout for all Jazz Events"));
+                return jazz;
+            }
+        }
+
+        public Jazz GetPassePartoutDay(DateTime date)
+        { 
+            IEnumerable<Jazz> Jazzs;
+            using (HFContext context = new HFContext())
+            {
+                Jazzs = context.Jazzs.Where(j => j.Name.Contains("passe-partout"));
+
+                Jazz jazz = Jazzs.SingleOrDefault(j => j.Date == date && !j.Name.Contains("Passe-Partout for all Jazz Events"));
+
+                return jazz;
+            }
         }
     }
 }

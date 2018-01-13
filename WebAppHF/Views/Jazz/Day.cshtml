@@ -18,7 +18,8 @@
             <br> <strong>Time:</strong> @item.StartTime.ToShortTimeString() - @item.EndTime.ToShortTimeString()
             <br> <strong>Price:</strong> @item.GetPriceString()
         </p>
-        <button type="button" class="btn btn-primary main-btn">Make a Reservation</button>
+        @*<button type="button" class="btn btn-primary main-btn">Make a Reservation</button>*@
+        @Html.ActionLink("Make a Reservation", "Book", "Jazz", item.Date, new { @class = "btn btn-primary main-btn" })
      </div>
     }
 </div>

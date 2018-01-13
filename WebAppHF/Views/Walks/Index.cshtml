@@ -1,14 +1,83 @@
 ﻿@model WebAppHF.Models.Venue
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Historic Haarlem";
 }
+@section scripts{
 
-<h2>Index</h2>
+    <script>
+        $('#load-map').on('click',
+            function () {
+                $.ajax({
+                    url: '/Walks/LoadMap',
+                    success: function (data) {
+                        $('#content').html(data);
+                    },
+                    error: function () {
+                        console.log('Something went wrong!!');
+                    }
+                });
+            });
 
-<div class="col-md-5">
-    <div class="row">
-        <img src="@Model.ImagePath" alt="Guur Plaatje" />
-        <p>@Model.Name</p>
-        <p>@Model.InfoText</p>
+        $('#load-loc').on('click',
+            function () {
+                $.ajax({
+                    url: '/Walks/LoadLocation',
+                    success: function (data) {
+                        $('#content').html(data);
+                    },
+                    error: function () {
+                        console.log('Something went wrong!!');
+                    }
+                });
+            });
+
+        function LoadVenue(Id) {
+            $.ajax({
+                url: '/Walks/LoadMapVenue?id=' + Id,
+                success: function (data) {
+                    $('#venue-content').html(data);
+                },
+                error: function () {
+                    console.log('Something went wrong!!');
+                }
+            });
+        };
+
+        
+    </script>
+
+}
+<div class="row">
+    <div class="col-md-6">
+        <h1>Historic Haarlem</h1>
+        <p>Welcome on the Historic Haarlem page, here you will find information about the historic tour through Haarlem. Here you will find information about: the locations, the available days and the available languages.</p>
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image">
+    </div>
+    <div class="col-md-2">
+        <img src="../IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image">
     </div>
 </div>
+<hr id="ruler_historic">
+<div class="row col-md-12">
+    <div class="btn-group center" role="group">
+        <button id="load-map" class="btn btn-primary main-btn">Map</button>
+        <button id="load-loc" class="btn btn-primary main-btn">Locations</button>
+    </div>
+</div>
+<div class="row col-md-12" id="content">
+    @Html.Action("LoadMap", "Walks")
+
+</div>
+<div>
+    @*<button class="btn btn-primary main-btn btn-lg float-right">Book Tour</button>*@
+    @Html.ActionLink("Book Tour", "LoadOrderPage", "Walks", new { @class = "btn btn-primary main-btn btn-lg float-right" })
+</div>
+
+
+
+
