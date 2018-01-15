@@ -12,7 +12,6 @@ namespace WebAppHF.Controllers
     {
         // GET: Walks
         private IVenueRepo venueRepo = new VenueRepo();
-        private IWalkRepo walkRepo = new WalkRepo();
         public ActionResult Index()
         {
             Venue venue = venueRepo.GetVenueByID(1);
@@ -38,14 +37,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult LoadOrderPage()
         {
-            IEnumerable<Tour> walks = walkRepo.GetAll();
-            List<DisplayRecord> dRecord = new List<DisplayRecord>();
-            foreach (var walk in walks)
-            {
-                dRecord.Add(new DisplayRecord(walk, new Record()));
-            }
-
-            return View("OrderPageTour", dRecord);
+            return View("OrderPageTour");
         }
     }
 }

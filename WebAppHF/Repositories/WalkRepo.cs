@@ -18,13 +18,6 @@ namespace WebAppHF.Repositories
             }
         }
 
-        public IEnumerable<Tour> GetAll()
-        {
-            using (HFContext context = new HFContext())
-            {
-                IEnumerable<Tour> tour = context.Tours.AsEnumerable();
-                return tour;
-            }
-        }
+        
     }
 }
