@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Web;
 using WebAppHF.Models;
 
@@ -10,14 +11,20 @@ namespace WebAppHF.Repositories
     {
         public Tour GetWalkByID(int Id)
         {
-            Tour tour;
-
             using (HFContext context = new HFContext())
             {
-                tour = context.Tours.SingleOrDefault(t => t.ID == Id);
+                Tour tour = context.Tours.SingleOrDefault(t => t.ID == Id);
                 return tour;
             }
-                
+        }
+
+        public IEnumerable<Tour> GetAll()
+        {
+            using (HFContext context = new HFContext())
+            {
+                IEnumerable<Tour> tour = context.Tours.AsEnumerable();
+                return tour;
+            }
         }
     }
 }

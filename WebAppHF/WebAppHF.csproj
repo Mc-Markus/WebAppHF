@@ -232,6 +232,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DisplayRecord.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
