@@ -24,10 +24,10 @@
                     <p>
                         <b>Cuisine:</b> @item.FoodTypes
                         <br> <b>Rating:</b>@item.Stars
-                        <br> <b>Price:</b> &euro;@item.Price
+                        <br> <b>Price:</b> @item.GetPriceString()
                     </p>
-                    <button type="button" class="btn btn-primary main-btn">I</button>
-                    <button type="button" class="btn btn-primary main-btn">@Html.ActionLink("Make a reservation","Detail","Restaurant", new {id = item.ID}, null)</button>
+                    @Html.ActionLink(" ", "AfterDetail", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn fa fa-info" })
+                    @Html.ActionLink("Make a reservation", "Detail", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn" })
                 </div>
             }
         </div>

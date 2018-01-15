@@ -273,6 +273,11 @@
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
     <Content Include="IMG\haarlem3.jpg" />
+    <Content Include="IMG\Home\DinnerBanner.jpg" />
+    <Content Include="IMG\Home\HistoricBanner.jpg" />
+    <Content Include="IMG\Home\PatronaatBanner.jpg" />
+    <Content Include="IMG\Home\PoortBanner.jpg" />
+    <Content Include="IMG\Home\TalksBannerjpg.jpg" />
     <Content Include="IMG\IMAGES_WALKS\BavoKerk.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAdriaan.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAmsterdamsePoort.jpg" />
@@ -418,6 +423,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="IMG\Dinner\" />
+    <Folder Include="IMG\Jazz\" />
+    <Folder Include="IMG\Talks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
