@@ -250,6 +250,7 @@
     </div>
 </div>
 
-
-
-
+@foreach(DisplayRecord dr in Model)
+{
+    <p> @(((Tour)dr.Event).Language)</p>
+}

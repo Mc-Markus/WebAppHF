@@ -17,7 +17,21 @@ namespace WebAppHF.Repositories
                 return tour;
             }
         }
-
         
+        public List<Tour> GetAll()
+        {
+            IEnumerable<Tour> Tours;
+            using (HFContext context = new HFContext())
+            {
+                Tours = context.Tours.AsEnumerable();
+
+                if(Tours == null)
+                {
+                    Console.WriteLine("empty");
+                }
+                return Tours.ToList();
+            }
+        }
+
     }
 }
