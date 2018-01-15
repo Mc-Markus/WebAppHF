@@ -37,7 +37,11 @@ namespace WebAppHF.Controllers
             List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
             Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
             Jazz passePartoutDay = repo.GetPassePartoutDay(date);
-            return View();
+
+            DisplayRecord dr = new DisplayRecord(passePartoutWeekend, new Record());
+
+            string hall = ((Jazz)dr.Event).Hall;
+            return View(dr);
         }
     }
 }
