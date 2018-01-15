@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201801081535071_AddLostVenue.Designer.cs">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801141239011_populateTalks.cs" />
+    <Compile Include="Migrations\201801141239011_populateTalks.Designer.cs">
+      <DependentUpon>201801141239011_populateTalks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -477,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801081535071_AddLostVenue.resx">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801141239011_populateTalks.resx">
+      <DependentUpon>201801141239011_populateTalks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
