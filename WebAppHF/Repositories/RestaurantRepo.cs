@@ -6,19 +6,25 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    public class RestaurantRepo : IResetaurantRepo
+    public class RestaurantRepo : IRestaurantRepo
     {
-        private HFContext db = new HFContext();
+        private HFContext database = new HFContext();
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
-            IEnumerable<Restaurant> restaurant = db.Restaurants.ToList();
+            IEnumerable<Restaurant> restaurant = database.Restaurants.ToList();
             return restaurant;
+        }
+
+        public IEnumerable<Restaurant> getfoodtypes(string foodType)
+        {
+            var resultFoodTypes = database.Restaurants.Where(p => p.FoodTypes == foodType);
+            return resultFoodTypes;
         }
 
         public Restaurant GetRestaurant(int restaurantId)
         {
             // Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
-            Restaurant restaurant = db.Restaurants.Find(restaurantId);
+            Restaurant restaurant = database.Restaurants.Find(restaurantId);
             return restaurant;
         }
 
@@ -34,6 +40,11 @@ namespace WebAppHF.Repositories
             }
 
             
+        }
+
+        List<string> IRestaurantRepo.GetAllRestaurantFilter()
+        {
+            return database.Restaurants.Select(p => p.FoodTypes).Distinct().ToList();
         }
     }
 }
