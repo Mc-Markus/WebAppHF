@@ -225,9 +225,14 @@
     <Compile Include="Migrations\201801081535071_AddLostVenue.Designer.cs">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801141239011_populateTalks.cs" />
+    <Compile Include="Migrations\201801141239011_populateTalks.Designer.cs">
+      <DependentUpon>201801141239011_populateTalks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DisplayRecord.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
@@ -273,6 +278,11 @@
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
     <Content Include="IMG\haarlem3.jpg" />
+    <Content Include="IMG\Home\DinnerBanner.jpg" />
+    <Content Include="IMG\Home\HistoricBanner.jpg" />
+    <Content Include="IMG\Home\PatronaatBanner.jpg" />
+    <Content Include="IMG\Home\PoortBanner.jpg" />
+    <Content Include="IMG\Home\TalksBannerjpg.jpg" />
     <Content Include="IMG\IMAGES_WALKS\BavoKerk.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAdriaan.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAmsterdamsePoort.jpg" />
@@ -418,6 +428,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="IMG\Dinner\" />
+    <Folder Include="IMG\Jazz\" />
+    <Folder Include="IMG\Talks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -469,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801081535071_AddLostVenue.resx">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801141239011_populateTalks.resx">
+      <DependentUpon>201801141239011_populateTalks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

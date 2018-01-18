@@ -41,5 +41,12 @@ namespace WebAppHF.Models
             this.FoodIMGString = FoodIMGString;
             this.RestaurantIMGString = RestaurantIMGString;
         }
+
+        //Returns the price as a formatted string
+        public string GetPriceString()
+        {
+            double euro = Price / 100;
+            return string.Format("{0:C}", euro);
+        }
     }
 }

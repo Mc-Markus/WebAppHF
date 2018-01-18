@@ -20,7 +20,7 @@ namespace WebAppHF.Models
         //Returns the price as a formatted string
         public string GetPriceString()
         {
-            double euro = Price / 100;
+            double euro = Price / 100D;
             return string.Format("{0:C}", euro);
         }
     }
