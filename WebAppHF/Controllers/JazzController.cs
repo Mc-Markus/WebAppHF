@@ -38,10 +38,20 @@ namespace WebAppHF.Controllers
             Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
             Jazz passePartoutDay = repo.GetPassePartoutDay(date);
 
-            DisplayRecord dr = new DisplayRecord(passePartoutWeekend, new Record());
+            DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record());
+            DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record());
+            List<DisplayRecord> dre = new List<DisplayRecord>();
+            
+            foreach(Jazz jazz in JazzActs)
+            {
+                DisplayRecord dr = new DisplayRecord(jazz, new Record());
+                dre.Add(dr);
+            }
 
-            string hall = ((Jazz)dr.Event).Hall;
-            return View(dr);
+            JazzBook jazzBook = new JazzBook(drd, drw, dre);
+
+            //string hall = ((Jazz)dr.Event).Hall;
+            return View(jazzBook);
         }
     }
 }

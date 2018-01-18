@@ -1,10 +1,9 @@
 ﻿@using WebAppHF.Models
-@model WebAppHF.Models.DisplayRecord
+@model WebAppHF.Models.JazzBook
 @{
     ViewBag.Title = "Book";
 }
 
-@*Hier begint samir zn shit*@
 <div class="row">
     <div class="col-md-12">
         <h3 class="margin-reservation">Ticket information - Saturday</h3>
@@ -19,6 +18,7 @@
         </p>
     </div>
 </div>
+<form>
 <div class="row margin-reservation">
     <div class="col-md-8">
         <h4>Insert amount of tickets</h4>
@@ -30,14 +30,14 @@
                     <th scope="col">Price</th>
                 </tr>
                 <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Passe-partout for a day</td>
-                    <td>€35,00</td>
+                    <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Record.Amount, "0",new { type="number", min="0", max="300", })</th>
+                    <td>@Model.DayPassePartout.Event.Name</td>
+                    <td>@Model.DayPassePartout.Event.GetPriceString()</td>
                 </tr>
                 <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Passe-partout for Thursday, Friday and Saturday</td>
-                    <td>€80,00</td>
+                    <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
+                    <td>@Model.WeekendPassePartout.Event.Name</td>
+                    <td>@Model.WeekendPassePartout.Event.GetPriceString()</td>
                 </tr>
             </tbody>
         </table>
@@ -55,58 +55,31 @@
                     <th scope="col">Date and Time</th>
                     <th scope="col">Location</th>
                 </tr>
+                @for(int i = 0; i < Model.DayEvents.Count; i++)
+                {
                 <tr>
+                    <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Record.Amount, "0", new { type = "number", min = "300", max = "300" })</th>
+                    <td>@Model.DayEvents[i].Event.Name</td>
+                    <td>@Model.DayEvents[i].Event.GetPriceString()</td>
+                    <td>@Model.DayEvents[i].Event.Date.DayOfWeek @Model.DayEvents[i].Event.Date.ToShortDateString() | @Model.DayEvents[i].Event.StartTime.ToShortTimeString() - @Model.DayEvents[i].Event.EndTime.ToShortTimeString()</td>
+                    <td>@Model.DayEvents[i].Event.LocationName - @(((Jazz)Model.DayEvents[i].Event).Hall)</td>
+                </tr>
+                }
+                @*<tr>
                     <th scope="row">TextBox</th>
                     <td>Gare du Nord</td>
                     <td>€15,00</td>
                     <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
                     <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
+                </tr>*@
             </tbody>
         </table>
     </div>
 </div>
+</form>
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-primary main-btn">Back to Overview</button>
-        <button type="button" class="btn btn-primary main-btn talking-right">Add to Basket</button>
+        <button type="submit" class="btn btn-primary main-btn talking-right">Add to Basket</button>
     </div>
 </div>
-
-
-<p>@(((Jazz)Model.Event).Hall)</p>
