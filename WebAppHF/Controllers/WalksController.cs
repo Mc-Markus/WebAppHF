@@ -37,7 +37,7 @@ namespace WebAppHF.Controllers
             return PartialView("_venue", venue);
         }
 
-        public ActionResult LoadOrderPage()
+        public ActionResult OrderPageTour()
         {
             List<Tour> tours = walkRepo.GetAll();
 

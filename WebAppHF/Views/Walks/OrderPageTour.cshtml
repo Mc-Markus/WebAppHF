@@ -44,7 +44,7 @@
 <h2>Ticket Information</h2>
 <p>The group will consist of 12 participants and one guide. Participants must at least be 12 years old and must be able to walk the entire route (no strollers are allowed).</p>
 <h3>Ticket Price</h3>
-<p>€ 17,50 per ticket per person</p>
+<p>@Model.First().Event.GetPriceString() per ticket per person</p>
 <h3>Group ticket</h3>
 <p>A group ticket gets you 4 tickets for only € 60,- instead of € 70,-</p>
 
@@ -250,7 +250,7 @@
     </div>
 </div>
 
-@foreach(DisplayRecord dr in Model)
+@*@foreach(DisplayRecord dr in Model)
 {
     <p> @(((Tour)dr.Event).Language)</p>
-}
+}*@
