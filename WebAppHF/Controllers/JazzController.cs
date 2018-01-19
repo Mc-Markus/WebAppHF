@@ -53,5 +53,18 @@ namespace WebAppHF.Controllers
             //string hall = ((Jazz)dr.Event).Hall;
             return View(jazzBook);
         }
+
+        /*
+        [HttpPost]
+        public ActionResult Book(JazzBook book)
+        {
+            List<DisplayRecord> basket = new List<DisplayRecord>();
+            if(book.DayPassePartout.Record.Amount > 0)
+            {
+                basket.Add(book.DayPassePartout);
+            }
+            return null;
+        }
+        */
     }
 }
