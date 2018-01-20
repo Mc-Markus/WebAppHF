@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Book";
 }
-
+<form>
 <div class="row">
     <div class="col-md-12">
         <h3 class="margin-reservation">Ticket information - Saturday</h3>
@@ -18,7 +18,7 @@
         </p>
     </div>
 </div>
-<form>
+@*<form>*@
 <div class="row margin-reservation">
     <div class="col-md-8">
         <h4>Insert amount of tickets</h4>
@@ -76,10 +76,11 @@
         </table>
     </div>
 </div>
-</form>
+@*</form>*@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-primary main-btn">Back to Overview</button>
-        <button type="submit" class="btn btn-primary main-btn talking-right">Add to Basket</button>
+        <button type="submit" value="Book" class="btn btn-primary main-btn talking-right">Add to Basket</button>
     </div>
 </div>
+</form>
