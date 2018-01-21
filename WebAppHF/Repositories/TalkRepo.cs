@@ -22,7 +22,8 @@ namespace WebAppHF.Repositories
         }
         public void AddTalk(Talk talk)
         {
-
+            ctx.Talks.Add(talk);
+            ctx.SaveChanges();
         }
     }
 }

@@ -415,10 +415,14 @@
     <Content Include="Views\Walks\_locations.cshtml" />
     <Content Include="Views\Walks\_venue.cshtml" />
     <Content Include="Views\Jazz\Day.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\Cart\Failure.cshtml" />
+    <Content Include="Views\Cart\PaymentMethod.cshtml" />
+    <Content Include="Views\Talk\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
