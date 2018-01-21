@@ -7,28 +7,31 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    public class RestaurantRepo : IResetaurantRepo
+    public class RestaurantRepo : IRestaurantRepo
     {
-        private HFContext db = new HFContext();
-
-
-
+        private HFContext database = new HFContext();
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
-            IEnumerable<Restaurant> restaurant = db.Restaurants.ToList();
+            IEnumerable<Restaurant> restaurant = database.Restaurants.ToList();
             return restaurant;
+        }
+
+        public IEnumerable<Restaurant> getfoodtypes(string foodType)
+        {
+            var resultFoodTypes = database.Restaurants.Where(p => p.FoodTypes == foodType);
+            return resultFoodTypes;
         }
 
         public Restaurant GetRestaurant(int restaurantId)
         {
             // Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
-            Restaurant restaurant = db.Restaurants.Find(restaurantId);
+            Restaurant restaurant = database.Restaurants.Find(restaurantId);
             return restaurant;
         }
         public void CreateRestaurant(Restaurant restaurant)
         {
-            db.Restaurants.Add(restaurant);
-            db.SaveChanges();
+            database.Restaurants.Add(restaurant);
+            database.SaveChanges();
         }
 
 
@@ -48,16 +51,21 @@ namespace WebAppHF.Repositories
 
         public void Remove(Restaurant student)
         {
-            db.Restaurants.Remove(student);
-            db.SaveChanges();
+            database.Restaurants.Remove(student);
+            database.SaveChanges();
 
         }
 
         public void UpdateRestaurant(Restaurant restaurant)
         {
-            Restaurant temp = db.Restaurants.Find(restaurant.ID);
+            Restaurant temp = database.Restaurants.Find(restaurant.ID);
             temp = restaurant;
-            db.SaveChanges();
+            database.SaveChanges();
+        }
+
+        List<string> IRestaurantRepo.GetAllRestaurantFilter()
+        {
+            return database.Restaurants.Select(p => p.FoodTypes).Distinct().ToList();
         }
     }
 }

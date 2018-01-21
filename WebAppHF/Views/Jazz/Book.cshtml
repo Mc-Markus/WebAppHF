@@ -1,64 +1,9 @@
-﻿
+﻿@using WebAppHF.Models
+@model WebAppHF.Models.JazzBook
 @{
     ViewBag.Title = "Book";
 }
-
-<h2>Ticket and information - @*model dag van de week*@</h2>
-
-<p>Description</p>
-<h3>Passe-partout tickets</h3>
-<p>Description</p>
-<h3>Regular ticket</h3>
-<p>Description</p>
-<h3>Insert amount of pass-partout tickets</h3>
-
-<table>
-    <tr>
-        <td>Tickets</td>
-        <td>Type</td>
-        <td>Price</td>
-    </tr>
-    <tr>
-        <td>spinner</td>
-        <td>naam</td>
-        <td>prijs</td>
-    </tr>
-    <tr>
-        <td>spinner</td>
-        <td>naam</td>
-        <td>prijs</td>
-    </tr>
-</table>
-
-<h3>Insert amount of regular tickets</h3>
-
-<table>
-    <tr>
-        <td>Tickets</td>
-        <td>Artist</td>
-        <td>Price</td>
-        <td>Date & Time</td>
-        <td>Location</td>
-    </tr>
-    <tr>
-        <td>spinner</td>
-        <td>boef</td>
-        <td>55</td>
-        <td>moet om 3 uur op kom aan om 2 voor 3</td>
-        <td>je club</td>
-    </tr>
-    <tr>
-        <td>spinner</td>
-        <td>famke louise</td>
-        <td>bentley of honda</td>
-        <td>als ze dr bontkraag om heeft</td>
-        <td>fashion week</td>
-    </tr>
-</table>
-
-
-
-@*Hier begint samir zn shit*@
+<form>
 <div class="row">
     <div class="col-md-12">
         <h3 class="margin-reservation">Ticket information - Saturday</h3>
@@ -73,6 +18,7 @@
         </p>
     </div>
 </div>
+@*<form>*@
 <div class="row margin-reservation">
     <div class="col-md-8">
         <h4>Insert amount of tickets</h4>
@@ -84,14 +30,14 @@
                     <th scope="col">Price</th>
                 </tr>
                 <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Passe-partout for a day</td>
-                    <td>€35,00</td>
+                    <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Record.Amount, "0",new { type="number", min="0", max="300", })</th>
+                    <td>@Model.DayPassePartout.Event.Name</td>
+                    <td>@Model.DayPassePartout.Event.GetPriceString()</td>
                 </tr>
                 <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Passe-partout for Thursday, Friday and Saturday</td>
-                    <td>€80,00</td>
+                    <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
+                    <td>@Model.WeekendPassePartout.Event.Name</td>
+                    <td>@Model.WeekendPassePartout.Event.GetPriceString()</td>
                 </tr>
             </tbody>
         </table>
@@ -109,55 +55,32 @@
                     <th scope="col">Date and Time</th>
                     <th scope="col">Location</th>
                 </tr>
+                @for(int i = 0; i < Model.DayEvents.Count; i++)
+                {
                 <tr>
+                    <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Record.Amount, "0", new { type = "number", min = "0", max = "300" })</th>
+                    <td>@Model.DayEvents[i].Event.Name</td>
+                    <td>@Model.DayEvents[i].Event.GetPriceString()</td>
+                    <td>@Model.DayEvents[i].Event.Date.DayOfWeek @Model.DayEvents[i].Event.Date.ToShortDateString() | @Model.DayEvents[i].Event.StartTime.ToShortTimeString() - @Model.DayEvents[i].Event.EndTime.ToShortTimeString()</td>
+                    <td>@Model.DayEvents[i].Event.LocationName - @(((Jazz)Model.DayEvents[i].Event).Hall)</td>
+                </tr>
+                }
+                @*<tr>
                     <th scope="row">TextBox</th>
                     <td>Gare du Nord</td>
                     <td>€15,00</td>
                     <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
                     <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
-                <tr>
-                    <th scope="row">TextBox</th>
-                    <td>Gare du Nord</td>
-                    <td>€15,00</td>
-                    <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                    <td>Patronaat - Main Hall</td>
-                </tr>
+                </tr>*@
             </tbody>
         </table>
     </div>
 </div>
+@*</form>*@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-primary main-btn">Back to Overview</button>
-        <button type="button" class="btn btn-primary main-btn talking-right">Add to Basket</button>
+        <button type="submit" value="Book" class="btn btn-primary main-btn talking-right">Add to Basket</button>
     </div>
 </div>
+</form>

@@ -22,10 +22,10 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <button class="btn btn-primary main-btn">Back to restaurant overview</button>
+                @Html.ActionLink("Back to Restaurant overview", "Index", "Restaurant", new { @class = "btn btn-primary main-btn" })
             </div>
             <div class="col-md-3">
-                <button class="btn btn-primary main-btn">Make reservation</button>
+                @Html.ActionLink("Make a reservation", "Detail", "Restaurant", new { id = Model.ID }, new { @class = "btn btn-primary main-btn" })
             </div>
         </div>
 

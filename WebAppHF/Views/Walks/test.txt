@@ -1,1 +1,0 @@
-Het is gelukt om met AJAX een stukje nieuwe content in te laden aan de hand van een button click!!!! Eureka!!!

@@ -5,16 +5,10 @@
 @section scripts{
 
     <script>
-
         $('#load-map').on('click',
             function () {
-
-
                 $.ajax({
                     url: '/Walks/LoadMap',
-                    contentType: 'application/html: charset=utf-8',
-                    type: 'GET',
-                    dataType: 'html',
                     success: function (data) {
                         $('#content').html(data);
                     },
@@ -26,13 +20,8 @@
 
         $('#load-loc').on('click',
             function () {
-
-
                 $.ajax({
                     url: '/Walks/LoadLocation',
-                    contentType: 'application/html: charset=utf-8',
-                    type: 'GET',
-                    dataType: 'html',
                     success: function (data) {
                         $('#content').html(data);
                     },
@@ -42,14 +31,9 @@
                 });
             });
 
-        function LoadVenue(IdBtn) {
-            var id = IdBtn.value;
-            console.log(id);
+        function LoadVenue(Id) {
             $.ajax({
-                url: '/Walks/LoadMapVenue?id=' + IdBtn,
-                contentType: 'application/html: charset=utf-8',
-                type: 'GET',
-                dataType: 'html',
+                url: '/Walks/LoadMapVenue?id=' + Id,
                 success: function (data) {
                     $('#venue-content').html(data);
                 },
@@ -59,6 +43,7 @@
             });
         };
 
+        
     </script>
 
 }
@@ -80,12 +65,16 @@
 <hr id="ruler_historic">
 <div class="row col-md-12">
     <div class="btn-group center" role="group">
-        <button id="load-map" class="btn">Map</button>
-        <button id="load-loc" class="btn">Locations</button>
+        <button id="load-map" class="btn btn-primary main-btn">Map</button>
+        <button id="load-loc" class="btn btn-primary main-btn">Locations</button>
     </div>
 </div>
 <div class="row col-md-12" id="content">
-    @Html.Action("LoadMap","Walks")
+    @Html.Action("LoadMap", "Walks")
+</div>
+<div>
+    @*<button class="btn btn-primary main-btn btn-lg float-right">Book Tour</button>*@
+    @Html.ActionLink("Book Tour", "OrderPageTour", "Walks", new { @class = "btn btn-primary main-btn btn-lg float-right" })
 </div>
 
 

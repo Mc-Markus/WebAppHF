@@ -9,7 +9,6 @@
 
 body {
     padding-top: 54px;
-    padding-bottom: 0px;
     background-color: #c1B4AE;
 }
 
@@ -28,9 +27,9 @@ body {
     margin-right: -20px;
 }
 
-.basket-nav:hover {
-    pointer-events: none;
-}
+    .basket-nav:hover {
+        pointer-events: none;
+    }
 
 .fa {
     color: white;
@@ -59,13 +58,12 @@ body {
 
 .main-btn {
     background-color: #353238;
-    border-radius: 0;
     width: auto;
     border: none;
 }
 
     .main-btn:hover {
-        background-color: aquamarine;
+        background-color: #92140C;
     }
 
 hr {
@@ -163,9 +161,10 @@ hr {
     margin-bottom: 2%;
 }
 
-
+.min-heigth{
+    min-height:430px;
+}
 /*Jazz Detail*/
-
 .border-jazz-detail {
     border-top: 2px solid #999;
     margin-top: 1%;
@@ -227,6 +226,14 @@ hr {
     color: grey;
 }
 
+.ruler-order {
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: grey;
+}
+
 .book-button {
     float: right;
     margin: auto;
@@ -248,3 +255,31 @@ hr {
     height: auto;
 }
 
+.fa-chevron-down {
+    color: black;
+    padding-right: 10px;
+}
+
+.ticket-input {
+    width: 50px;
+}
+
+.back-icon {
+    margin-right: 10px;
+}
+
+.shopping-cart {
+    margin-left: 10px;
+}
+
+.shopping-btn {
+    float: right;
+}
+
+input[type="number"] {
+    width: 40px;
+}
+
+.bottom-row {
+    margin-top: 15px;
+}
