@@ -14,9 +14,14 @@ namespace WebAppHF.Controllers
         // GET: Cart
         public ActionResult Index()
         {
+            
             Random rng = new Random();
-            //CartModel cart = (CartModel)Session["Cart"];
             CartModel cart = new CartModel();
+            cart.Items = (List<Event>)Session["cart"];
+            if (cart.Items == null)
+            {
+                return RedirectToAction("CartEmpty");
+            }
             List<Event> list = rep.GetEvents();
             cart.Items = list;
 
@@ -36,19 +41,33 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult Index(CartModel cart)
         {
-            //insert db
-            //rep.addorder(cart someshit info etc), check in rep voor exceptions, handel hier af
-
-            //Redirect success/failure page
             return View();
         }
 
         public ActionResult PaymentMethod()
         {
-            return View();
+            CartModel cart = new CartModel();
+            cart.Items = (List<Event>)Session["cart"];
+            foreach(Event e in cart.Items)
+            {
+                cart.Price += e.Price;
+            }
+            return View(cart);
+        }
+
+        [HttpPost]
+        public ActionResult PaymentMethod(CartModel cart)
+        {
+            // gooi shit in db
+            return RedirectToAction("Success"); // of failure
         }
 
         public ActionResult Success()
+        {
+            return View();
+        }
+
+        public ActionResult CartEmpty()
         {
             return View();
         }

@@ -231,9 +231,11 @@
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DisplayRecord.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
+    <Compile Include="Models\JazzBook.cs" />
     <Compile Include="Models\JazzDaySummary.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Record.cs" />
@@ -276,6 +278,7 @@
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
     <Content Include="IMG\haarlem3.jpg" />
+    <Content Include="IMG\ideal.png" />
     <Content Include="IMG\IMAGES_WALKS\BavoKerk.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAdriaan.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAmsterdamsePoort.jpg" />
@@ -287,13 +290,16 @@
     <Content Include="IMG\IMAGES_WALKS\MAPANDGRID\Map.jpg" />
     <Content Include="IMG\IMAGES_WALKS\Proveniershof.jpg" />
     <Content Include="IMG\IMAGES_WALKS\WaalseKerk.jpg" />
+    <Content Include="IMG\mastercard.png" />
     <Content Include="IMG\patronaat1.jpg" />
     <Content Include="IMG\patronaat2.jpg" />
     <Content Include="IMG\patronaat3.jpg" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="IMG\paypal.jpg" />
     <Content Include="IMG\shopping-basket.png" />
+    <Content Include="IMG\visa.png" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -420,6 +426,7 @@
     <Content Include="Views\Cart\Failure.cshtml" />
     <Content Include="Views\Cart\PaymentMethod.cshtml" />
     <Content Include="Views\Talk\Index.cshtml" />
+    <Content Include="Views\Cart\CartEmpty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
