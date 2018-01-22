@@ -11,6 +11,7 @@ namespace WebAppHF.Models
         public Event Event { get; set; }
         public Record Record { get; set; }
 
+        //added this class to easaly get to the properties of both the event and the record
         public DisplayRecord(Event activity, Record record)
         {
             this.Event = activity;

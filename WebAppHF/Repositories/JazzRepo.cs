@@ -101,7 +101,7 @@ namespace WebAppHF.Repositories
             return newList;
         }
 
-
+        //Returns the passe-partout for the whole weekend
         public Jazz GetPassePartoutWeekend()
         {
             Jazz jazz;
@@ -112,6 +112,7 @@ namespace WebAppHF.Repositories
             }
         }
 
+        //Returns the passe-partout for a single day
         public Jazz GetPassePartoutDay(DateTime date)
         { 
             IEnumerable<Jazz> Jazzs;
