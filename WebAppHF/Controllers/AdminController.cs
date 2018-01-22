@@ -13,7 +13,7 @@ namespace WebAppHF.Controllers
     public class AdminController : Controller
     {
         AdminAccount account = new AdminAccount();
-        private IResetaurantRepo repo = new RestaurantRepo();
+        private IRestaurantRepo repo = new RestaurantRepo();
         private IEventRepo Erepo = new EventRepo();
         private IAccountRepo repository = new AccountRepo();
 
@@ -56,7 +56,8 @@ namespace WebAppHF.Controllers
         [Authorize]
         public ActionResult List()
         {
-            return View();
+            var allRestaurants = repo.GetAllRestaurants();
+            return View(allRestaurants);
         }
 
         [Authorize]
