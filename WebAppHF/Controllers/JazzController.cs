@@ -17,14 +17,14 @@ namespace WebAppHF.Controllers
         {
             List<JazzDaySummary> summarys = repo.GetDaySummarys();
 
-            if(summarys == null)
+            if (summarys == null)
             {
                 return RedirectToAction("Index", "HomeController", null);
             }
 
             return View(summarys);
         }
-        
+
         public ActionResult Day(DateTime date)
         {
             List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
@@ -32,12 +32,68 @@ namespace WebAppHF.Controllers
             return View(JazzActs);
         }
 
+        [HttpGet]
         public ActionResult Book(DateTime date)
         {
-            List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
-            Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
-            Jazz passePartoutDay = repo.GetPassePartoutDay(date);
-            return View();
+            
+                List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
+                Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
+                Jazz passePartoutDay = repo.GetPassePartoutDay(date);
+
+                DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record());
+                DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record());
+                List<DisplayRecord> dre = new List<DisplayRecord>();
+
+                foreach (Jazz jazz in JazzActs)
+                {
+                    DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID));
+                    dre.Add(dr);
+                }
+
+                JazzBook jazzBook = new JazzBook(drd, drw, dre);
+
+                //string hall = ((Jazz)dr.Event).Hall;
+                return View(jazzBook);
+            
         }
+
+        [HttpPost]
+        public ActionResult Book(JazzBook book)
+        {
+            List<DisplayRecord> sessionBasket = new List<DisplayRecord>();
+            if (book.DayPassePartout.Record.Amount > 0)
+            {
+                sessionBasket.Add(book.DayPassePartout);
+            }
+            if (book.WeekendPassePartout.Record.Amount > 0)
+            {
+                sessionBasket.Add(book.WeekendPassePartout);
+            }
+
+            foreach (DisplayRecord dr in book.DayEvents)
+            {
+                sessionBasket.Add(dr);
+            }
+
+            try
+            {
+                List<DisplayRecord> drs = (List<DisplayRecord>)Session["Basket"];
+                foreach (DisplayRecord dr in drs)
+                {
+                    sessionBasket.Add(dr);
+                }
+            }
+            catch
+            {
+                Session["Basket"] = null;
+            }
+            finally
+            {
+                Session["Basket"] = sessionBasket;
+            }
+
+            return RedirectToAction("Index","Home");
+        }
+
     }
 }

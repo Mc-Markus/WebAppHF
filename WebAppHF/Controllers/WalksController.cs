@@ -11,10 +11,12 @@ namespace WebAppHF.Controllers
     public class WalksController : Controller
     {
         // GET: Walks
-        private IVenueRepo repo = new VenueRepo();
+        private IVenueRepo venueRepo = new VenueRepo();
+        private IWalkRepo walkRepo = new WalkRepo();
+
         public ActionResult Index()
         {
-            Venue venue = repo.GetVenueByID(1);
+            Venue venue = venueRepo.GetVenueByID(1);
             return View(venue);
         }
 
@@ -31,13 +33,22 @@ namespace WebAppHF.Controllers
 
         public ActionResult LoadMapVenue(int id)
         {
-            Venue venue = repo.GetVenueByID(id);
+            Venue venue = venueRepo.GetVenueByID(id);
             return PartialView("_venue", venue);
         }
 
-        public ActionResult LoadOrderPage()
+        public ActionResult OrderPageTour()
         {
-            return View("OrderPageTour");
+            List<Tour> tours = walkRepo.GetAll();
+
+            List<DisplayRecord> drs = new List<DisplayRecord>();
+
+            foreach (Tour tour in tours)
+            {
+                drs.Add(new DisplayRecord(tour, new Record()));
+            }
+
+            return View("OrderPageTour", drs);
         }
     }
 }

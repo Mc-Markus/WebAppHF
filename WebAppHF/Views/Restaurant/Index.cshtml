@@ -1,34 +1,45 @@
 ﻿@model IEnumerable<WebAppHF.Models.Restaurant>
 
 @{
-    ViewBag.Title = "Restaurant Index";
+    ViewBag.Title = "Dinner";
 }
+<div class="row">
+    <div class="col-md-6">
+        <h1>Dinner in Haarlem</h1>
+        <p>Dinner in Haarlem makes it easy for you to find a restaurant in the centrum of Haarlem. On this page you will find all the participating restaurants and a little bit of information about them. For each restaurant there are three timeslots, which can be found by pressing the information button of your desired restaurant. The price shown on this page is the normal price, for children under 12 years there is a reduced price. This price can also be found by pressing the information button. </p>
+    </div>
+    <div class="col-md-2"> <img src="~/IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
+    <div class="col-md-2"> <img src="~/IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
+    <div class="col-md-2"> <img src="~/IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
+</div>
+<hr>
+<div class="row filter-row">
+    <div class="col-md-6">
+        <h3>Cuisine</h3>
+        @using (Html.BeginForm("Index", "Restaurant", FormMethod.Post))
+        {
+            @Html.DropDownList("foodType", new SelectList(ViewBag.foodTypes, "Value", "Text"), "All", htmlAttributes: new { @class = "btn btn-primary main-btn dropdown-toggle" })
+            <input class="btn btn-primary main-btn" type="submit" value="Filter" />
+        }
+    </div>
+    <div class="col-md-6">
 
-
-        <div class="row">
-            <div class="col-md-6">
-                <h1>Dinner in Haarlem</h1>
-                <p>Dinner in Haarlem makes it easy for you to find a restaurant in the centrum of Haarlem. On this page you will find all the participating restaurants and a little bit of information about them. For each restaurant there are three timeslots, which can be found by pressing the information button of your desired restaurant. The price shown on this page is the normal price, for children under 12 years there is a reduced price. This price can also be found by pressing the information button. </p>
-            </div>
-            <div class="col-md-2"> <img src="~/IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
-            <div class="col-md-2"> <img src="~/IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
-            <div class="col-md-2"> <img src="~/IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 image-dinner min-heigth">
+            <img src="~/IMG/patronaat1.jpg" class="img-fluid" alt="Responsive image">
+            <h4 class="dag-header">@Html.DisplayFor(modelIem => item.Name)</h4>
+            <p>
+                <b>Cuisine:</b> @Html.DisplayFor(modelItem => item.FoodTypes)
+                <br> <b>Rating:</b> @Html.DisplayFor(modelItem => item.Stars)
+                <br> <b>Price:</b> &euro;@Html.DisplayFor(modelItem => item.Price)
+            </p>
+            @Html.ActionLink(" ", "AfterDetail", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn fa fa-info" })
+            @Html.ActionLink("Make a reservation", "Detail", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn" })
         </div>
-        <hr>
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-md-3">
-                    <img src="~/IMG/patronaat2.jpg" class="img-fluid" alt="Responsive image">
-                    <h4 class="dag-header">@item.Name</h4>
-                    <p>
-                        <b>Cuisine:</b> @item.FoodTypes
-                        <br> <b>Rating:</b>@item.Stars
-                        <br> <b>Price:</b> &euro;@item.Price
-                    </p>
-                    <button type="button" class="btn btn-primary main-btn">I</button>
-                    <button type="button" class="btn btn-primary main-btn">@Html.ActionLink("Make a reservation","Detail","Restaurant", new {id = item.ID}, null)</button>
-                </div>
-            }
-        </div>
+    }
 
+</div>

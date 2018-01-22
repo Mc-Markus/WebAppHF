@@ -6,10 +6,13 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    public interface IResetaurantRepo
+    public interface IRestaurantRepo
     {
         Restaurant GetRestaurant(int restaurantId);
         IEnumerable<Restaurant> GetAllRestaurants();
+        List<string> GetAllRestaurantFilter();
+        IEnumerable<Restaurant> getfoodtypes(string foodType);
+
 
     }
 }

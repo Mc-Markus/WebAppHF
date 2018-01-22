@@ -9,7 +9,6 @@
 
 body {
     padding-top: 54px;
-    padding-bottom: 0px;
     background-color: #c1B4AE;
 }
 
@@ -28,9 +27,9 @@ body {
     margin-right: -20px;
 }
 
-.basket-nav:hover {
-    pointer-events: none;
-}
+    .basket-nav:hover {
+        pointer-events: none;
+    }
 
 .fa {
     color: white;
@@ -59,7 +58,6 @@ body {
 
 .main-btn {
     background-color: #353238;
-    border-radius: 0;
     width: auto;
     border: none;
 }
@@ -163,9 +161,10 @@ hr {
     margin-bottom: 2%;
 }
 
-
+.min-heigth{
+    min-height:430px;
+}
 /*Jazz Detail*/
-
 .border-jazz-detail {
     border-top: 2px solid #999;
     margin-top: 1%;
@@ -223,6 +222,14 @@ hr {
     border-style: solid;
     border-width: 1px;
     margin-top: 50px;
+    margin-bottom: 15px;
+    color: grey;
+}
+
+.ruler-order {
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 15px;
     margin-bottom: 15px;
     color: grey;
 }

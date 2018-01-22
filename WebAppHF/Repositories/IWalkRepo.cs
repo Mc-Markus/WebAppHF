@@ -10,5 +10,6 @@ namespace WebAppHF.Repositories
     interface IWalkRepo
     {
         Tour GetWalkByID(int Id);
+        List<Tour> GetAll();
     }
 }
