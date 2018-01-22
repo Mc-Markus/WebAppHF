@@ -15,6 +15,7 @@ namespace WebAppHF.Models
 
         public JazzDaySummary() { }
 
+        //added this class to show a summary of all the jazz events on a single day
         public JazzDaySummary(string IMGString, string Day, DateTime Date, string Location, string Bands)
         {
             this.IMGString = IMGString;
