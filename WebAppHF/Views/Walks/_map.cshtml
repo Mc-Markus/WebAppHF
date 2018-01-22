@@ -3,15 +3,10 @@
         <img class="historic-map-image img-fluid" src="~/IMG/IMAGES_WALKS/MAPANDGRID/Map.jpg" alt="Map Image" />
         <div class="row venue-buttons ">
             <div class="col-md-8 btn-group">
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(1)'>1</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(2)'>2</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(3)'>3</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(4)'>4</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(5)'>5</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(6)'>6</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(7)'>7</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(8)'>8</button>
-                <button class="btn btn-primary main-btn" onclick='LoadVenue(9)'>9</button>
+                @for (int i = 1; i < 10; i++)
+                {
+                    <button class="btn btn-primary main-btn" onclick='LoadVenue(@i)'>@i</button>
+                }
             </div>
         </div>
     </div>
