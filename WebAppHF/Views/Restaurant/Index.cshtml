@@ -18,7 +18,7 @@
         <h3>Cuisine</h3>
         @using (Html.BeginForm("Index", "Restaurant", FormMethod.Post))
         {
-            @Html.DropDownList("foodType", new SelectList(ViewBag.foodTypes, "Value", "Text"), "--- Please Choose an Item! ---", htmlAttributes: new { @class = "btn btn-primary main-btn dropdown-toggle" })
+            @Html.DropDownList("foodType", new SelectList(ViewBag.foodTypes, "Value", "Text"), "All", htmlAttributes: new { @class = "btn btn-primary main-btn dropdown-toggle" })
             <input class="btn btn-primary main-btn" type="submit" value="Filter" />
         }
     </div>

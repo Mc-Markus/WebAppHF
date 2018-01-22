@@ -283,3 +283,24 @@ input[type="number"] {
 .bottom-row {
     margin-top: 15px;
 }
+
+
+/*Cart*/
+.in {
+    margin-left: 13em;
+    margin-top: 8em;
+}
+
+#mastercard {
+    margin-left: -2em;
+}
+
+#visa {
+    margin-left: -2em;
+}
+
+.sp {
+    margin-bottom: 5em;
+    position: absolute;
+    visibility: hidden;
+}

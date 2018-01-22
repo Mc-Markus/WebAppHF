@@ -1,0 +1,22 @@
+﻿@using WebAppHF.Models
+@model IEnumerable<Talk>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (Talk talk in Model)
+{
+    <img src="~/IMG/@talk.IMGString" />
+    <p>@talk.Title</p>
+    <p>@talk.Description</p>
+    <p>@talk.StartTime - @talk.EndTime</p>
+    <p>Tickets available: @talk.SeatsAvailable</p>
+    <p>@talk.Price</p>
+    <p>@talk.Adress</p>
+    <p>@talk.Hall</p>
+
+    <br />
+    <br />
+}

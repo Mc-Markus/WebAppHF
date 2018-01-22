@@ -32,5 +32,10 @@ namespace WebAppHF.Controllers
             return View();
         }
 
+        public ActionResult PageNotFound()
+        {
+            return View();
+        }
+
     }
 }

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Book";
 }
-
+<form>
 <div class="row">
     <div class="col-md-12">
         <h3 class="margin-reservation">Ticket information - Saturday</h3>
@@ -18,7 +18,7 @@
         </p>
     </div>
 </div>
-<form>
+@*<form>*@
 <div class="row margin-reservation">
     <div class="col-md-8">
         <h4>Insert amount of tickets</h4>
@@ -30,12 +30,12 @@
                     <th scope="col">Price</th>
                 </tr>
                 <tr>
-                    <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Record.Amount, "0" , new { type="number", min="0", placeholder="0" })</th>
+                    <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Record.Amount, "0",new { type="number", min="0", max="300", })</th>
                     <td>@Model.DayPassePartout.Event.Name</td>
                     <td>@Model.DayPassePartout.Event.GetPriceString()</td>
                 </tr>
                 <tr>
-                    <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0" , new { type ="number", min ="0", placeholder ="0",  })</th>
+                    <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
                     <td>@Model.WeekendPassePartout.Event.Name</td>
                     <td>@Model.WeekendPassePartout.Event.GetPriceString()</td>
                 </tr>
@@ -58,7 +58,7 @@
                 @for(int i = 0; i < Model.DayEvents.Count; i++)
                 {
                 <tr>
-                    <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Record.Amount, "0", new { type = "number", min = "300", max = "300", })</th>
+                    <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Record.Amount, "0", new { type = "number", min = "0", max = "300" })</th>
                     <td>@Model.DayEvents[i].Event.Name</td>
                     <td>@Model.DayEvents[i].Event.GetPriceString()</td>
                     <td>@Model.DayEvents[i].Event.Date.DayOfWeek @Model.DayEvents[i].Event.Date.ToShortDateString() | @Model.DayEvents[i].Event.StartTime.ToShortTimeString() - @Model.DayEvents[i].Event.EndTime.ToShortTimeString()</td>
@@ -76,10 +76,11 @@
         </table>
     </div>
 </div>
-</form>
+@*</form>*@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-primary main-btn">Back to Overview</button>
-        <button type="submit" class="btn btn-primary main-btn talking-right">Add to Basket</button>
+        <button type="submit" value="Book" class="btn btn-primary main-btn talking-right">Add to Basket</button>
     </div>
 </div>
+</form>

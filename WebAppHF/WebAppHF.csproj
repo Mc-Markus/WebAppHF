@@ -161,11 +161,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\WalksController.cs" />
+    <Compile Include="Enums\PaymentMethod.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,12 +227,9 @@
     <Compile Include="Migrations\201801081535071_AddLostVenue.Designer.cs">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801141239011_populateTalks.cs" />
-    <Compile Include="Migrations\201801141239011_populateTalks.Designer.cs">
-      <DependentUpon>201801141239011_populateTalks.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\DisplayRecord.cs" />
     <Compile Include="Models\Event.cs" />
@@ -279,11 +278,7 @@
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
     <Content Include="IMG\haarlem3.jpg" />
-    <Content Include="IMG\Home\DinnerBanner.jpg" />
-    <Content Include="IMG\Home\HistoricBanner.jpg" />
-    <Content Include="IMG\Home\PatronaatBanner.jpg" />
-    <Content Include="IMG\Home\PoortBanner.jpg" />
-    <Content Include="IMG\Home\TalksBannerjpg.jpg" />
+    <Content Include="IMG\ideal.png" />
     <Content Include="IMG\IMAGES_WALKS\BavoKerk.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAdriaan.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAmsterdamsePoort.jpg" />
@@ -295,13 +290,16 @@
     <Content Include="IMG\IMAGES_WALKS\MAPANDGRID\Map.jpg" />
     <Content Include="IMG\IMAGES_WALKS\Proveniershof.jpg" />
     <Content Include="IMG\IMAGES_WALKS\WaalseKerk.jpg" />
+    <Content Include="IMG\mastercard.png" />
     <Content Include="IMG\patronaat1.jpg" />
     <Content Include="IMG\patronaat2.jpg" />
     <Content Include="IMG\patronaat3.jpg" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="IMG\paypal.jpg" />
     <Content Include="IMG\shopping-basket.png" />
+    <Content Include="IMG\visa.png" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -417,21 +415,21 @@
     <Content Include="Views\Restaurant\Detail.cshtml" />
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
     <Content Include="Views\Home\ThanksforSending.cshtml" />
-    <Content Include="Views\Talk\Index.cshtml" />
     <Content Include="Views\Jazz\Index.cshtml" />
     <Content Include="Views\Walks\Index.cshtml" />
     <Content Include="Views\Walks\_map.cshtml" />
     <Content Include="Views\Walks\_locations.cshtml" />
     <Content Include="Views\Walks\_venue.cshtml" />
     <Content Include="Views\Jazz\Day.cshtml" />
-    <Content Include="Views\Jazz\Book.cshtml" />
-    <Content Include="Views\Walks\OrderPageTour.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\Cart\Failure.cshtml" />
+    <Content Include="Views\Cart\PaymentMethod.cshtml" />
+    <Content Include="Views\Talk\Index.cshtml" />
+    <Content Include="Views\Cart\CartEmpty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="IMG\Dinner\" />
-    <Folder Include="IMG\Jazz\" />
-    <Folder Include="IMG\Talks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -483,9 +481,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801081535071_AddLostVenue.resx">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801141239011_populateTalks.resx">
-      <DependentUpon>201801141239011_populateTalks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

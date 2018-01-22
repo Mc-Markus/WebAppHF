@@ -1,0 +1,47 @@
+﻿@using WebAppHF.Models
+@model CartModel
+
+@{
+    ViewBag.Title = "PaymentMethod";
+}
+
+<h2>PaymentMethod</h2>
+
+@using (Html.BeginForm())
+{
+    <h1>Payment Method</h1>
+    <div style="margin-left: 5em;">
+        <br />
+        <img src="~/IMG/paypal.jpg" width="100em" height="100em" style="margin-left: 10em; margin-top: 0em;">
+        <input class="in" type="radio" name="PaymentMethod" value="PayPal" required /> <span class="sp">Paypal </span>
+
+        <img src="~/IMG/ideal.png" width="100em" height="100em" style="margin-left: 10em; margin-top: 0em;">
+        <input class="in" type="radio" name="PaymentMethod" value="IDeal" required /> <span class="sp">IDeal </span>
+
+        <img id="visa" src="~/IMG/visa.png" width="150em" height="100em" style="margin-left: 10em; margin-top: 0em;">
+        <input class="in" type="radio" name="PaymentMethod" value="Visa" required />    <span class="sp">Visa </span>
+
+        <img id="mastercard" src="~/IMG/mastercard.png" width="150em" height="100em" style="margin-left: 10em; margin-top: 0em;">
+        <input class="in" type="radio" name="PaymentMethod" value="MasterCard" required />    <span class="sp">MasterCard </span>
+    </div>
+
+    for (int a = 0; a < Model.Items.Count; a++)
+    {
+        @Html.HiddenFor(m => m.Items[a].Adress)
+        @Html.HiddenFor(m => m.Items[a].Date)
+        @Html.HiddenFor(m => m.Items[a].EndTime)
+        @Html.HiddenFor(m => m.Items[a].ID)
+        @Html.HiddenFor(m => m.Items[a].LocationName)
+        @Html.HiddenFor(m => m.Items[a].Name)
+        @Html.HiddenFor(m => m.Items[a].Price)
+        @Html.HiddenFor(m => m.Items[a].SeatsAvailable)
+        @Html.HiddenFor(m => m.Items[a].StartTime)
+        @Html.HiddenFor(m => m.Price)
+    }
+
+    <br />
+    <br />
+
+    <p style="text-align: center;"> Price: &euro;@Model.Price</p>
+    <input style="margin-left: 44.2em; margin-top: 5em; padding-left: 3em; padding-right: 3em; padding-top: 1.5em; padding-bottom: 1.5em;" type="submit" value="Next" />
+}
