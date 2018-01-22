@@ -5,18 +5,21 @@
 }
 
 <h2>Index</h2>
+<div class="row">
+    @foreach (Talk talk in Model)
+    {
 
-@foreach (Talk talk in Model)
-{
-    <img src="~/IMG/@talk.IMGString" />
-    <p>@talk.Title</p>
-    <p>@talk.Description</p>
-    <p>@talk.StartTime - @talk.EndTime</p>
-    <p>Tickets available: @talk.SeatsAvailable</p>
-    <p>@talk.Price</p>
-    <p>@talk.Adress</p>
-    <p>@talk.Hall</p>
-
-    <br />
-    <br />
-}
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <img src="~/IMG/@talk.IMGString" />
+                <p>@talk.Title</p>
+                <p>@talk.Description</p>
+                <p>@talk.StartTime.ToShortTimeString() - @talk.EndTime.ToShortTimeString()</p>
+                <p>Tickets available: @talk.SeatsAvailable</p>
+                <p>@talk.Price</p>
+                <p>@talk.Adress</p>
+                <p>@talk.Hall</p>
+            </div>
+        </div>
+    }
+</div>
