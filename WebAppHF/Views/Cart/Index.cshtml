@@ -1,0 +1,20 @@
+﻿@model WebAppHF.Models.CartModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<section>
+    @using (Html.BeginForm())
+    {
+        foreach (var item in Model.Items)
+        {
+            //alignment events.....
+        }
+        <input type="submit" value="Submit" />
+    }
+
+
+
+</section>
+
+

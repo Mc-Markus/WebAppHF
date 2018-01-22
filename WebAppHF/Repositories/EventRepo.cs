@@ -8,6 +8,7 @@ namespace WebAppHF.Repositories
 {
     public class EventRepo : IEventRepo
     {
+        HFContext ctx = new HFContext();
         public Event GetEventByID(int ID)
         {
             using (HFContext database = new HFContext())
@@ -33,6 +34,12 @@ namespace WebAppHF.Repositories
         public void Remove(Event e)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Event> GetEvents()
+        {
+            List<Event> list = ctx.Events.ToList();
+            return list;
         }
     }
 }
