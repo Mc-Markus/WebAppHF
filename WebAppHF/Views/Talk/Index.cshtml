@@ -1,25 +1,44 @@
 ﻿@using WebAppHF.Models
 @model IEnumerable<Talk>
-@{
-    ViewBag.Title = "Index";
+<div class="row">
+    <div class="col-md-6">
+        <h1>Talking Haarlem</h1>
+        <p>Do you want to learn even more about Haarlem? Talking Haarlem will present to you six Dutch people who talk about their experience in Haarlem and how that influenced their carreer and life. </p>
+    </div>
+    <div class="col-md-2"> <img src="~/IMG/patronaat1.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
+    <div class="col-md-2"> <img src="~/IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
+    <div class="col-md-2"> <img src="~/IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <h2>General Information</h2>
+    </div>
+    <div class="col-md-4">
+        <p>
+            <strong>Place and time</strong>
+            <br>Toneelschuur en Filmschuur
+            <br>Lange Begijnestraat 9
+            <br>2011 HH Haarlem
+            <br>20:00 - 22:00
+        </p>
+    </div>
+    <div class="col-md-3">
+        <p class="talking-red">These interviews will be held in the Dutch language. Reservation is mandatory. Price: Free</p>
+    </div>
+</div>
+<hr>
+<div class="row dinner-top-row">
+@foreach (Talk talk in Model)
+{
+    <div class="col-md-4 image-dinner">
+        <h3 class="text-center">@talk.Name</h3> <img src="~/IMG/patronaat1.jpg" class="img-fluid" alt="Responsive image">
+        <h4 class="dag-header">@talk.Title</h4>
+        <p class="talking-height">@talk.Description</p>
+        <button type="button" class="btn btn-primary main-btn"><span class="label label-default">Info</span></button>
+        <button type="button" class="btn btn-primary main-btn">Order Ticket</button>
+        <p><strong>@talk.Date</strong></p>
+    </div>
 }
 
-<h2>Index</h2>
-<div class="row">
-    @foreach (Talk talk in Model)
-    {
-
-        <div class="col-md-12">
-            <div class="col-md-4">
-                <img src="~/IMG/@talk.IMGString" />
-                <p>@talk.Title</p>
-                <p>@talk.Description</p>
-                <p>@talk.StartTime.ToShortTimeString() - @talk.EndTime.ToShortTimeString()</p>
-                <p>Tickets available: @talk.SeatsAvailable</p>
-                <p>@talk.Price</p>
-                <p>@talk.Adress</p>
-                <p>@talk.Hall</p>
-            </div>
-        </div>
-    }
 </div>
