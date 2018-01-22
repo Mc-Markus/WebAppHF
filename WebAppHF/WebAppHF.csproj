@@ -427,6 +427,8 @@
     <Content Include="Views\Cart\PaymentMethod.cshtml" />
     <Content Include="Views\Talk\Index.cshtml" />
     <Content Include="Views\Cart\CartEmpty.cshtml" />
+    <Content Include="Views\Talk\Detail.cshtml" />
+    <Content Include="Views\Talk\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
