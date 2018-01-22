@@ -17,5 +17,4 @@ namespace WebAppHF.Models
             this.Record = record;
         }
     }
-
 }

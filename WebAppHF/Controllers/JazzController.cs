@@ -32,6 +32,8 @@ namespace WebAppHF.Controllers
             return View(JazzActs);
         }
 
+
+
         public ActionResult Book(DateTime date)
         {
             List<Jazz> JazzActs = repo.GetJazzActsByDay(date);

@@ -18,4 +18,9 @@ namespace WebAppHF.Models
             this.DayEvents = events;
         }
     }
+
+    public class TourDay
+    {
+         
+    }
 }
