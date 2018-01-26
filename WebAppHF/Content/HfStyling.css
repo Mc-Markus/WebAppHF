@@ -191,7 +191,7 @@ hr {
 }
 
 .talking-height {
-    height: 10%;
+    min-height: 32%;
 }
 
 .talking-right {

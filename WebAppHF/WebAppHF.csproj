@@ -454,6 +454,8 @@
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
+    <Content Include="Views\Talk\Detail.cshtml" />
+    <Content Include="Views\Talk\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

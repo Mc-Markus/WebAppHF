@@ -17,5 +17,15 @@ namespace WebAppHF.Controllers
             IEnumerable<Talk> list = rep.GetTalks();
             return View(list);
         }
+
+        public ActionResult Detail()
+        {
+            return View();
+        }
+
+        public ActionResult Book()
+        {
+            return View();
+        }
     }
 }
