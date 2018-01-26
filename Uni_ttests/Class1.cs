@@ -17,7 +17,7 @@ namespace Uni_ttests
         public void CreateTestWithEmptyRestaurant()
         {
             //arrange
-            IResetaurantRepo repo = new RestaurantRepo();
+            IRestaurantRepo repo = new RestaurantRepo();
             Restaurant input = new Restaurant();
             AdminController controller = new AdminController();
 
@@ -55,9 +55,9 @@ namespace Uni_ttests
         {
             //arrange
             AdminController controller = new AdminController();
-            IResetaurantRepo repo = new RestaurantRepo();
+            IRestaurantRepo repo = new RestaurantRepo();
             //act
-            controller.Delete(17);
+            controller.DeleteRestaurant(17);
             //assert
             Assert.Null(repo.GetRestaurant(17));
         }

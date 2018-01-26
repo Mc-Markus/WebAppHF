@@ -331,6 +331,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
@@ -449,6 +450,9 @@
     <Content Include="Views\Cart\PaymentMethod.cshtml" />
     <Content Include="Views\Talk\Index.cshtml" />
     <Content Include="Views\Cart\CartEmpty.cshtml" />
+    <Content Include="Views\Talk\Detail.cshtml" />
+    <Content Include="Views\Talk\Book.cshtml" />
+    <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
