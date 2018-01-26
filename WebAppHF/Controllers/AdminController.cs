@@ -41,6 +41,8 @@ namespace WebAppHF.Controllers
 
         }
 
+        //Post: Logout
+
         // GET: Admin
         [Authorize]
         public ActionResult Index()
