@@ -12,6 +12,7 @@ namespace WebAppHF.Models
         public int OrderID { get; set; }
         public int Amount { get; set; }
         public int TotalPrice { get; set; }
+        public string Comment { get; set; }
 
         public Record() { }
 

@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201801081535071_AddLostVenue.Designer.cs">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801271454310_CommentFieldInRecord.cs" />
+    <Compile Include="Migrations\201801271454310_CommentFieldInRecord.Designer.cs">
+      <DependentUpon>201801271454310_CommentFieldInRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
@@ -496,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801081535071_AddLostVenue.resx">
       <DependentUpon>201801081535071_AddLostVenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801271454310_CommentFieldInRecord.resx">
+      <DependentUpon>201801271454310_CommentFieldInRecord.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
