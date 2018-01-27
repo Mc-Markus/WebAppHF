@@ -8,11 +8,11 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Controllers
 {
-    public class WalksController : Controller
+    public class ToursController : Controller
     {
         // GET: Walks
         private IVenueRepo venueRepo = new VenueRepo();
-        private IWalkRepo walkRepo = new WalkRepo();
+        private ITourRepo TourRepo = new TourRepo();
 
         public ActionResult Index()
         {
@@ -39,7 +39,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult OrderPageTour()
         {
-            List<Tour> tours = walkRepo.GetAll();
+            List<Tour> tours = TourRepo.GetAll();
 
             List<DisplayRecord> drs = new List<DisplayRecord>();
 

@@ -8,7 +8,7 @@
         $('#load-map').on('click',
             function () {
                 $.ajax({
-                    url: '/Walks/LoadMap',
+                    url: '/Tours/LoadMap',
                     success: function (data) {
                         $('#content').html(data);
                     },
@@ -21,7 +21,7 @@
         $('#load-loc').on('click',
             function () {
                 $.ajax({
-                    url: '/Walks/LoadLocation',
+                    url: '/Tours/LoadLocation',
                     success: function (data) {
                         $('#content').html(data);
                     },
@@ -33,7 +33,7 @@
 
         function LoadVenue(Id) {
             $.ajax({
-                url: '/Walks/LoadMapVenue?id=' + Id,
+                url: '/Tours/LoadMapVenue?id=' + Id,
                 success: function (data) {
                     $('#venue-content').html(data);
                 },
@@ -70,11 +70,11 @@
     </div>
 </div>
 <div class="row col-md-12" id="content">
-    @Html.Action("LoadMap", "Walks")
+    @Html.Action("LoadMap", "Tours")
 </div>
 <div>
     @*<button class="btn btn-primary main-btn btn-lg float-right">Book Tour</button>*@
-    @Html.ActionLink("Book Tour", "OrderPageTour", "Walks", new { @class = "btn btn-primary main-btn btn-lg float-right" })
+    @Html.ActionLink("Book Tour", "OrderPageTour", "Tours", new { @class = "btn btn-primary main-btn btn-lg float-right" })
 </div>
 
 
