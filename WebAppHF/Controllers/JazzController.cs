@@ -13,6 +13,20 @@ namespace WebAppHF.Controllers
 
         private IJazzRepo repo = new JazzRepo();
         // GET: Jazz
+
+        private DateTime? ToDateTime(string ShortTimeString)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+
+            return null;
+        }
         public ActionResult Index()
         {
             List<JazzDaySummary> summarys = repo.GetDaySummarys();
@@ -35,31 +49,33 @@ namespace WebAppHF.Controllers
         [HttpGet]
         public ActionResult Book(DateTime date)
         {
-            
-                List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
-                Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
-                Jazz passePartoutDay = repo.GetPassePartoutDay(date);
 
-                DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record());
-                DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record());
-                List<DisplayRecord> dre = new List<DisplayRecord>();
 
-                foreach (Jazz jazz in JazzActs)
-                {
-                    DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID));
-                    dre.Add(dr);
-                }
+            List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
+            Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
+            Jazz passePartoutDay = repo.GetPassePartoutDay(date);
 
-                JazzBook jazzBook = new JazzBook(drd, drw, dre);
+            DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record());
+            DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record());
+            List<DisplayRecord> dre = new List<DisplayRecord>();
 
-                //string hall = ((Jazz)dr.Event).Hall;
-                return View(jazzBook);
-            
+            foreach (Jazz jazz in JazzActs)
+            {
+                DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID));
+                dre.Add(dr);
+            }
+
+            JazzBook jazzBook = new JazzBook(drd, drw, dre);
+
+            //string hall = ((Jazz)dr.Event).Hall;
+            return View(jazzBook);
+
         }
 
-        [HttpPost]
-        public ActionResult Book(JazzBook book)
+        //[HttpPost]
+        public ActionResult AddToSession(JazzBook MyTestParameter)
         {
+            JazzBook book = MyTestParameter;
             List<DisplayRecord> sessionBasket = new List<DisplayRecord>();
             if (book.DayPassePartout.Record.Amount > 0)
             {
@@ -72,7 +88,10 @@ namespace WebAppHF.Controllers
 
             foreach (DisplayRecord dr in book.DayEvents)
             {
-                sessionBasket.Add(dr);
+                if (dr.Record.Amount > 0)
+                {
+                    sessionBasket.Add(dr);
+                }
             }
 
             try
@@ -92,7 +111,7 @@ namespace WebAppHF.Controllers
                 Session["Basket"] = sessionBasket;
             }
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
     }

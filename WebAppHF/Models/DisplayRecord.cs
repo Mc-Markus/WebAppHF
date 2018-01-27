@@ -17,5 +17,7 @@ namespace WebAppHF.Models
             this.Event = activity;
             this.Record = record;
         }
+
+        public DisplayRecord() { }
     }
 }
