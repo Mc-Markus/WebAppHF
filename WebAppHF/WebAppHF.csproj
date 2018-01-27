@@ -164,6 +164,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzController.cs" />
+    <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\ToursController.cs" />
@@ -258,11 +259,13 @@
     <Compile Include="Repositories\EventRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
     <Compile Include="Repositories\IJazzRepo.cs" />
-    <Compile Include="Repositories\IResetaurantRepo.cs" />
+    <Compile Include="Repositories\IRecordRepository.cs" />
+    <Compile Include="Repositories\IRestaurantRepo.cs" />
     <Compile Include="Repositories\ITalkRepo.cs" />
     <Compile Include="Repositories\IVenueRepo.cs" />
     <Compile Include="Repositories\ITourRepo.cs" />
     <Compile Include="Repositories\JazzRepo.cs" />
+    <Compile Include="Repositories\RecordRepository.cs" />
     <Compile Include="Repositories\RestaurantRepo.cs" />
     <Compile Include="Repositories\TalkRepo.cs" />
     <Compile Include="Repositories\VenueRepo.cs" />
@@ -448,6 +451,8 @@
     <Content Include="Views\Cart\CartEmpty.cshtml" />
     <Content Include="Views\Talk\Detail.cshtml" />
     <Content Include="Views\Talk\Book.cshtml" />
+    <Content Include="Views\Records\Create.cshtml" />
+    <Content Include="Views\Records\Index.cshtml" />
     <None Include="Views\Tours\OrderPageTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
