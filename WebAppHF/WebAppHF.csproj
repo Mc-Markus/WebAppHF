@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201801271454310_CommentFieldInRecord.Designer.cs">
       <DependentUpon>201801271454310_CommentFieldInRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801271655282_populateRestaurantSession.cs" />
+    <Compile Include="Migrations\201801271655282_populateRestaurantSession.Designer.cs">
+      <DependentUpon>201801271655282_populateRestaurantSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
@@ -504,6 +508,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801271454310_CommentFieldInRecord.resx">
       <DependentUpon>201801271454310_CommentFieldInRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801271655282_populateRestaurantSession.resx">
+      <DependentUpon>201801271655282_populateRestaurantSession.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
