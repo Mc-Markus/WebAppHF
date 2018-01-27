@@ -80,7 +80,7 @@ namespace WebAppHF.Controllers
 
             try
             {
-                List<DisplayRecord> drs = (List<DisplayRecord>)Session["Basket"];
+                List<DisplayRecord> drs = (List<DisplayRecord>)Session["Cart"];
                 foreach (DisplayRecord dr in drs)
                 {
                     sessionBasket.Add(dr);
@@ -88,11 +88,11 @@ namespace WebAppHF.Controllers
             }
             catch
             {
-                Session["Basket"] = null;
+                Session["Cart"] = null;
             }
             finally
             {
-                Session["Basket"] = sessionBasket;
+                Session["Cart"] = sessionBasket;
             }
 
             return RedirectToAction("Index", "Home");
