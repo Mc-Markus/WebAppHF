@@ -4,79 +4,86 @@
     ViewBag.Title = "Book";
 }
 @*<form action="~/Controllers/AddToSession">*@
-@using (Html.BeginForm("AddToSession", "Jazz", FormMethod.Post, new {MyTestParameter = Model})){
-<div class="row">
-    <div class="col-md-12">
-        <h3 class="margin-reservation">Ticket information - Saturday</h3>
-        <p>There are multiple types of tickets available for Jazz@Patronaat. You can buy one of the 2 types of tickets: passe-partout tickets or a single tickets for a concert.</p>
-        <p>
-            <b>Pass-partout tickets</b>
-            <br> A passe-partout ticket for a day cost €35. If you want a passe-partout ticket for Thursday, Friday and Saturday the price is €80.
-        </p>
-        <p>
-            <b>Regular ticket</b>
-            <br> A regular ticket cost between €10 and €15. It depends on which hall the artists performs.
-        </p>
+@using (Html.BeginForm("AddToSession", "Jazz", FormMethod.Post, new { MyTestParameter = Model }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="margin-reservation">Ticket information - Saturday</h3>
+            <p>There are multiple types of tickets available for Jazz@Patronaat. You can buy one of the 2 types of tickets: passe-partout tickets or a single tickets for a concert.</p>
+            <p>
+                <b>Pass-partout tickets</b>
+                <br> A passe-partout ticket for a day cost €35. If you want a passe-partout ticket for Thursday, Friday and Saturday the price is €80.
+            </p>
+            <p>
+                <b>Regular ticket</b>
+                <br> A regular ticket cost between €10 and €15. It depends on which hall the artists performs.
+            </p>
+        </div>
     </div>
-</div>
-<div class="row margin-reservation">
-    <div class="col-md-8">
-        <h4>Insert amount of tickets</h4>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th scope="col">Tickets</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Price</th>
-                </tr>
-                <tr>
-                    @*Show the passe-partout tickets*@
-                    <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Record.Amount, "0",new { type="number", min="0", max="300", })</th>
-                    <td>@Model.DayPassePartout.Event.Name</td>
-                    <td>@Model.DayPassePartout.Event.GetPriceString()</td>
-                </tr>
-                <>
-                <tr>
-                    <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
-                    <td>@Model.WeekendPassePartout.Event.Name</td>
-                    <td>@Model.WeekendPassePartout.Event.GetPriceString()</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row margin-reservation">
+        <div class="col-md-8">
+            <h4>Insert amount of tickets</h4>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="col">Tickets</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                    <tr>
+                        @*Show the passe-partout tickets*@
+                        <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
+                        <td>@Model.DayPassePartout.Event.Name</td>
+                        <td>@Model.DayPassePartout.Event.GetPriceString()</td>
+                        @Html.HiddenFor(m => m.DayPassePartout.Record.EventID)
+                        @Html.HiddenFor(m => m.DayPassePartout.Record.EventType)
+                    </tr>
+                    <>
+                    <tr>
+                        <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
+                        <td>@Model.WeekendPassePartout.Event.Name</td>
+                        <td>@Model.WeekendPassePartout.Event.GetPriceString()</td>
+                        @Html.HiddenFor(m => m.WeekendPassePartout.Record.EventID)
+                        @Html.HiddenFor(m => m.WeekendPassePartout.Record.EventType)
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-<div class="row margin-reservation">
-    <div class="col-md-12">
-        <h4>Insert amount of regular tickets</h4>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th scope="col">Tickets</th>
-                    <th scope="col">Artist</th>
-                    <th scope="col">Price per Ticket</th>
-                    <th scope="col">Date and Time</th>
-                    <th scope="col">Location</th>
-                </tr>
-                @*Show the jazz events*@
-                @for(int i = 0; i < Model.DayEvents.Count; i++)
-                {
-                <tr>
-                    <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Record.Amount, "0", new { type = "number", min = "0", max = "300" })</th>
-                    <td>@Model.DayEvents[i].Event.Name</td>
-                    <td>@Model.DayEvents[i].Event.GetPriceString()</td>
-                    <td>@Model.DayEvents[i].Event.Date.DayOfWeek @Model.DayEvents[i].Event.Date.ToShortDateString() | @Model.DayEvents[i].Event.StartTime.ToShortTimeString() - @Model.DayEvents[i].Event.EndTime.ToShortTimeString()</td>
-                    <td>@Model.DayEvents[i].Event.LocationName - @(((Jazz)Model.DayEvents[i].Event).Hall)</td>
-                </tr>
-                }
-            </tbody>
-        </table>
+    <div class="row margin-reservation">
+        <div class="col-md-12">
+            <h4>Insert amount of regular tickets</h4>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="col">Tickets</th>
+                        <th scope="col">Artist</th>
+                        <th scope="col">Price per Ticket</th>
+                        <th scope="col">Date and Time</th>
+                        <th scope="col">Location</th>
+                    </tr>
+                    @*Show the jazz events*@
+                    @for (int i = 0; i < Model.DayEvents.Count; i++)
+                    {
+                        <tr>
+                            <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Record.Amount, "0", new { type = "number", min = "0", max = "300" })</th>
+                            <td>@Model.DayEvents[i].Event.Name</td>
+                            <td>@Model.DayEvents[i].Event.GetPriceString()</td>
+                            <td>@Model.DayEvents[i].Event.Date.DayOfWeek @Model.DayEvents[i].Event.Date.ToShortDateString() | @Model.DayEvents[i].Event.StartTime.ToShortTimeString() - @Model.DayEvents[i].Event.EndTime.ToShortTimeString()</td>
+                            <td>@Model.DayEvents[i].Event.LocationName - @(((Jazz)Model.DayEvents[i].Event).Hall)</td>
+                            @Html.HiddenFor(m => m.DayEvents[i].Record.EventID)
+                            @Html.HiddenFor(m => m.DayEvents[i].Record.EventType)
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-primary main-btn">Back to Overview</button>
-        <button type="submit" value="Book" class="btn btn-primary main-btn talking-right">Add to Basket</button>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary main-btn">Back to Overview</button>
+            <button type="submit" value="Book" class="btn btn-primary main-btn talking-right">Add to Basket</button>
+        </div>
     </div>
-</div>
-    }
+}
 @*</form>*@

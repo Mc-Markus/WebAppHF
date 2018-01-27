@@ -13,12 +13,14 @@ namespace WebAppHF.Models
         public int Amount { get; set; }
         public int TotalPrice { get; set; }
         public string Comment { get; set; }
+        public string EventType { get; set; }
 
         public Record() { }
 
-        public Record(int EventID)
+        public Record(int EventID, string EventType)
         {
             this.EventID = EventID;
+            this.EventType = EventType;
         }
     }
 }
