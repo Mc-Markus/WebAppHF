@@ -13,20 +13,6 @@ namespace WebAppHF.Controllers
 
         private IJazzRepo repo = new JazzRepo();
         // GET: Jazz
-
-        private DateTime? ToDateTime(string ShortTimeString)
-        {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
-
-            return null;
-        }
         public ActionResult Index()
         {
             List<JazzDaySummary> summarys = repo.GetDaySummarys();
@@ -49,8 +35,6 @@ namespace WebAppHF.Controllers
         [HttpGet]
         public ActionResult Book(DateTime date)
         {
-
-
             List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
             Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
             Jazz passePartoutDay = repo.GetPassePartoutDay(date);
