@@ -276,9 +276,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="IMG\Jazz\indexGare.jpg" />
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
     <Content Include="IMG\haarlem3.jpg" />
+    <Content Include="IMG\Home\DinnerBanner.jpg" />
+    <Content Include="IMG\Home\HistoricBanner.jpg" />
+    <Content Include="IMG\Home\PatronaatBanner.jpg" />
+    <Content Include="IMG\Home\PoortBanner.jpg" />
+    <Content Include="IMG\Home\TalksBannerjpg.jpg" />
     <Content Include="IMG\ideal.png" />
     <Content Include="IMG\IMAGES_WALKS\BavoKerk.jpg" />
     <Content Include="IMG\IMAGES_WALKS\DeAdriaan.jpg" />
@@ -291,6 +297,9 @@
     <Content Include="IMG\IMAGES_WALKS\MAPANDGRID\Map.jpg" />
     <Content Include="IMG\IMAGES_WALKS\Proveniershof.jpg" />
     <Content Include="IMG\IMAGES_WALKS\WaalseKerk.jpg" />
+    <Content Include="IMG\Jazz\indexGumbo.png" />
+    <Content Include="IMG\Jazz\indexUncle.jpg" />
+    <Content Include="IMG\Jazz\indexWicked.jpg" />
     <Content Include="IMG\mastercard.png" />
     <Content Include="IMG\patronaat1.jpg" />
     <Content Include="IMG\patronaat2.jpg" />
@@ -313,6 +322,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
@@ -434,6 +444,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="IMG\Dinner\" />
+    <Folder Include="IMG\Talks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

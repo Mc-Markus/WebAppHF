@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Book";
 }
-<form>
+@*<form action="~/Controllers/AddToSession">*@
+@using (Html.BeginForm("AddToSession", "Jazz", FormMethod.Post, new {MyTestParameter = Model})){
 <div class="row">
     <div class="col-md-12">
         <h3 class="margin-reservation">Ticket information - Saturday</h3>
@@ -76,4 +77,5 @@
         <button type="submit" value="Book" class="btn btn-primary main-btn talking-right">Add to Basket</button>
     </div>
 </div>
-</form>
+    }
+@*</form>*@
