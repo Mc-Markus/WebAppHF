@@ -45,12 +45,15 @@ namespace WebAppHF.Controllers
             }
 
         }
+        [Authorize]
         public ActionResult Logout()
         {
             return View();
         }
+
+        [Authorize]
         [HttpPost]
-        public ActionResult LogOut()
+        public ActionResult LoggedOut()
         {
             FormsAuthentication.SignOut();
 
@@ -94,6 +97,14 @@ namespace WebAppHF.Controllers
             return View(restaurant);
         }
         [Authorize]
+        // GET: Events/Delete/5
+        public ActionResult UpdateRestaurant(int id)
+        {
+            Event @event = Erepo.GetEventByID(id);
+            return View(@event);
+        }
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UpdateRestaurant(Restaurant restaurant, int id)
@@ -113,9 +124,9 @@ namespace WebAppHF.Controllers
             }
             return View(restaurant);
         }
-
+        [Authorize]
         // GET: Events/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteRestaurant(int id)
         {
             Event @event = Erepo.GetEventByID(id);
             return View(@event);
@@ -124,7 +135,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteRestaurant(int id)
+        public ActionResult DeleteRestaurantConfirm(int id)
         {
             try
             {

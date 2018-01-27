@@ -467,8 +467,10 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Admin\UpdateRestaurant.cshtml" />
+    <Content Include="Views\Admin\LogOut.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
-    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
