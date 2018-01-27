@@ -7,7 +7,7 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    interface IWalkRepo
+    interface ITourRepo
     {
         Tour GetWalkByID(int Id);
         List<Tour> GetAll();

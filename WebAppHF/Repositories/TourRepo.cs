@@ -7,7 +7,7 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    public class WalkRepo : IWalkRepo
+    public class TourRepo : ITourRepo
     {
         public Tour GetWalkByID(int Id)
         {
@@ -27,9 +27,9 @@ namespace WebAppHF.Repositories
 
                 if(Tours == null)
                 {
-                    Console.WriteLine("empty");
+                    Console.WriteLine("empty");  
                 }
-                return Tours.ToList();
+                    return Tours.ToList();
             }
         }
 
