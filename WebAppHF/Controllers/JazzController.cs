@@ -97,7 +97,7 @@ namespace WebAppHF.Controllers
                 Session["Cart"] = sessionBasket;
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Basket");
         }
 
     }

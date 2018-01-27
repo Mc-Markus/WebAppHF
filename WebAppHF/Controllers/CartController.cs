@@ -14,10 +14,12 @@ namespace WebAppHF.Controllers
         IJazzRepo jazzRepo = new JazzRepo();
         ITalkRepo talkRepo = new TalkRepo();
         ITourRepo tourRepo = new TourRepo();
+        IRestaurantRepo restaurantRepo = new RestaurantRepo();
 
         // GET: Cart
         public ActionResult Index()
         {
+            //Checks if sessions contains a valid list of records
             List<Record> sessionCart = null;
             try
             {
@@ -27,18 +29,37 @@ namespace WebAppHF.Controllers
             {
                 return RedirectToAction("CartEmpty");
             }
-
+            //Checks if cart isnt empty
             if (sessionCart == null)
             {
                 return RedirectToAction("CartEmpty");
             }
 
+            //creates displayRecords for all records in session
             List<DisplayRecord> displayRecords = new List<DisplayRecord>();
             foreach (Record record in sessionCart)
             {
                 displayRecords.Add(new DisplayRecord(getEvent(record), record));
             }
 
+            //chooses 3 random restaurants for cross selling
+            List<Restaurant> restaurants = restaurantRepo.GetAllRestaurants().ToList();
+
+            Random rnd = new Random();
+
+            List<Restaurant> crossSelling = new List<Restaurant>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Restaurant restaurant = restaurants[rnd.Next(0, restaurants.Count())];
+                crossSelling.Add(restaurant);
+                restaurants.Remove(restaurant);
+            }
+
+            CartViewModel cartViewModel = new CartViewModel(displayRecords, crossSelling);
+
+            #region OLD CART FROM HOSSAM
+            
             ////Cart items
             //CartModel cart1 = new CartModel();
             //cart1.Items = (List<Event>)Session["cart"];
@@ -62,7 +83,10 @@ namespace WebAppHF.Controllers
             //}
 
             //cart1.CrossSellItems = cross;
-            return View(displayRecords);
+
+            #endregion
+
+            return View(cartViewModel);
         }
 
         [HttpPost]
@@ -104,6 +128,7 @@ namespace WebAppHF.Controllers
             return View();
         }
 
+        //Gets event based on eventType and eventID
         public Event getEvent(Record record)
         {
             switch (record.EventType)

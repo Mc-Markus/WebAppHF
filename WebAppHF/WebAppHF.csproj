@@ -243,6 +243,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\DisplayRecord.cs" />
     <Compile Include="Models\Event.cs" />
