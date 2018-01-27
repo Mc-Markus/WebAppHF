@@ -25,10 +25,10 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult Login(AdminAccount model)
         {
-
+            AdminAccount account = new AdminAccount();
             if (ModelState.IsValid)
             {
-                AdminAccount account = repository.GetAccount(model.UserName, model.Password);
+                account = repository.GetAccount(model.UserName, model.Password);
             }
             if (account != null)
             {
@@ -45,20 +45,20 @@ namespace WebAppHF.Controllers
             }
 
         }
-        [Authorize]
-        public ActionResult Logout()
-        {
-            return View();
-        }
+        //[Authorize]
+        //public ActionResult Logout()
+        //{
+        //    return View();
+        //}
 
-        [Authorize]
-        [HttpPost]
-        public ActionResult LoggedOut()
-        {
-            FormsAuthentication.SignOut();
+        //[Authorize]
+        //[HttpPost]
+        //public ActionResult LoggedOut()
+        //{
+        //    FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
-        }
+        //    return RedirectToAction("Index", "Home");
+        //}
 
         // GET: Admin
         [Authorize]
@@ -77,8 +77,13 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
+        public ActionResult CreateRestaurant()
+        {
+            return View();
+        }
+
+        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult CreateRestaurant(Restaurant restaurant)
         {
             try
@@ -100,13 +105,12 @@ namespace WebAppHF.Controllers
         // GET: Events/Delete/5
         public ActionResult UpdateRestaurant(int id)
         {
-            Event @event = Erepo.GetEventByID(id);
-            return View(@event);
+            Restaurant @restaurant = repo.GetRestaurant(id);
+            return View(@restaurant);
         }
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult UpdateRestaurant(Restaurant restaurant, int id)
         {
             try
@@ -128,13 +132,12 @@ namespace WebAppHF.Controllers
         // GET: Events/Delete/5
         public ActionResult DeleteRestaurant(int id)
         {
-            Event @event = Erepo.GetEventByID(id);
-            return View(@event);
+            Restaurant @restaurant= repo.GetRestaurant(id);
+            return View(@restaurant);
         }
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteRestaurantConfirm(int id)
         {
             try
@@ -153,7 +156,6 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult CreateEvent(Event e, int eventType)
         {
             try
@@ -173,7 +175,6 @@ namespace WebAppHF.Controllers
         }
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult UpdateEvent(Event e, int id)
         {
             try
@@ -193,7 +194,6 @@ namespace WebAppHF.Controllers
         }
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteEvent(int id)
         {
             try

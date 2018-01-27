@@ -13,73 +13,73 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => @model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => @model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => @model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => @model.Address)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Stars)
+            @Html.DisplayNameFor(model => @model.Stars)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Stars)
+            @Html.DisplayFor(model => @model.Stars)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => @model.Price)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => @model.Price)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ReducedPrice)
+            @Html.DisplayNameFor(model => @model.ReducedPrice)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReducedPrice)
+            @Html.DisplayFor(model => @model.ReducedPrice)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FoodTypes)
+            @Html.DisplayNameFor(model => @model.FoodTypes)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FoodTypes)
+            @Html.DisplayFor(model => @model.FoodTypes)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FoodIMGString)
+            @Html.DisplayNameFor(model => @model.FoodIMGString)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FoodIMGString)
+            @Html.DisplayFor(model => @model.FoodIMGString)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RestaurantIMGString)
+            @Html.DisplayNameFor(model => @model.RestaurantIMGString)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RestaurantIMGString)
+            @Html.DisplayFor(model => @model.RestaurantIMGString)
         </dd>
 
     </dl>
 
     @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |

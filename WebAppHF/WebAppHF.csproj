@@ -471,7 +471,7 @@
     <Content Include="Views\Admin\LogOut.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\CreateRestaurant.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
