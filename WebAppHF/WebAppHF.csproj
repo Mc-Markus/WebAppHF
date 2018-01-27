@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
@@ -461,6 +462,11 @@
     <Content Include="Views\Cart\CartEmpty.cshtml" />
     <Content Include="Views\Talk\Detail.cshtml" />
     <Content Include="Views\Talk\Book.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />

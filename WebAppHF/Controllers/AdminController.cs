@@ -17,6 +17,11 @@ namespace WebAppHF.Controllers
         private IEventRepo Erepo = new EventRepo();
         private IAccountRepo repository = new AccountRepo();
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Login(AdminAccount model)
         {
@@ -40,8 +45,17 @@ namespace WebAppHF.Controllers
             }
 
         }
+        public ActionResult Logout()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
 
-        //Post: Logout
+            return RedirectToAction("Index", "Home");
+        }
 
         // GET: Admin
         [Authorize]
@@ -50,10 +64,7 @@ namespace WebAppHF.Controllers
             return View();
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
+
 
         [Authorize]
         public ActionResult List()
@@ -102,6 +113,14 @@ namespace WebAppHF.Controllers
             }
             return View(restaurant);
         }
+
+        // GET: Events/Delete/5
+        public ActionResult Delete(int id)
+        {
+            Event @event = Erepo.GetEventByID(id);
+            return View(@event);
+        }
+
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
