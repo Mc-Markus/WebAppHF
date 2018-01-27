@@ -39,8 +39,8 @@ namespace WebAppHF.Controllers
             Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
             Jazz passePartoutDay = repo.GetPassePartoutDay(date);
 
-            DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record());
-            DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record());
+            DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record(passePartoutWeekend.ID));
+            DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record(passePartoutDay.ID));
             List<DisplayRecord> dre = new List<DisplayRecord>();
 
             foreach (Jazz jazz in JazzActs)
@@ -60,30 +60,31 @@ namespace WebAppHF.Controllers
         public ActionResult AddToSession(JazzBook MyTestParameter)
         {
             JazzBook book = MyTestParameter;
-            List<DisplayRecord> sessionBasket = new List<DisplayRecord>();
+
+            List<Record> sessionBasket = new List<Record>();
             if (book.DayPassePartout.Record.Amount > 0)
             {
-                sessionBasket.Add(book.DayPassePartout);
+                sessionBasket.Add(book.DayPassePartout.Record);
             }
             if (book.WeekendPassePartout.Record.Amount > 0)
             {
-                sessionBasket.Add(book.WeekendPassePartout);
+                sessionBasket.Add(book.WeekendPassePartout.Record);
             }
 
             foreach (DisplayRecord dr in book.DayEvents)
             {
                 if (dr.Record.Amount > 0)
                 {
-                    sessionBasket.Add(dr);
+                    sessionBasket.Add(dr.Record);
                 }
             }
 
             try
             {
-                List<DisplayRecord> drs = (List<DisplayRecord>)Session["Cart"];
-                foreach (DisplayRecord dr in drs)
+                List<Record> basket = (List<Record>)Session["Cart"];
+                foreach (Record record in basket)
                 {
-                    sessionBasket.Add(dr);
+                    sessionBasket.Add(record);
                 }
             }
             catch

@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201801271655282_populateRestaurantSession.Designer.cs">
       <DependentUpon>201801271655282_populateRestaurantSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801272053129_EventTypeInRecord.cs" />
+    <Compile Include="Migrations\201801272053129_EventTypeInRecord.Designer.cs">
+      <DependentUpon>201801272053129_EventTypeInRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
@@ -448,6 +452,7 @@
     <Content Include="Views\Cart\CartEmpty.cshtml" />
     <Content Include="Views\Talk\Detail.cshtml" />
     <Content Include="Views\Talk\Book.cshtml" />
+    <Content Include="Views\Jazz\Book.cshtml" />
     <None Include="Views\Tours\OrderPageTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +516,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801271655282_populateRestaurantSession.resx">
       <DependentUpon>201801271655282_populateRestaurantSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801272053129_EventTypeInRecord.resx">
+      <DependentUpon>201801272053129_EventTypeInRecord.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
