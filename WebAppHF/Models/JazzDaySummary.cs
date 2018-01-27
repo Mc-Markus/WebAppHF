@@ -25,6 +25,7 @@ namespace WebAppHF.Models
             this.Bands = Bands;
         }
 
+        //adds a comma between bands when a new band is added
         public void AddBand(string band)
         {
             Bands += "; " + band;

@@ -8,6 +8,7 @@ namespace WebAppHF.Repositories
 {
     public interface IEventRepo
     {
+        // SHOULD NOT BE USED!! EVENT IS ABSTRACT
         Event GetEventByID(int ID);
         List<Event> GetEvents();
     }

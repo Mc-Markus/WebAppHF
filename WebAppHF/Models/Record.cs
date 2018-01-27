@@ -15,8 +15,10 @@ namespace WebAppHF.Models
         public string Comment { get; set; }
         public string EventType { get; set; }
 
+        //empty constructor needed for form
         public Record() { }
 
+        //constructor that should be used when adding a record to cart
         public Record(int EventID, string EventType)
         {
             this.EventID = EventID;

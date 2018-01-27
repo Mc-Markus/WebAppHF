@@ -89,7 +89,7 @@ namespace WebAppHF.Controllers
             return View(cartViewModel);
         }
 
-        [HttpPost]
+        [HttpPost]//Cartmodel is no longer in use
         public ActionResult Index(CartModel cart)
         {
             return View();
@@ -97,6 +97,9 @@ namespace WebAppHF.Controllers
 
         public ActionResult PaymentMethod()
         {
+            //why payment method, it isn't saved in db becaus it's out of scope for this project
+            
+            //cartmodel is no longer in use
             CartModel cart = new CartModel();
             cart.Items = (List<Event>)Session["cart"];
             foreach (Event e in cart.Items)
@@ -106,9 +109,11 @@ namespace WebAppHF.Controllers
             return View(cart);
         }
 
-        [HttpPost]
+        [HttpPost]//cartmodel is no longer in use
         public ActionResult PaymentMethod(CartModel cart)
         {
+            //why payment method, it isn't saved in db becaus it's out of scope for this project
+
             // gooi shit in db
             return RedirectToAction("Success"); // of failure
         }
