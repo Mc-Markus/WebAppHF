@@ -12,6 +12,7 @@ namespace WebAppHF.Controllers
     {
 
         private IJazzRepo repo = new JazzRepo();
+        private string eventType = "Jazz";
         // GET: Jazz
         public ActionResult Index()
         {
@@ -39,13 +40,13 @@ namespace WebAppHF.Controllers
             Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
             Jazz passePartoutDay = repo.GetPassePartoutDay(date);
 
-            DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record(passePartoutWeekend.ID));
-            DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record(passePartoutDay.ID));
+            DisplayRecord drw = new DisplayRecord(passePartoutWeekend, new Record(passePartoutWeekend.ID, eventType));
+            DisplayRecord drd = new DisplayRecord(passePartoutDay, new Record(passePartoutDay.ID, eventType));
             List<DisplayRecord> dre = new List<DisplayRecord>();
 
             foreach (Jazz jazz in JazzActs)
             {
-                DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID));
+                DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID, "Jazz"));
                 dre.Add(dr);
             }
 

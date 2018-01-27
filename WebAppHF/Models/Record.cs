@@ -17,9 +17,10 @@ namespace WebAppHF.Models
 
         public Record() { }
 
-        public Record(int EventID)
+        public Record(int EventID, string EventType)
         {
             this.EventID = EventID;
+            this.EventType = EventType;
         }
     }
 }

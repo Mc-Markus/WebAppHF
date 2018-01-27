@@ -36,6 +36,7 @@
                         <td>@Model.DayPassePartout.Event.Name</td>
                         <td>@Model.DayPassePartout.Event.GetPriceString()</td>
                         @Html.HiddenFor(m => m.DayPassePartout.Record.EventID)
+                        @Html.HiddenFor(m => m.DayPassePartout.Record.EventType)
                     </tr>
                     <>
                     <tr>
@@ -43,6 +44,7 @@
                         <td>@Model.WeekendPassePartout.Event.Name</td>
                         <td>@Model.WeekendPassePartout.Event.GetPriceString()</td>
                         @Html.HiddenFor(m => m.WeekendPassePartout.Record.EventID)
+                        @Html.HiddenFor(m => m.WeekendPassePartout.Record.EventType)
                     </tr>
                 </tbody>
             </table>
@@ -70,6 +72,7 @@
                             <td>@Model.DayEvents[i].Event.Date.DayOfWeek @Model.DayEvents[i].Event.Date.ToShortDateString() | @Model.DayEvents[i].Event.StartTime.ToShortTimeString() - @Model.DayEvents[i].Event.EndTime.ToShortTimeString()</td>
                             <td>@Model.DayEvents[i].Event.LocationName - @(((Jazz)Model.DayEvents[i].Event).Hall)</td>
                             @Html.HiddenFor(m => m.DayEvents[i].Record.EventID)
+                            @Html.HiddenFor(m => m.DayEvents[i].Record.EventType)
                         </tr>
                     }
                 </tbody>
