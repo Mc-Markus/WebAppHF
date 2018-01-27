@@ -10,32 +10,59 @@ namespace WebAppHF.Controllers
 {
     public class CartController : Controller
     {
-        IEventRepo rep = new EventRepo();
+        //IEventRepo rep = new EventRepo();
+        IJazzRepo jazzRepo = new JazzRepo();
+        ITalkRepo talkRepo = new TalkRepo();
+        ITourRepo tourRepo = new TourRepo();
+
         // GET: Cart
         public ActionResult Index()
         {
-            
-            Random rng = new Random();
-            CartModel cart = new CartModel();
-            cart.Items = (List<Event>)Session["cart"];
-            if (cart.Items == null)
+            List<Record> sessionCart = null;
+            try
+            {
+                sessionCart = (List<Record>)Session["Cart"];
+            }
+            catch
             {
                 return RedirectToAction("CartEmpty");
             }
-            List<Event> list = rep.GetEvents();
-            cart.Items = list;
 
-            List<Event> cross = new List<Event>();
-            int i = 0;
-
-            while (i != 5)
+            if (sessionCart == null)
             {
-                cross.Add(list[rng.Next(0, (list.Count - 1))]);
-                i++;
+                return RedirectToAction("CartEmpty");
             }
 
-            cart.CrossSellItems = cross;
-            return View(cart);
+            List<DisplayRecord> displayRecords = new List<DisplayRecord>();
+            foreach (Record record in sessionCart)
+            {
+                displayRecords.Add(new DisplayRecord(getEvent(record), record));
+            }
+
+            ////Cart items
+            //CartModel cart1 = new CartModel();
+            //cart1.Items = (List<Event>)Session["cart"];
+            //if (cart1.Items == null)
+            //{
+            //    return RedirectToAction("CartEmpty");
+            //}
+            //List<Event> list = rep.GetEvents();
+            //cart1.Items = list;
+
+            ////Crossselling
+            //Random rng = new Random();
+            //List<Event> cross = new List<Event>();
+
+            //int i = 0;
+
+            //while (i != 5)
+            //{
+            //    cross.Add(list[rng.Next(0, (list.Count - 1))]);
+            //    i++;
+            //}
+
+            //cart1.CrossSellItems = cross;
+            return View(displayRecords);
         }
 
         [HttpPost]
@@ -48,7 +75,7 @@ namespace WebAppHF.Controllers
         {
             CartModel cart = new CartModel();
             cart.Items = (List<Event>)Session["cart"];
-            foreach(Event e in cart.Items)
+            foreach (Event e in cart.Items)
             {
                 cart.Price += e.Price;
             }
@@ -75,6 +102,21 @@ namespace WebAppHF.Controllers
         public ActionResult Failure()
         {
             return View();
+        }
+
+        public Event getEvent(Record record)
+        {
+            switch (record.EventType)
+            {
+                case "Jazz":
+                    return jazzRepo.GetJazzByID(record.EventID);
+                case "Tour":
+                    return tourRepo.GetWalkByID(record.EventID);
+                case "Talk":
+                    return talkRepo.GetTalk(record.EventID);
+                default:
+                    return null;
+            }
         }
     }
 }

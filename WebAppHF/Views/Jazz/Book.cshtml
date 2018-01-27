@@ -38,7 +38,6 @@
                         @Html.HiddenFor(m => m.DayPassePartout.Record.EventID)
                         @Html.HiddenFor(m => m.DayPassePartout.Record.EventType)
                     </tr>
-                    <>
                     <tr>
                         <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
                         <td>@Model.WeekendPassePartout.Event.Name</td>
