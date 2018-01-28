@@ -116,7 +116,28 @@ namespace WebAppHF.Controllers
             if (ModelState.IsValid)
             {
                 recordRepository.AddRecord(record);
-                return RedirectToAction("Index");
+                // Trying ot use a session 
+                //List<Record> sessionBasket = new List<Record>();
+                //sessionBasket.Add(record);
+
+                ////check if session contains records if so add them to new cart value
+                //try
+                //{
+                //    List<Record> basket = (List<Record>)Session["Cart"];
+                //    foreach (Record sessionrecord in basket)
+                //    {
+                //        sessionBasket.Add(sessionrecord);
+                //    }
+                //}
+                //catch
+                //{
+                //    Session["Cart"] = null;
+                //}
+                //finally
+                //{
+                //    Session["Cart"] = sessionBasket;
+                //}
+                return RedirectToAction("Index","Home");
             }
             return View(record);
         }

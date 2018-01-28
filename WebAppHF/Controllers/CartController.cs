@@ -14,6 +14,8 @@ namespace WebAppHF.Controllers
         IJazzRepo jazzRepo = new JazzRepo();
         ITalkRepo talkRepo = new TalkRepo();
         ITourRepo tourRepo = new TourRepo();
+        IRestaurantSessionRepo restaurantSession = new RestaurantSessionRepo();
+        IRecordRepository recordRepository = new RecordRepository();
         IRestaurantRepo restaurantRepo = new RestaurantRepo();
 
         // GET: Cart
@@ -144,6 +146,8 @@ namespace WebAppHF.Controllers
                     return tourRepo.GetWalkByID(record.EventID);
                 case "Talk":
                     return talkRepo.GetTalk(record.EventID);
+                case "RESTAURANTSESSION":
+                    return restaurantSession.GetRestaurantByID(record.EventID);
                 default:
                     return null;
             }
