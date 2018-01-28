@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebAppHF.Models.Restaurant>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of all Restaurants</h2>
+
+<p>
+    @Html.ActionLink("Create New Event", "CreateRestaurant", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Return to Admin main page", "Index", null, new { @class = "btn btn-primary btn-lg" })
+</p>
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Stars</th>
+            <th>Price</th>
+            <th>Reduced Price</th>
+            <th>Food Types</th>
+            <th>Img1</th>
+            <th>Img2</th>
+        </tr>
+
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stars)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReducedPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodTypes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodIMGString)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestaurantIMGString)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateRestaurant", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "DeleteRestaurant", new { id = item.ID })
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>

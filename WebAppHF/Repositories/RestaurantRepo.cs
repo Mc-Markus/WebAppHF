@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using WebAppHF.Models;
@@ -38,6 +39,12 @@ namespace WebAppHF.Repositories
             Restaurant restaurant = database.Restaurants.Find(restaurantId);
             return restaurant;
         }
+        public void CreateRestaurant(Restaurant restaurant)
+        {
+            database.Restaurants.Add(restaurant);
+            database.SaveChanges();
+        }
+
 
         public List<Restaurant> GetRestaurants()
         {
@@ -48,7 +55,24 @@ namespace WebAppHF.Repositories
                 restaurants = database.Restaurants.AsEnumerable();
 
                 return restaurants.ToList();
-            }        
+            }
+        }
+
+
+
+
+        public void Remove(Restaurant student)
+        {
+            database.Restaurants.Remove(student);
+            database.SaveChanges();
+
+        }
+
+        public void UpdateRestaurant(Restaurant restaurant)
+        {
+            Restaurant temp = database.Restaurants.Find(restaurant.ID);
+            temp = restaurant;
+            database.SaveChanges();
         }
 
         public int GetPrice(int id)

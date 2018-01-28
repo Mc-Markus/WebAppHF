@@ -23,6 +23,21 @@ namespace WebAppHF.Repositories
             }
         }
 
+        public void CreateEvent (Event e, int eventType)
+        {
+
+        }
+
+        public void UpdateEvent(Event e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Event e)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Event> GetEvents()
         {
             List<Event> list = ctx.Events.ToList();
