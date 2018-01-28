@@ -277,7 +277,7 @@ hr {
 }
 
 input[type="number"] {
-    width: 40px;
+    width: 160px;
 }
 
 .bottom-row {
@@ -303,4 +303,9 @@ input[type="number"] {
     margin-bottom: 5em;
     position: absolute;
     visibility: hidden;
+}
+
+/*Reservation*/
+.form-width-amount{
+    min-width:25%;
 }

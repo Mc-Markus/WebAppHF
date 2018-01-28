@@ -11,5 +11,8 @@ namespace WebAppHF.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+
+        //empty constructor needed for form
+        public Order() { }
     }
 }

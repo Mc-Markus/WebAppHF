@@ -8,6 +8,8 @@ namespace WebAppHF.Repositories
 {
     public class EventRepo : IEventRepo
     {
+
+        // SHOULD NOT BE USED!! EVENT IS ABSTRACT
         HFContext ctx = new HFContext();
         public Event GetEventByID(int ID)
         {
@@ -19,6 +21,21 @@ namespace WebAppHF.Repositories
 
                 return eventByID;
             }
+        }
+
+        public void CreateEvent (Event e, int eventType)
+        {
+
+        }
+
+        public void UpdateEvent(Event e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Event e)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Event> GetEvents()
