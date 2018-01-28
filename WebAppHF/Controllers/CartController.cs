@@ -14,7 +14,6 @@ namespace WebAppHF.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            
             Random rng = new Random();
             CartModel cart = new CartModel();
             cart.Items = (List<Event>)Session["cart"];
@@ -33,7 +32,6 @@ namespace WebAppHF.Controllers
                 cross.Add(list[rng.Next(0, (list.Count - 1))]);
                 i++;
             }
-
             cart.CrossSellItems = cross;
             return View(cart);
         }

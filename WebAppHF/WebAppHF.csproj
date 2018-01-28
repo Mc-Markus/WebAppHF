@@ -246,6 +246,8 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantSession.cs" />
     <Compile Include="Models\Talk.cs" />
+    <Compile Include="Models\TalkModel.cs" />
+    <Compile Include="Models\TalkViewModel.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\ViewModelTours.cs" />

@@ -1,7 +1,13 @@
-﻿<div class="row">
+﻿@using WebAppHF.Models
+@model List<TalkModel>
+
+<div class="row">
     <div class="col-md-12">
         <h3 class="margin-reservation">Order your amount of tickets <b>(max 2 tickets per talk)</b></h3>
     </div>
+
+    @using (Html.BeginForm())
+    {
     <table class="table">
         <tbody>
             <tr>
@@ -34,6 +40,10 @@
             </tr>
         </tbody>
     </table>
+
+    <input type="submit" value="Submit" />
+    }
+    
 </div>
 <div class="row">
     <div class="col-md-8">
