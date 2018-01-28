@@ -10,9 +10,9 @@ namespace WebAppHF.Repositories
     {
         private HFContext database = new HFContext();
 
-        public List<string> GetAllDayList(int id)
+        public List<DateTime> GetAllDayList(int id)
         {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime.ToString()).Distinct().ToList();
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime).Distinct().ToList();
         }
 
         public IEnumerable<Restaurant> GetAllRestaurants()
@@ -21,9 +21,9 @@ namespace WebAppHF.Repositories
             return restaurant;
         }
 
-        public List<string> GetAllTimeList(int id)
+        public List<DateTime> GetAllTimeList(int id)
         {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date.ToString()).Distinct().ToList();
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date).Distinct().ToList();
         }
 
         public IEnumerable<Restaurant> getfoodtypes(string foodType)

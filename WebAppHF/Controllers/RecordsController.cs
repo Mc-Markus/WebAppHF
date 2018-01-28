@@ -16,9 +16,12 @@ namespace WebAppHF.Controllers
     {
         private IRecordRepository recordRepository = new RecordRepository();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
+        // Hardcode eventtype to give to the record eventId
+        private string eventType = "RestaurantSession";
         // GET: Records
         public ActionResult Index()
         {
+            // Made a quick a view to see if the data was being passed to the database
             var listrecords = recordRepository.GetAllRestaurants();
             return View(listrecords.ToList());
         }
@@ -27,27 +30,42 @@ namespace WebAppHF.Controllers
         // GET: Records/Create
         public ActionResult Create(int id)
         {
+            // Here is the restuarant is that the view gave 
             ViewBag.RestaurantID = id;
+
+            // Getting all the days
             var day = restaurantRepo.GetAllDayList(id);
+
+            // Getting all the time
             var time = restaurantRepo.GetAllTimeList(id);
+
+            // Creating two dropdownlist 
             List<SelectListItem> dayList = new List<SelectListItem>();
             List<SelectListItem> timeList = new List<SelectListItem>();
+
+            // fill it with variable day 
             foreach (var reservation in day)
             {
                 dayList.Add(new SelectListItem
                 {
-                    Text = reservation,
-                    Value = reservation
+                    // Text will be shown as "07:30"
+                    Text = reservation.ToString("hh:mm"),
+                    Value = reservation.ToString()
                 });
             }
+
+            // fill it with variable time 
             foreach (var reservationTime in time)
             {
                 timeList.Add(new SelectListItem
                 {
-                    Text = reservationTime,
-                    Value = reservationTime
+                    //Text will be showns as "thursday"
+                    Text = reservationTime.ToString("dddd"),
+                    Value = reservationTime.ToString()
                 });
             }
+
+            // Put list in view to use in the view 
             ViewBag.selectDayList = dayList;
             ViewBag.selecttimeList = timeList;
             return View();
@@ -58,10 +76,42 @@ namespace WebAppHF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,EventID,OrderID,Amount,TotalPrice,Comment")] Record record,string time, string date)
         {
-            record.TotalPrice = restaurantRepo.GetPrice(record.EventID);
-            record.EventID = recordRepository.GetEventID(record.EventID,
-                DateTime.ParseExact(date, "yy/MM/dd h:mm:ss tt", CultureInfo.InvariantCulture), 
-                DateTime.ParseExact(time, "yy/MM/dd h:mm:ss tt", CultureInfo.InvariantCulture));
+            // The time variables needed to find the proper SessionID
+            DateTime recordTime;
+            DateTime recordDate;
+
+            // Controleren of de juiste waarde is meegegeven 
+            if (time != null || time == "Choose a Time")
+            {
+                recordTime = Convert.ToDateTime(time);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Restaurant");
+            }
+            if (date != null || time == "Choose a Day")
+            {
+
+                 recordDate = Convert.ToDateTime(date);
+            } 
+            else
+            {
+                return RedirectToAction("Index", "Restaurant");
+            }
+
+            // Prijs berekenen
+            record.TotalPrice = (restaurantRepo.GetPrice(record.EventID) * record.Amount) / 100;
+
+            // restaurant session id vinden
+            record.EventID = recordRepository.GetEventID(record.EventID,recordDate, recordTime);
+            if (record.EventID == 0)
+            {
+                return RedirectToAction("Index","Restaurant");
+            }
+            // Hardcoded eventype geven 
+            record.EventType = eventType;
+
+            // Dummy order id
             record.OrderID = 1;
             if (ModelState.IsValid)
             {

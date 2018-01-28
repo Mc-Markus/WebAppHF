@@ -38,7 +38,7 @@
                 <br> <b>Price:</b> &euro;@Html.DisplayFor(modelItem => item.Price)
             </p>
             @Html.ActionLink(" ", "AfterDetail", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn fa fa-info" })
-            @Html.ActionLink("Make a reservation", "Create", "Record", new { id = item.ID }, new { @class = "btn btn-primary main-btn" })
+            @Html.ActionLink("Make a reservation", "Create", "Records", new { id = item.ID }, new { @class = "btn btn-primary main-btn" })
         </div>
     }
 

@@ -456,6 +456,8 @@
     <Content Include="Views\Talk\Detail.cshtml" />
     <Content Include="Views\Talk\Book.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
+    <Content Include="Views\Records\Create.cshtml" />
+    <Content Include="Views\Records\Index.cshtml" />
     <None Include="Views\Tours\OrderPageTour.cshtml" />
   </ItemGroup>
   <ItemGroup>

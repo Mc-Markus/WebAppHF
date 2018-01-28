@@ -12,8 +12,8 @@ namespace WebAppHF.Repositories
         IEnumerable<Restaurant> GetAllRestaurants();
         List<string> GetAllRestaurantFilter();
         IEnumerable<Restaurant> getfoodtypes(string foodType);
-        List<string> GetAllTimeList(int id);
-        List<string> GetAllDayList(int id);
+        List<DateTime> GetAllTimeList(int id);
+        List<DateTime> GetAllDayList(int id);
         int GetPrice(int id);
     }
 }
