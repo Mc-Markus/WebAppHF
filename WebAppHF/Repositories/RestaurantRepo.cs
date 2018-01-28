@@ -10,10 +10,21 @@ namespace WebAppHF.Repositories
     public class RestaurantRepo : IRestaurantRepo
     {
         private HFContext database = new HFContext();
+
+        public List<string> GetAllDayList(int id)
+        {
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime.ToString()).Distinct().ToList();
+        }
+
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
             IEnumerable<Restaurant> restaurant = database.Restaurants.ToList();
             return restaurant;
+        }
+
+        public List<string> GetAllTimeList(int id)
+        {
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date.ToString()).Distinct().ToList();
         }
 
         public IEnumerable<Restaurant> getfoodtypes(string foodType)
@@ -44,7 +55,8 @@ namespace WebAppHF.Repositories
                 restaurants = database.Restaurants.AsEnumerable();
 
                 return restaurants.ToList();
-            }
+            }        
+        }
 
 
         }
@@ -61,6 +73,10 @@ namespace WebAppHF.Repositories
             Restaurant temp = database.Restaurants.Find(restaurant.ID);
             temp = restaurant;
             database.SaveChanges();
+        public int GetPrice(int id)
+        {
+            int price = database.Restaurants.Where(m => m.ID == id).Select(m => m.Price).SingleOrDefault();
+            return price;
         }
 
         List<string> IRestaurantRepo.GetAllRestaurantFilter()

@@ -17,5 +17,8 @@ namespace WebAppHF.Repositories
         void CreateRestaurant(Restaurant restaurant);
         void Remove(Restaurant student);
         void UpdateRestaurant(Restaurant restaurant);
+        List<string> GetAllTimeList(int id);
+        List<string> GetAllDayList(int id);
+        int GetPrice(int id);
     }
 }

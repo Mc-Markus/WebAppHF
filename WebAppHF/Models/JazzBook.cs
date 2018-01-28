@@ -18,5 +18,7 @@ namespace WebAppHF.Models
             this.WeekendPassePartout = weekend;
             this.DayEvents = events;
         }
+
+        public JazzBook() { }
     }
 }

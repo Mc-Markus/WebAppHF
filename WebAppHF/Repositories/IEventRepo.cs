@@ -8,6 +8,7 @@ namespace WebAppHF.Repositories
 {
     public interface IEventRepo
     {
+        // SHOULD NOT BE USED!! EVENT IS ABSTRACT
         Event GetEventByID(int ID);
         void CreateEvent(Event e, int eventType);
         void UpdateEvent(Event e);

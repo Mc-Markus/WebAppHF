@@ -8,6 +8,8 @@ namespace WebAppHF.Models
 {
     public class CartModel
     {
+        //no longer in use
+
         public List<Event> Items { get; set; }
         public List<Event> CrossSellItems { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
