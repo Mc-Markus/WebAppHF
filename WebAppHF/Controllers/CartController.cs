@@ -10,35 +10,86 @@ namespace WebAppHF.Controllers
 {
     public class CartController : Controller
     {
-        IEventRepo rep = new EventRepo();
+        //IEventRepo rep = new EventRepo();
+        IJazzRepo jazzRepo = new JazzRepo();
+        ITalkRepo talkRepo = new TalkRepo();
+        ITourRepo tourRepo = new TourRepo();
+        IRestaurantRepo restaurantRepo = new RestaurantRepo();
+
         // GET: Cart
         public ActionResult Index()
         {
-            
-            Random rng = new Random();
-            CartModel cart = new CartModel();
-            cart.Items = (List<Event>)Session["cart"];
-            if (cart.Items == null)
+            //Checks if sessions contains a valid list of records
+            List<Record> sessionCart = null;
+            try
+            {
+                sessionCart = (List<Record>)Session["Cart"];
+            }
+            catch
             {
                 return RedirectToAction("CartEmpty");
             }
-            List<Event> list = rep.GetEvents();
-            cart.Items = list;
-
-            List<Event> cross = new List<Event>();
-            int i = 0;
-
-            while (i != 5)
+            //Checks if cart isnt empty
+            if (sessionCart == null)
             {
-                cross.Add(list[rng.Next(0, (list.Count - 1))]);
-                i++;
+                return RedirectToAction("CartEmpty");
             }
 
-            cart.CrossSellItems = cross;
-            return View(cart);
+            //creates displayRecords for all records in session
+            List<DisplayRecord> displayRecords = new List<DisplayRecord>();
+            foreach (Record record in sessionCart)
+            {
+                displayRecords.Add(new DisplayRecord(getEvent(record), record));
+            }
+
+            //chooses 3 random restaurants for cross selling
+            List<Restaurant> restaurants = restaurantRepo.GetAllRestaurants().ToList();
+
+            Random rnd = new Random();
+
+            List<Restaurant> crossSelling = new List<Restaurant>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Restaurant restaurant = restaurants[rnd.Next(0, restaurants.Count())];
+                crossSelling.Add(restaurant);
+                restaurants.Remove(restaurant);
+            }
+
+            CartViewModel cartViewModel = new CartViewModel(displayRecords, crossSelling);
+
+            #region OLD CART FROM HOSSAM
+            
+            ////Cart items
+            //CartModel cart1 = new CartModel();
+            //cart1.Items = (List<Event>)Session["cart"];
+            //if (cart1.Items == null)
+            //{
+            //    return RedirectToAction("CartEmpty");
+            //}
+            //List<Event> list = rep.GetEvents();
+            //cart1.Items = list;
+
+            ////Crossselling
+            //Random rng = new Random();
+            //List<Event> cross = new List<Event>();
+
+            //int i = 0;
+
+            //while (i != 5)
+            //{
+            //    cross.Add(list[rng.Next(0, (list.Count - 1))]);
+            //    i++;
+            //}
+
+            //cart1.CrossSellItems = cross;
+
+            #endregion
+
+            return View(cartViewModel);
         }
 
-        [HttpPost]
+        [HttpPost]//Cartmodel is no longer in use
         public ActionResult Index(CartModel cart)
         {
             return View();
@@ -46,18 +97,23 @@ namespace WebAppHF.Controllers
 
         public ActionResult PaymentMethod()
         {
+            //why payment method, it isn't saved in db becaus it's out of scope for this project
+            
+            //cartmodel is no longer in use
             CartModel cart = new CartModel();
             cart.Items = (List<Event>)Session["cart"];
-            foreach(Event e in cart.Items)
+            foreach (Event e in cart.Items)
             {
                 cart.Price += e.Price;
             }
             return View(cart);
         }
 
-        [HttpPost]
+        [HttpPost]//cartmodel is no longer in use
         public ActionResult PaymentMethod(CartModel cart)
         {
+            //why payment method, it isn't saved in db becaus it's out of scope for this project
+
             // gooi shit in db
             return RedirectToAction("Success"); // of failure
         }
@@ -75,6 +131,22 @@ namespace WebAppHF.Controllers
         public ActionResult Failure()
         {
             return View();
+        }
+
+        //Gets event based on eventType and eventID
+        public Event getEvent(Record record)
+        {
+            switch (record.EventType)
+            {
+                case "Jazz":
+                    return jazzRepo.GetJazzByID(record.EventID);
+                case "Tour":
+                    return tourRepo.GetWalkByID(record.EventID);
+                case "Talk":
+                    return talkRepo.GetTalk(record.EventID);
+                default:
+                    return null;
+            }
         }
     }
 }
