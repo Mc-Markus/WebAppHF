@@ -45,20 +45,8 @@ namespace WebAppHF.Controllers
             }
 
         }
-        //[Authorize]
-        //public ActionResult Logout()
-        //{
-        //    return View();
-        //}
 
-        //[Authorize]
-        //[HttpPost]
-        //public ActionResult LoggedOut()
-        //{
-        //    FormsAuthentication.SignOut();
 
-        //    return RedirectToAction("Index", "Home");
-        //}
 
         // GET: Admin
         [Authorize]
@@ -91,7 +79,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     restaurantRepo.CreateRestaurant(restaurant);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("RestaurantList");
                 }
             }
             catch (DataException /* dex */)
@@ -102,7 +90,7 @@ namespace WebAppHF.Controllers
             return View(restaurant);
         }
         [Authorize]
-        // GET: Events/Delete/5
+        
         public ActionResult UpdateRestaurant(int id)
         {
             Restaurant @restaurant = restaurantRepo.GetRestaurant(id);
@@ -118,7 +106,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     restaurantRepo.UpdateRestaurant(restaurant);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("RestaurantList");
                 }
             }
             catch (DataException /* dex */)
@@ -129,10 +117,10 @@ namespace WebAppHF.Controllers
             return View(restaurant);
         }
         [Authorize]
-        // GET: Events/Delete/5
+        
         public ActionResult DeleteRestaurant(int id)
         {
-            Restaurant @restaurant= restaurantRepo.GetRestaurant(id);
+            Restaurant @restaurant = restaurantRepo.GetRestaurant(id);
             return View(@restaurant);
         }
 
@@ -151,7 +139,7 @@ namespace WebAppHF.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("RestaurantList");
         }
 
 
@@ -177,7 +165,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     eventRepo.CreateEvent(e, eventType);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("EventList");
                 }
             }
             catch (DataException /* dex */)
@@ -189,7 +177,7 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
-        // GET: Events/Delete/5
+        
         public ActionResult UpdateEvent(int id)
         {
             Event @restaurant = eventRepo.GetEventByID(id);
@@ -205,7 +193,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     eventRepo.UpdateEvent(e);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("EventList");
                 }
             }
             catch (DataException /* dex */)
@@ -217,7 +205,7 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
-        // GET: Events/Delete/5
+        
         public ActionResult DeleteEvent(int id)
         {
             Event @restaurant = eventRepo.GetEventByID(id);
@@ -239,10 +227,25 @@ namespace WebAppHF.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("EventList");
         }
 
+        //Log uit methode, moest geschapt worden omdat deze niet werkte.
 
+        //[Authorize]
+        //public ActionResult Logout()
+        //{
+        //    return View();
+        //}
+
+        //[Authorize]
+        //[HttpPost]
+        //public ActionResult LoggedOut()
+        //{
+        //    FormsAuthentication.SignOut();
+
+        //    return RedirectToAction("Index", "Home");
+        //}
 
     }
 }

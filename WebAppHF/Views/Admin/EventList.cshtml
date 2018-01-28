@@ -8,7 +8,8 @@
 <h2>EventList</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateEvent")
+    @Html.ActionLink("Create New Event", "CreateEvent", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Return to Admin main page", "Index", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 <table class="table">
     <tr>
