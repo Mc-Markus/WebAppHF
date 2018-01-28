@@ -1,15 +1,15 @@
 ﻿@model WebAppHF.Models.Event
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CreateEvent";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>CreateEvent</h2>
 
 @using (Html.BeginForm()) 
 {
-    @Html.AntiForgeryToken()
+    
     
     <div class="form-horizontal">
         <h4>Event</h4>

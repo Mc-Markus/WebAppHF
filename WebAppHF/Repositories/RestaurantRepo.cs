@@ -55,11 +55,11 @@ namespace WebAppHF.Repositories
                 restaurants = database.Restaurants.AsEnumerable();
 
                 return restaurants.ToList();
-            }        
+            }
         }
 
 
-        }
+
 
         public void Remove(Restaurant student)
         {
@@ -73,6 +73,8 @@ namespace WebAppHF.Repositories
             Restaurant temp = database.Restaurants.Find(restaurant.ID);
             temp = restaurant;
             database.SaveChanges();
+        }
+
         public int GetPrice(int id)
         {
             int price = database.Restaurants.Where(m => m.ID == id).Select(m => m.Price).SingleOrDefault();

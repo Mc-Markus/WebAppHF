@@ -13,9 +13,9 @@ namespace WebAppHF.Controllers
     public class AdminController : Controller
     {
         AdminAccount account = new AdminAccount();
-        private IRestaurantRepo repo = new RestaurantRepo();
-        private IEventRepo Erepo = new EventRepo();
-        private IAccountRepo repository = new AccountRepo();
+        private IRestaurantRepo restaurantRepo = new RestaurantRepo();
+        private IEventRepo eventRepo = new EventRepo();
+        private IAccountRepo accountRepo = new AccountRepo();
 
         public ActionResult Login()
         {
@@ -28,7 +28,7 @@ namespace WebAppHF.Controllers
             AdminAccount account = new AdminAccount();
             if (ModelState.IsValid)
             {
-                account = repository.GetAccount(model.UserName, model.Password);
+                account = accountRepo.GetAccount(model.UserName, model.Password);
             }
             if (account != null)
             {
@@ -70,9 +70,9 @@ namespace WebAppHF.Controllers
 
 
         [Authorize]
-        public ActionResult List()
+        public ActionResult RestaurantList()
         {
-            var allRestaurants = repo.GetAllRestaurants();
+            var allRestaurants = restaurantRepo.GetAllRestaurants();
             return View(allRestaurants);
         }
 
@@ -90,7 +90,7 @@ namespace WebAppHF.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.CreateRestaurant(restaurant);
+                    restaurantRepo.CreateRestaurant(restaurant);
                     return RedirectToAction("Index");
                 }
             }
@@ -105,7 +105,7 @@ namespace WebAppHF.Controllers
         // GET: Events/Delete/5
         public ActionResult UpdateRestaurant(int id)
         {
-            Restaurant @restaurant = repo.GetRestaurant(id);
+            Restaurant @restaurant = restaurantRepo.GetRestaurant(id);
             return View(@restaurant);
         }
 
@@ -117,7 +117,7 @@ namespace WebAppHF.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.UpdateRestaurant(restaurant);
+                    restaurantRepo.UpdateRestaurant(restaurant);
                     return RedirectToAction("Index");
                 }
             }
@@ -132,7 +132,7 @@ namespace WebAppHF.Controllers
         // GET: Events/Delete/5
         public ActionResult DeleteRestaurant(int id)
         {
-            Restaurant @restaurant= repo.GetRestaurant(id);
+            Restaurant @restaurant= restaurantRepo.GetRestaurant(id);
             return View(@restaurant);
         }
 
@@ -142,8 +142,8 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                Restaurant e = repo.GetRestaurant(id);
-                repo.Remove(e);
+                Restaurant e = restaurantRepo.GetRestaurant(id);
+                restaurantRepo.Remove(e);
 
             }
             catch (DataException/* dex */)
@@ -152,6 +152,20 @@ namespace WebAppHF.Controllers
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
             return RedirectToAction("Index");
+        }
+
+
+        [Authorize]
+        public ActionResult EventList()
+        {
+            var allEvents = eventRepo.GetEvents();
+            return View(allEvents);
+        }
+
+        [Authorize]
+        public ActionResult CreateEvent()
+        {
+            return View();
         }
 
         [Authorize]
@@ -162,7 +176,7 @@ namespace WebAppHF.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    Erepo.CreateEvent(e, eventType);
+                    eventRepo.CreateEvent(e, eventType);
                     return RedirectToAction("Index");
                 }
             }
@@ -173,6 +187,15 @@ namespace WebAppHF.Controllers
             }
             return View(e);
         }
+
+        [Authorize]
+        // GET: Events/Delete/5
+        public ActionResult UpdateEvent(int id)
+        {
+            Event @restaurant = eventRepo.GetEventByID(id);
+            return View(@restaurant);
+        }
+
         [Authorize]
         [HttpPost]
         public ActionResult UpdateEvent(Event e, int id)
@@ -181,7 +204,7 @@ namespace WebAppHF.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    Erepo.UpdateEvent(e);
+                    eventRepo.UpdateEvent(e);
                     return RedirectToAction("Index");
                 }
             }
@@ -192,14 +215,23 @@ namespace WebAppHF.Controllers
             }
             return View(e);
         }
+
+        [Authorize]
+        // GET: Events/Delete/5
+        public ActionResult DeleteEvent(int id)
+        {
+            Event @restaurant = eventRepo.GetEventByID(id);
+            return View(@restaurant);
+        }
+
         [Authorize]
         [HttpPost]
-        public ActionResult DeleteEvent(int id)
+        public ActionResult DeleteEventConfirm(int id)
         {
             try
             {
-                Event e = Erepo.GetEventByID(id);
-                Erepo.Remove(e);
+                Event e = eventRepo.GetEventByID(id);
+                eventRepo.Remove(e);
 
             }
             catch (DataException/* dex */)
@@ -209,5 +241,8 @@ namespace WebAppHF.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+
     }
 }

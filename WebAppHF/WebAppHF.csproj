@@ -179,7 +179,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzController.cs" />
     <Compile Include="Controllers\RecordsController.cs" />
@@ -465,7 +464,7 @@
     <Content Include="Views\Jazz\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
-    <Content Include="Views\Admin\List.cshtml" />
+    <Content Include="Views\Admin\RestaurantList.cshtml" />
     <Content Include="Views\Walks\Index.cshtml" />
     <Content Include="Views\Walks\_map.cshtml" />
     <Content Include="Views\Walks\_locations.cshtml" />
@@ -483,13 +482,12 @@
     <Content Include="Views\Cart\CartEmpty.cshtml" />
     <Content Include="Views\Talk\Detail.cshtml" />
     <Content Include="Views\Talk\Book.cshtml" />
-    <Content Include="Views\Events\Create.cshtml" />
-    <Content Include="Views\Events\Delete.cshtml" />
-    <Content Include="Views\Events\Details.cshtml" />
-    <Content Include="Views\Events\Edit.cshtml" />
-    <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Admin\UpdateRestaurant.cshtml" />
     <Content Include="Views\Admin\LogOut.cshtml" />
+    <Content Include="Views\Admin\DeleteEvent.cshtml" />
+    <Content Include="Views\Admin\UpdateEvent.cshtml" />
+    <Content Include="Views\Admin\CreateEvent.cshtml" />
+    <Content Include="Views\Admin\EventList.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
