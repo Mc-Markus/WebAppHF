@@ -147,7 +147,7 @@ namespace WebAppHF.Controllers
                 case "Talk":
                     return talkRepo.GetTalk(record.EventID);
                 case "RESTAURANTSESSION":
-                    return restaurantSession.GetRestaurantByID(record.EventID);
+                    return restaurantSession.GetRestaurantSessionByID(record.EventID);
                 default:
                     return null;
             }

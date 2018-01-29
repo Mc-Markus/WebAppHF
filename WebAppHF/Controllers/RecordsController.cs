@@ -115,28 +115,28 @@ namespace WebAppHF.Controllers
             record.OrderID = 1;
             if (ModelState.IsValid)
             {
-                recordRepository.AddRecord(record);
-                // Trying ot use a session 
-                //List<Record> sessionBasket = new List<Record>();
-                //sessionBasket.Add(record);
+                //recordRepository.AddRecord(record);
+                //Trying ot use a session
+                List<Record> sessionBasket = new List<Record>();
+                sessionBasket.Add(record);
 
-                ////check if session contains records if so add them to new cart value
-                //try
-                //{
-                //    List<Record> basket = (List<Record>)Session["Cart"];
-                //    foreach (Record sessionrecord in basket)
-                //    {
-                //        sessionBasket.Add(sessionrecord);
-                //    }
-                //}
-                //catch
-                //{
-                //    Session["Cart"] = null;
-                //}
-                //finally
-                //{
-                //    Session["Cart"] = sessionBasket;
-                //}
+                //check if session contains records if so add them to new cart value
+                try
+                {
+                    List<Record> basket = (List<Record>)Session["Cart"];
+                    foreach (Record sessionrecord in basket)
+                    {
+                        sessionBasket.Add(sessionrecord);
+                    }
+                }
+                catch
+                {
+                    Session["Cart"] = null;
+                }
+                finally
+                {
+                    Session["Cart"] = sessionBasket;
+                }
                 return RedirectToAction("Index","Home");
             }
             return View(record);
