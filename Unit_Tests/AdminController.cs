@@ -2,50 +2,19 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebAppHF.Models;
 using WebAppHF.Repositories;
 
-namespace WebAppHF.Controllers
+namespace Unit_Tests
 {
     public class AdminController : Controller
     {
         AdminAccount account = new AdminAccount();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
         private IEventRepo eventRepo = new EventRepo();
-        private IAccountRepo accountRepo = new AccountRepo();
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(AdminAccount model)
-        {
-            AdminAccount account = new AdminAccount();
-            if (ModelState.IsValid)
-            {
-                account = accountRepo.GetAccount(model.UserName, model.Password);
-            }
-            if (account != null)
-            {
-                FormsAuthentication.SetAuthCookie(account.UserName, false);
-
-                Session["Loggedin_admin"] = account;
-
-                return RedirectToAction("Index", "Admin");
-            }
-            else
-            {
-                ModelState.AddModelError("login-error", "Incorrect username/password");
-                return View();
-            }
-
-        }
 
 
 
@@ -91,15 +60,11 @@ namespace WebAppHF.Controllers
             return View(restaurant);
         }
         [Authorize]
-
+        
         public ActionResult UpdateRestaurant(int id)
         {
-            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
-            if (retrieved == null)
-            {
-                return HttpNotFound();
-            }
-            return View(retrieved);
+            Restaurant @restaurant = restaurantRepo.GetRestaurant(id);
+            return View(@restaurant);
         }
 
         [Authorize]
@@ -122,20 +87,16 @@ namespace WebAppHF.Controllers
             return View(restaurant);
         }
         [Authorize]
-
+        
         public ActionResult DeleteRestaurant(int id)
         {
-            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
-            if (retrieved == null)
-            {
-                return HttpNotFound();
-            }
-            return View(retrieved);
+            Restaurant @restaurant = restaurantRepo.GetRestaurant(id);
+            return View(@restaurant);
         }
 
         [Authorize]
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteRestaurantConfirm(int id)
+        public bool DeleteRestaurantConfirm(int id)
         {
             try
             {
@@ -146,9 +107,9 @@ namespace WebAppHF.Controllers
             catch (DataException/* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
-                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+                return false;
             }
-            return RedirectToAction("RestaurantList");
+            return true;
         }
 
 
@@ -186,15 +147,11 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
-
+        
         public ActionResult UpdateEvent(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
-            if (retrieved == null)
-            {
-                return HttpNotFound();
-            }
-            return View(retrieved);
+            Event @restaurant = eventRepo.GetEventByID(id);
+            return View(@restaurant);
         }
 
         [Authorize]
@@ -218,15 +175,11 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
-
+        
         public ActionResult DeleteEvent(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
-            if (retrieved == null)
-            {
-                return HttpNotFound();
-            }
-            return View(retrieved);
+            Event @restaurant = eventRepo.GetEventByID(id);
+            return View(@restaurant);
         }
 
         [Authorize]
@@ -245,23 +198,6 @@ namespace WebAppHF.Controllers
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
             return RedirectToAction("EventList");
-        }
-
-        //Log uit methode, moest geschapt worden omdat deze niet werkte.
-
-        [Authorize]
-        public ActionResult Logout()
-        {
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult LoggedOut()
-        {
-            FormsAuthentication.SignOut();
-
-            return RedirectToAction("Index", "Home");
         }
 
     }

@@ -61,9 +61,9 @@ namespace WebAppHF.Repositories
 
 
 
-        public void Remove(Restaurant student)
+        public void Remove(Restaurant restaurant)
         {
-            database.Restaurants.Remove(student);
+            database.Restaurants.Remove(restaurant);
             database.SaveChanges();
 
         }
