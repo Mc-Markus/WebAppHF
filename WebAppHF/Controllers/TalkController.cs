@@ -18,44 +18,46 @@ namespace WebAppHF.Controllers
             return View(list);
         }
 
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
         {
-            return View();
+            Talk talk = rep.GetTalkById(id);
+            return View(talk);
         }
 
-        public ActionResult Book(Talk talk)
+        public ActionResult Book(int id)
         {
-            List<TalkModel> list = new List<TalkModel>();
-            TalkModel convertedTalk = new TalkModel();
-            convertedTalk = ConvertTalk(talk, convertedTalk);
-            list.Add(convertedTalk);
-            return View(list);
+            Talk talk = rep.GetTalkById(id);
+            TalkModel viewmodel = new TalkModel(talk);
+            return View(viewmodel);
         }
 
         [HttpPost]
-        public ActionResult Book(List<TalkModel> list)
+        public ActionResult Book(TalkModel talkmodel)
         {
-            Session["Cart"] = list;
+            if (Session["Cart"] == null)
+            {
+                Session["Cart"] = new CartModel();
+                ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+                ((CartModel)Session["Cart"]).Items.Add(talkmodel);
+                return RedirectToAction("AddedToCart");
+            }
+            else
+            {
+                ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+                ((CartModel)Session["Cart"]).Items.Add(talkmodel);
+                return RedirectToAction("AddedToCart");
+            }
+            
+        }
+
+        public ActionResult AddedToCart()
+        {
             return View();
         }
-        
-        public TalkModel ConvertTalk(Talk talk, TalkModel model)
+
+        public ActionResult AddFailed()
         {
-            talk.Adress = model.Adress;
-            talk.Date = model.Date;
-            talk.Description = model.Description;
-            talk.EndTime = model.EndTime;
-            talk.Hall = model.Hall;
-            talk.ID = model.ID;
-            talk.IMGString = model.IMGString;
-            talk.LocationName = model.LocationName;
-            talk.MaxTicketsPP = model.MaxTicketsPP;
-            talk.Name = model.Name;
-            talk.Price = model.Price;
-            talk.SeatsAvailable = model.SeatsAvailable;
-            talk.StartTime = model.StartTime;
-            talk.Title = model.Title;
-            return model;
+            return View();
         }
     }
 }
