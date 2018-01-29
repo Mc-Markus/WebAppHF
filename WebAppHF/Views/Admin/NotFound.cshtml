@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>The record you tried to reach does not exist</h2>
+
+@Html.ActionLink("Return to index page", "Index", "Admin", null, new { @class = "btn btn-primary btn-lg" })
+

@@ -490,6 +490,7 @@
     <Content Include="Views\Admin\UpdateEvent.cshtml" />
     <Content Include="Views\Admin\CreateEvent.cshtml" />
     <Content Include="Views\Admin\EventList.cshtml" />
+    <Content Include="Views\Admin\NotFound.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
