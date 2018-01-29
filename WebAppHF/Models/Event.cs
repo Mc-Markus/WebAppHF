@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebAppHF.Models
 {
-    public abstract class Event 
+    public class Event 
     {
         [Key]
         public int ID { get; set; }

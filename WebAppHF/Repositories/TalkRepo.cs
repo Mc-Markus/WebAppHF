@@ -25,5 +25,10 @@ namespace WebAppHF.Repositories
             ctx.Talks.Add(talk);
             ctx.SaveChanges();
         }
+        public Talk GetTalkById(int id)
+        {
+            Talk talk = ctx.Talks.SingleOrDefault(m => m.ID == id);
+            return talk;
+        }
     }
 }

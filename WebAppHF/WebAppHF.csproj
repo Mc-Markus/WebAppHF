@@ -273,6 +273,8 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantSession.cs" />
     <Compile Include="Models\Talk.cs" />
+    <Compile Include="Models\TalkModel.cs" />
+    <Compile Include="Models\TalkViewModel.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\ViewModelTours.cs" />
@@ -490,7 +492,9 @@
     <Content Include="Views\Admin\UpdateEvent.cshtml" />
     <Content Include="Views\Admin\CreateEvent.cshtml" />
     <Content Include="Views\Admin\EventList.cshtml" />
-    <Content Include="Views\Admin\NotFound.cshtml" />
+    <Content Include="Views\Talk\AddedToCart.cshtml" />
+    <Content Include="Views\Talk\AddFailed.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
