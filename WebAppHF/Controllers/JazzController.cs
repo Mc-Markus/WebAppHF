@@ -26,13 +26,28 @@ namespace WebAppHF.Controllers
 
             return View(summarys);
         }
+         
+        public ActionResult Day()
+        {
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Day(DateTime date)
         {
             //gets all jazz events for a single day
             List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
 
+            if (JazzActs == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(JazzActs);
+        }
+
+        public ActionResult Book()
+        {
+            return RedirectToAction("Index"); 
         }
 
         [HttpGet]
@@ -61,13 +76,13 @@ namespace WebAppHF.Controllers
 
         }
 
-        //[HttpPost]
+        [HttpPost]
         public ActionResult AddToSession(JazzBook MyTestParameter)
         {
             //parameter could possably be changed but i leave it here cause of problems in the past
             JazzBook book = MyTestParameter;
 
-            
+
             List<Record> sessionBasket = new List<Record>();
             //adds the passe-partouts if they are selected by customer
             if (book.DayPassePartout.Record.Amount > 0)
@@ -107,7 +122,7 @@ namespace WebAppHF.Controllers
             }
 
             //send user to basket after things are added to basket
-            return RedirectToAction("Index", "Basket");
+            return RedirectToAction("Index", "Cart");
         }
 
     }
