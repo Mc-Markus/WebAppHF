@@ -232,20 +232,20 @@ namespace WebAppHF.Controllers
 
         //Log uit methode, moest geschapt worden omdat deze niet werkte.
 
-        //[Authorize]
-        //public ActionResult Logout()
-        //{
-        //    return View();
-        //}
+        [Authorize]
+        public ActionResult Logout()
+        {
+            return View();
+        }
 
-        //[Authorize]
-        //[HttpPost]
-        //public ActionResult LoggedOut()
-        //{
-        //    FormsAuthentication.SignOut();
+        [Authorize]
+        [HttpPost]
+        public ActionResult LoggedOut()
+        {
+            FormsAuthentication.SignOut();
 
-        //    return RedirectToAction("Index", "Home");
-        //}
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }
