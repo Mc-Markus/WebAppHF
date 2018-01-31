@@ -244,7 +244,6 @@
     <Compile Include="Models\Talk.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Models\Venue.cs" />
-    <Compile Include="Models\ViewModelTours.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\HFContext.cs" />
     <Compile Include="Repositories\EventRepo.cs" />
