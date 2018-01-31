@@ -1,93 +1,54 @@
-﻿<div class="row">
-    <div class="col-md-12">
-        <h3 class="margin-reservation">Order your amount of tickets <b>(max 2 tickets per talk)</b></h3>
-    </div>
+﻿@using WebAppHF.Models
+@model TalkModel
+
+@*<div class="row">*@
+<div class="col-md-12">
+    <h3 class="margin-reservation">Order your amount of tickets <b>(max 2 tickets per talk)</b></h3>
+</div>
+
+@using (Html.BeginForm())
+{
     <table class="table">
         <tbody>
             <tr>
-                <th scope="col">Tickets</th>
                 <th scope="col">Talk</th>
                 <th scope="col">Price per Ticket</th>
                 <th scope="col">Date and Time</th>
                 <th scope="col">Location</th>
             </tr>
             <tr>
-                <th scope="row">TextBox</th>
-                <td>Gare du Nord</td>
-                <td>€15,00</td>
-                <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                <td>Patronaat - Main Hall</td>
+                <td>@Model.Name</td>
+                <td>€0,00</td>
+                <td>@Model.Date.ToShortDateString() | @Model.StartTime.TimeOfDay - @Model.EndTime.TimeOfDay</td>
+                <td>@Model.LocationName - Main Hall</td>
             </tr>
-            <tr>
-                <th scope="row">TextBox</th>
-                <td>Gare du Nord</td>
-                <td>€15,00</td>
-                <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                <td>Patronaat - Main Hall</td>
-            </tr>
-            <tr>
-                <th scope="row">TextBox</th>
-                <td>Gare du Nord</td>
-                <td>€15,00</td>
-                <td>Saturday 28-07-2018 | 18:00 - 19:00</td>
-                <td>Patronaat - Main Hall</td>
-            </tr>
+
         </tbody>
     </table>
-</div>
-<div class="row">
-    <div class="col-md-8">
-        <p>
-            Fill in an optional question (Dutch or English) below for one of the interviewees and it might be used for the interview <b>(only if you ordered one or two tickets for that specific talk)</b>
-            <br>
-            <br>If the question doesn't appear after filling in a ticket amount, click the 'refresh' button
-        </p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <form>
-            <div class="form-group">
-                <label>Giel Beelen meets Rob Trip</label>
-                <div class="dropdown">
-                    Question for:
-                    <button class="btn btn-primary main-btn dropdown-toggle" type="button" id="dropdown-day" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Select time </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" href="#">Thursday</a> <a class="dropdown-item" href="#">Friday</a> <a class="dropdown-item" href="#">Saturday</a> <a class="dropdown-item" href="#">Sunday</a> </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" id="QuestionTextarea" rows="4"></textarea>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-4">
-        <form>
-            <div class="form-group">
-                <label>Femke Halsema meets Job Cohen</label>
-                <div class="dropdown">
-                    Question for:
-                    <button class="btn btn-primary main-btn dropdown-toggle" type="button" id="dropdown-day" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Select time </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" href="#">Thursday</a> <a class="dropdown-item" href="#">Friday</a> <a class="dropdown-item" href="#">Saturday</a> <a class="dropdown-item" href="#">Sunday</a> </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" id="QuestionTextarea" rows="4"></textarea>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-4">
-        <form>
-            <div class="form-group">
-                <label>Paul Witteman meets Brigitte Kaandorp</label>
-                <div class="dropdown">
-                    Question for:
-                    <button class="btn btn-primary main-btn dropdown-toggle" type="button" id="dropdown-day" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Select time </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" href="#">Thursday</a> <a class="dropdown-item" href="#">Friday</a> <a class="dropdown-item" href="#">Saturday</a> <a class="dropdown-item" href="#">Sunday</a> </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" id="QuestionTextarea" rows="4"></textarea>
-            </div>
-        </form>
-    </div>
-</div>
+    <span>Amount:      </span>
+    <select name="Amount">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    <br />
+    <br />
+    <br />
+
+    @Html.HiddenFor(m => m.Adress)
+    @Html.HiddenFor(m => m.Date)
+    @Html.HiddenFor(m => m.Description)
+    @Html.HiddenFor(m => m.EndTime)
+    @Html.HiddenFor(m => m.Hall)
+    @Html.HiddenFor(m => m.ID)
+    @Html.HiddenFor(m => m.IMGString)
+    @Html.HiddenFor(m => m.LocationName)
+    @Html.HiddenFor(m => m.MaxTicketsPP)
+    @Html.HiddenFor(m => m.Name)
+    @Html.HiddenFor(m => m.Price)
+    @Html.HiddenFor(m => m.SeatsAvailable)
+    @Html.HiddenFor(m => m.StartTime)
+    @Html.HiddenFor(m => m.Title)
+
+
+    <input type = "submit" value = "Order" />
+}
