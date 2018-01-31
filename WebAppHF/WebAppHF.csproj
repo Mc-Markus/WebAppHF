@@ -494,6 +494,7 @@
     <Content Include="Views\Talk\AddedToCart.cshtml" />
     <Content Include="Views\Talk\AddFailed.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Admin\NotFound.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
