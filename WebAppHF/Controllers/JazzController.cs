@@ -27,10 +27,10 @@ namespace WebAppHF.Controllers
             return View(summarys);
         }
          
-        public ActionResult Day()
-        {
-            return RedirectToAction("Index");
-        }
+        //public ActionResult Day()
+        //{
+        //    return RedirectToAction("Index");
+        //}
 
         public ActionResult Day(DateTime date)
         {
@@ -45,10 +45,10 @@ namespace WebAppHF.Controllers
             return View(JazzActs);
         }
 
-        public ActionResult Book()
-        {
-            return RedirectToAction("Index"); 
-        }
+        //public ActionResult Book()
+        //{
+        //    return RedirectToAction("Index"); 
+        //}
 
         [HttpGet]
         public ActionResult Book(DateTime date)
