@@ -1,0 +1,110 @@
+﻿@using WebAppHF.Models
+@model CartModel
+@{
+    ViewBag.Title = "Cart";
+}
+
+<section>
+    <p><h1>Shopping Cart</h1></p>
+    @using (Html.BeginForm())
+    {
+        int i = 0;
+        foreach (Event e in Model.Items)
+        {
+            if (e is TalkModel)
+            {
+                TalkModel t = (TalkModel)e;
+
+                <div style="border-bottom: solid; padding: 0.5em; width: 96.5%;">
+                    <a href="@Url.Action("Detail","Talk", new {id = t.ID})">
+                        <br><b style="color:black;">@t.Name</b>
+                    </a>
+                    <br />
+                    <a href="@Url.Action("Detail","Talk", new {id = t.ID})">
+                        <img id="poster" height="250px" width="500px" src="../IMG/patronaat1.jpg">
+                    </a>
+                    <br>
+
+
+                    <div style="margin-left: 5px; display: inline-block;">
+                        <strong>@t.StartTime.ToShortTimeString() - @t.EndTime.ToShortTimeString()</strong>
+                    </div>
+
+                    <p>
+
+                    </p>
+                    <p class="description">
+                        @t.Description
+                    </p>
+
+                    <div>
+                        <p style="float:left;">
+                            @t.LocationName - Main Hall
+                        </p>
+                        <br />
+                        <br />
+                    </div>
+                    <p>
+                        <span>Amount: </span>
+                        <select name="TalkModelItems[@i].Amount">
+                            @for (int v = 1; v < 3; v++)
+                            {
+                                if (t.Amount == v)
+                                {
+                                    <option value="@v" selected>@t.Amount</option>
+                                }
+                                else
+                                {
+                                    <option value="@v">@v</option>
+                                }
+                            }
+                        </select>
+                    </p>
+                </div>
+                <br />
+            }
+            i++;
+            for (int a = 0; a < Model.Items.Count; a++)
+            {
+
+                @Html.HiddenFor(m => m.Items[a].ID)
+                @Html.HiddenFor(m => m.Items[a].Adress)
+                @Html.HiddenFor(m => m.Items[a].Date)
+                @Html.HiddenFor(m => m.Items[a].EndTime)
+                @Html.HiddenFor(m => m.Items[a].LocationName)
+                @Html.HiddenFor(m => m.Items[a].Name)
+                @Html.HiddenFor(m => m.Items[a].Price)
+                @Html.HiddenFor(m => m.Items[a].SeatsAvailable)
+                @Html.HiddenFor(m => m.Items[a].StartTime)
+            }
+            for (int a = 0; a < Model.RestItems.Count; a++)
+            {
+                @Html.HiddenFor(m => m.RestItems[a].Address)
+                @Html.HiddenFor(m => m.RestItems[a].FoodIMGString)
+                @Html.HiddenFor(m => m.RestItems[a].FoodTypes)
+                @Html.HiddenFor(m => m.RestItems[a].ID)
+                @Html.HiddenFor(m => m.RestItems[a].Name)
+                @Html.HiddenFor(m => m.RestItems[a].Price)
+                @Html.HiddenFor(m => m.RestItems[a].ReducedPrice)
+                @Html.HiddenFor(m => m.RestItems[a].RestaurantIMGString)
+                @Html.HiddenFor(m => m.RestItems[a].Stars)
+            }
+            for (int a = 0; a < Model.TalkModelItems.Count; a++)
+            {
+                @Html.HiddenFor(m => m.TalkModelItems[a].ID)
+                @Html.HiddenFor(m => m.TalkModelItems[a].Adress)
+                @Html.HiddenFor(m => m.TalkModelItems[a].Date)
+                @Html.HiddenFor(m => m.TalkModelItems[a].EndTime)
+                @Html.HiddenFor(m => m.TalkModelItems[a].LocationName)
+                @Html.HiddenFor(m => m.TalkModelItems[a].Name)
+                @Html.HiddenFor(m => m.TalkModelItems[a].Price)
+                @Html.HiddenFor(m => m.TalkModelItems[a].SeatsAvailable)
+                @Html.HiddenFor(m => m.TalkModelItems[a].StartTime)
+            }
+        }
+        <p>
+            <input style="margin-top: 2em;" type="submit" value="Continue to Checkout" />
+        </p>
+    }
+
+</section>

@@ -18,12 +18,44 @@ namespace WebAppHF.Controllers
             return View(list);
         }
 
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
+        {
+            Talk talk = rep.GetTalkById(id);
+            return View(talk);
+        }
+
+        public ActionResult Book(int id)
+        {
+            Talk talk = rep.GetTalkById(id);
+            TalkModel viewmodel = new TalkModel(talk);
+            return View(viewmodel);
+        }
+
+        [HttpPost]
+        public ActionResult Book(TalkModel talkmodel)
+        {
+            if (Session["Cart"] == null)
+            {
+                Session["Cart"] = new CartModel();
+                ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+                ((CartModel)Session["Cart"]).Items.Add(talkmodel);
+                return RedirectToAction("AddedToCart");
+            }
+            else
+            {
+                ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+                ((CartModel)Session["Cart"]).Items.Add(talkmodel);
+                return RedirectToAction("AddedToCart");
+            }
+            
+        }
+
+        public ActionResult AddedToCart()
         {
             return View();
         }
 
-        public ActionResult Book()
+        public ActionResult AddFailed()
         {
             return View();
         }

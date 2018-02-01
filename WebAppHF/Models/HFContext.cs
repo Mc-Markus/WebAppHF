@@ -26,5 +26,11 @@ namespace WebAppHF.Repositories
         public DbSet<Order> Orders { get; set; }
         public DbSet<Record> Records { get; set; }
         public DbSet<RestaurantSession> RestaurantSessions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<HFContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

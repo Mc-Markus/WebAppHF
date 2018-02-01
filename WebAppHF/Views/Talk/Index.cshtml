@@ -23,9 +23,6 @@
             <br>20:00 - 22:00
         </p>
     </div>
-    <div class="col-md-3">
-        <p class="talking-red">These interviews will be held in the Dutch language. Reservation is mandatory. Price: Free</p>
-    </div>
 </div>
 <hr>
 <div class="row dinner-top-row">
@@ -35,11 +32,8 @@
         <h3 class="text-center">@talk.Name</h3> <img src="~/IMG/patronaat1.jpg" class="img-fluid" alt="Responsive image">
         <h4 class="dag-header">@talk.Title</h4>
         <p class="talking-height">@talk.Description</p>
-        <button type="button" class="btn btn-primary main-btn"><span class="label label-default">Info</span></button>
-        <button type="button" class="btn btn-primary main-btn">Order Ticket</button>
+        <input type="button" class="btn btn-primary main-btn" value="Info" onclick="@("window.location.href='" + @Url.Action("Detail", "Talk", new { id = talk.ID }, null) + "'");" />
         <p><strong>@talk.Date</strong></p>
     </div>
 }
-
 </div>
-@Html.ActionLink("To Detail","Detail","Talk")

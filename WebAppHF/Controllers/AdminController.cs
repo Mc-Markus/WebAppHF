@@ -97,7 +97,7 @@ namespace WebAppHF.Controllers
             Restaurant retrieved = restaurantRepo.GetRestaurant(id);
             if (retrieved == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound");
             }
             return View(retrieved);
         }
@@ -128,7 +128,7 @@ namespace WebAppHF.Controllers
             Restaurant retrieved = restaurantRepo.GetRestaurant(id);
             if (retrieved == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound");
             }
             return View(retrieved);
         }
@@ -192,7 +192,7 @@ namespace WebAppHF.Controllers
             Event retrieved = eventRepo.GetEventByID(id);
             if (retrieved == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound");
             }
             return View(retrieved);
         }
@@ -224,7 +224,7 @@ namespace WebAppHF.Controllers
             Event retrieved = eventRepo.GetEventByID(id);
             if (retrieved == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound");
             }
             return View(retrieved);
         }
