@@ -153,21 +153,21 @@ namespace WebAppHF.Controllers
 
 
         [Authorize]
-        public ActionResult EventList()
+        public ActionResult JazzList()
         {
             var allEvents = eventRepo.GetEvents();
             return View(allEvents);
         }
 
         [Authorize]
-        public ActionResult CreateEvent()
+        public ActionResult CreateJazz()
         {
             return View();
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateEvent(Event e, int eventType)
+        public ActionResult CreateJazz(Event e, int eventType)
         {
             try
             {
@@ -187,7 +187,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
 
-        public ActionResult UpdateEvent(int id)
+        public ActionResult UpdateJazz(int id)
         {
             Event retrieved = eventRepo.GetEventByID(id);
             if (retrieved == null)
@@ -199,7 +199,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateEvent(Event e)
+        public ActionResult UpdateJazz(Event e)
         {
             try
             {
@@ -219,7 +219,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
 
-        public ActionResult DeleteEvent(int id)
+        public ActionResult DeleteJazz(int id)
         {
             Event retrieved = eventRepo.GetEventByID(id);
             if (retrieved == null)
@@ -231,7 +231,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult DeleteEvent(int id, FormCollection fcNotUsed)
+        public ActionResult DeleteJazz(int id, FormCollection fcNotUsed)
         {
             try
             {
@@ -247,7 +247,194 @@ namespace WebAppHF.Controllers
             return RedirectToAction("EventList");
         }
 
-        //Log uit methode, moest geschapt worden omdat deze niet werkte.
+        [Authorize]
+        public ActionResult TalkList()
+        {
+            var allEvents = eventRepo.GetEvents();
+            return View(allEvents);
+        }
+
+        [Authorize]
+        public ActionResult CreateTalk()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateTalk(Event e, int eventType)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    eventRepo.CreateEvent(e, eventType);
+                    return RedirectToAction("EventList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+
+        [Authorize]
+
+        public ActionResult UpdateTalk(int id)
+        {
+            Event retrieved = eventRepo.GetEventByID(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateTalk(Event e)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    eventRepo.UpdateEvent(e);
+                    return RedirectToAction("EventList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+
+        [Authorize]
+
+        public ActionResult DeleteTalk(int id)
+        {
+            Event retrieved = eventRepo.GetEventByID(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult DeleteTalk(int id, FormCollection fcNotUsed)
+        {
+            try
+            {
+                Event e = eventRepo.GetEventByID(id);
+                eventRepo.Remove(e);
+
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+            return RedirectToAction("EventList");
+        }
+        [Authorize]
+        public ActionResult WalkList()
+        {
+            var allEvents = eventRepo.GetEvents();
+            return View(allEvents);
+        }
+
+        [Authorize]
+        public ActionResult CreateWalk()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateWalk(Event e, int eventType)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    eventRepo.CreateEvent(e, eventType);
+                    return RedirectToAction("EventList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+
+        [Authorize]
+
+        public ActionResult UpdateWalk(int id)
+        {
+            Event retrieved = eventRepo.GetEventByID(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateWalk(Event e)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    eventRepo.UpdateEvent(e);
+                    return RedirectToAction("EventList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+
+        [Authorize]
+
+        public ActionResult DeleteWalk(int id)
+        {
+            Event retrieved = eventRepo.GetEventByID(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult DeleteWalk(int id, FormCollection fcNotUsed)
+        {
+            try
+            {
+                Event e = eventRepo.GetEventByID(id);
+                eventRepo.Remove(e);
+
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+            return RedirectToAction("EventList");
+        }
 
         [Authorize]
         public ActionResult Logout()
