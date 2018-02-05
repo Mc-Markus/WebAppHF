@@ -41,13 +41,10 @@ namespace WebAppHF.Controllers
                 ((CartModel)Session["Cart"]).Items.Add(talkmodel);
                 return RedirectToAction("AddedToCart");
             }
-            else
-            {
-                ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
-                ((CartModel)Session["Cart"]).Items.Add(talkmodel);
-                return RedirectToAction("AddedToCart");
-            }
-            
+            ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+            ((CartModel)Session["Cart"]).Items.Add(talkmodel);
+            return RedirectToAction("AddedToCart");
+
         }
 
         public ActionResult AddedToCart()

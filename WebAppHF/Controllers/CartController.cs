@@ -165,10 +165,7 @@ namespace WebAppHF.Controllers
             {
                 return RedirectToAction("Success");
             }
-            else
-            {
-                return View(cart);
-            }
+            return View(cart);
         }
 
         [HttpPost]
