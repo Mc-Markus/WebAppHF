@@ -61,55 +61,58 @@ namespace WebAppHF.Controllers
             CartViewModel cartViewModel = new CartViewModel(displayRecords, crossSelling);
 
             #region OLD CART FROM HOSSAM
-            
-            ////Cart items
-            //CartModel cart1 = new CartModel();
-            //cart1.Items = (List<Event>)Session["cart"];
-            //if (cart1.Items == null)
-            //{
-            //    return RedirectToAction("CartEmpty");
-            //}
-            //List<Event> list = rep.GetEvents();
-            //cart1.Items = list;
 
-//        [HttpPost]//Cartmodel is no longer in use
-//        public ActionResult Index(CartModel cart)
-//        {
-//            return View();
-//        }
+            //            ////Cart items
+            //            //CartModel cart1 = new CartModel();
+            //            //cart1.Items = (List<Event>)Session["cart"];
+            //            //if (cart1.Items == null)
+            //            //{
+            //            //    return RedirectToAction("CartEmpty");
+            //            //}
+            //            //List<Event> list = rep.GetEvents();
+            //            //cart1.Items = list;
 
-        public ActionResult Cart()
-        {
-            if (Session["Cart"] == null && Session["RestCart"] == null)
-            {
-                //Als de session leeg is, zijn er geen items toegevoegd aan de cart, redirect naar cartempty view.
-                return RedirectToAction("CartEmpty");
-            }
-            //bij deze else statement wordt de totaalprijs van alle items in de cart berekend.
-            else
-            {
-                CartModel cart = (CartModel)Session["Cart"];
-                int totalPrice = 0;
+            ////        [HttpPost]//Cartmodel is no longer in use
+            ////        public ActionResult Index(CartModel cart)
+            ////        {
+            ////            return View();
+            ////        }
 
-                foreach (Event e in cart.Items)
-                {
-                    if (e is TalkModel)
-                    {
-                        TalkModel talk = (TalkModel)e;
-                        totalPrice += (talk.Amount * talk.Price);
-                    }
-                    //zet hier jullie viewmodels van jullie champions die een amount bevat net als de if statement hierboven.
+            //        public ActionResult Cart()
+            //        {
+            //            if (Session["Cart"] == null && Session["RestCart"] == null)
+            //            {
+            //                //Als de session leeg is, zijn er geen items toegevoegd aan de cart, redirect naar cartempty view.
+            //                return RedirectToAction("CartEmpty");
+            //            }
+            //            //bij deze else statement wordt de totaalprijs van alle items in de cart berekend.
+            //            else
+            //            {
+            //                CartModel cart = (CartModel)Session["Cart"];
+            //                int totalPrice = 0;
+
+            //                foreach (Event e in cart.Items)
+            //                {
+            //                    if (e is TalkModel)
+            //                    {
+            //                        TalkModel talk = (TalkModel)e;
+            //                        totalPrice += (talk.Amount * talk.Price);
+            //                    }
+            //                    //zet hier jullie viewmodels van jullie champions die een amount bevat net als de if statement hierboven.
 
 
-                }
-                //doe hetzelfde hier met een viewmodel met een amount voor restaurant als hierboven.
-                //foreach (Restaurant rest in cart.RestItems)
-                //{
+            //                }
+            //                //doe hetzelfde hier met een viewmodel met een amount voor restaurant als hierboven.
+            //                //foreach (Restaurant rest in cart.RestItems)
+            //                //{
 
-                //}
-                cart.Price = totalPrice;
-                return View(cart);
-            }
+            //                //}
+            //                cart.Price = totalPrice;
+            //                return View(cart);
+            #endregion
+
+            return View(cartViewModel);
+
         }
 
         [HttpPost]
