@@ -113,12 +113,6 @@ namespace WebAppHF.Controllers
             #endregion
         }
 
-        [HttpPost]//Cartmodel is no longer in use
-        public ActionResult Index(CartModel cart)
-        {
-            return View();
-        }
-
         public ActionResult Cart()
         {
             if (Session["Cart"] == null && Session["RestCart"] == null)
