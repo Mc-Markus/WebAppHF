@@ -105,7 +105,6 @@ namespace WebAppHF.Controllers
                 //doe hetzelfde hier met een viewmodel met een amount voor restaurant als hierboven.
                 //foreach (Restaurant rest in cart.RestItems)
                 //{
-        }
 
                 //}
                 cart.Price = totalPrice;
