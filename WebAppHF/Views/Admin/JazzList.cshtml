@@ -8,7 +8,8 @@
 <h2>JazzList</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateJazz")
+    @Html.ActionLink("Create New", "CreateJazz", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Return to Admin main page", "Index", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 <table class="table">
     <tr>
