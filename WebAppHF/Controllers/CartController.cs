@@ -60,8 +60,7 @@ namespace WebAppHF.Controllers
 
             CartViewModel cartViewModel = new CartViewModel(displayRecords, crossSelling);
 
-            #region OLD CART FROM HOSSAM
-            
+            #region old cart
             ////Cart items
             //CartModel cart1 = new CartModel();
             //cart1.Items = (List<Event>)Session["cart"];
@@ -71,12 +70,9 @@ namespace WebAppHF.Controllers
             //}
             //List<Event> list = rep.GetEvents();
             //cart1.Items = list;
-
-//        [HttpPost]//Cartmodel is no longer in use
-//        public ActionResult Index(CartModel cart)
-//        {
-//            return View();
-//        }
+            #endregion
+            return View(cartViewModel);
+        }
 
         public ActionResult Cart()
         {
@@ -100,6 +96,10 @@ namespace WebAppHF.Controllers
                     }
                     //zet hier jullie viewmodels van jullie champions die een amount bevat net als de if statement hierboven.
 
+            //                //}
+            //                cart.Price = totalPrice;
+            //                return View(cart);
+            
 
                 }
                 //doe hetzelfde hier met een viewmodel met een amount voor restaurant als hierboven.
