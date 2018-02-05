@@ -11,6 +11,7 @@ namespace WebAppHF.Repositories
     {
         IEnumerable<Talk> GetTalks();
         Talk GetTalk(int id);
+        Talk GetTalkById(int id);
         void AddTalk(Talk talk);
     }
 }

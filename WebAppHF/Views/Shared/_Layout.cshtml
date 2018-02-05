@@ -25,9 +25,9 @@
                     <li class="nav-item">@Html.ActionLink("Historic Haarlem", "Index", "Tours", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@(Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" }))</li>
                     <li class="nav-item">
-                        <a class="nav-link basket-nav" href="@Url.Action("Index", "Cart")"> <img src="~/IMG/shopping-basket.png" alt=""> </a>
+                        <a class="nav-link basket-nav" href="@Url.Action("Cart", "Cart")"> <img src="~/IMG/shopping-basket.png" alt=""> </a>
                     </li>
-                    <li class="nav-item"> @(Html.ActionLink("Basket", "Index", "Cart", null, new { @class = "nav-link" }))</li>
+                    <li class="nav-item"> @(Html.ActionLink("Basket", "Cart", "Cart", null, new { @class = "nav-link" }))</li>
                 </ul>
             </div>
         </div>
