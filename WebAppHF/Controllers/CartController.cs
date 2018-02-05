@@ -60,58 +60,40 @@ namespace WebAppHF.Controllers
 
             CartViewModel cartViewModel = new CartViewModel(displayRecords, crossSelling);
 
-            #region OLD CART FROM HOSSAM
-            
-            ////Cart items
-            //CartModel cart1 = new CartModel();
-            //cart1.Items = (List<Event>)Session["cart"];
-            //if (cart1.Items == null)
-            //{
-            //    return RedirectToAction("CartEmpty");
-            //}
-            //List<Event> list = rep.GetEvents();
-            //cart1.Items = list;
-
-//        [HttpPost]//Cartmodel is no longer in use
-//        public ActionResult Index(CartModel cart)
-//        {
-//            return View();
-//        }
-
-        public ActionResult Cart()
-        {
-            if (Session["Cart"] == null && Session["RestCart"] == null)
+            public ActionResult Cart()
             {
-                //Als de session leeg is, zijn er geen items toegevoegd aan de cart, redirect naar cartempty view.
-                return RedirectToAction("CartEmpty");
-            }
-            //bij deze else statement wordt de totaalprijs van alle items in de cart berekend.
-            else
-            {
-                CartModel cart = (CartModel)Session["Cart"];
-                int totalPrice = 0;
-
-                foreach (Event e in cart.Items)
+                if (Session["Cart"] == null && Session["RestCart"] == null)
                 {
-                    if (e is TalkModel)
-                    {
-                        TalkModel talk = (TalkModel)e;
-                        totalPrice += (talk.Amount * talk.Price);
-                    }
-                    //zet hier jullie viewmodels van jullie champions die een amount bevat net als de if statement hierboven.
-
-
+                    //Als de session leeg is, zijn er geen items toegevoegd aan de cart, redirect naar cartempty view.
+                    return RedirectToAction("CartEmpty");
                 }
-                //doe hetzelfde hier met een viewmodel met een amount voor restaurant als hierboven.
-                //foreach (Restaurant rest in cart.RestItems)
-                //{
+                //bij deze else statement wordt de totaalprijs van alle items in de cart berekend.
+                else
+                {
+                    CartModel cart = (CartModel)Session["Cart"];
+                    int totalPrice = 0;
 
-                //}
-                cart.Price = totalPrice;
-                return View(cart);
+                    foreach (Event e in cart.Items)
+                    {
+                        if (e is TalkModel)
+                        {
+                            TalkModel talk = (TalkModel)e;
+                            totalPrice += (talk.Amount * talk.Price);
+                        }
+                        //zet hier jullie viewmodels van jullie champions die een amount bevat net als de if statement hierboven.
+
+
+                    }
+                    //doe hetzelfde hier met een viewmodel met een amount voor restaurant als hierboven.
+                    //foreach (Restaurant rest in cart.RestItems)
+                    //{
+
+                    //}
+                    cart.Price = totalPrice;
+                    return View(cart);
+                }
             }
         }
-
         [HttpPost]
         public ActionResult Cart(CartModel cart)
         {
