@@ -175,7 +175,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     jazzRepo.CreateJazz(e);
-                    return RedirectToAction("EventList");
+                    return RedirectToAction("JazzList");
                 }
             }
             catch (DataException /* dex */)
@@ -207,7 +207,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     jazzRepo.UpdateJazz(e);
-                    return RedirectToAction("EventList");
+                    return RedirectToAction("JazzList");
                 }
             }
             catch (DataException /* dex */)
@@ -245,7 +245,7 @@ namespace WebAppHF.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
-            return RedirectToAction("EventList");
+            return RedirectToAction("JazzList");
         }
 
         [Authorize]
@@ -270,7 +270,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     talkRepo.CreateTalk(e);
-                    return RedirectToAction("EventList");
+                    return RedirectToAction("TalkList");
                 }
             }
             catch (DataException /* dex */)
@@ -302,7 +302,7 @@ namespace WebAppHF.Controllers
                 if (ModelState.IsValid)
                 {
                     talkRepo.UpdateTalk(e);
-                    return RedirectToAction("EventList");
+                    return RedirectToAction("TalkList");
                 }
             }
             catch (DataException /* dex */)
@@ -340,7 +340,7 @@ namespace WebAppHF.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
-            return RedirectToAction("EventList");
+            return RedirectToAction("TalkList");
         }
 
         [Authorize]
