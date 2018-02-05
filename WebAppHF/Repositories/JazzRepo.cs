@@ -40,8 +40,7 @@ namespace WebAppHF.Repositories
                 //pass-partout's are not needed
                 jazzList = RemovePassPartout(jazzList);
                 
-                DateTime day;
-                day = jazzList.Last().Date;
+                DateTime day = jazzList.Last().Date;
 
                 foreach(Jazz jazz in jazzList)
                 {

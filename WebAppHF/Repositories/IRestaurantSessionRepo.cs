@@ -9,6 +9,6 @@ namespace WebAppHF.Repositories
 {
     interface IRestaurantSessionRepo 
     {
-        RestaurantSession GetRestaurantByID(int ID);
+        RestaurantSession GetRestaurantSessionByID(int ID);
     }
 }

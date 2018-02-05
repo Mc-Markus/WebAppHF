@@ -277,7 +277,6 @@
     <Compile Include="Models\TalkViewModel.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Models\Venue.cs" />
-    <Compile Include="Models\ViewModelTours.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\HFContext.cs" />
     <Compile Include="Repositories\AccountRepo.cs" />
@@ -495,6 +494,7 @@
     <Content Include="Views\Talk\AddedToCart.cshtml" />
     <Content Include="Views\Talk\AddFailed.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Admin\NotFound.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using WebAppHF.Models;
+using System.Data.Entity;
 
 namespace WebAppHF.Repositories
 {
@@ -61,17 +62,16 @@ namespace WebAppHF.Repositories
 
 
 
-        public void Remove(Restaurant student)
+        public void Remove(Restaurant restaurant)
         {
-            database.Restaurants.Remove(student);
+            database.Restaurants.Remove(restaurant);
             database.SaveChanges();
 
         }
 
         public void UpdateRestaurant(Restaurant restaurant)
         {
-            Restaurant temp = database.Restaurants.Find(restaurant.ID);
-            temp = restaurant;
+            database.Entry(restaurant).State = EntityState.Modified;
             database.SaveChanges();
         }
 
