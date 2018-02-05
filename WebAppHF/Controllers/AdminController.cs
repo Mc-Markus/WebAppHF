@@ -104,7 +104,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateRestaurant(Restaurant restaurant, int id)
+        public ActionResult UpdateRestaurant(Restaurant restaurant)
         {
             try
             {
@@ -134,8 +134,8 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteRestaurantConfirm(int id)
+        [HttpPost]
+        public ActionResult DeleteRestaurant(int id, FormCollection fcNotUsed)
         {
             try
             {
@@ -199,7 +199,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateEvent(Event e, int id)
+        public ActionResult UpdateEvent(Event e)
         {
             try
             {
@@ -231,7 +231,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult DeleteEventConfirm(int id)
+        public ActionResult DeleteEvent(int id, FormCollection fcNotUsed)
         {
             try
             {
