@@ -41,7 +41,6 @@ namespace WebAppHF.Controllers
             {
                 return RedirectToAction("Index");
             }
-
             return View(JazzActs);
         }
 
