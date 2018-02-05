@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebAppHF.Models;
@@ -29,25 +30,25 @@ namespace WebAppHF.Repositories
             using (HFContext context = new HFContext())
             {
                 jazzs = context.Jazzs.AsEnumerable();
-                jazzs.OrderBy(j =>j.Date);
+                jazzs.OrderBy(j => j.Date);
                 jazzList = jazzs.ToList();
 
-                if(jazzs== null)
+                if (jazzs == null)
                 {
                     return null;
                 }
-                
+
                 //pass-partout's are not needed
                 jazzList = RemovePassPartout(jazzList);
-                
+
                 DateTime day = jazzList.Last().Date;
 
-                foreach(Jazz jazz in jazzList)
+                foreach (Jazz jazz in jazzList)
                 {
                     if (day != jazz.Date)
                     {
                         day = jazz.Date;
-                        summarys.Add(new JazzDaySummary(jazz.IMGString, jazz.Date.DayOfWeek.ToString(),jazz.Date, jazz.LocationName, jazz.Band ));
+                        summarys.Add(new JazzDaySummary(jazz.IMGString, jazz.Date.DayOfWeek.ToString(), jazz.Date, jazz.LocationName, jazz.Band));
                     }
                     else
                     {
@@ -67,7 +68,7 @@ namespace WebAppHF.Repositories
             IEnumerable<Jazz> Jazzs;
             using (HFContext context = new HFContext())
             {
-                Jazzs = context.Jazzs.Where(j => j.Date == date).OrderBy(j=>j.StartTime);
+                Jazzs = context.Jazzs.Where(j => j.Date == date).OrderBy(j => j.StartTime);
                 return RemovePassPartout(Jazzs.ToList());
             }
         }
@@ -89,7 +90,7 @@ namespace WebAppHF.Repositories
         {
             List<Jazz> newList = new List<Jazz>();
 
-            foreach(Jazz jazz in list)
+            foreach (Jazz jazz in list)
             {
                 if (!jazz.Band.ToLower().Contains("passe-partout"))
                 {
@@ -113,7 +114,7 @@ namespace WebAppHF.Repositories
 
         //Returns the passe-partout for a single day
         public Jazz GetPassePartoutDay(DateTime date)
-        { 
+        {
             IEnumerable<Jazz> Jazzs;
             using (HFContext context = new HFContext())
             {
@@ -122,6 +123,33 @@ namespace WebAppHF.Repositories
                 Jazz jazz = Jazzs.SingleOrDefault(j => j.Date == date && !j.Name.Contains("Passe-Partout for all Jazz Events"));
 
                 return jazz;
+            }
+        }
+
+        public void CreateJazz(Jazz e)
+        {
+            using (HFContext context = new HFContext())
+            {
+                context.Events.Add(e);
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateJazz(Jazz e)
+        {
+            using (HFContext context = new HFContext())
+            {
+                context.Entry(e).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void Remove(Jazz e)
+        {
+            using (HFContext context = new HFContext())
+            {
+                context.Events.Remove(e);
+                context.SaveChanges();
             }
         }
     }

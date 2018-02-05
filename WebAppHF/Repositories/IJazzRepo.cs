@@ -15,5 +15,8 @@ namespace WebAppHF.Repositories
         Jazz GetPassePartoutWeekend();
         Jazz GetPassePartoutDay(DateTime date);
         List<JazzDaySummary> GetDaySummarys();
+        void CreateJazz(Jazz e);
+        void UpdateJazz(Jazz e);
+        void Remove(Jazz e);
     }
 }

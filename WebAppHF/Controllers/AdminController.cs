@@ -15,7 +15,8 @@ namespace WebAppHF.Controllers
     {
         AdminAccount account = new AdminAccount();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
-        private IEventRepo eventRepo = new EventRepo();
+        private IJazzRepo jazzRepo = new JazzRepo();
+        private ITalkRepo talkRepo = new TalkRepo();
         private IAccountRepo accountRepo = new AccountRepo();
 
         public ActionResult Login()
@@ -155,7 +156,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         public ActionResult JazzList()
         {
-            var allEvents = eventRepo.GetEvents();
+            var allEvents = jazzRepo.GetAll();
             return View(allEvents);
         }
 
@@ -167,13 +168,13 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateJazz(Event e, int eventType)
+        public ActionResult CreateJazz(Jazz e)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    eventRepo.CreateEvent(e, eventType);
+                    jazzRepo.CreateJazz(e);
                     return RedirectToAction("EventList");
                 }
             }
@@ -189,7 +190,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult UpdateJazz(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
+            Event retrieved = jazzRepo.GetJazzByID(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -199,13 +200,13 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateJazz(Event e)
+        public ActionResult UpdateJazz(Jazz e)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    eventRepo.UpdateEvent(e);
+                    jazzRepo.UpdateJazz(e);
                     return RedirectToAction("EventList");
                 }
             }
@@ -221,7 +222,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult DeleteJazz(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
+            Event retrieved = jazzRepo.GetJazzByID(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -235,8 +236,8 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                Event e = eventRepo.GetEventByID(id);
-                eventRepo.Remove(e);
+                Jazz e = jazzRepo.GetJazzByID(id);
+                jazzRepo.Remove(e);
 
             }
             catch (DataException/* dex */)
@@ -250,7 +251,7 @@ namespace WebAppHF.Controllers
         [Authorize]
         public ActionResult TalkList()
         {
-            var allEvents = eventRepo.GetEvents();
+            var allEvents = talkRepo.GetTalks();
             return View(allEvents);
         }
 
@@ -262,13 +263,13 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateTalk(Event e, int eventType)
+        public ActionResult CreateTalk(Talk e)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    eventRepo.CreateEvent(e, eventType);
+                    talkRepo.CreateTalk(e);
                     return RedirectToAction("EventList");
                 }
             }
@@ -284,7 +285,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult UpdateTalk(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
+            Event retrieved = talkRepo.GetTalkById(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -294,13 +295,13 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateTalk(Event e)
+        public ActionResult UpdateTalk(Talk e)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    eventRepo.UpdateEvent(e);
+                    talkRepo.UpdateTalk(e);
                     return RedirectToAction("EventList");
                 }
             }
@@ -316,7 +317,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult DeleteTalk(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
+            Event retrieved = talkRepo.GetTalkById(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -330,102 +331,8 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                Event e = eventRepo.GetEventByID(id);
-                eventRepo.Remove(e);
-
-            }
-            catch (DataException/* dex */)
-            {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
-            }
-            return RedirectToAction("EventList");
-        }
-        [Authorize]
-        public ActionResult WalkList()
-        {
-            var allEvents = eventRepo.GetEvents();
-            return View(allEvents);
-        }
-
-        [Authorize]
-        public ActionResult CreateWalk()
-        {
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult CreateWalk(Event e, int eventType)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    eventRepo.CreateEvent(e, eventType);
-                    return RedirectToAction("EventList");
-                }
-            }
-            catch (DataException /* dex */)
-            {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-            return View(e);
-        }
-
-        [Authorize]
-
-        public ActionResult UpdateWalk(int id)
-        {
-            Event retrieved = eventRepo.GetEventByID(id);
-            if (retrieved == null)
-            {
-                return RedirectToAction("NotFound");
-            }
-            return View(retrieved);
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult UpdateWalk(Event e)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    eventRepo.UpdateEvent(e);
-                    return RedirectToAction("EventList");
-                }
-            }
-            catch (DataException /* dex */)
-            {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-            return View(e);
-        }
-
-        [Authorize]
-
-        public ActionResult DeleteWalk(int id)
-        {
-            Event retrieved = eventRepo.GetEventByID(id);
-            if (retrieved == null)
-            {
-                return RedirectToAction("NotFound");
-            }
-            return View(retrieved);
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult DeleteWalk(int id, FormCollection fcNotUsed)
-        {
-            try
-            {
-                Event e = eventRepo.GetEventByID(id);
-                eventRepo.Remove(e);
+                Talk e = talkRepo.GetTalkById(id);
+                talkRepo.Remove(e);
 
             }
             catch (DataException/* dex */)
