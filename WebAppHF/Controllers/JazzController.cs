@@ -26,11 +26,6 @@ namespace WebAppHF.Controllers
 
             return View(summarys);
         }
-         
-        //public ActionResult Day()
-        //{
-        //    return RedirectToAction("Index");
-        //}
 
         public ActionResult Day(DateTime date)
         {
@@ -43,11 +38,6 @@ namespace WebAppHF.Controllers
             }
             return View(JazzActs);
         }
-
-        //public ActionResult Book()
-        //{
-        //    return RedirectToAction("Index"); 
-        //}
 
         [HttpGet]
         public ActionResult Book(DateTime date)
@@ -64,7 +54,7 @@ namespace WebAppHF.Controllers
 
             foreach (Jazz jazz in JazzActs)
             {
-                DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID, "Jazz"));
+                DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID, eventType));
                 displayRecordEvents.Add(dr);
             }
 
@@ -122,7 +112,46 @@ namespace WebAppHF.Controllers
 
             //send user to basket after things are added to basket
             return RedirectToAction("Index", "Cart");
+
+            #region addToSession copy with extra documentation
+            ////put this at the end of your book/reservation/buy post method ActionResult and add your records to session basket as described below
+            ////please use the complete thing so it works the same in all places
+
+            ////I use this method instead of "+=" because you can only use "+=" if there is already something in the cart
+            ////and using this method you can also check if the contents of the cart are valid
+
+            ////List that will be the new contents of the cart
+            //List<Record> sessionBasket = new List<Record>();
+
+            ////you can put your records in like sessionBasket.Add(new Record(eventID, eventType);
+
+            ////check if session contains records if so add them to new cart contents
+            //try
+            //{
+            //    //adds valid records to sessionBasket
+            //    List<Record> basket = (List<Record>)Session["Cart"];
+            //    foreach (Record record in basket)
+            //    {
+            //        sessionBasket.Add(record);
+            //    }
+            //}
+            //catch
+            //{
+            //    //when session contains invalid values it is cleared
+            //    Session["Cart"] = null;
+            //}
+            //finally
+            //{
+            //    //adds new contents to cart
+            //    Session["Cart"] = sessionBasket;
+            //}
+
+            ////send user to basket after things are added to basket
+            //return RedirectToAction("Index", "Basket");
+            #endregion
         }
 
     }
 }
+
+

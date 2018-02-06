@@ -15,7 +15,8 @@ namespace WebAppHF.Controllers
     {
         AdminAccount account = new AdminAccount();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
-        private IEventRepo eventRepo = new EventRepo();
+        private IJazzRepo jazzRepo = new JazzRepo();
+        private ITalkRepo talkRepo = new TalkRepo();
         private IAccountRepo accountRepo = new AccountRepo();
 
         public ActionResult Login()
@@ -104,7 +105,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateRestaurant(Restaurant restaurant, int id)
+        public ActionResult UpdateRestaurant(Restaurant restaurant)
         {
             try
             {
@@ -134,8 +135,8 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteRestaurantConfirm(int id)
+        [HttpPost]
+        public ActionResult DeleteRestaurant(int id, FormCollection fcNotUsed)
         {
             try
             {
@@ -153,28 +154,28 @@ namespace WebAppHF.Controllers
 
 
         [Authorize]
-        public ActionResult EventList()
+        public ActionResult JazzList()
         {
-            var allEvents = eventRepo.GetEvents();
+            var allEvents = jazzRepo.GetAll();
             return View(allEvents);
         }
 
         [Authorize]
-        public ActionResult CreateEvent()
+        public ActionResult CreateJazz()
         {
             return View();
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateEvent(Event e, int eventType)
+        public ActionResult CreateJazz(Jazz e)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    eventRepo.CreateEvent(e, eventType);
-                    return RedirectToAction("EventList");
+                    jazzRepo.CreateJazz(e);
+                    return RedirectToAction("JazzList");
                 }
             }
             catch (DataException /* dex */)
@@ -187,9 +188,9 @@ namespace WebAppHF.Controllers
 
         [Authorize]
 
-        public ActionResult UpdateEvent(int id)
+        public ActionResult UpdateJazz(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
+            Event retrieved = jazzRepo.GetJazzByID(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -199,14 +200,14 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateEvent(Event e, int id)
+        public ActionResult UpdateJazz(Jazz e)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    eventRepo.UpdateEvent(e);
-                    return RedirectToAction("EventList");
+                    jazzRepo.UpdateJazz(e);
+                    return RedirectToAction("JazzList");
                 }
             }
             catch (DataException /* dex */)
@@ -219,9 +220,9 @@ namespace WebAppHF.Controllers
 
         [Authorize]
 
-        public ActionResult DeleteEvent(int id)
+        public ActionResult DeleteJazz(int id)
         {
-            Event retrieved = eventRepo.GetEventByID(id);
+            Event retrieved = jazzRepo.GetJazzByID(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -231,12 +232,12 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult DeleteEventConfirm(int id)
+        public ActionResult DeleteJazz(int id, FormCollection fcNotUsed)
         {
             try
             {
-                Event e = eventRepo.GetEventByID(id);
-                eventRepo.Remove(e);
+                Jazz e = jazzRepo.GetJazzByID(id);
+                jazzRepo.Remove(e);
 
             }
             catch (DataException/* dex */)
@@ -244,10 +245,103 @@ namespace WebAppHF.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
-            return RedirectToAction("EventList");
+            return RedirectToAction("JazzList");
         }
 
-        //Log uit methode, moest geschapt worden omdat deze niet werkte.
+        [Authorize]
+        public ActionResult TalkList()
+        {
+            var allEvents = talkRepo.GetTalks();
+            return View(allEvents);
+        }
+
+        [Authorize]
+        public ActionResult CreateTalk()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateTalk(Talk e)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    talkRepo.CreateTalk(e);
+                    return RedirectToAction("TalkList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+
+        [Authorize]
+
+        public ActionResult UpdateTalk(int id)
+        {
+            Event retrieved = talkRepo.GetTalkById(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateTalk(Talk e)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    talkRepo.UpdateTalk(e);
+                    return RedirectToAction("TalkList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(e);
+        }
+
+        [Authorize]
+
+        public ActionResult DeleteTalk(int id)
+        {
+            Event retrieved = talkRepo.GetTalkById(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult DeleteTalk(int id, FormCollection fcNotUsed)
+        {
+            try
+            {
+                Talk e = talkRepo.GetTalkById(id);
+                talkRepo.Remove(e);
+
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+            return RedirectToAction("TalkList");
+        }
 
         [Authorize]
         public ActionResult Logout()

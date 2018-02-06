@@ -17,7 +17,7 @@
 
                 <div style="border-bottom: solid; padding: 0.5em; width: 96.5%;">
                     <a href="@Url.Action("Detail","Talk", new {id = t.ID})">
-                        <br><b style="color:black;">@t.Name</b>
+                        <br><b style="color:black;">@t.Talk.Name</b>
                     </a>
                     <br />
                     <a href="@Url.Action("Detail","Talk", new {id = t.ID})">
@@ -27,19 +27,19 @@
 
 
                     <div style="margin-left: 5px; display: inline-block;">
-                        <strong>@t.StartTime.ToShortTimeString() - @t.EndTime.ToShortTimeString()</strong>
+                        <strong>@t.Talk.StartTime.ToShortTimeString() - @t.Talk.EndTime.ToShortTimeString()</strong>
                     </div>
 
                     <p>
 
                     </p>
                     <p class="description">
-                        @t.Description
+                        @t.Talk.Description
                     </p>
 
                     <div>
                         <p style="float:left;">
-                            @t.LocationName - Main Hall
+                            @t.Talk.LocationName - Main Hall
                         </p>
                         <br />
                         <br />

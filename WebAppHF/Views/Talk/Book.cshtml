@@ -17,10 +17,10 @@
                 <th scope="col">Location</th>
             </tr>
             <tr>
-                <td>@Model.Name</td>
+                <td>@Model.Talk.Name</td>
                 <td>€0,00</td>
-                <td>@Model.Date.ToShortDateString() | @Model.StartTime.TimeOfDay - @Model.EndTime.TimeOfDay</td>
-                <td>@Model.LocationName - Main Hall</td>
+                <td>@Model.Talk.Date.ToShortDateString() | @Model.Talk.StartTime.TimeOfDay - @Model.Talk.EndTime.TimeOfDay</td>
+                <td>@Model.Talk.LocationName - Main Hall</td>
             </tr>
 
         </tbody>
@@ -34,20 +34,20 @@
     <br />
     <br />
 
-    @Html.HiddenFor(m => m.Adress)
-    @Html.HiddenFor(m => m.Date)
-    @Html.HiddenFor(m => m.Description)
-    @Html.HiddenFor(m => m.EndTime)
-    @Html.HiddenFor(m => m.Hall)
-    @Html.HiddenFor(m => m.ID)
-    @Html.HiddenFor(m => m.IMGString)
-    @Html.HiddenFor(m => m.LocationName)
-    @Html.HiddenFor(m => m.MaxTicketsPP)
-    @Html.HiddenFor(m => m.Name)
-    @Html.HiddenFor(m => m.Price)
-    @Html.HiddenFor(m => m.SeatsAvailable)
-    @Html.HiddenFor(m => m.StartTime)
-    @Html.HiddenFor(m => m.Title)
+    @Html.HiddenFor(m => m.Talk.Adress)
+    @Html.HiddenFor(m => m.Talk.Date)
+    @Html.HiddenFor(m => m.Talk.Description)
+    @Html.HiddenFor(m => m.Talk.EndTime)
+    @Html.HiddenFor(m => m.Talk.Hall)
+    @Html.HiddenFor(m => m.Talk.ID)
+    @Html.HiddenFor(m => m.Talk.IMGString)
+    @Html.HiddenFor(m => m.Talk.LocationName)
+    @Html.HiddenFor(m => m.Talk.MaxTicketsPP)
+    @Html.HiddenFor(m => m.Talk.Name)
+    @Html.HiddenFor(m => m.Talk.Price)
+    @Html.HiddenFor(m => m.Talk.SeatsAvailable)
+    @Html.HiddenFor(m => m.Talk.StartTime)
+    @Html.HiddenFor(m => m.Talk.Title)
 
 
     <input type = "submit" value = "Order" />

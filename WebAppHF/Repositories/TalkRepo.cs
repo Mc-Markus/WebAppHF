@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebAppHF.Models;
@@ -29,6 +30,25 @@ namespace WebAppHF.Repositories
         {
             Talk talk = ctx.Talks.SingleOrDefault(m => m.ID == id);
             return talk;
+        }
+
+        public void CreateTalk(Talk e)
+        {
+            ctx.Events.Add(e);
+            ctx.SaveChanges();
+        }
+
+        public void UpdateTalk(Talk e)
+        {
+            ctx.Entry(e).State = EntityState.Modified;
+            ctx.SaveChanges();
+        }
+
+        public void Remove(Talk e)
+        {
+            ctx.Events.Remove(e);
+            ctx.SaveChanges();
+
         }
     }
 }
