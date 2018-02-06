@@ -116,7 +116,7 @@ namespace WebAppHF.Controllers
 
             // Giving the record value of eventid and eventtype
             reservation.Record.Record.EventType = eventType;
-            reservation.Record.Record.EventID = recordRepository.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.Date, reservation.Record.Event.StartTime);
+            reservation.Record.Record.EventID = recordRepository.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
 
             if (ModelState.IsValid)
             {
