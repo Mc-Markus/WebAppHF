@@ -1,0 +1,39 @@
+﻿@using WebAppHF.Models
+@model WebAppHF.Models.ReservationVM
+
+<h2>Go make a reservation for @Html.DisplayFor(x => x.Restaurant.Name)</h2>
+@using (Html.BeginForm("AddToDataBase", "Restaurant", FormMethod.Post, new { MyTestParameter = Model }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Record.Record.Amount)
+                    @Html.TextBoxFor(x => x.Record.Record.Amount, "1", new { type = "number", min = "1", max = "20", })
+                    @Html.ValidationMessageFor(model => model.Record.Record.Amount, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">@Html.DropDownListFor(model => model.Record.Event.StartTime, ViewBag.selectTestTimeList as SelectList, "This is a test", new { @class = "form-control" })</div>
+                <div class="form-group">@Html.DropDownListFor(model => model.Record.Event.Date, ViewBag.selectTestDayList as SelectList, "This is a test", new { @class = "form-control" })</div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Record.Record.Comment)
+                @Html.TextBoxFor(x => x.Record.Record.Comment)
+                @Html.ValidationMessageFor(model => model.Record.Record.Comment, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Record.Record.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(x => x.Record.Record.Comment, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="col-md-6"> <img src="~/IMG/patronaat1.jpg" class="img-fluid" alt="Responsive image"> </div>
+    </div>
+
+    @Html.LabelFor(x => x.Record.Record.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.TextBoxFor(x => x.Record.Record.Comment, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.HiddenFor(x => x.Restaurant.ID, new { id="ID", Value = Model.Restaurant.ID })
+    @Html.HiddenFor(x => x.Record.Record.EventType)
+
+<button type="submit" value="MakeReservation" class="btn btn-primary main-btn talking-right">Add to Basket</button>
+}
+
