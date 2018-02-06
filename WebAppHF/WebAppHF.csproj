@@ -502,6 +502,7 @@
     <Content Include="Views\Admin\DeleteJazz.cshtml" />
     <Content Include="Views\Admin\UpdateJazz.cshtml" />
     <Content Include="Views\Admin\CreateJazz.cshtml" />
+    <Content Include="Views\Restaurant\MakeReservation.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />

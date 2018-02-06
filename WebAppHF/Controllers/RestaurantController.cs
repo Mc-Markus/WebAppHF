@@ -11,7 +11,8 @@ namespace WebAppHF.Controllers
     public class RestaurantController : Controller
     {
         // Maak instantie van de interface om niet direct met je database te praten
-        private IRecordRepository recordRepository = new RecordRepository();
+        //private IRecordRepository recordRepository = new RecordRepository();
+        private IRestaurantSessionRepo restaurantSessionRepo = new RestaurantSessionRepo();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
 
         // Hardcode eventtype to give to the record eventId
@@ -116,7 +117,7 @@ namespace WebAppHF.Controllers
 
             // Giving the record value of eventid and eventtype
             reservation.Record.Record.EventType = eventType;
-            reservation.Record.Record.EventID = recordRepository.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
+            reservation.Record.Record.EventID = restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
 
             List<Record> sessionBasket = new List<Record>();
             sessionBasket.Add(reservation.Record.Record);
