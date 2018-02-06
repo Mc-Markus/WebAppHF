@@ -13,7 +13,7 @@ namespace WebAppHF.Controllers
         // Maak instantie van de interface om niet direct met je database te praten
         private IRecordRepository recordRepository = new RecordRepository();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
-        private HFContext db = new HFContext();
+
         // Hardcode eventtype to give to the record eventId
         private string eventType = "RestaurantSession";
 
@@ -102,7 +102,7 @@ namespace WebAppHF.Controllers
 
             //Create new Record to use in the View
             DisplayRecord record = new DisplayRecord();
-    
+
 
             //Passing viewmodel to the View
             ReservationVM vm = new ReservationVM(restaurant, Day, Time, record);
@@ -118,29 +118,27 @@ namespace WebAppHF.Controllers
             reservation.Record.Record.EventType = eventType;
             reservation.Record.Record.EventID = recordRepository.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
 
-            if (ModelState.IsValid)
-            {
-                List<Record> sessionBasket = new List<Record>();
-                sessionBasket.Add(reservation.Record.Record);
+            List<Record> sessionBasket = new List<Record>();
+            sessionBasket.Add(reservation.Record.Record);
 
-                //check if session contains records if so add them to new cart value
-                try
+            //check if session contains records if so add them to new cart value
+            try
+            {
+                List<Record> basket = (List<Record>)Session["Cart"];
+                foreach (Record sessionrecord in basket)
                 {
-                    List<Record> basket = (List<Record>)Session["Cart"];
-                    foreach (Record sessionrecord in basket)
-                    {
-                        sessionBasket.Add(sessionrecord);
-                    }
-                }
-                catch
-                {
-                    Session["Cart"] = null;
-                }
-                finally
-                {
-                    Session["Cart"] = sessionBasket;
+                    sessionBasket.Add(sessionrecord);
                 }
             }
+            catch
+            {
+                Session["Cart"] = null;
+            }
+            finally
+            {
+                Session["Cart"] = sessionBasket;
+            }
+
             //send user to basket after things are added to basket
             return RedirectToAction("Index", "Cart");
         }
