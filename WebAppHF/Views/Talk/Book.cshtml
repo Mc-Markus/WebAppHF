@@ -34,12 +34,15 @@
     <br />
     <br />
 
-    @Html.HiddenFor(m => m.Talk.Adress)
+
+    @Html.HiddenFor(m => m.Talk.ID)
+
+    @*@Html.HiddenFor(m => m.Talk.Adress)
     @Html.HiddenFor(m => m.Talk.Date)
     @Html.HiddenFor(m => m.Talk.Description)
     @Html.HiddenFor(m => m.Talk.EndTime)
     @Html.HiddenFor(m => m.Talk.Hall)
-    @Html.HiddenFor(m => m.Talk.ID)
+
     @Html.HiddenFor(m => m.Talk.IMGString)
     @Html.HiddenFor(m => m.Talk.LocationName)
     @Html.HiddenFor(m => m.Talk.MaxTicketsPP)
@@ -47,8 +50,8 @@
     @Html.HiddenFor(m => m.Talk.Price)
     @Html.HiddenFor(m => m.Talk.SeatsAvailable)
     @Html.HiddenFor(m => m.Talk.StartTime)
-    @Html.HiddenFor(m => m.Talk.Title)
+    @Html.HiddenFor(m => m.Talk.Title)*@
 
 
-    <input type = "submit" value = "Order" />
+    <input type="submit" value="Order" />
 }
