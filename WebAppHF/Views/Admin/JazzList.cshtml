@@ -1,7 +1,15 @@
 ﻿@model IEnumerable<WebAppHF.Models.Jazz>
 
+@{
+    ViewBag.Title = "JazzList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>JazzList</h2>
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateJazz", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Return to Admin main page", "Index", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 <table class="table">
     <tr>
@@ -77,9 +85,8 @@
             @Html.DisplayFor(modelItem => item.IMGString)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "UpdateJazz", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteJazz", new { id=item.ID })
         </td>
     </tr>
 }
