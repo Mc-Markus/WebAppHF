@@ -10,5 +10,6 @@ namespace WebAppHF.Repositories
     interface IRestaurantSessionRepo 
     {
         RestaurantSession GetRestaurantSessionByID(int ID);
+        int GetEventID(int ResID, DateTime date, DateTime startingtime);
     }
 }

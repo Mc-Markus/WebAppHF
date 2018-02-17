@@ -271,6 +271,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderTourViewModel.cs" />
     <Compile Include="Models\Record.cs" />
+    <Compile Include="Models\ReservationVM.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantSession.cs" />
     <Compile Include="Models\Talk.cs" />
@@ -278,6 +279,7 @@
     <Compile Include="Models\TalkViewModel.cs" />
     <Compile Include="Models\Tour.cs" />
     <Compile Include="Models\Venue.cs" />
+    <Compile Include="Models\ViewModelTour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\HFContext.cs" />
     <Compile Include="Repositories\AccountRepo.cs" />
@@ -462,7 +464,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
-    <Content Include="Views\Restaurant\Detail.cshtml" />
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
     <Content Include="Views\Home\ThanksforSending.cshtml" />
     <Content Include="Views\Jazz\Index.cshtml" />
@@ -488,13 +489,19 @@
     <Content Include="Views\Talk\Book.cshtml" />
     <Content Include="Views\Admin\UpdateRestaurant.cshtml" />
     <Content Include="Views\Admin\LogOut.cshtml" />
-    <Content Include="Views\Admin\DeleteEvent.cshtml" />
-    <Content Include="Views\Admin\UpdateEvent.cshtml" />
-    <Content Include="Views\Admin\CreateEvent.cshtml" />
-    <Content Include="Views\Admin\EventList.cshtml" />
     <Content Include="Views\Talk\AddedToCart.cshtml" />
     <Content Include="Views\Talk\AddFailed.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Admin\NotFound.cshtml" />
+    <Content Include="Views\Admin\JazzList.cshtml" />
+    <Content Include="Views\Admin\DeleteTalk.cshtml" />
+    <Content Include="Views\Admin\UpdateTalk.cshtml" />
+    <Content Include="Views\Admin\CreateTalk.cshtml" />
+    <Content Include="Views\Admin\TalkList.cshtml" />
+    <Content Include="Views\Admin\DeleteJazz.cshtml" />
+    <Content Include="Views\Admin\UpdateJazz.cshtml" />
+    <Content Include="Views\Admin\CreateJazz.cshtml" />
+    <Content Include="Views\Restaurant\MakeReservation.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
@@ -504,7 +511,6 @@
     <Content Include="Views\Talk\Detail.cshtml" />
     <Content Include="Views\Talk\Book.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
-    <Content Include="Views\Records\Create.cshtml" />
     <Content Include="Views\Records\Index.cshtml" />
     <None Include="Views\Tours\OrderPageTour.cshtml" />
   </ItemGroup>

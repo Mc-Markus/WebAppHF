@@ -34,20 +34,26 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult Book(TalkModel talkmodel)
         {
+            Talk talk = rep.GetTalkById(talkmodel.Talk.ID);
+            talkmodel.Talk = talk;
+            CartModel cart = (CartModel)Session["Cart"];
             if (Session["Cart"] == null)
             {
-                Session["Cart"] = new CartModel();
-                ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
-                ((CartModel)Session["Cart"]).Items.Add(talkmodel);
+                //Session["Cart"] = new CartModel();
+                //((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+                //((CartModel)Session["Cart"]).Items.Add(talkmodel);
+                cart.TalkModelItems.Add(talkmodel);
+                cart.Items.Add(talkmodel);
+                Session["Cart"] = cart;
                 return RedirectToAction("AddedToCart");
             }
-            else
-            {
-                ((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
-                ((CartModel)Session["Cart"]).Items.Add(talkmodel);
-                return RedirectToAction("AddedToCart");
-            }
-            
+            //((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+            //((CartModel)Session["Cart"]).Items.Add(talkmodel);
+            cart.TalkModelItems.Add(talkmodel);
+            cart.Items.Add(talkmodel);
+            Session["Cart"] = cart;
+            return RedirectToAction("AddedToCart");
+
         }
 
         public ActionResult AddedToCart()

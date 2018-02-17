@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WebAppHF.Models.Jazz>
+
+@{
+    ViewBag.Title = "JazzList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>JazzList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateJazz", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Return to Admin main page", "Index", null, new { @class = "btn btn-primary btn-lg" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatsAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Band)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMGString)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatsAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Band)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMGString)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateJazz", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteJazz", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

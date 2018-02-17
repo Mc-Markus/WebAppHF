@@ -13,5 +13,8 @@ namespace WebAppHF.Repositories
         Talk GetTalk(int id);
         Talk GetTalkById(int id);
         void AddTalk(Talk talk);
+        void CreateTalk(Talk e);
+        void UpdateTalk(Talk e);
+        void Remove(Talk e);
     }
 }

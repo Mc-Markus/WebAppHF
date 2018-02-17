@@ -1,14 +1,14 @@
-﻿@model IEnumerable<WebAppHF.Models.Event>
+﻿@model IEnumerable<WebAppHF.Models.Talk>
 
 @{
-    ViewBag.Title = "EventList";
+    ViewBag.Title = "TalkList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EventList</h2>
+<h2>TalkList</h2>
 
 <p>
-    @Html.ActionLink("Create New Event", "CreateEvent", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Create New", "CreateTalk", null, new { @class = "btn btn-primary btn-lg" })
     @Html.ActionLink("Return to Admin main page", "Index", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 <table class="table">
@@ -36,6 +36,21 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SeatsAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxTicketsPP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMGString)
         </th>
         <th></th>
     </tr>
@@ -67,8 +82,23 @@
             @Html.DisplayFor(modelItem => item.SeatsAvailable)
         </td>
         <td>
-            @Html.ActionLink("Edit", "UpdateEvent", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "DeleteEvent", new { id=item.ID })
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxTicketsPP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMGString)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateTalk", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteTalk", new { id=item.ID })
         </td>
     </tr>
 }
