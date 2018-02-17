@@ -56,9 +56,8 @@
 @for (int j = 0; j < Model.Count; j++)
 {
     <div class="row col-md-12">
-        <p>tes</p>
         <i onclick="BtnClick(@j)" class="fa fa-chevron-down fa-2x"></i>
-        <h3 onclick="BtnClick(@j)">@Model[j].First().Date</h3>
+        <h3 onclick="BtnClick(@j)">@Model[j].First().Date.ToShortDateString()</h3>
     </div>
 
     
