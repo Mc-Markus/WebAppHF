@@ -269,6 +269,7 @@
     <Compile Include="Models\JazzBook.cs" />
     <Compile Include="Models\JazzDaySummary.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderTourViewModel.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantSession.cs" />

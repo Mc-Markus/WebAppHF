@@ -10,27 +10,30 @@ namespace WebAppHF.Controllers
 {
     public class ToursController : Controller
     {
-        // GET: Walks
+        //Create a new TourRepo and VenueRepo object.
         private IVenueRepo venueRepo = new VenueRepo();
         private ITourRepo TourRepo = new TourRepo();
 
+        //Get a venue for the initial pageload.
         public ActionResult Index()
         {
             Venue venue = venueRepo.GetVenueByID(1);
             return View(venue);
         }
 
-        
+        //Return a PartialView
         public ActionResult LoadLocation()
         {
             return PartialView("_locations");
         }
-        
+
+        //Return a PartialView
         public ActionResult LoadMap()
         {
             return PartialView("_map");
         }
 
+        //Get a venue view based on the numeric value of a button and return it.
         public ActionResult LoadMapVenue(int id)
         {
             Venue venue = venueRepo.GetVenueByID(id);
@@ -39,16 +42,9 @@ namespace WebAppHF.Controllers
 
         public ActionResult OrderPageTour()
         {
-            List<Tour> tours = TourRepo.GetAll();
+            List<List<OrderTourViewModel>> OrderTours = TourRepo.GetTourViewModels();
 
-            List<DisplayRecord> drs = new List<DisplayRecord>();
-
-            foreach (Tour tour in tours)
-            {
-                drs.Add(new DisplayRecord(tour, new Record()));
-            }
-
-            return View("OrderPageTour", drs);
+            return View("OrderPageTour", OrderTours);
         }
     }
 }

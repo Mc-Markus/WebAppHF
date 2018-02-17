@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
@@ -11,5 +11,8 @@ namespace WebAppHF.Repositories
     {
         Tour GetWalkByID(int Id);
         List<Tour> GetAll();
+        List<List<OrderTourViewModel>> GetTourViewModels();
+
+
     }
 }

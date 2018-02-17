@@ -19,6 +19,9 @@ namespace WebAppHF.Models
             this.DayEvents = events;
         }
 
-        public JazzBook() { }
+        public JazzBook()
+        {
+            
+        }
     }
 }
