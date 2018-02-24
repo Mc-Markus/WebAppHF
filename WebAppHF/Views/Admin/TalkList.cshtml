@@ -94,7 +94,7 @@
             @Html.DisplayFor(modelItem => item.Hall)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IMGString)
+            <img src=@Html.DisplayFor(modelItem => item.IMGString)>
         </td>
         <td>
             @Html.ActionLink("Edit", "UpdateTalk", new { id=item.ID }) |

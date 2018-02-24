@@ -1,5 +1,6 @@
-﻿@using WebAppHF.Models
-@model List<WebAppHF.Models.DisplayRecord>
+﻿@using System.Linq.Expressions
+@using WebAppHF.Models
+@model List<List<OrderTourViewModel>>
 @{
     ViewBag.Title = "OrderPageTour";
 }
@@ -13,20 +14,24 @@
 
         function BtnClick(Id) {
             switch (Id) {
-                case 'thu': $('#table-thursday').toggle("slide");
+                case 0: $('#Thursday').toggle("slide");
                     break;
-                case 'fri': $('#table-friday').toggle("slide");
+                case 1: $('#Friday').toggle("slide");
                     break;
-                case 'sat': $('#table-saturday').toggle("slide");
+                case 2: $('#Saturday').toggle("slide");
                     break;
                 default:
             }
+        }
+
+        function CalcTotal() {
+            
         }
     </script>
 }
 <div class="row">
     <div class="col-md-6">
-        <h1>Order a ticket</h1>
+        <h1>Order a ticket </h1>
         <p>On this page you can make a reservation for a Historic Haarlem Tour. Pick a day and a time, and select the amount of ticktets you would like.</p>
     </div>
     <div class="col-md-2">
@@ -42,81 +47,117 @@
 <hr id="ruler_historic">
 
 <h2>Ticket Information</h2>
-<p>The group will consist of 12 participants and one guide. Participants must at least be 12 years old and must be able to walk the entire route (no strollers are allowed).</p>
+<p>The group will consist of 12 participants and one guide. Participants must at least be 12 years old and must be able to walk the entire route (no strollers allowed).</p>
 <h3>Ticket Price</h3>
-<p>@Model.First().Event.GetPriceString() per ticket per person</p>
+<p>per ticket per person</p>
 <h3>Group ticket</h3>
 <p>A group ticket gets you 4 tickets for only € 60,- instead of € 70,-</p>
 
-<div class="row col-md-12">
-    <i onclick="BtnClick('thu')" class="fa fa-chevron-down fa-2x"></i>
-    <h3 onclick="BtnClick('thu')">Thursday (26-07-2018)</h3>
-</div>
+@for (int j = 0; j < Model.Count; j++)
+{
+    <div class="row col-md-12">
+        <i onclick="BtnClick(@j)" class="fa fa-chevron-down fa-2x"></i>
+        <h3 onclick="BtnClick(@j)">@Model[j].First().Date.ToShortDateString()</h3>
+    </div>
 
-<div class="row order-table" id="table-thursday">
-    <div class="col-md-8">
+    
+
+    <div class="row order-table" id=@Model[j].First().Date.DayOfWeek.ToString()>
         <table class="table">
             <tr>
                 <th>Tickets</th>
                 <th>Group tickets</th>
                 <th>Language</th>
-                <th>Guidename</th>
                 <th>Time</th>
                 <th>Total price</th>
             </tr>
-            <tr>
-                @foreach (var record in Model)
-                {
-                    <td></td>
-                }
-                <td></td>
-                <td></td>
-                <td>
-                    <select class="selectpicker">
-                        <option>Dutch</option>
-                        <option>English</option>
-                        <option>Chinese</option>
-                    </select>
-                </td>
-                <td></td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td><input type="number" defaultValue="0" min="0" /></td>
-                <td><input type="number" defaultValue="0" min="0" /></td>
-                <td>
-                    <select class="selectpicker">
-                        <option>Dutch</option>
-                        <option>English</option>
-                        <option>Chinese</option>
-                    </select>
-                </td>
-                <td>12:00</td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td><input type="number" defaultValue="0" min="0" /></td>
-                <td><input type="number" defaultValue="0" min="0" /></td>
-                <td>
-                    <select class="selectpicker">
-                        <option>Dutch</option>
-                        <option>English</option>
-                        <option>Chinese</option>
-                    </select>
-                </td>
-                <td>14:00</td>
-                <td>25</td>
-            </tr>
+            @for (int i = 0; i < Model[j].Count; i++)
+            {
+                <tr>
+                    <td>@Html.TextBoxFor(r => r[j][i].NormalTicketRecord.Amount, "0", new { oninput = "CalcTotal()", value ="17,50", name= "normalTicket", type = "number", min = "0", max = "12" })</td>
+                    <td>@Html.TextBoxFor(r => r[j][i].FamilyTicketRecord.Amount, "0", new { value="60,00", name = "familyTicket", type = "number", min = "0", max = "3" })</td>
+                    <td>
+                        <select>
+                            @foreach (var language in Model[j][i].LanguageList)
+                            {
+                                <option>
+                                    @language
+                                </option>
+                            }
+                        </select>
+                    </td>
+                    <td>@Model[j][i].StartTime.ToShortTimeString()</td>
+                    <td>
+                        <output oninput="CalcTotal()" name="result"></output>             
+                    </td>
+                </tr>
+                   
+            }
         </table>
+
+        
     </div>
-    <div class="col-md-4">
-        <h5>Your guide will be:</h5>
-        <p>
-            Jan-Willem for the Dutch tours.<br />
-            Frederic for the English tours.
-        </p>
-    </div>
-</div>
+}
+@*<div class="col-md-8">
+            <table class="table">
+                <tr>
+                    <th>Tickets</th>
+                    <th>Group tickets</th>
+                    <th>Language</th>
+                    <th>Guidename</th>
+                    <th>Time</th>
+                    <th>Total price</th>
+                </tr>
+                <tr>
+
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select class="selectpicker">
+                            <option>Dutch</option>
+                            <option>English</option>
+                            <option>Chinese</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td><input type="number" defaultValue="0" min="0" /></td>
+                    <td><input type="number" defaultValue="0" min="0" /></td>
+                    <td>
+                        <select class="selectpicker">
+                            <option>Dutch</option>
+                            <option>English</option>
+                            <option>Chinese</option>
+                        </select>
+                    </td>
+                    <td>12:00</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td><input type="number" defaultValue="0" min="0" /></td>
+                    <td><input type="number" defaultValue="0" min="0" /></td>
+                    <td>
+                        <select class="selectpicker">
+                            <option>Dutch</option>
+                            <option>English</option>
+                            <option>Chinese</option>
+                        </select>
+                    </td>
+                    <td>14:00</td>
+                    <td>25</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h5>Your guide will be:</h5>
+            <p>
+                Jan-Willem for the Dutch tours.<br />
+                Frederic for the English tours.
+            </p>
+        </div>
+    </div>*@
 
 <div class="row bottom-row">
     <div class="col-md-12">

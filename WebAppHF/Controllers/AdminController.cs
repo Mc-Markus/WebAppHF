@@ -358,5 +358,18 @@ namespace WebAppHF.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
+        public ActionResult RegisterAdmin()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult RegisterAdmin(AdminAccount newAdmin)
+        {
+            return View();
+        }
+
     }
 }
