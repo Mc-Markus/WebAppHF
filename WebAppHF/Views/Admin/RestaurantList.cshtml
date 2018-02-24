@@ -47,10 +47,10 @@
                     @Html.DisplayFor(modelItem => item.FoodTypes)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FoodIMGString)
+                    <img src=@Html.DisplayFor(modelItem => item.FoodIMGString)>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RestaurantIMGString)
+                    <img src=@Html.DisplayFor(modelItem => item.RestaurantIMGString)>
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "UpdateRestaurant", new { id = item.ID }) |
