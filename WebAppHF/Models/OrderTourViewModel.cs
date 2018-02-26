@@ -11,15 +11,15 @@ namespace WebAppHF.Models
         public DateTime StartTime { get; set; }
         public List<string> LanguageList { get; set; }
         public List<string> GuidenameList { get; set; }
-        public Record NormalTicketRecord { get; set; }
-        public Record FamilyTicketRecord { get; set; }
+        public OrderItem NormalTicketRecord { get; set; }
+        public OrderItem FamilyTicketRecord { get; set; }
 
         public OrderTourViewModel()
         {
                 
         }
 
-        public OrderTourViewModel(DateTime date, DateTime startTime, string language, string guidename, Record normalRecord, Record familyRecord)
+        public OrderTourViewModel(DateTime date, DateTime startTime, string language, string guidename, OrderItem normalRecord, OrderItem familyRecord)
         {
             LanguageList = new List<string>(); 
             GuidenameList = new List<string>();

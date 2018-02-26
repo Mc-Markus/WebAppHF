@@ -24,8 +24,8 @@ namespace WebAppHF.Repositories
         public DbSet<Tour> Tours { get; set; }
         public DbSet<AdminAccount> AdminAccounts { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Record> Records { get; set; }
-        public DbSet<RestaurantSession> RestaurantSessions { get; set; }
+        public DbSet<OrderItem> Records { get; set; }
+        public DbSet<RestaurantSitting> RestaurantSessions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

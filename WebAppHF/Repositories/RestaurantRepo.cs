@@ -30,7 +30,7 @@ namespace WebAppHF.Repositories
 
         public IEnumerable<Restaurant> getfoodtypes(string foodType)
         {
-            var resultFoodTypes = database.Restaurants.Where(p => p.FoodTypes == foodType);
+            var resultFoodTypes = database.Restaurants.Where(p => p.FoodType1 == foodType);
             return resultFoodTypes;
         }
 
@@ -83,7 +83,7 @@ namespace WebAppHF.Repositories
 
         List<string> IRestaurantRepo.GetAllRestaurantFilter()
         {
-            return database.Restaurants.Select(p => p.FoodTypes).Distinct().ToList();
+            return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
         }
     }
 }

@@ -22,10 +22,10 @@ namespace WebAppHF.Controllers
         public ActionResult Index()
         {
             //Checks if sessions contains a valid list of records
-            List<Record> sessionCart = null;
+            List<OrderItem> sessionCart = null;
             try
             {
-                sessionCart = (List<Record>)Session["Cart"];
+                sessionCart = (List<OrderItem>)Session["Cart"];
             }
             catch
             {
@@ -38,10 +38,10 @@ namespace WebAppHF.Controllers
             }
 
             //creates displayRecords for all records in session
-            List<DisplayRecord> displayRecords = new List<DisplayRecord>();
-            foreach (Record record in sessionCart)
+            List<OrderItemViewModel> displayRecords = new List<OrderItemViewModel>();
+            foreach (OrderItem record in sessionCart)
             {
-                displayRecords.Add(new DisplayRecord(getEvent(record), record));
+                displayRecords.Add(new OrderItemViewModel(getEvent(record), record));
             }
 
             //chooses 3 random restaurants for cross selling
@@ -156,7 +156,7 @@ namespace WebAppHF.Controllers
         }
 
         //Gets event based on eventType and eventID
-        public Event getEvent(Record record)
+        public Event getEvent(OrderItem record)
         {
             switch (record.EventType)
             {
@@ -166,7 +166,7 @@ namespace WebAppHF.Controllers
                     return tourRepo.GetWalkByID(record.EventID);
                 case "Talk":
                     return talkRepo.GetTalk(record.EventID);
-                case "RestaurantSession":
+                case "RestaurantSitting":
                     return restaurantSession.GetRestaurantSessionByID(record.EventID);
                 default:
                     return null;

@@ -257,12 +257,16 @@
     <Compile Include="Migrations\201801272053129_EventTypeInRecord.Designer.cs">
       <DependentUpon>201801272053129_EventTypeInRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802261931426_RenamingModels.cs" />
+    <Compile Include="Migrations\201802261931426_RenamingModels.Designer.cs">
+      <DependentUpon>201802261931426_RenamingModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\DisplayRecord.cs" />
+    <Compile Include="Models\OrderItemViewModel.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyTicket.cs" />
     <Compile Include="Models\Jazz.cs" />
@@ -270,10 +274,10 @@
     <Compile Include="Models\JazzDaySummary.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderTourViewModel.cs" />
-    <Compile Include="Models\Record.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\ReservationVM.cs" />
     <Compile Include="Models\Restaurant.cs" />
-    <Compile Include="Models\RestaurantSession.cs" />
+    <Compile Include="Models\RestaurantSitting.cs" />
     <Compile Include="Models\Talk.cs" />
     <Compile Include="Models\TalkModel.cs" />
     <Compile Include="Models\TalkViewModel.cs" />
@@ -578,6 +582,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801272053129_EventTypeInRecord.resx">
       <DependentUpon>201801272053129_EventTypeInRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802261931426_RenamingModels.resx">
+      <DependentUpon>201802261931426_RenamingModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

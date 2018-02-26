@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebAppHF.Models
 {
-    public class Record
+    public class OrderItem
     {
         public int ID { get; set; }
         public int EventID { get; set; }
@@ -16,10 +16,10 @@ namespace WebAppHF.Models
         public string EventType { get; set; }
 
         //empty constructor needed for form
-        public Record() { }
+        public OrderItem() { }
 
         //constructor that should be used when adding a record to cart
-        public Record(int EventID, string EventType)
+        public OrderItem(int EventID, string EventType)
         {
             this.EventID = EventID;
             this.EventType = EventType;

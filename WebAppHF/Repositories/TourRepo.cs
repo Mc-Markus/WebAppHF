@@ -74,8 +74,8 @@ namespace WebAppHF.Repositories
                                     tour.StartTime,
                                     tour.Language + " Guide: " + tour.GuideName,
                                     tour.GuideName,
-                                    new Record(),
-                                    new Record()
+                                    new OrderItem(),
+                                    new OrderItem()
                                 )
                             );
                         }
@@ -98,8 +98,8 @@ namespace WebAppHF.Repositories
                                     tour.StartTime,
                                     tour.Language + " Guide: " + tour.GuideName,
                                     tour.GuideName,
-                                    new Record(),
-                                    new Record()
+                                    new OrderItem(),
+                                    new OrderItem()
                                 )
                             );
                         }

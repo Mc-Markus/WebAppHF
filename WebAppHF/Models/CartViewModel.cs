@@ -7,10 +7,10 @@ namespace WebAppHF.Models
 {
     public class CartViewModel
     {
-        public List<DisplayRecord> displayRecords;
+        public List<OrderItemViewModel> displayRecords;
         public List<Restaurant> restaurants;
 
-        public CartViewModel(List<DisplayRecord> displayRecords, List<Restaurant> restaurants)
+        public CartViewModel(List<OrderItemViewModel> displayRecords, List<Restaurant> restaurants)
         {
             this.displayRecords = displayRecords;
             this.restaurants = restaurants;

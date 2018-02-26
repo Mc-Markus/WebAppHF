@@ -9,7 +9,7 @@ namespace WebAppHF.Repositories
 {
     interface IRecordRepository
     {
-        IEnumerable<Record> GetAllRestaurants();
-        void AddRecord(Record record);
+        IEnumerable<OrderItem> GetAllRestaurants();
+        void AddRecord(OrderItem record);
     }
 }

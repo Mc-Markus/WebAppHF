@@ -7,12 +7,12 @@ namespace WebAppHF.Models
 {
     public class JazzBook
     {
-        public DisplayRecord DayPassePartout { get; set; }
-        public DisplayRecord WeekendPassePartout { get; set; }
-        public List<DisplayRecord> DayEvents { get; set; }
+        public OrderItemViewModel DayPassePartout { get; set; }
+        public OrderItemViewModel WeekendPassePartout { get; set; }
+        public List<OrderItemViewModel> DayEvents { get; set; }
 
         //added this class to have all essential parts for the jazz booking page
-        public JazzBook(DisplayRecord day, DisplayRecord weekend, List<DisplayRecord> events)
+        public JazzBook(OrderItemViewModel day, OrderItemViewModel weekend, List<OrderItemViewModel> events)
         {
             this.DayPassePartout = day;
             this.WeekendPassePartout = weekend;

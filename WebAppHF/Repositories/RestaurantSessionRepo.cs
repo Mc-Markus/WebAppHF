@@ -9,9 +9,9 @@ namespace WebAppHF.Repositories
     public class RestaurantSessionRepo : IRestaurantSessionRepo
     {
         private HFContext database = new HFContext();
-        public RestaurantSession GetRestaurantSessionByID(int ID)
+        public RestaurantSitting GetRestaurantSessionByID(int ID)
         {
-            RestaurantSession restaurantSession;
+            RestaurantSitting restaurantSession;
             using (HFContext context = new HFContext())
             {
                 restaurantSession = context.RestaurantSessions.SingleOrDefault(j => j.ID == ID);

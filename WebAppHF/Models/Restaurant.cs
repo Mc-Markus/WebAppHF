@@ -21,7 +21,11 @@ namespace WebAppHF.Models
         [Required]
         public int ReducedPrice { get; set; }
         [Required]
-        public string FoodTypes { get; set; }
+        public string FoodType1 { get; set; }
+        [Required]
+        public string FoodType2 { get; set; }
+        [Required]
+        public string FoodType3 { get; set; }
         [Required]
         public string FoodIMGString { get; set; }
         [Required]
@@ -29,7 +33,7 @@ namespace WebAppHF.Models
 
         public Restaurant() { }
 
-        public Restaurant(int ID, string Name, string Address, int Stars, int Price, int ReducedPrice, string FoodTypes, string FoodIMGString, string RestaurantIMGString)
+        public Restaurant(int ID, string Name, string Address, int Stars, int Price, int ReducedPrice, string FoodType1, string FoodType2, string FoodType3, string FoodIMGString, string RestaurantIMGString)
         {
             this.ID = ID;
             this.Name = Name;
@@ -37,7 +41,9 @@ namespace WebAppHF.Models
             this.Stars = Stars;
             this.Price = Price;
             this.ReducedPrice = ReducedPrice;
-            this.FoodTypes = FoodTypes;
+            this.FoodType1 = FoodType1;
+            this.FoodType2 = FoodType2;
+            this.FoodType2 = FoodType2;
             this.FoodIMGString = FoodIMGString;
             this.RestaurantIMGString = RestaurantIMGString;
         }

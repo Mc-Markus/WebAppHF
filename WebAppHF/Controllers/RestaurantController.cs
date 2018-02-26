@@ -16,7 +16,7 @@ namespace WebAppHF.Controllers
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
 
         // Hardcode eventtype to give to the record eventId
-        private string eventType = "RestaurantSession";
+        private string eventType = "RestaurantSitting";
 
         // GET: Restaurant
         // Toon in een lijst alle restauranten
@@ -102,7 +102,7 @@ namespace WebAppHF.Controllers
             ViewBag.selectTestTimeList = new SelectList(Time, "StartTime");
 
             //Create new Record to use in the View
-            DisplayRecord record = new DisplayRecord();
+            OrderItemViewModel record = new OrderItemViewModel();
 
 
             //Passing viewmodel to the View
@@ -119,14 +119,14 @@ namespace WebAppHF.Controllers
             reservation.Record.Record.EventType = eventType;
             reservation.Record.Record.EventID = restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
 
-            List<Record> sessionBasket = new List<Record>();
+            List<OrderItem> sessionBasket = new List<OrderItem>();
             sessionBasket.Add(reservation.Record.Record);
 
             //check if session contains records if so add them to new cart value
             try
             {
-                List<Record> basket = (List<Record>)Session["Cart"];
-                foreach (Record sessionrecord in basket)
+                List<OrderItem> basket = (List<OrderItem>)Session["Cart"];
+                foreach (OrderItem sessionrecord in basket)
                 {
                     sessionBasket.Add(sessionrecord);
                 }

@@ -6,19 +6,19 @@ using WebAppHF.Repositories;
 
 namespace WebAppHF.Models
 {
-    public class DisplayRecord
+    public class OrderItemViewModel
     {
         public Event Event { get; set; }
-        public Record Record { get; set; }
+        public OrderItem Record { get; set; }
 
         //added this class to easaly get to the properties of both the event and the record
         //used in cart and jazz
-        public DisplayRecord(Event activity, Record record)
+        public OrderItemViewModel(Event activity, OrderItem record)
         {
             this.Event = activity;
             this.Record = record;
         }
 
-        public DisplayRecord() { }
+        public OrderItemViewModel() { }
     }
 }

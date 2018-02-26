@@ -10,7 +10,7 @@ namespace WebAppHF.Migrations
             Sql("DELETE FROM RESTAURANTS WHERE Name IS NULL");
             AlterColumn("dbo.Restaurants", "Name", c => c.String(nullable: false));
             AlterColumn("dbo.Restaurants", "Address", c => c.String(nullable: false));
-            AlterColumn("dbo.Restaurants", "FoodTypes", c => c.String(nullable: false));
+            AlterColumn("dbo.Restaurants", "FoodType1", c => c.String(nullable: false));
             AlterColumn("dbo.Restaurants", "FoodIMGString", c => c.String(nullable: false));
             AlterColumn("dbo.Restaurants", "RestaurantIMGString", c => c.String(nullable: false));
         }
@@ -19,7 +19,7 @@ namespace WebAppHF.Migrations
         {
             AlterColumn("dbo.Restaurants", "RestaurantIMGString", c => c.String());
             AlterColumn("dbo.Restaurants", "FoodIMGString", c => c.String());
-            AlterColumn("dbo.Restaurants", "FoodTypes", c => c.String());
+            AlterColumn("dbo.Restaurants", "FoodType1", c => c.String());
             AlterColumn("dbo.Restaurants", "Address", c => c.String());
             AlterColumn("dbo.Restaurants", "Name", c => c.String());
         }

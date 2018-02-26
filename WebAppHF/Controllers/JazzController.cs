@@ -48,13 +48,13 @@ namespace WebAppHF.Controllers
             Jazz passePartoutDay = repo.GetPassePartoutDay(date);
 
             //converts jazz's into displayrecords
-            DisplayRecord displayRecordWeekend = new DisplayRecord(passePartoutWeekend, new Record(passePartoutWeekend.ID, eventType));
-            DisplayRecord displayRecordDay = new DisplayRecord(passePartoutDay, new Record(passePartoutDay.ID, eventType));
-            List<DisplayRecord> displayRecordEvents = new List<DisplayRecord>();
+            OrderItemViewModel displayRecordWeekend = new OrderItemViewModel(passePartoutWeekend, new OrderItem(passePartoutWeekend.ID, eventType));
+            OrderItemViewModel displayRecordDay = new OrderItemViewModel(passePartoutDay, new OrderItem(passePartoutDay.ID, eventType));
+            List<OrderItemViewModel> displayRecordEvents = new List<OrderItemViewModel>();
 
             foreach (Jazz jazz in JazzActs)
             {
-                DisplayRecord dr = new DisplayRecord(jazz, new Record(jazz.ID, eventType));
+                OrderItemViewModel dr = new OrderItemViewModel(jazz, new OrderItem(jazz.ID, eventType));
                 displayRecordEvents.Add(dr);
             }
 
@@ -72,7 +72,7 @@ namespace WebAppHF.Controllers
             JazzBook book = MyTestParameter;
 
 
-            List<Record> sessionBasket = new List<Record>();
+            List<OrderItem> sessionBasket = new List<OrderItem>();
             //adds the passe-partouts if they are selected by customer
             if (book.DayPassePartout.Record.Amount > 0)
             {
@@ -84,7 +84,7 @@ namespace WebAppHF.Controllers
             }
 
             //adds other jazz's if selected by customer
-            foreach (DisplayRecord dr in book.DayEvents)
+            foreach (OrderItemViewModel dr in book.DayEvents)
             {
                 if (dr.Record.Amount > 0)
                 {
@@ -95,8 +95,8 @@ namespace WebAppHF.Controllers
             //check if session contains records if so add them to new cart value
             try
             {
-                List<Record> basket = (List<Record>)Session["Cart"];
-                foreach (Record record in basket)
+                List<OrderItem> basket = (List<OrderItem>)Session["Cart"];
+                foreach (OrderItem record in basket)
                 {
                     sessionBasket.Add(record);
                 }
