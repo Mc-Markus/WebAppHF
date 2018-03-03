@@ -10,5 +10,6 @@ namespace WebAppHF.Repositories
     interface IAccountRepo
     {
         AdminAccount GetAccount(string userName, string password);
+        void RegisterUser(AdminAccount model);
     }
 }

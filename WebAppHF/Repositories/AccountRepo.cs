@@ -19,5 +19,14 @@ namespace WebAppHF.Repositories
                 return account;
             }
         }
+
+        public void RegisterUser(AdminAccount model)
+        {
+            using (HFContext context = new HFContext())
+            {
+                context.AdminAccounts.Add(model);
+                context.SaveChanges();
+            }
+        }
     }
 }

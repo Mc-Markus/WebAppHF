@@ -26,8 +26,7 @@ namespace WebAppHF.Controllers
 
         [HttpPost]
         public ActionResult Login(AdminAccount model)
-        {
-            AdminAccount account = new AdminAccount();
+        {  
             if (ModelState.IsValid)
             {
                 account = accountRepo.GetAccount(model.UserName, model.Password);
@@ -47,6 +46,24 @@ namespace WebAppHF.Controllers
             }
 
         }
+        [Authorize]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Register(AdminAccount model)
+        {
+            if (ModelState.IsValid)
+            {
+                accountRepo.RegisterUser(model);
+            }
+
+            return RedirectToAction("Index", "Admin");
+        }
+
 
 
 
