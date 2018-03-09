@@ -1,56 +1,30 @@
 ﻿@model IEnumerable<WebAppHF.Models.OrderItem>
 
 @{
-    ViewBag.Title = "TalkList";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "RecordList";
 }
 
-<h2>TalkList</h2>
+<h2>RecordList</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateTalk", null, new { @class = "btn btn-primary btn-lg" })
-    @Html.ActionLink("Return to Admin main page", "Index", null, new { @class = "btn btn-primary btn-lg" })
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.EventID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.OrderID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartTime)
+            @Html.DisplayNameFor(model => model.Amount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EndTime)
+            @Html.DisplayNameFor(model => model.TotalPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LocationName)
+            @Html.DisplayNameFor(model => model.Comment)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Adress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeatsAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaxTicketsPP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hall)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IMGString)
+            @Html.DisplayNameFor(model => model.EventType)
         </th>
         <th></th>
     </tr>
@@ -58,47 +32,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.EventID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Date)
+            @Html.DisplayFor(modelItem => item.OrderID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StartTime)
+            @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EndTime)
+            @Html.DisplayFor(modelItem => item.TotalPrice)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LocationName)
+            @Html.DisplayFor(modelItem => item.Comment)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeatsAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxTicketsPP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hall)
-        </td>
-        <td>
-            <img src=@Html.DisplayFor(modelItem => item.IMGString)>
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "UpdateTalk", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "DeleteTalk", new { id=item.ID })
+            @Html.DisplayFor(modelItem => item.EventType)
         </td>
     </tr>
 }

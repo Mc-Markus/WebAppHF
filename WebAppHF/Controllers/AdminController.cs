@@ -18,7 +18,7 @@ namespace WebAppHF.Controllers
         private IJazzRepo jazzRepo = new JazzRepo();
         private ITalkRepo talkRepo = new TalkRepo();
         private IAccountRepo accountRepo = new AccountRepo();
-        private IRecordRepository recordRepo = new RecordRepository();
+        private IRecordRepo recordRepo = new RecordRepo();
 
         public ActionResult Login()
         {
@@ -362,7 +362,7 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
-        public ActionResult RecordsList()
+        public ActionResult RecordList()
         {
             var allRecords = recordRepo.GetAllRecords();
             return View(allRecords);

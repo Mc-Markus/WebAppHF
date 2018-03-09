@@ -22,7 +22,7 @@ namespace WebAppHF.Controllers
         public ActionResult Index()
         {
             // Made a quick a view to see if the data was being passed to the database
-            var listrecords = recordRepository.GetAllRestaurants();
+            var listrecords = recordRepository.GetAllRecords();
             return View(listrecords.ToList());
         }
 
