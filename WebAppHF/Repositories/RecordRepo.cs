@@ -6,7 +6,7 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    public class RecordRepository : IRecordRepository
+    public class RecordRepo : IRecordRepo
     {
         private HFContext database = new HFContext();
 

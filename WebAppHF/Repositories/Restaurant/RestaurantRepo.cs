@@ -12,7 +12,7 @@ namespace WebAppHF.Repositories
     {
         private HFContext database = new HFContext();
 
-        public List<DateTime> GetAllDayList(int id)
+        public List<DateTime> GetAllDay(int id)
         {
             return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime).Distinct().ToList();
         }
@@ -23,20 +23,19 @@ namespace WebAppHF.Repositories
             return restaurant;
         }
 
-        public List<DateTime> GetAllTimeList(int id)
+        public List<DateTime> GetAllTime(int id)
         {
             return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date).Distinct().ToList();
         }
 
-        public IEnumerable<Restaurant> getfoodtypes(string foodType)
+        public IEnumerable<Restaurant> GetAllRestaurantsWithFoodtype(string foodType)
         {
-            var resultFoodTypes = database.Restaurants.Where(p => p.FoodType1 == foodType);
+            var resultFoodTypes = database.Restaurants.Where(p => p.FoodType1 == foodType || p.FoodType2 == foodType || p.FoodType3 == foodType);
             return resultFoodTypes;
         }
 
         public Restaurant GetRestaurant(int restaurantId)
         {
-            // Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
             Restaurant restaurant = database.Restaurants.Find(restaurantId);
             return restaurant;
         }
@@ -81,7 +80,7 @@ namespace WebAppHF.Repositories
             return price;
         }
 
-        List<string> IRestaurantRepo.GetAllRestaurantFilter()
+        List<string> IRestaurantRepo.GetAllFoodTypes()
         {
             return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
         }

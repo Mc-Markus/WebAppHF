@@ -12,7 +12,7 @@ namespace WebAppHF.Controllers
     {
         // Maak instantie van de interface om niet direct met je database te praten
         //private IRecordRepository recordRepository = new RecordRepository();
-        private IRestaurantSessionRepo restaurantSessionRepo = new RestaurantSessionRepo();
+        private IRestaurantSitting restaurantSessionRepo = new RestaurantSittingRepo();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
 
         // Hardcode eventtype to give to the record eventId
@@ -24,12 +24,12 @@ namespace WebAppHF.Controllers
         {
             // Haal alle Restaurants op 
             var allRestaurants = restaurantRepo.GetAllRestaurants();
-            // Haal ik alléén de foodtypes op
-            var foodTypes = restaurantRepo.GetAllRestaurantFilter();
+            // Haal ik alle foodtypes op 
+            var allFoodTypes = restaurantRepo.GetAllFoodTypes();
             // Creeer dropdownlist voor de view 
             List<SelectListItem> foodTypeList = new List<SelectListItem>();
             // Vullen met database waardes
-            foreach (var foodTypeItem in foodTypes)
+            foreach (var foodTypeItem in allFoodTypes)
             {
                 foodTypeList.Add(new SelectListItem
                 {
@@ -46,38 +46,38 @@ namespace WebAppHF.Controllers
         public ActionResult Index(string foodType)
         {
             // maak het alvast vol met een lijst met alle restaurants
-            var resultOfFoodType = restaurantRepo.GetAllRestaurants();
+            var allRestaurantsWithFoodType = restaurantRepo.GetAllRestaurants();
             // Als de user voor een foodtype kiest moet het de variabel een waarde hebben 
             if (foodType != "")
             {
-                resultOfFoodType = restaurantRepo.getfoodtypes(foodType);
+                allRestaurantsWithFoodType = restaurantRepo.GetAllRestaurantsWithFoodtype(foodType);
             }
-            // Haal ik alléén de foodtypes op en zet het in een lijst 
-            List<string> foodTypeList = restaurantRepo.GetAllRestaurantFilter();
+            // Haal ik alle foodtypes op 
+            var allFoodTypes = restaurantRepo.GetAllFoodTypes();
             // Creeer dropdownlist voor de view 
-            List<SelectListItem> dropdownFoodList = new List<SelectListItem>();
+            List<SelectListItem> foodTypeList = new List<SelectListItem>();
             // Vullen met database waardes
-            foreach (var foodTypeItem in foodTypeList)
+            foreach (var foodTypeItem in allFoodTypes)
             {
-                dropdownFoodList.Add(new SelectListItem
+                foodTypeList.Add(new SelectListItem
                 {
                     Text = foodTypeItem,
                     Value = foodTypeItem
                 });
             }
             // Viewbag stoppen die in de View wordt gebruikt 
-            ViewBag.foodTypes = dropdownFoodList;
+            ViewBag.foodTypes = foodTypeList;
             // Geef de lijst gefilterd terug
-            return View(resultOfFoodType.ToList());
+            return View(allRestaurantsWithFoodType.ToList());
             //return View();
         }
 
-        //Toont een specifiek restaurant in de view door middel van een ID
+        //Toont een specifiek restaurant in de view door middel van een id
         // Dit is de extra informatie pagina
-        public ActionResult AfterDetail(int ID)
+        public ActionResult AfterDetail(int id)
         {
-            // Zoekt voor een restaurant met die ID
-            Restaurant restaurant = restaurantRepo.GetRestaurant(ID);
+            // Zoekt voor een restaurant met die id
+            Restaurant restaurant = restaurantRepo.GetRestaurant(id);
             // Restaurants die niet bestaan worden gestuurd naar de PageNotFound in de homecontroller
             if (restaurant == null)
                 return RedirectToAction("PageNotFound", "Home");
@@ -89,19 +89,19 @@ namespace WebAppHF.Controllers
         public ActionResult MakeReservation(int id)
         {
             // Giving the information about the restaurant
-            Restaurant restaurant = new Restaurant();
-            restaurant = restaurantRepo.GetRestaurant(id);
+            Restaurant restaurant =  restaurantRepo.GetRestaurant(id);
+
 
             // Creating two dropdowns to pick from 
             // First one is Day
-            List<DateTime> Day = restaurantRepo.GetAllDayList(id);
+            List<DateTime> Day = restaurantRepo.GetAllDay(id);
             ViewBag.selectTestDayList = new SelectList(Day, "Date");
 
             // Second one is Time 
-            List<DateTime> Time = restaurantRepo.GetAllTimeList(id);
+            List<DateTime> Time = restaurantRepo.GetAllTime(id);
             ViewBag.selectTestTimeList = new SelectList(Time, "StartTime");
 
-            //Create new Record to use in the View
+            //Create new Order to use in the View
             OrderItemViewModel record = new OrderItemViewModel();
 
 
@@ -111,16 +111,16 @@ namespace WebAppHF.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToDataBase(ReservationVM MyTestParameter)
+        public ActionResult AddToDataBase(ReservationVM createReservation)
         {
-            ReservationVM reservation = MyTestParameter;
+            ReservationVM reservation = createReservation;
 
             // Giving the record value of eventid and eventtype
-            reservation.Record.Record.EventType = eventType;
-            reservation.Record.Record.EventID = restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
+            reservation.Order.Record.EventType = eventType;
+            reservation.Order.Record.EventID = restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Order.Event.StartTime, reservation.Order.Event.Date);
 
             List<OrderItem> sessionBasket = new List<OrderItem>();
-            sessionBasket.Add(reservation.Record.Record);
+            sessionBasket.Add(reservation.Order.Record);
 
             //check if session contains records if so add them to new cart value
             try

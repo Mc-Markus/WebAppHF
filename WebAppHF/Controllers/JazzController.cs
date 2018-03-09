@@ -121,16 +121,16 @@ namespace WebAppHF.Controllers
             ////and using this method you can also check if the contents of the cart are valid
 
             ////List that will be the new contents of the cart
-            //List<Record> sessionBasket = new List<Record>();
+            //List<Order> sessionBasket = new List<Order>();
 
-            ////you can put your records in like sessionBasket.Add(new Record(eventID, eventType);
+            ////you can put your records in like sessionBasket.Add(new Order(eventID, eventType);
 
             ////check if session contains records if so add them to new cart contents
             //try
             //{
             //    //adds valid records to sessionBasket
-            //    List<Record> basket = (List<Record>)Session["Cart"];
-            //    foreach (Record record in basket)
+            //    List<Order> basket = (List<Order>)Session["Cart"];
+            //    foreach (Order record in basket)
             //    {
             //        sessionBasket.Add(record);
             //    }

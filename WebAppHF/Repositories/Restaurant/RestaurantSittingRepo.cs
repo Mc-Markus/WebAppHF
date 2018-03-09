@@ -6,7 +6,7 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    public class RestaurantSessionRepo : IRestaurantSessionRepo
+    public class RestaurantSittingRepo : IRestaurantSitting
     {
         private HFContext database = new HFContext();
         public RestaurantSitting GetRestaurantSessionByID(int ID)
