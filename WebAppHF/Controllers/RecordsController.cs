@@ -34,10 +34,10 @@ namespace WebAppHF.Controllers
         //    ViewBag.RestaurantID = id;
 
         //    // Getting all the days
-        //    var day = restaurantRepo.GetAllDayList(id);
+        //    var day = restaurantRepo.GetAllDay(id);
 
         //    // Getting all the time
-        //    var time = restaurantRepo.GetAllTimeList(id);
+        //    var time = restaurantRepo.GetAllTime(id);
 
         //    // Creating two dropdownlist 
         //    List<SelectListItem> dayList = new List<SelectListItem>();
@@ -74,7 +74,7 @@ namespace WebAppHF.Controllers
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "ID,EventID,OrderID,Amount,TotalPrice,Comment")] Record record,string time, string date)
+        //public ActionResult Create([Bind(Include = "ID,EventID,OrderID,Amount,TotalPrice,Comment")] Order record,string time, string date)
         //{
         //    // The time variables needed to find the proper SessionID
         //    DateTime recordTime;
@@ -117,14 +117,14 @@ namespace WebAppHF.Controllers
         //    {
         //        //recordRepository.AddRecord(record);
         //        //Trying ot use a session
-        //        List<Record> sessionBasket = new List<Record>();
+        //        List<Order> sessionBasket = new List<Order>();
         //        sessionBasket.Add(record);
 
         //        //check if session contains records if so add them to new cart value
         //        try
         //        {
-        //            List<Record> basket = (List<Record>)Session["Cart"];
-        //            foreach (Record sessionrecord in basket)
+        //            List<Order> basket = (List<Order>)Session["Cart"];
+        //            foreach (Order sessionrecord in basket)
         //            {
         //                sessionBasket.Add(sessionrecord);
         //            }
