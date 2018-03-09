@@ -14,8 +14,8 @@ namespace WebAppHF.Controllers
         IJazzRepo jazzRepo = new JazzRepo();
         ITalkRepo talkRepo = new TalkRepo();
         ITourRepo tourRepo = new TourRepo();
-        IRestaurantSessionRepo restaurantSession = new RestaurantSessionRepo();
-        IRecordRepository recordRepository = new RecordRepository();
+        IRestaurantSitting restaurantSession = new RestaurantSittingRepo();
+        IRecordRepo recordRepository = new RecordRepo();
         IRestaurantRepo restaurantRepo = new RestaurantRepo();
 
         // GET: Cart

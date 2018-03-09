@@ -12,7 +12,7 @@ namespace WebAppHF.Controllers
     {
         // Maak instantie van de interface om niet direct met je database te praten
         //private IRecordRepository recordRepository = new RecordRepository();
-        private IRestaurantSessionRepo restaurantSessionRepo = new RestaurantSessionRepo();
+        private IRestaurantSitting restaurantSessionRepo = new RestaurantSittingRepo();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
 
         // Hardcode eventtype to give to the record eventId

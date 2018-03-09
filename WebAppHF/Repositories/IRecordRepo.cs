@@ -7,9 +7,9 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    interface IRestaurantSessionRepo 
+    interface IRecordRepo
     {
-        RestaurantSitting GetRestaurantSessionByID(int ID);
-        int GetEventID(int ResID, DateTime date, DateTime startingtime);
+        IEnumerable<OrderItem> GetAllRestaurants();
+        void AddRecord(OrderItem record);
     }
 }
