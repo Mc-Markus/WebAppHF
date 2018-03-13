@@ -506,6 +506,7 @@
     <Content Include="Views\Admin\UpdateJazz.cshtml" />
     <Content Include="Views\Admin\CreateJazz.cshtml" />
     <Content Include="Views\Restaurant\MakeReservation.cshtml" />
+    <Content Include="Views\Admin\RecordList.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
@@ -602,7 +603,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51314</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
