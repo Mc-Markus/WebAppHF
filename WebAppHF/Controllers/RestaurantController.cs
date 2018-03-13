@@ -18,7 +18,7 @@ namespace WebAppHF.Controllers
         // Hardcode eventtype to give to the record eventId
         private string eventType = "RestaurantSitting";
 
-        // GET: Restaurant
+        // GET: RestaurantModel
         // Toon in een lijst alle restauranten
         public ActionResult Index()
         {
@@ -76,20 +76,20 @@ namespace WebAppHF.Controllers
         // Dit is de extra informatie pagina
         public ActionResult AfterDetail(int id)
         {
-            // Zoekt voor een restaurant met die id
-            Restaurant restaurant = restaurantRepo.GetRestaurant(id);
+            // Zoekt voor een restaurantModel met die id
+            RestaurantModel restaurantModel = restaurantRepo.GetRestaurant(id);
             // Restaurants die niet bestaan worden gestuurd naar de PageNotFound in de homecontroller
-            if (restaurant == null)
+            if (restaurantModel == null)
                 return RedirectToAction("PageNotFound", "Home");
 
-            return View(restaurant);
+            return View(restaurantModel);
         }
 
         [HttpGet]
         public ActionResult MakeReservation(int id)
         {
-            // Giving the information about the restaurant
-            Restaurant restaurant =  restaurantRepo.GetRestaurant(id);
+            // Giving the information about the restaurantModel
+            RestaurantModel restaurantModel =  restaurantRepo.GetRestaurant(id);
 
 
             // Creating two dropdowns to pick from 
@@ -106,7 +106,7 @@ namespace WebAppHF.Controllers
 
 
             //Passing viewmodel to the View
-            ReservationVM vm = new ReservationVM(restaurant, Day, Time, record);
+            ReservationVM vm = new ReservationVM(restaurantModel, Day, Time, record);
             return View(vm);
         }
 
@@ -143,5 +143,7 @@ namespace WebAppHF.Controllers
             //send user to basket after things are added to basket
             return RedirectToAction("Index", "Cart");
         }
+
+        
     }
 }

@@ -49,7 +49,7 @@
         <p><strong>You could also..</strong></p>
     </div>
 
-    @foreach (Restaurant restaurant in Model.restaurants)
+    @foreach (RestaurantModel restaurant in Model.restaurants)
     {
         <div class="col-md-4">
             <p class="text-center font-weight-bold">Get Dinner</p> <img src="@restaurant.RestaurantIMGString" class="img-fluid mx-auto" alt="Responsive image">
@@ -57,7 +57,7 @@
                 <b>Restaurant:</b> @restaurant.Name
                 <br> <b>Price:</b> @restaurant.Stars/5
                 <br> <b>Location:</b> @restaurant.Address
-                <br> @Html.ActionLink("Meer info", "Details", "Restaurant", restaurant.ID)
+                <br> @Html.ActionLink("Meer info", "Details", "RestaurantModel", restaurant.ID)
             </p>
         </div>
     }

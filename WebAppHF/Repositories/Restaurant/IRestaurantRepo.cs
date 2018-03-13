@@ -8,17 +8,17 @@ namespace WebAppHF.Repositories
 {
     public interface IRestaurantRepo
     {
-        // Get specific restaurant
-        Restaurant GetRestaurant(int restaurantId);
+        // Get specific restaurantModel
+        RestaurantModel GetRestaurant(int restaurantId);
 
         // Get all restaurants
-        IEnumerable<Restaurant> GetAllRestaurants();
+        IEnumerable<RestaurantModel> GetAllRestaurants();
 
         // Get all the foodtypes
         List<string> GetAllFoodTypes();
 
         // return restaurants with the same foodtype
-        IEnumerable<Restaurant> GetAllRestaurantsWithFoodtype(string foodtype);
+        IEnumerable<RestaurantModel> GetAllRestaurantsWithFoodtype(string foodtype);
 
         // Query to get all available time 
         List<DateTime> GetAllTime(int id);
@@ -26,16 +26,16 @@ namespace WebAppHF.Repositories
         // Query to get all available days 
         List<DateTime> GetAllDay(int id);
 
-        // Create a Restaurant 
-        void CreateRestaurant(Restaurant restaurant);
+        // Create a RestaurantModel 
+        void CreateRestaurant(RestaurantModel restaurantModel);
 
-        // Remove a Restaurant 
-        void Remove(Restaurant restaurant);
+        // Remove a RestaurantModel 
+        void Remove(RestaurantModel restaurantModel);
 
-        // Update a restaurant 
-        void UpdateRestaurant(Restaurant restaurant);
+        // Update a restaurantModel 
+        void UpdateRestaurant(RestaurantModel restaurantModel);
 
-        // Get price of a specific restaurant 
+        // Get price of a specific restaurantModel 
         int GetPrice(int id);
     }
 }

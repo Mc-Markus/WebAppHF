@@ -91,13 +91,13 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateRestaurant(Restaurant restaurant)
+        public ActionResult CreateRestaurant(RestaurantModel restaurantModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    restaurantRepo.CreateRestaurant(restaurant);
+                    restaurantRepo.CreateRestaurant(restaurantModel);
                     return RedirectToAction("RestaurantList");
                 }
             }
@@ -106,13 +106,13 @@ namespace WebAppHF.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(restaurant);
+            return View(restaurantModel);
         }
         [Authorize]
 
         public ActionResult UpdateRestaurant(int id)
         {
-            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
+            RestaurantModel retrieved = restaurantRepo.GetRestaurant(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -122,13 +122,13 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateRestaurant(Restaurant restaurant)
+        public ActionResult UpdateRestaurant(RestaurantModel restaurantModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    restaurantRepo.UpdateRestaurant(restaurant);
+                    restaurantRepo.UpdateRestaurant(restaurantModel);
                     return RedirectToAction("RestaurantList");
                 }
             }
@@ -137,13 +137,13 @@ namespace WebAppHF.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(restaurant);
+            return View(restaurantModel);
         }
         [Authorize]
 
         public ActionResult DeleteRestaurant(int id)
         {
-            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
+            RestaurantModel retrieved = restaurantRepo.GetRestaurant(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -157,7 +157,7 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                Restaurant e = restaurantRepo.GetRestaurant(id);
+                RestaurantModel e = restaurantRepo.GetRestaurant(id);
                 restaurantRepo.Remove(e);
 
             }

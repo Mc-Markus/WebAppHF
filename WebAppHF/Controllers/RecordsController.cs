@@ -87,7 +87,7 @@ namespace WebAppHF.Controllers
         //    }
         //    else
         //    {
-        //        return RedirectToAction("Index", "Restaurant");
+        //        return RedirectToAction("Index", "RestaurantModel");
         //    }
         //    if (date != null || time == "Choose a Day")
         //    {
@@ -96,7 +96,7 @@ namespace WebAppHF.Controllers
         //    } 
         //    else
         //    {
-        //        return RedirectToAction("Index", "Restaurant");
+        //        return RedirectToAction("Index", "RestaurantModel");
         //    }
 
         //    // Prijs berekenen
@@ -106,7 +106,7 @@ namespace WebAppHF.Controllers
         //    record.EventID = recordRepository.GetEventID(record.EventID,recordDate, recordTime);
         //    if (record.EventID == 0)
         //    {
-        //        return RedirectToAction("Index","Restaurant");
+        //        return RedirectToAction("Index","RestaurantModel");
         //    }
         //    // Hardcoded eventype geven 
         //    record.EventType = eventType;

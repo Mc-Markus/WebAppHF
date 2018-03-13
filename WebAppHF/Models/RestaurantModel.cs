@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebAppHF.Models
 {
-    public class Restaurant
+    public class RestaurantModel
     {
         [Key]
         public int ID { get; set; }
@@ -31,9 +31,9 @@ namespace WebAppHF.Models
         [Required]
         public string RestaurantIMGString { get; set; }
 
-        public Restaurant() { }
+        public RestaurantModel() { }
 
-        public Restaurant(int ID, string Name, string Address, int Stars, int Price, int ReducedPrice, string FoodType1, string FoodType2, string FoodType3, string FoodIMGString, string RestaurantIMGString)
+        public RestaurantModel(int ID, string Name, string Address, int Stars, int Price, int ReducedPrice, string FoodType1, string FoodType2, string FoodType3, string FoodIMGString, string RestaurantIMGString)
         {
             this.ID = ID;
             this.Name = Name;

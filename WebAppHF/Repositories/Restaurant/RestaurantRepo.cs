@@ -17,9 +17,9 @@ namespace WebAppHF.Repositories
             return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime).Distinct().ToList();
         }
 
-        public IEnumerable<Restaurant> GetAllRestaurants()
+        public IEnumerable<RestaurantModel> GetAllRestaurants()
         {
-            IEnumerable<Restaurant> restaurant = database.Restaurants.ToList();
+            IEnumerable<RestaurantModel> restaurant = database.Restaurants.ToList();
             return restaurant;
         }
 
@@ -28,29 +28,29 @@ namespace WebAppHF.Repositories
             return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date).Distinct().ToList();
         }
 
-        public IEnumerable<Restaurant> GetAllRestaurantsWithFoodtype(string foodType)
+        public IEnumerable<RestaurantModel> GetAllRestaurantsWithFoodtype(string foodType)
         {
             var resultFoodTypes = database.Restaurants.Where(p => p.FoodType1 == foodType || p.FoodType2 == foodType || p.FoodType3 == foodType);
             return resultFoodTypes;
         }
 
-        public Restaurant GetRestaurant(int restaurantId)
+        public RestaurantModel GetRestaurant(int restaurantId)
         {
-            Restaurant restaurant = database.Restaurants.Find(restaurantId);
-            return restaurant;
+            RestaurantModel restaurantModel = database.Restaurants.Find(restaurantId);
+            return restaurantModel;
         }
-        public void CreateRestaurant(Restaurant restaurant)
+        public void CreateRestaurant(RestaurantModel restaurantModel)
         {
-            database.Restaurants.Add(restaurant);
+            database.Restaurants.Add(restaurantModel);
             database.SaveChanges();
         }
 
 
-        public List<Restaurant> GetRestaurants()
+        public List<RestaurantModel> GetRestaurants()
         {
             using (HFContext database = new HFContext())
             {
-                IEnumerable<Restaurant> restaurants;
+                IEnumerable<RestaurantModel> restaurants;
 
                 restaurants = database.Restaurants.AsEnumerable();
 
@@ -61,16 +61,16 @@ namespace WebAppHF.Repositories
 
 
 
-        public void Remove(Restaurant restaurant)
+        public void Remove(RestaurantModel restaurantModel)
         {
-            database.Restaurants.Remove(restaurant);
+            database.Restaurants.Remove(restaurantModel);
             database.SaveChanges();
 
         }
 
-        public void UpdateRestaurant(Restaurant restaurant)
+        public void UpdateRestaurant(RestaurantModel restaurantModel)
         {
-            database.Entry(restaurant).State = EntityState.Modified;
+            database.Entry(restaurantModel).State = EntityState.Modified;
             database.SaveChanges();
         }
 

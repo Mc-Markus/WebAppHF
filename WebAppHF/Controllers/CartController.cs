@@ -45,17 +45,17 @@ namespace WebAppHF.Controllers
             }
 
             //chooses 3 random restaurants for cross selling
-            List<Restaurant> restaurants = restaurantRepo.GetAllRestaurants().ToList();
+            List<RestaurantModel> restaurants = restaurantRepo.GetAllRestaurants().ToList();
 
             Random rnd = new Random();
 
-            List<Restaurant> crossSelling = new List<Restaurant>();
+            List<RestaurantModel> crossSelling = new List<RestaurantModel>();
 
             for (int i = 0; i < 3; i++)
             {
-                Restaurant restaurant = restaurants[rnd.Next(0, restaurants.Count())];
-                crossSelling.Add(restaurant);
-                restaurants.Remove(restaurant);
+                RestaurantModel restaurantModel = restaurants[rnd.Next(0, restaurants.Count())];
+                crossSelling.Add(restaurantModel);
+                restaurants.Remove(restaurantModel);
             }
 
             CartViewModel cartViewModel = new CartViewModel(displayRecords, crossSelling);
@@ -103,7 +103,7 @@ namespace WebAppHF.Controllers
 
                 }
                 //doe hetzelfde hier met een viewmodel met een amount voor restaurant als hierboven.
-                //foreach (Restaurant rest in cart.RestItems)
+                //foreach (RestaurantModel rest in cart.RestItems)
                 //{
 
                 //}

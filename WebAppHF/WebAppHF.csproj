@@ -275,9 +275,10 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderTourViewModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
-    <Compile Include="Models\Restaurant\ReservationVM.cs" />
-    <Compile Include="Models\Restaurant\Restaurant.cs" />
-    <Compile Include="Models\Restaurant\RestaurantSitting.cs" />
+    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\ReservationVM.cs" />
+    <Compile Include="Models\RestaurantModel.cs" />
+    <Compile Include="Models\RestaurantSitting.cs" />
     <Compile Include="Models\Talk.cs" />
     <Compile Include="Models\TalkModel.cs" />
     <Compile Include="Models\TalkViewModel.cs" />

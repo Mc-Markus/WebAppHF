@@ -42,13 +42,13 @@ namespace Unit_Tests
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateRestaurant(Restaurant restaurant)
+        public ActionResult CreateRestaurant(RestaurantModel restaurantModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    restaurantRepo.CreateRestaurant(restaurant);
+                    restaurantRepo.CreateRestaurant(restaurantModel);
                     return RedirectToAction("RestaurantList");
                 }
             }
@@ -57,25 +57,25 @@ namespace Unit_Tests
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(restaurant);
+            return View(restaurantModel);
         }
         [Authorize]
         
         public ActionResult UpdateRestaurant(int id)
         {
-            Restaurant @restaurant = restaurantRepo.GetRestaurant(id);
-            return View(@restaurant);
+            RestaurantModel restaurantModel = restaurantRepo.GetRestaurant(id);
+            return View(restaurantModel);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateRestaurant(Restaurant restaurant, int id)
+        public ActionResult UpdateRestaurant(RestaurantModel restaurantModel, int id)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    restaurantRepo.UpdateRestaurant(restaurant);
+                    restaurantRepo.UpdateRestaurant(restaurantModel);
                     return RedirectToAction("RestaurantList");
                 }
             }
@@ -84,14 +84,14 @@ namespace Unit_Tests
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(restaurant);
+            return View(restaurantModel);
         }
         [Authorize]
         
         public ActionResult DeleteRestaurant(int id)
         {
-            Restaurant @restaurant = restaurantRepo.GetRestaurant(id);
-            return View(@restaurant);
+            RestaurantModel restaurantModel = restaurantRepo.GetRestaurant(id);
+            return View(restaurantModel);
         }
 
         [Authorize]
@@ -100,7 +100,7 @@ namespace Unit_Tests
         {
             try
             {
-                Restaurant e = restaurantRepo.GetRestaurant(id);
+                RestaurantModel e = restaurantRepo.GetRestaurant(id);
                 restaurantRepo.Remove(e);
 
             }
