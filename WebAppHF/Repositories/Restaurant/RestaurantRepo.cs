@@ -80,6 +80,12 @@ namespace WebAppHF.Repositories
             return price;
         }
 
+        public List<RestaurantModel> RestaurantList()
+        {
+            List<RestaurantModel> restaurant = database.Restaurants.ToList();
+            return restaurant;
+        }
+
         List<string> IRestaurantRepo.GetAllFoodTypes()
         {
             return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();

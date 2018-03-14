@@ -37,5 +37,7 @@ namespace WebAppHF.Repositories
 
         // Get price of a specific restaurantModel 
         int GetPrice(int id);
+
+        List<RestaurantModel> RestaurantList();
     }
 }

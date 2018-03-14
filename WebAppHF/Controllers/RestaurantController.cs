@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Antlr.Runtime.Misc;
 using WebAppHF.Repositories;
 using WebAppHF.Models;
 
@@ -20,6 +21,13 @@ namespace WebAppHF.Controllers
 
         // GET: RestaurantModel
         // Toon in een lijst alle restauranten
+        public ActionResult TestIndex()
+        {
+            List<RestaurantModel> restaurants = new List<RestaurantModel>();
+            restaurants = restaurantRepo.RestaurantList();
+
+            return View(restaurants.ToList());
+        }
         public ActionResult Index()
         {
             // Haal alle Restaurants op 
