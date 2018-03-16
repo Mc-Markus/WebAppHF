@@ -92,7 +92,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateRestaurant(RestaurantModel restaurantModel)
+        public ActionResult CreateRestaurant(Restaurant restaurantModel)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult UpdateRestaurant(int id)
         {
-            RestaurantModel retrieved = restaurantRepo.GetRestaurant(id);
+            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -123,7 +123,7 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateRestaurant(RestaurantModel restaurantModel)
+        public ActionResult UpdateRestaurant(Restaurant restaurantModel)
         {
             try
             {
@@ -144,7 +144,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult DeleteRestaurant(int id)
         {
-            RestaurantModel retrieved = restaurantRepo.GetRestaurant(id);
+            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -158,7 +158,7 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                RestaurantModel e = restaurantRepo.GetRestaurant(id);
+                Restaurant e = restaurantRepo.GetRestaurant(id);
                 restaurantRepo.Remove(e);
 
             }

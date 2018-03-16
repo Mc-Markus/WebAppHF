@@ -45,15 +45,15 @@ namespace WebAppHF.Controllers
             }
 
             //chooses 3 random restaurants for cross selling
-            List<RestaurantModel> restaurants = restaurantRepo.GetAllRestaurants().ToList();
+            List<Restaurant> restaurants = restaurantRepo.GetAllRestaurants().ToList();
 
             Random rnd = new Random();
 
-            List<RestaurantModel> crossSelling = new List<RestaurantModel>();
+            List<Restaurant> crossSelling = new List<Restaurant>();
 
             for (int i = 0; i < 3; i++)
             {
-                RestaurantModel restaurantModel = restaurants[rnd.Next(0, restaurants.Count())];
+                Restaurant restaurantModel = restaurants[rnd.Next(0, restaurants.Count())];
                 crossSelling.Add(restaurantModel);
                 restaurants.Remove(restaurantModel);
             }
@@ -73,6 +73,17 @@ namespace WebAppHF.Controllers
             #endregion
             return View(cartViewModel);
         }
+
+
+
+
+
+
+
+
+
+
+
 
         public ActionResult Cart()
         {
@@ -154,6 +165,16 @@ namespace WebAppHF.Controllers
         {
             return View();
         }
+
+
+
+
+
+
+
+
+
+
 
         //Gets event based on eventType and eventID
         public Event getEvent(OrderItem record)

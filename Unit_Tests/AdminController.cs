@@ -42,7 +42,7 @@ namespace Unit_Tests
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateRestaurant(RestaurantModel restaurantModel)
+        public ActionResult CreateRestaurant(Restaurant restaurantModel)
         {
             try
             {
@@ -63,13 +63,13 @@ namespace Unit_Tests
         
         public ActionResult UpdateRestaurant(int id)
         {
-            RestaurantModel restaurantModel = restaurantRepo.GetRestaurant(id);
+            Restaurant restaurantModel = restaurantRepo.GetRestaurant(id);
             return View(restaurantModel);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateRestaurant(RestaurantModel restaurantModel, int id)
+        public ActionResult UpdateRestaurant(Restaurant restaurantModel, int id)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace Unit_Tests
         
         public ActionResult DeleteRestaurant(int id)
         {
-            RestaurantModel restaurantModel = restaurantRepo.GetRestaurant(id);
+            Restaurant restaurantModel = restaurantRepo.GetRestaurant(id);
             return View(restaurantModel);
         }
 
@@ -100,7 +100,7 @@ namespace Unit_Tests
         {
             try
             {
-                RestaurantModel e = restaurantRepo.GetRestaurant(id);
+                Restaurant e = restaurantRepo.GetRestaurant(id);
                 restaurantRepo.Remove(e);
 
             }

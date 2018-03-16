@@ -23,7 +23,7 @@ namespace WebAppHF.Controllers
         // Toon in een lijst alle restauranten
         public ActionResult TestIndex()
         {
-            List<RestaurantModel> restaurants = new List<RestaurantModel>();
+            List<Restaurant> restaurants = new List<Restaurant>();
             restaurants = restaurantRepo.RestaurantList();
 
             return View(restaurants.ToList());
@@ -85,7 +85,7 @@ namespace WebAppHF.Controllers
         public ActionResult AfterDetail(int id)
         {
             // Zoekt voor een restaurantModel met die id
-            RestaurantModel restaurantModel = restaurantRepo.GetRestaurant(id);
+            Restaurant restaurantModel = restaurantRepo.GetRestaurant(id);
             // Restaurants die niet bestaan worden gestuurd naar de PageNotFound in de homecontroller
             if (restaurantModel == null)
                 return RedirectToAction("PageNotFound", "Home");
@@ -97,7 +97,7 @@ namespace WebAppHF.Controllers
         public ActionResult MakeReservation(int id)
         {
             // Giving the information about the restaurantModel
-            RestaurantModel restaurantModel =  restaurantRepo.GetRestaurant(id);
+            Restaurant restaurantModel =  restaurantRepo.GetRestaurant(id);
 
 
             // Creating two dropdowns to pick from 

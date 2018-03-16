@@ -9,12 +9,12 @@ namespace WebAppHF.Models
     {
         //public List<DisplayRecord> Reservation { get; set; }
         public OrderItemViewModel Order { get; set; }
-        public RestaurantModel Restaurant { get; set; }
+        public Restaurant Restaurant { get; set; }
 
         public List<DateTime> Day { get; set; }
         public List<DateTime> Time { get; set; }
 
-        public ReservationVM(RestaurantModel restaurant, List<DateTime> time, List<DateTime> day, OrderItemViewModel order)
+        public ReservationVM(Restaurant restaurant, List<DateTime> time, List<DateTime> day, OrderItemViewModel order)
         {
             //this.Reservation = records;
             this.Order = order;

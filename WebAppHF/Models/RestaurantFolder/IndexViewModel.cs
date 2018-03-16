@@ -7,7 +7,7 @@ namespace WebAppHF.Models.Restaurant
 {
     public class IndexViewModel
     {
-        public List<RestaurantModel> Restaurants { get; set; }
+        public List<Restaurant> Restaurants { get; set; }
         public List<String> foodtypes { get; set; }
 
     }
