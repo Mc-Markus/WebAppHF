@@ -470,9 +470,6 @@
     <Content Include="Views\Restaurant\AfterDetail.cshtml" />
     <Content Include="Views\Home\ThanksforSending.cshtml" />
     <Content Include="Views\Jazz\Index.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Login.cshtml" />
-    <Content Include="Views\Admin\RestaurantList.cshtml" />
     <Content Include="Views\Walks\Index.cshtml" />
     <Content Include="Views\Walks\_map.cshtml" />
     <Content Include="Views\Walks\_locations.cshtml" />
@@ -490,24 +487,29 @@
     <Content Include="Views\Cart\CartEmpty.cshtml" />
     <Content Include="Views\Talk\Detail.cshtml" />
     <Content Include="Views\Talk\Book.cshtml" />
-    <Content Include="Views\Admin\UpdateRestaurant.cshtml" />
-    <Content Include="Views\Admin\LogOut.cshtml" />
     <Content Include="Views\Talk\AddedToCart.cshtml" />
     <Content Include="Views\Talk\AddFailed.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
-    <Content Include="Views\Admin\NotFound.cshtml" />
-    <Content Include="Views\Admin\JazzList.cshtml" />
-    <Content Include="Views\Admin\DeleteTalk.cshtml" />
-    <Content Include="Views\Admin\UpdateTalk.cshtml" />
-    <Content Include="Views\Admin\CreateTalk.cshtml" />
-    <Content Include="Views\Admin\TalkList.cshtml" />
-    <Content Include="Views\Admin\DeleteJazz.cshtml" />
-    <Content Include="Views\Admin\UpdateJazz.cshtml" />
-    <Content Include="Views\Admin\CreateJazz.cshtml" />
     <Content Include="Views\Restaurant\MakeReservation.cshtml" />
-    <None Include="Views\Walks\OrderPageTour.cshtml" />
-    <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
+    <Content Include="Views\Admin\CreateJazz.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
+    <Content Include="Views\Admin\CreateTalk.cshtml" />
+    <Content Include="Views\Admin\DeleteJazz.cshtml" />
+    <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
+    <Content Include="Views\Admin\DeleteTalk.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\JazzList.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\LogOut.cshtml" />
+    <Content Include="Views\Admin\NotFound.cshtml" />
+    <Content Include="Views\Admin\RecordList.cshtml" />
+    <Content Include="Views\Admin\RegisterAdmin.cshtml" />
+    <Content Include="Views\Admin\RestaurantList.cshtml" />
+    <Content Include="Views\Admin\TalkList.cshtml" />
+    <Content Include="Views\Admin\UpdateJazz.cshtml" />
+    <Content Include="Views\Admin\UpdateRestaurant.cshtml" />
+    <Content Include="Views\Admin\UpdateTalk.cshtml" />
+    <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
@@ -601,7 +603,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51314</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

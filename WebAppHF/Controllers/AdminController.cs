@@ -18,6 +18,7 @@ namespace WebAppHF.Controllers
         private IJazzRepo jazzRepo = new JazzRepo();
         private ITalkRepo talkRepo = new TalkRepo();
         private IAccountRepo accountRepo = new AccountRepo();
+        private IRecordRepo recordRepo = new RecordRepo();
 
         public ActionResult Login()
         {
@@ -361,6 +362,15 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
+        public ActionResult RecordList()
+        {
+            var allRecords = recordRepo.GetAllRecords();
+            return View(allRecords);
+        }
+
+
+
+        [Authorize]
         public ActionResult Logout()
         {
             return View();
@@ -384,6 +394,23 @@ namespace WebAppHF.Controllers
         [Authorize]
         [HttpPost]
         public ActionResult RegisterAdmin(AdminAccount newAdmin)
+        {
+            try
+            {
+                accountRepo.RegisterUser(newAdmin);
+
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return View();
+            }
+            return RedirectToAction("Success", "Admin");
+        }
+
+        // GET: Admin
+        [Authorize]
+        public ActionResult Success()
         {
             return View();
         }

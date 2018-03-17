@@ -11,7 +11,7 @@ namespace WebAppHF.Repositories
         private HFContext database = new HFContext();
 
         // Get all Records 
-        public IEnumerable<OrderItem> GetAllRestaurants()
+        public IEnumerable<OrderItem> GetAllRecords()
         {
             IEnumerable<OrderItem> records = database.Records.ToList();
             return records;
