@@ -277,6 +277,7 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\ReservationVM.cs" />
     <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\RestaurantIndexViewModel.cs" />
     <Compile Include="Models\RestaurantSitting.cs" />
     <Compile Include="Models\Talk.cs" />
     <Compile Include="Models\TalkModel.cs" />
@@ -505,6 +506,7 @@
     <Content Include="Views\Admin\UpdateJazz.cshtml" />
     <Content Include="Views\Admin\CreateJazz.cshtml" />
     <Content Include="Views\Restaurant\MakeReservation.cshtml" />
+    <Content Include="Views\Restaurant\TestIndex.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />

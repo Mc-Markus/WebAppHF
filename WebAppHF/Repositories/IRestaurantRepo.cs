@@ -20,5 +20,8 @@ namespace WebAppHF.Repositories
         void UpdateRestaurant(Restaurant restaurant);
 
         int GetPrice(int id);
+        List<Restaurant> RestaurantList();
+        List<Restaurant> Foodies(string foodtype);
+        List<string> GetAllFoodTypes();
     }
 }

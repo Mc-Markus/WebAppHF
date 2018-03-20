@@ -85,5 +85,22 @@ namespace WebAppHF.Repositories
         {
             return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
         }
+
+        public List<Restaurant> RestaurantList()
+        {
+            List<Restaurant> restaurant = database.Restaurants.ToList();
+            return restaurant;
+        }
+
+        List<string> IRestaurantRepo.GetAllFoodTypes()
+        {
+            return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
+        }
+
+        public List<Restaurant> Foodies(string foodType)
+        {
+            return database.Restaurants.Where(p => p.FoodType1 == foodType || p.FoodType2 == foodType || p.FoodType3 == foodType).ToList();
+
+        }
     }
 }

@@ -143,5 +143,36 @@ namespace WebAppHF.Controllers
             //send user to basket after things are added to basket
             return RedirectToAction("Index", "Cart");
         }
+
+        public ActionResult TestIndex()
+        {
+            List<Restaurant> restaurants = new List<Restaurant>();
+            restaurants = restaurantRepo.RestaurantList();
+            List<String> foods = restaurantRepo.GetAllFoodTypes();
+            var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
+            RestaurantIndexViewModel vm = new RestaurantIndexViewModel(restaurants, selectlistitems);
+
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult TestIndex(RestaurantIndexViewModel dropdown)
+        {
+            RestaurantIndexViewModel test = dropdown;
+            List<Restaurant> allRes = restaurantRepo.Foodies(dropdown.RestaurantModel.FoodType1);
+            List<String> foods = restaurantRepo.GetAllFoodTypes();
+            var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
+            RestaurantIndexViewModel vm = new RestaurantIndexViewModel(allRes, selectlistitems);
+            return View(vm);
+        }
+
+
+
+
+
+
+
+
     }
 }

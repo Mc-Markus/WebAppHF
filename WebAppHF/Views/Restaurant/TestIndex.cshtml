@@ -1,0 +1,22 @@
+﻿@using WebAppHF.Models
+@model WebAppHF.Models.RestaurantIndexViewModel
+
+@{
+    ViewBag.Title = "TestIndex";
+}
+
+<h2>TestIndex</h2>
+
+@foreach(Restaurant res in Model.Restaurants)
+{
+    @res.Name
+}
+
+
+
+
+@using (Html.BeginForm("TestIndex", "Restaurant", FormMethod.Post, new { dropdown = Model }))
+{
+    @Html.DropDownListFor(Model => Model.RestaurantModel.FoodType1, Model.foodtypes,"All");
+    <input class="btn btn-primary main-btn" type="submit" value="Filter" />
+}
