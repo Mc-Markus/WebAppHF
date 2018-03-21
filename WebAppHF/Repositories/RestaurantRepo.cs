@@ -28,11 +28,6 @@ namespace WebAppHF.Repositories
             return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date).Distinct().ToList();
         }
 
-        public IEnumerable<Restaurant> getfoodtypes(string foodType)
-        {
-            var resultFoodTypes = database.Restaurants.Where(p => p.FoodType1 == foodType);
-            return resultFoodTypes;
-        }
 
         public Restaurant GetRestaurant(int restaurantId)
         {
@@ -58,34 +53,22 @@ namespace WebAppHF.Repositories
                 return restaurants.ToList();
             }
         }
-
-
-
-
         public void Remove(Restaurant restaurant)
         {
             database.Restaurants.Remove(restaurant);
             database.SaveChanges();
 
         }
-
         public void UpdateRestaurant(Restaurant restaurant)
         {
             database.Entry(restaurant).State = EntityState.Modified;
             database.SaveChanges();
         }
-
         public int GetPrice(int id)
         {
             int price = database.Restaurants.Where(m => m.ID == id).Select(m => m.Price).SingleOrDefault();
             return price;
         }
-
-        List<string> IRestaurantRepo.GetAllRestaurantFilter()
-        {
-            return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
-        }
-
         public List<Restaurant> RestaurantList()
         {
             List<Restaurant> restaurant = database.Restaurants.ToList();
@@ -95,6 +78,16 @@ namespace WebAppHF.Repositories
         List<string> IRestaurantRepo.GetAllFoodTypes()
         {
             return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
+        }
+
+        List<DateTime> IRestaurantRepo.GetAllTime(int id)
+        {
+            return database.RestaurantSessions.Select(p => p.StartTime).Distinct().ToList();
+        }
+
+        List<DateTime> IRestaurantRepo.GetAllDay(int id)
+        {
+            return database.RestaurantSessions.Select(p => p.Date).Distinct().ToList();
         }
 
         public List<Restaurant> Foodies(string foodType)

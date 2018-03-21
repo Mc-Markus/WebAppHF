@@ -9,7 +9,7 @@
             <div class="col-md-6">
                 <h3>@Html.DisplayFor(model => model.Name)</h3>
                 <p>
-                    <b>Cuisine:</b> @Html.DisplayFor(model => model.FoodTypes)
+                    <b>Cuisine:</b> @Html.DisplayFor(model => model.FoodType1), @Html.DisplayFor(model => model.FoodType2), @Html.DisplayFor(model => model.FoodType3)
                     <br> <b>Rating:</b> @Html.DisplayFor(model => model.Stars)
                     <br><b>Price:</b> @Html.DisplayFor(model => model.Price)  (or 17,50 for childeren under 12)
                     <br> <b>Duration:</b> 90 minutes
@@ -25,7 +25,7 @@
                 @Html.ActionLink("Back to Restaurant overview", "Index", "Restaurant", new { @class = "btn btn-primary main-btn" })
             </div>
             <div class="col-md-3">
-                @Html.ActionLink("Make a reservation", "Detail", "Restaurant", new { id = Model.ID }, new { @class = "btn btn-primary main-btn" })
+                @Html.ActionLink("Make a reservation", "MakeReservation", "Restaurant", new { id = Model.ID }, new { @class = "btn btn-primary main-btn" })
             </div>
         </div>
 

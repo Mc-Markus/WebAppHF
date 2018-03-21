@@ -22,54 +22,24 @@ namespace WebAppHF.Controllers
         // Toon in een lijst alle restauranten
         public ActionResult Index()
         {
-            // Haal alle Restaurants op 
-            var allRestaurants = restaurantRepo.GetAllRestaurants();
-            // Haal ik alléén de foodtypes op
-            var foodTypes = restaurantRepo.GetAllRestaurantFilter();
-            // Creeer dropdownlist voor de view 
-            List<SelectListItem> foodTypeList = new List<SelectListItem>();
-            // Vullen met database waardes
-            foreach (var foodTypeItem in foodTypes)
-            {
-                foodTypeList.Add(new SelectListItem
-                {
-                    Text = foodTypeItem,
-                    Value = foodTypeItem
-                });
-            }
-            // Viewbag stoppen die in de View wordt gebruikt 
-            ViewBag.foodTypes = foodTypeList;
-            return View(allRestaurants.ToList());
+            List<Restaurant> restaurants = restaurantRepo.RestaurantList();
+            List<String> foods = restaurantRepo.GetAllFoodTypes();
+            var selectlistitems = foods.Select(foodType => new SelectListItem() { Value = foodType, Text = foodType });
+            RestaurantIndexViewModel vm = new RestaurantIndexViewModel(restaurants, selectlistitems);
+
+
+            return View(vm);
         }
 
         [HttpPost]
-        public ActionResult Index(string foodType)
+        public ActionResult Index(RestaurantIndexViewModel dropdown)
         {
-            // maak het alvast vol met een lijst met alle restaurants
-            var resultOfFoodType = restaurantRepo.GetAllRestaurants();
-            // Als de user voor een foodtype kiest moet het de variabel een waarde hebben 
-            if (foodType != "")
-            {
-                resultOfFoodType = restaurantRepo.getfoodtypes(foodType);
-            }
-            // Haal ik alléén de foodtypes op en zet het in een lijst 
-            List<string> foodTypeList = restaurantRepo.GetAllRestaurantFilter();
-            // Creeer dropdownlist voor de view 
-            List<SelectListItem> dropdownFoodList = new List<SelectListItem>();
-            // Vullen met database waardes
-            foreach (var foodTypeItem in foodTypeList)
-            {
-                dropdownFoodList.Add(new SelectListItem
-                {
-                    Text = foodTypeItem,
-                    Value = foodTypeItem
-                });
-            }
-            // Viewbag stoppen die in de View wordt gebruikt 
-            ViewBag.foodTypes = dropdownFoodList;
-            // Geef de lijst gefilterd terug
-            return View(resultOfFoodType.ToList());
-            //return View();
+            RestaurantIndexViewModel test = dropdown;
+            List<Restaurant> allRes = restaurantRepo.Foodies(dropdown.RestaurantModel.FoodType1);
+            List<String> foods = restaurantRepo.GetAllFoodTypes();
+            var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
+            RestaurantIndexViewModel vm = new RestaurantIndexViewModel(allRes, selectlistitems);
+            return View(vm);
         }
 
         //Toont een specifiek restaurant in de view door middel van een ID
@@ -94,19 +64,21 @@ namespace WebAppHF.Controllers
 
             // Creating two dropdowns to pick from 
             // First one is Day
-            List<DateTime> Day = restaurantRepo.GetAllDayList(id);
-            ViewBag.selectTestDayList = new SelectList(Day, "Date");
+            List<DateTime> Day = restaurantRepo.GetAllDay(id);
+            //ViewBag.selectTestDayList = new SelectList(Day, "Date");
+            var selectlistitems = Day.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
 
             // Second one is Time 
-            List<DateTime> Time = restaurantRepo.GetAllTimeList(id);
-            ViewBag.selectTestTimeList = new SelectList(Time, "StartTime");
+            List<DateTime> Time = restaurantRepo.GetAllTime(id);
+            //ViewBag.selectTestTimeList = new SelectList(Time, "StartTime");
+            var selectlistitem2s = Time.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
 
             //Create new Record to use in the View
             OrderItemViewModel record = new OrderItemViewModel();
 
 
             //Passing viewmodel to the View
-            ReservationVM vm = new ReservationVM(restaurant, Day, Time, record);
+            ReservationVM vm = new ReservationVM(restaurant, selectlistitems, selectlistitem2s, record);
             return View(vm);
         }
 
@@ -143,36 +115,5 @@ namespace WebAppHF.Controllers
             //send user to basket after things are added to basket
             return RedirectToAction("Index", "Cart");
         }
-
-        public ActionResult TestIndex()
-        {
-            List<Restaurant> restaurants = new List<Restaurant>();
-            restaurants = restaurantRepo.RestaurantList();
-            List<String> foods = restaurantRepo.GetAllFoodTypes();
-            var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
-            RestaurantIndexViewModel vm = new RestaurantIndexViewModel(restaurants, selectlistitems);
-
-
-            return View(vm);
-        }
-
-        [HttpPost]
-        public ActionResult TestIndex(RestaurantIndexViewModel dropdown)
-        {
-            RestaurantIndexViewModel test = dropdown;
-            List<Restaurant> allRes = restaurantRepo.Foodies(dropdown.RestaurantModel.FoodType1);
-            List<String> foods = restaurantRepo.GetAllFoodTypes();
-            var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
-            RestaurantIndexViewModel vm = new RestaurantIndexViewModel(allRes, selectlistitems);
-            return View(vm);
-        }
-
-
-
-
-
-
-
-
     }
 }
