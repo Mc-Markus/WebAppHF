@@ -12,8 +12,8 @@ namespace WebAppHF.Controllers
     {
         // Maak instantie van de interface om niet direct met je database te praten
         //private IRecordRepository recordRepository = new RecordRepository();
-        private IRestaurantSitting restaurantSessionRepo = new RestaurantSittingRepo();
-        private IRestaurantRepo restaurantRepo = new RestaurantRepo();
+        private readonly IRestaurantSitting _restaurantSessionRepo = new RestaurantSittingRepo();
+        private readonly IRestaurantRepo _restaurantRepo = new RestaurantRepo();
 
         // Hardcode eventtype to give to the record eventId
         private string eventType = "RestaurantSitting";
@@ -22,21 +22,29 @@ namespace WebAppHF.Controllers
         // Toon in een lijst alle restauranten
         public ActionResult Index()
         {
-            List<Restaurant> restaurants = restaurantRepo.RestaurantList();
-            List<String> foods = restaurantRepo.GetAllFoodTypes();
+            List<Restaurant> restaurants = _restaurantRepo.RestaurantList();
+            List<String> foods = _restaurantRepo.GetAllFoodTypes();
             var selectlistitems = foods.Select(foodType => new SelectListItem() { Value = foodType, Text = foodType });
-            RestaurantIndexViewModel vm = new RestaurantIndexViewModel(restaurants, selectlistitems);
+            RestaurantIndexViewModel viewModel = new RestaurantIndexViewModel(restaurants, selectlistitems);
 
 
-            return View(vm);
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult Index(RestaurantIndexViewModel dropdown)
         {
-            RestaurantIndexViewModel test = dropdown;
-            List<Restaurant> allRes = restaurantRepo.Foodies(dropdown.RestaurantModel.FoodType1);
-            List<String> foods = restaurantRepo.GetAllFoodTypes();
+            //RestaurantIndexViewModel test = dropdown;
+            List<Restaurant> allRes = new List<Restaurant>();
+            if (dropdown.RestaurantModel.FoodType1 == null)
+            {
+                allRes = _restaurantRepo.RestaurantList();
+            }
+            else
+            {
+                allRes = _restaurantRepo.Foodies(dropdown.RestaurantModel.FoodType1);
+            }
+            List<String> foods = _restaurantRepo.GetAllFoodTypes();
             var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
             RestaurantIndexViewModel vm = new RestaurantIndexViewModel(allRes, selectlistitems);
             return View(vm);
@@ -44,10 +52,10 @@ namespace WebAppHF.Controllers
 
         //Toont een specifiek restaurant in de view door middel van een ID
         // Dit is de extra informatie pagina
-        public ActionResult AfterDetail(int ID)
+        public ActionResult AfterDetail(int id)
         {
             // Zoekt voor een restaurant met die ID
-            Restaurant restaurant = restaurantRepo.GetRestaurant(ID);
+            Restaurant restaurant = _restaurantRepo.GetRestaurant(id);
             // Restaurants die niet bestaan worden gestuurd naar de PageNotFound in de homecontroller
             if (restaurant == null)
                 return RedirectToAction("PageNotFound", "Home");
@@ -59,26 +67,34 @@ namespace WebAppHF.Controllers
         public ActionResult MakeReservation(int id)
         {
             // Giving the information about the restaurant
-            Restaurant restaurant = new Restaurant();
-            restaurant = restaurantRepo.GetRestaurant(id);
+            Restaurant restaurant = _restaurantRepo.GetRestaurant(id);
+
 
             // Creating two dropdowns to pick from 
             // First one is Day
-            List<DateTime> Day = restaurantRepo.GetAllDay(id);
-            //ViewBag.selectTestDayList = new SelectList(Day, "Date");
-            var selectlistitems = Day.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
+            // Old Method 
+            List<DateTime> Day = _restaurantRepo.GetAllDayList(id);
+            ViewBag.selectTestDayList = new SelectList(Day, "Date");
+
+            // New
+            List<DateTime> day = _restaurantRepo.GetAllDay(id);
+            var dayListItem = day.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
 
             // Second one is Time 
-            List<DateTime> Time = restaurantRepo.GetAllTime(id);
-            //ViewBag.selectTestTimeList = new SelectList(Time, "StartTime");
-            var selectlistitem2s = Time.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
+            // Old Method
+            List<DateTime> Time = _restaurantRepo.GetAllTimeList(id);
+            ViewBag.selectTestTimeList = new SelectList(Time, "StartTime");
+
+            // New
+            List<DateTime> time = _restaurantRepo.GetAllTime(id);
+            var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
 
             //Create new Record to use in the View
             OrderItemViewModel record = new OrderItemViewModel();
 
 
             //Passing viewmodel to the View
-            ReservationVM vm = new ReservationVM(restaurant, selectlistitems, selectlistitem2s, record);
+            ReservationVM vm = new ReservationVM(restaurant, dayListItem, timeListItem, record);
             return View(vm);
         }
 
@@ -89,7 +105,7 @@ namespace WebAppHF.Controllers
 
             // Giving the record value of eventid and eventtype
             reservation.Record.Record.EventType = eventType;
-            reservation.Record.Record.EventID = restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
+            reservation.Record.Record.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
 
             List<OrderItem> sessionBasket = new List<OrderItem>();
             sessionBasket.Add(reservation.Record.Record);

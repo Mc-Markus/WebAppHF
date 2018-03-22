@@ -87,7 +87,7 @@ namespace WebAppHF.Repositories
 
         List<DateTime> IRestaurantRepo.GetAllDay(int id)
         {
-            return database.RestaurantSessions.Select(p => p.Date).Distinct().ToList();
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id).Select(p => p.Date).Distinct().ToList();
         }
 
         public List<Restaurant> Foodies(string foodType)
