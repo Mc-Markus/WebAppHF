@@ -16,7 +16,7 @@ namespace WebAppHF.Controllers
         private readonly IRestaurantRepo _restaurantRepo = new RestaurantRepo();
 
         // Hardcode eventtype to give to the record eventId
-        private string eventType = "RestaurantSitting";
+        private string eventType = "RestaurantSession";
 
         // GET: Restaurant
         // Toon in een lijst alle restauranten
@@ -130,6 +130,12 @@ namespace WebAppHF.Controllers
 
             //send user to basket after things are added to basket
             return RedirectToAction("Index", "Cart");
+        }
+
+        public ActionResult testEvents()
+        {
+            var events = _restaurantSessionRepo.Events();
+            return View(events.ToList());
         }
     }
 }

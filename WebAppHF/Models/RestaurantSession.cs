@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebAppHF.Models
 {
-    public class RestaurantSitting : Event
+    public class RestaurantSession : Event
     {
         public int RestaurantID { get; set; }
     }

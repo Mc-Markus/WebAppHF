@@ -166,7 +166,7 @@ namespace WebAppHF.Controllers
                     return tourRepo.GetWalkByID(record.EventID);
                 case "Talk":
                     return talkRepo.GetTalk(record.EventID);
-                case "RestaurantSitting":
+                case "RestaurantSession":
                     return restaurantSession.GetRestaurantSessionByID(record.EventID);
                 default:
                     return null;
