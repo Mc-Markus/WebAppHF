@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201802261931426_RenamingModels.Designer.cs">
       <DependentUpon>201802261931426_RenamingModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803232039089_renamingRestaurantSession.cs" />
+    <Compile Include="Migrations\201803232039089_renamingRestaurantSession.Designer.cs">
+      <DependentUpon>201803232039089_renamingRestaurantSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
@@ -368,6 +372,7 @@
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
@@ -589,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802261931426_RenamingModels.resx">
       <DependentUpon>201802261931426_RenamingModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803232039089_renamingRestaurantSession.resx">
+      <DependentUpon>201803232039089_renamingRestaurantSession.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
