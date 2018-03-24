@@ -75,7 +75,7 @@ namespace WebAppHF.Controllers
 
             // Second one is Time 
             List<DateTime> time = _restaurantRepo.GetAllTime(id);
-            var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToShortTimeString() });
+            var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToShortTimeString(), Text = x.ToShortTimeString() });
 
             //Create new Record to use in the View
             OrderItemViewModel record = new OrderItemViewModel();
