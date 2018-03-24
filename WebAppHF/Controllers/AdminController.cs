@@ -191,7 +191,7 @@ namespace WebAppHF.Controllers
             try
             {
                 if (ModelState.IsValid)
-                {
+                { 
                     jazzRepo.CreateJazz(e);
                     return RedirectToAction("JazzList");
                 }
