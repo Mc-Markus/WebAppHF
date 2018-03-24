@@ -75,7 +75,7 @@ namespace WebAppHF.Controllers
 
             // Second one is Time 
             List<DateTime> time = _restaurantRepo.GetAllTime(id);
-            var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToShortTimeString() });
+            var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToString(), Text = x.ToShortTimeString() });
 
             //Create new Record to use in the View
             OrderItemViewModel record = new OrderItemViewModel();
@@ -91,11 +91,11 @@ namespace WebAppHF.Controllers
             ReservationVM reservation = MyTestParameter;
 
             // Giving the record value of eventid and eventtype
-            reservation.Record.Record.EventType = eventType;
-            reservation.Record.Record.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
+            reservation.Record.orderItem.EventType = eventType;
+            reservation.Record.orderItem.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
 
             List<OrderItem> sessionBasket = new List<OrderItem>();
-            sessionBasket.Add(reservation.Record.Record);
+            sessionBasket.Add(reservation.Record.orderItem);
 
             //check if session contains records if so add them to new cart value
             try
