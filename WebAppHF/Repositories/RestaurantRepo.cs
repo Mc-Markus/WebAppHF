@@ -82,7 +82,7 @@ namespace WebAppHF.Repositories
 
         List<DateTime> IRestaurantRepo.GetAllTime(int id)
         {
-            return database.RestaurantSessions.Select(p => p.StartTime).Distinct().ToList();
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id).Select(p => p.StartTime).Distinct().ToList();
         }
 
         List<DateTime> IRestaurantRepo.GetAllDay(int id)
