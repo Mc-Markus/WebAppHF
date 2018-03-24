@@ -9,9 +9,9 @@ namespace WebAppHF.Repositories
     public class RestaurantSittingRepo : IRestaurantSitting
     {
         private HFContext database = new HFContext();
-        public RestaurantSession GetRestaurantSessionByID(int ID)
+        public RestaurantSitting GetRestaurantSessionByID(int ID)
         {
-            RestaurantSession restaurantSession;
+            RestaurantSitting restaurantSession;
             using (HFContext context = new HFContext())
             {
                 restaurantSession = context.RestaurantSessions.SingleOrDefault(j => j.ID == ID);
@@ -29,9 +29,9 @@ namespace WebAppHF.Repositories
             return EventId;
         }
 
-        public IEnumerable<RestaurantSession> Events()
+        public IEnumerable<RestaurantSitting> Events()
         {
-            IEnumerable<RestaurantSession> restaurant = database.RestaurantSessions.ToList();
+            IEnumerable<RestaurantSitting> restaurant = database.RestaurantSessions.ToList();
             return restaurant;
         }
     }

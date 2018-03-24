@@ -25,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (DisplayRecord displayRecord in Model.displayRecords)
+                @foreach (OrderItemViewModel displayRecord in Model.displayRecords)
                 {
                     <tr>
                         <th scope="row">@displayRecord.Record.Amount</th>
