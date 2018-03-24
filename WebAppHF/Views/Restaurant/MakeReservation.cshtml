@@ -15,13 +15,13 @@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.Record.Event.Date)
-                    @Html.DropDownListFor(model => model.Record.Event.Date, ViewBag.selectTestDayList as SelectList, "Choose a Day", new { @class = "form-control" })
-                    @Html.DropDownListFor(Model => Model.Record.Event.Date, Model.Day, "Choose a Day");
+                    @*@Html.DropDownListFor(model => model.Record.Event.Date, ViewBag.selectTestDayList as SelectList, "Choose a Day", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(Model => Model.Record.Event.Date, Model.Day, "Choose a Day", new { @class = "form-control" })
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.Record.Event.StartTime)
-                    @Html.DropDownListFor(model => model.Record.Event.StartTime, ViewBag.selectTestTimeList as SelectList, "Choose a Time", new { @class = "form-control" })
-                    @Html.DropDownListFor(Model => Model.Record.Event.StartTime, Model.Time, "Choose a Time");
+                    @*@Html.DropDownListFor(model => model.Record.Event.StartTime, ViewBag.selectTestTimeList as SelectList, "Choose a Time", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(Model => Model.Record.Event.StartTime, Model.Time, "Choose a Time",new { @class = "form-control" })
                 </div>
             
             <div class="form-group">

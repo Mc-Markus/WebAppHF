@@ -69,29 +69,16 @@ namespace WebAppHF.Controllers
             // Giving the information about the restaurant
             Restaurant restaurant = _restaurantRepo.GetRestaurant(id);
 
-
             // Creating two dropdowns to pick from 
-            // First one is Day
-            // Old Method 
-            List<DateTime> Day = _restaurantRepo.GetAllDayList(id);
-            ViewBag.selectTestDayList = new SelectList(Day, "Date");
-
-            // New
             List<DateTime> day = _restaurantRepo.GetAllDay(id);
             var dayListItem = day.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
 
             // Second one is Time 
-            // Old Method
-            List<DateTime> Time = _restaurantRepo.GetAllTimeList(id);
-            ViewBag.selectTestTimeList = new SelectList(Time, "StartTime");
-
-            // New
             List<DateTime> time = _restaurantRepo.GetAllTime(id);
-            var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToLongDateString() });
+            var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToLongDateString(), Text = x.ToShortTimeString() });
 
             //Create new Record to use in the View
             OrderItemViewModel record = new OrderItemViewModel();
-
 
             //Passing viewmodel to the View
             ReservationVM vm = new ReservationVM(restaurant, dayListItem, timeListItem, record);
