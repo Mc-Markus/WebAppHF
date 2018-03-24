@@ -74,21 +74,21 @@ namespace WebAppHF.Controllers
 
             List<OrderItem> sessionBasket = new List<OrderItem>();
             //adds the passe-partouts if they are selected by customer
-            if (book.DayPassePartout.Record.Amount > 0)
+            if (book.DayPassePartout.orderItem.Amount > 0)
             {
-                sessionBasket.Add(book.DayPassePartout.Record);
+                sessionBasket.Add(book.DayPassePartout.orderItem);
             }
-            if (book.WeekendPassePartout.Record.Amount > 0)
+            if (book.WeekendPassePartout.orderItem.Amount > 0)
             {
-                sessionBasket.Add(book.WeekendPassePartout.Record);
+                sessionBasket.Add(book.WeekendPassePartout.orderItem);
             }
 
             //adds other jazz's if selected by customer
             foreach (OrderItemViewModel dr in book.DayEvents)
             {
-                if (dr.Record.Amount > 0)
+                if (dr.orderItem.Amount > 0)
                 {
-                    sessionBasket.Add(dr.Record);
+                    sessionBasket.Add(dr.orderItem);
                 }
             }
 

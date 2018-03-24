@@ -28,7 +28,7 @@
                 @foreach (OrderItemViewModel displayRecord in Model.displayRecords)
                 {
                     <tr>
-                        <th scope="row">@displayRecord.Record.Amount</th>
+                        <th scope="row">@displayRecord.orderItem.Amount</th>
                         <td>@displayRecord.Event.Name</td>
                         <td>@displayRecord.Event.Date.ToShortDateString() | @displayRecord.Event.StartTime.ToShortTimeString()</td>
                         <td>@displayRecord.Event.GetPriceString()</td>
