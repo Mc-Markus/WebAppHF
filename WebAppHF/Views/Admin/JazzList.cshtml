@@ -82,7 +82,7 @@
             @Html.DisplayFor(modelItem => item.Band)
         </td>
         <td>
-            <img src=@Html.DisplayFor(modelItem => item.IMGString)>
+            <img src="~/IMG/Jazz/@item.IMGString" class="img-fluid" alt="Responsive image">
         </td>
         <td>
             @Html.ActionLink("Edit", "UpdateJazz", new { id=item.ID }) |

@@ -94,7 +94,7 @@
             @Html.DisplayFor(modelItem => item.Hall)
         </td>
         <td>
-            <img src=@Html.DisplayFor(modelItem => item.IMGString)>
+            <img src="~/IMG/Talks/@item.IMGString" class="img-fluid" alt="Responsive image">
         </td>
         <td>
             @Html.ActionLink("Edit", "UpdateTalk", new { id=item.ID }) |

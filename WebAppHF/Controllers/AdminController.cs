@@ -27,7 +27,7 @@ namespace WebAppHF.Controllers
 
         [HttpPost]
         public ActionResult Login(AdminAccount model)
-        {  
+        {
             if (ModelState.IsValid)
             {
                 account = accountRepo.GetAccount(model.UserName, model.Password);
@@ -98,7 +98,7 @@ namespace WebAppHF.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    
+
                     restaurantRepo.CreateRestaurant(restaurant);
                     return RedirectToAction("RestaurantList");
                 }
@@ -141,6 +141,28 @@ namespace WebAppHF.Controllers
             }
             return View(restaurant);
         }
+
+        [Authorize]
+        public ActionResult AddPhotoRestaurant(int id)
+        {
+            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddPhotoRestaurant(int id, HttpPostedFileBase image)
+        {
+
+            return RedirectToAction("RestaurantList");
+        }
+
+
+
         [Authorize]
 
         public ActionResult DeleteRestaurant(int id)
@@ -192,7 +214,7 @@ namespace WebAppHF.Controllers
             try
             {
                 if (ModelState.IsValid)
-                { 
+                {
                     jazzRepo.CreateJazz(e);
                     return RedirectToAction("JazzList");
                 }
