@@ -92,7 +92,7 @@ namespace WebAppHF.Controllers
 
             // Giving the record value of eventid and eventtype
             reservation.Record.orderItem.EventType = eventType;
-            reservation.Record.orderItem.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.StartTime, reservation.Record.Event.Date);
+            reservation.Record.orderItem.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.Date, reservation.Record.Event.StartTime);
 
             List<OrderItem> sessionBasket = new List<OrderItem>();
             sessionBasket.Add(reservation.Record.orderItem);
