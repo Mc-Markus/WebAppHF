@@ -4,7 +4,15 @@
     ViewBag.Title = "AddPhotoRestaurant";
 }
 
+@using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
 
-<h2>AddPhotoRestaurant</h2>
+        <input type="submit" value="Upload" />
+
+    </div>
+
+    <h2>AddPhotoRestaurant</h2>
 
