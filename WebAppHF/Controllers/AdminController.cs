@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -157,6 +158,10 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult AddPhotoRestaurant(int id, HttpPostedFileBase image)
         {
+            var path = Path.Combine(Server.MapPath("~/IMG/Dinner"), image.FileName);
+
+            image.SaveAs(path);
+
 
             return RedirectToAction("RestaurantList");
         }
