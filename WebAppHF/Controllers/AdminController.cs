@@ -156,11 +156,12 @@ namespace WebAppHF.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult AddPhotoRestaurant(int id, HttpPostedFileBase image)
+        public ActionResult AddPhotoRestaurant(int id, HttpPostedFileBase file)
         {
-            var path = Path.Combine(Server.MapPath("~/IMG/Dinner"), image.FileName);
+            
+            var path = Path.Combine(Server.MapPath("~/IMG/Dinner"), file.FileName);
 
-            image.SaveAs(path);
+            file.SaveAs(path);
 
 
             return RedirectToAction("RestaurantList");
