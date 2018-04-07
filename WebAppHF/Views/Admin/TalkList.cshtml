@@ -97,8 +97,9 @@
             <img src="~/IMG/Talks/@item.IMGString" class="img-fluid" alt="Responsive image">
         </td>
         <td>
-            @Html.ActionLink("Edit", "UpdateTalk", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "DeleteTalk", new { id=item.ID })
+            @Html.ActionLink("Edit", "UpdateTalk", new { id = item.ID }) |
+            @Html.ActionLink("Add Photo", "AddPhotoTalk", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "DeleteTalk", new { id = item.ID })
         </td>
     </tr>
 }

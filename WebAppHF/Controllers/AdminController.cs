@@ -158,11 +158,13 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult AddPhotoRestaurant(int id, HttpPostedFileBase file)
         {
-            
+            //Sla de image op in de folder locatie
             var path = Path.Combine(Server.MapPath("~/IMG/Dinner"), file.FileName);
-
             file.SaveAs(path);
-
+            //Sla de image string op in de database
+            Restaurant retrieved = restaurantRepo.GetRestaurant(id);
+            retrieved.RestaurantIMGString = path;
+            restaurantRepo.UpdateRestaurant(retrieved);
 
             return RedirectToAction("RestaurantList");
         }
@@ -296,6 +298,32 @@ namespace WebAppHF.Controllers
         }
 
         [Authorize]
+        public ActionResult AddPhotoJazz(int id)
+        {
+            Jazz retrieved = jazzRepo.GetJazzByID(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddPhotoJazz(int id, HttpPostedFileBase file)
+        {
+            //Sla de image op in de folder locatie
+            var path = Path.Combine(Server.MapPath("~/IMG/Jazz"), file.FileName);
+            file.SaveAs(path);
+            //Sla de image string op in de database
+            Jazz retrieved = jazzRepo.GetJazzByID(id);
+            retrieved.IMGString = path;
+            jazzRepo.UpdateJazz(retrieved);
+
+            return RedirectToAction("JazzList");
+        }
+
+        [Authorize]
         public ActionResult TalkList()
         {
             var allEvents = talkRepo.GetTalks();
@@ -388,6 +416,32 @@ namespace WebAppHF.Controllers
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
             return RedirectToAction("TalkList");
+        }
+
+        [Authorize]
+        public ActionResult AddPhotoTalk(int id)
+        {
+            Talk retrieved = talkRepo.GetTalk(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddPhotoTalk(int id, HttpPostedFileBase file)
+        {
+            //Sla de image op in de folder locatie
+            var path = Path.Combine(Server.MapPath("~/IMG/Talks"), file.FileName);
+            file.SaveAs(path);
+            //Sla de image string op in de database
+            Talk retrieved = talkRepo.GetTalk(id);
+            retrieved.IMGString = path;
+            talkRepo.UpdateTalk(retrieved);
+
+            return RedirectToAction("JazzList");
         }
 
         [Authorize]

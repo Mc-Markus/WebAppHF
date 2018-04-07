@@ -517,6 +517,8 @@
     <Content Include="Views\Admin\UpdateTalk.cshtml" />
     <Content Include="Views\Restaurant\testEvents.cshtml" />
     <Content Include="Views\Admin\AddPhotoRestaurant.cshtml" />
+    <Content Include="Views\Admin\AddPhotoJazz.cshtml" />
+    <Content Include="Views\Admin\AddPhotoTalk.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
