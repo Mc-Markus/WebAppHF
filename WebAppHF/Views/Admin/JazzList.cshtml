@@ -85,8 +85,9 @@
             <img src="~/IMG/Jazz/@item.IMGString" class="img-fluid" alt="Responsive image">
         </td>
         <td>
-            @Html.ActionLink("Edit", "UpdateJazz", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "DeleteJazz", new { id=item.ID })
+            @Html.ActionLink("Edit", "UpdateJazz", new { id = item.ID }) |
+            @Html.ActionLink("Add Photo", "AddPhotoJazz", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "DeleteJazz", new { id = item.ID })
         </td>
     </tr>
 }
