@@ -31,30 +31,35 @@ namespace WebAppHF.Controllers
             return View(viewmodel);
         }
 
-        [HttpPost]
-        public ActionResult Book(TalkModel talkmodel)
-        {
-            Talk talk = rep.GetTalkById(talkmodel.Talk.ID);
-            talkmodel.Talk = talk;
-            CartModel cart = (CartModel)Session["Cart"];
-            if (Session["Cart"] == null)
-            {
-                //Session["Cart"] = new CartModel();
-                //((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
-                //((CartModel)Session["Cart"]).Items.Add(talkmodel);
-                cart.TalkModelItems.Add(talkmodel);
-                cart.Items.Add(talkmodel);
-                Session["Cart"] = cart;
-                return RedirectToAction("AddedToCart");
-            }
-            //((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
-            //((CartModel)Session["Cart"]).Items.Add(talkmodel);
-            cart.TalkModelItems.Add(talkmodel);
-            cart.Items.Add(talkmodel);
-            Session["Cart"] = cart;
-            return RedirectToAction("AddedToCart");
 
-        }
+        /*Mark: Ik heb dit uitgecomment omdat er wat models veranderd zijn waardoor
+         *hier syntax errors ontstonden. Als je dit gedeelte aanpast op de verbeterde
+         *modellen komt het helemaal goed.   */
+
+        //[HttpPost]
+        //public ActionResult Book(TalkModel talkmodel)
+        //{
+        //    Talk talk = rep.GetTalkById(talkmodel.Talk.ID);
+        //    talkmodel.Talk = talk;
+        //    CartModel cart = (CartModel)Session["Cart"];
+        //    if (Session["Cart"] == null)
+        //    {
+        //        //Session["Cart"] = new CartModel();
+        //        //((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+        //        //((CartModel)Session["Cart"]).Items.Add(talkmodel);
+        //        cart.TalkModelItems.Add(talkmodel);
+        //        cart.Items.Add(talkmodel);
+        //        Session["Cart"] = cart;
+        //        return RedirectToAction("AddedToCart");
+        //    }
+        //    //((CartModel)Session["Cart"]).TalkModelItems.Add(talkmodel);
+        //    //((CartModel)Session["Cart"]).Items.Add(talkmodel);
+        //    cart.TalkModelItems.Add(talkmodel);
+        //    cart.Items.Add(talkmodel);
+        //    Session["Cart"] = cart;
+        //    return RedirectToAction("AddedToCart");
+
+        //}
 
         public ActionResult AddedToCart()
         {

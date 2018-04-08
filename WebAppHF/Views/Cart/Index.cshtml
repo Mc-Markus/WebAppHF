@@ -1,4 +1,4 @@
-﻿@model CartViewModel
+﻿@model CartModel
 @using WebAppHF.Models
 
 
@@ -25,13 +25,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (OrderItemViewModel displayRecord in Model.displayRecords)
+                @foreach (OrderItem orderItem in Model.orderItems)
                 {
                     <tr>
-                        <th scope="row">@displayRecord.orderItem.Amount</th>
-                        <td>@displayRecord.Event.Name</td>
-                        <td>@displayRecord.Event.Date.ToShortDateString() | @displayRecord.Event.StartTime.ToShortTimeString()</td>
-                        <td>@displayRecord.Event.GetPriceString()</td>
+                        <th scope="row">@orderItem.Amount</th>
+                        <td>@orderItem.Event.Name</td>
+                        <td>@orderItem.Event.Date.ToShortDateString() | @orderItem.Event.StartTime.ToShortTimeString()</td>
+                        <td>@orderItem.Event.GetPriceString()</td>
                     </tr>
                 }
             </tbody>
@@ -49,15 +49,16 @@
         <p><strong>You could also..</strong></p>
     </div>
 
-    @foreach (Restaurant restaurant in Model.restaurants)
+    @foreach (Event crossSellingEvent in Model.crossSellingEvents)
     {
         <div class="col-md-4">
-            <p class="text-center font-weight-bold">Get Dinner</p> <img src="@restaurant.RestaurantIMGString" class="img-fluid mx-auto" alt="Responsive image">
+            @*<p class="text-center font-weight-bold">Get Dinner</p> <img src="@crossSellingEvent.NoIMGStringInEvent!!!!" class="img-fluid mx-auto" alt="Responsive image">*@
             <p>
-                <b>Restaurant:</b> @restaurant.Name
-                <br> <b>Price:</b> @restaurant.Stars/5
-                <br> <b>Location:</b> @restaurant.Address
-                <br> @Html.ActionLink("Meer info", "Details", "Restaurant", restaurant.ID)
+                <b>Name:</b> @crossSellingEvent.Name
+                <br> <b>Price:</b> @crossSellingEvent.GetPriceString()
+                <br> <b>Location:</b> @crossSellingEvent.LocationName
+                @crossSellingEvent.GetType()
+                <br> @Html.ActionLink("Meer info", "Details", "Restaurant", crossSellingEvent.ID)
             </p>
         </div>
     }
