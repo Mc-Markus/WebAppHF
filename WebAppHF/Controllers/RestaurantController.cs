@@ -35,7 +35,7 @@ namespace WebAppHF.Controllers
         public ActionResult Index(RestaurantIndexViewModel dropdown)
         {
             //RestaurantIndexViewModel test = dropdown;
-            List<Restaurant> allRes = new List<Restaurant>();
+            List<Restaurant> allRes;
             if (dropdown.RestaurantModel.FoodType1 == null)
             {
                 allRes = _restaurantRepo.RestaurantList();
@@ -78,10 +78,10 @@ namespace WebAppHF.Controllers
             var timeListItem = time.Select(x => new SelectListItem() { Value = x.ToString(), Text = x.ToShortTimeString() });
 
             //Create new Record to use in the View
-            OrderItemViewModel record = new OrderItemViewModel();
+            OrderItem order = new OrderItem();
 
             //Passing viewmodel to the View
-            ReservationVM vm = new ReservationVM(restaurant, dayListItem, timeListItem, record);
+            ReservationVM vm = new ReservationVM(restaurant, dayListItem, timeListItem, order);
             return View(vm);
         }
 
@@ -89,35 +89,25 @@ namespace WebAppHF.Controllers
         public ActionResult AddToDataBase(ReservationVM FormResponse)
         {
             ReservationVM reservation = FormResponse;
+            FormResponse.Order.Event = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID,reservation.Order.Event.Date,reservation.Order.Event.StartTime);
 
-            // Giving the record value of eventid and eventtype
+            //maak een lege cart
+            CartModel cart;
 
-            //TO DO - Mark
-            //reservation.Record.orderItem.EventType = eventType;
-            //reservation.Record.orderItem.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.Date, reservation.Record.Event.StartTime);
-
-            List<OrderItem> sessionBasket = new List<OrderItem>();
-            sessionBasket.Add(reservation.Record.orderItem);
-
-            //check if session contains records if so add them to new cart value
-            try
+            //als cart in de session leeg is maak een nieuwe
+            if ((CartModel)Session["Cart"] == null)
             {
-                List<OrderItem> basket = (List<OrderItem>)Session["Cart"];
-                foreach (OrderItem sessionrecord in basket)
-                {
-                    sessionBasket.Add(sessionrecord);
-                }
+                cart = new CartModel();
             }
-            catch
+            //anders stop de inhoud van de session in de cart
+            else
             {
-                Session["Cart"] = null;
+                cart = (CartModel)Session["Cart"];
             }
-            finally
-            {
-                Session["Cart"] = sessionBasket;
-            }
-
-            //send user to basket after things are added to basket
+            cart.AddOrderItem(reservation.Order);
+            Session["Cart"] = cart;
+            
+            
             return RedirectToAction("Index", "Cart");
         }
 

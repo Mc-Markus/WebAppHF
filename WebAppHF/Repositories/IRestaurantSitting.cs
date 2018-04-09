@@ -10,7 +10,7 @@ namespace WebAppHF.Repositories
     interface IRestaurantSitting 
     {
         RestaurantSitting GetRestaurantSessionByID(int ID);
-        int GetEventID(int ResID, DateTime date, DateTime startingtime);
+        Event GetEventID(int ResID, DateTime date, DateTime startingtime);
         IEnumerable<RestaurantSitting> Events();
     }
 }

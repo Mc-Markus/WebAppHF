@@ -8,30 +8,28 @@ namespace WebAppHF.Repositories
 {
     public class RestaurantSittingRepo : IRestaurantSitting
     {
-        private HFContext database = new HFContext();
-        public RestaurantSitting GetRestaurantSessionByID(int ID)
+        private readonly HFContext _database = new HFContext();
+        public RestaurantSitting GetRestaurantSessionByID(int id)
         {
-            RestaurantSitting restaurantSession;
             using (HFContext context = new HFContext())
             {
-                restaurantSession = context.RestaurantSessions.SingleOrDefault(j => j.ID == ID);
+                var restaurantSession = context.RestaurantSessions.SingleOrDefault(j => j.ID == id);
                 return restaurantSession;
             }
         }
 
-        public int GetEventID(int ResID, DateTime date, DateTime startingtime)
+        public Event GetEventID(int resId, DateTime date, DateTime startingtime)
         {
 
-            int EventId = database.RestaurantSessions.Where(m => m.Date == date
-            && m.RestaurantID == ResID
-            && m.StartTime == startingtime)
-            .Select(m => m.ID).SingleOrDefault();
-            return EventId;
+            Event eventId = _database.RestaurantSessions.SingleOrDefault(m => m.Date == date
+            && m.RestaurantID == resId
+            && m.StartTime == startingtime);
+            return eventId;
         }
 
         public IEnumerable<RestaurantSitting> Events()
         {
-            IEnumerable<RestaurantSitting> restaurant = database.RestaurantSessions.ToList();
+            IEnumerable<RestaurantSitting> restaurant = _database.RestaurantSessions.ToList();
             return restaurant;
         }
     }

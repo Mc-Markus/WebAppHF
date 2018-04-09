@@ -8,14 +8,14 @@ namespace WebAppHF.Models
 {
     public class ReservationVM
     {
-        public OrderItemViewModel Record { get; set; }
+        public OrderItem Order { get; set; }
         public Restaurant Restaurant { get; set; }
         public IEnumerable<SelectListItem> Day { get; set; }
         public IEnumerable<SelectListItem> Time { get; set; }
 
-        public ReservationVM(Restaurant restaurant, IEnumerable<SelectListItem> day, IEnumerable<SelectListItem> time, OrderItemViewModel record)
+        public ReservationVM(Restaurant restaurant, IEnumerable<SelectListItem> day, IEnumerable<SelectListItem> time, OrderItem orderItem)
         {
-            this.Record = record;
+            this.Order = orderItem;
             this.Restaurant = restaurant;
             this.Day = day;
             this.Time = time;
