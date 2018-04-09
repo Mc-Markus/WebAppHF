@@ -8,32 +8,31 @@
     <div class="row">
         <div class="col-md-6">
             
-                <div class="form-group">
-                    @Html.LabelFor(x => x.Record.orderItem.Amount)
-                    @Html.TextBoxFor(x => x.Record.orderItem.Amount, "1", new { type = "number", min = "1", max = "20", })
-                    @Html.ValidationMessageFor(model => model.Record.orderItem.Amount, "", new { @class = "text-danger" })
+                <div class="form-group">            
+                    @Html.LabelFor(x => x.Order.Amount)
+                    @Html.TextBoxFor(x => x.Order.Amount, "1", new { type = "number", min = "1", max = "20", })
+                    @Html.ValidationMessageFor(model => model.Order.Amount, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(x => x.Record.Event.Date)
+                    @Html.LabelFor(x => x.Order.Event.Date)
                     @*@Html.DropDownListFor(model => model.Record.Event.Date, ViewBag.selectTestDayList as SelectList, "Choose a Day", new { @class = "form-control" })*@
-                    @Html.DropDownListFor(Model => Model.Record.Event.Date, Model.Day, "Choose a Day", new { @class = "form-control" })
+                    @Html.DropDownListFor(Model => Model.Order.Event.Date, Model.Day, "Choose a Day", new { @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(x => x.Record.Event.StartTime)
+                    @Html.LabelFor(x => x.Order.Event.StartTime)
                     @*@Html.DropDownListFor(model => model.Record.Event.StartTime, ViewBag.selectTestTimeList as SelectList, "Choose a Time", new { @class = "form-control" })*@
-                    @Html.DropDownListFor(Model => Model.Record.Event.StartTime, Model.Time, "Choose a Time",new { @class = "form-control" })
+                    @Html.DropDownListFor(Model => Model.Order.Event.StartTime, Model.Time, "Choose a Time",new { @class = "form-control" })
                 </div>
             
             <div class="form-group">
-                @Html.LabelFor(x => x.Record.orderItem.Comment)
-                @Html.TextBoxFor(x => x.Record.orderItem.Comment)
-                @Html.ValidationMessageFor(model => model.Record.orderItem.Comment, "", new { @class = "text-danger" })
+                @Html.LabelFor(x => x.Order.Comment)
+                @Html.TextBoxFor(x => x.Order.Comment)
+                @Html.ValidationMessageFor(model => model.Order.Comment, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col-md-6"> <img src="~/IMG/patronaat1.jpg" class="img-fluid" alt="Responsive image"> </div>
     </div>
     @Html.HiddenFor(x => x.Restaurant.ID, new { id="ID", Value = Model.Restaurant.ID })
-    @Html.HiddenFor(x => x.Record.orderItem.EventType)
 
 <button type="submit" value="MakeReservation" class="btn btn-primary main-btn talking-right">Add to Basket</button>
 }
