@@ -2,7 +2,7 @@
 @model WebAppHF.Models.ReservationVM
 
 <h2>Go make a reservation for @Html.DisplayFor(x => x.Restaurant.Name)</h2>
-@using (Html.BeginForm("AddToDataBase", "Restaurant", FormMethod.Post, new { MyTestParameter = Model }))
+@using (Html.BeginForm("AddToBasket", "Restaurant", FormMethod.Post, new { MyTestParameter = Model }))
 {
     @Html.AntiForgeryToken()
     <div class="row">
