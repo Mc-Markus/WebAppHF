@@ -522,6 +522,7 @@
     <Content Include="Views\Admin\CreateWalk.cshtml" />
     <Content Include="Views\Admin\UpdateWalk.cshtml" />
     <Content Include="Views\Admin\DeleteWalk.cshtml" />
+    <Content Include="Views\Admin\Success.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
