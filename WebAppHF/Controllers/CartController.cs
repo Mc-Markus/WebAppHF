@@ -18,7 +18,7 @@ namespace WebAppHF.Controllers
 
             if(cart == null)
             {
-                RedirectToAction("CartEmpty");
+                return RedirectToAction("CartEmpty");
             }
 
             return View(cart);

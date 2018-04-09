@@ -26,8 +26,16 @@ namespace WebAppHF.Controllers
             return View(summarys); 
         }
 
-        public ActionResult Day(DateTime date)
+        public ActionResult Day(string dateString)
         {
+            DateTime date;
+            bool parseSuccesful = DateTime.TryParse(dateString, out date);
+
+            if (!parseSuccesful)
+            {
+                return RedirectToAction("Index");
+            }
+
             //gets all jazz events for a single day
             List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
 
@@ -39,8 +47,16 @@ namespace WebAppHF.Controllers
         }
 
         [HttpGet]
-        public ActionResult Book(DateTime date)
+        public ActionResult Book(string dateString)
         {
+            DateTime date;
+            bool parseSuccesful = DateTime.TryParse(dateString, out date); 
+
+            if(!parseSuccesful)
+            {
+                return RedirectToAction("Index");
+            }
+
             //gets all jazz tickets for an event
             List<Jazz> JazzActs = repo.GetJazzActsByDay(date);
             Jazz passePartoutWeekend = repo.GetPassePartoutWeekend();
