@@ -91,7 +91,7 @@ namespace WebAppHF.Controllers
             ReservationVM reservation = FormResponse;
 
             // Giving the record value of eventid and eventtype
-
+            //Helo
             //TO DO - Mark
             //reservation.Record.orderItem.EventType = eventType;
             //reservation.Record.orderItem.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.Date, reservation.Record.Event.StartTime);
