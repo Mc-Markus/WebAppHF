@@ -12,7 +12,6 @@ namespace WebAppHF.Controllers
     {
 
         private IJazzRepo repo = new JazzRepo();
-        private string eventType = "Jazz";
         // GET: Jazz
         public ActionResult Index()
         {
@@ -21,10 +20,10 @@ namespace WebAppHF.Controllers
 
             if (summarys == null)
             {
-                return RedirectToAction("Index", "HomeController", null);
+                return RedirectToAction("Index", "Home", null);
             }
 
-            return View(summarys);
+            return View(summarys); 
         }
 
         public ActionResult Day(DateTime date)
@@ -48,17 +47,17 @@ namespace WebAppHF.Controllers
             Jazz passePartoutDay = repo.GetPassePartoutDay(date);
 
             //converts jazz's into displayrecords
-            OrderItemViewModel displayRecordWeekend = new OrderItemViewModel(passePartoutWeekend, new OrderItem(passePartoutWeekend.ID, eventType));
-            OrderItemViewModel displayRecordDay = new OrderItemViewModel(passePartoutDay, new OrderItem(passePartoutDay.ID, eventType));
-            List<OrderItemViewModel> displayRecordEvents = new List<OrderItemViewModel>();
+            OrderItem weekend = new OrderItem(passePartoutWeekend);
+            OrderItem day = new OrderItem(passePartoutDay);
+            List<OrderItem> events = new List<OrderItem>();
 
             foreach (Jazz jazz in JazzActs)
             {
-                OrderItemViewModel dr = new OrderItemViewModel(jazz, new OrderItem(jazz.ID, eventType));
-                displayRecordEvents.Add(dr);
+                OrderItem oi = new OrderItem(jazz);
+                events.Add(oi);
             }
 
-            JazzBook jazzBook = new JazzBook(displayRecordDay, displayRecordWeekend, displayRecordEvents);
+            JazzBook jazzBook = new JazzBook(day, weekend, events);
 
             //string hall = ((Jazz)dr.Event).Hall;
             return View(jazzBook);
@@ -66,54 +65,51 @@ namespace WebAppHF.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToSession(JazzBook MyTestParameter)
+        public ActionResult AddToSession(JazzBook FormResponse)
         {
             //parameter could possably be changed but i leave it here cause of problems in the past
-            JazzBook book = MyTestParameter;
+            JazzBook book = FormResponse;
 
+            CartModel cart;
 
-            List<OrderItem> sessionBasket = new List<OrderItem>();
-            //adds the passe-partouts if they are selected by customer
-            if (book.DayPassePartout.orderItem.Amount > 0)
+            if((CartModel)Session["Cart"] == null)
             {
-                sessionBasket.Add(book.DayPassePartout.orderItem);
+                cart = new CartModel();
             }
-            if (book.WeekendPassePartout.orderItem.Amount > 0)
+            else
             {
-                sessionBasket.Add(book.WeekendPassePartout.orderItem);
+                cart = (CartModel)Session["Cart"];
+            }
+
+            //adds the passe-partouts if they are selected by customer
+            if (book.DayPassePartout.Amount > 0)
+            {
+                book.DayPassePartout.Event = repo.GetJazzByID(book.DayPassePartout.Event.ID);
+                cart.AddOrderItem(book.DayPassePartout);
+            }
+            if (book.WeekendPassePartout.Amount > 0)
+            {
+                book.WeekendPassePartout.Event = repo.GetJazzByID(book.WeekendPassePartout.Event.ID);
+                cart.AddOrderItem(book.WeekendPassePartout);
             }
 
             //adds other jazz's if selected by customer
-            foreach (OrderItemViewModel dr in book.DayEvents)
+            foreach (OrderItem oi in book.DayEvents)
             {
-                if (dr.orderItem.Amount > 0)
+                if (oi.Amount > 0)
                 {
-                    sessionBasket.Add(dr.orderItem);
+                    oi.Event = repo.GetJazzByID(oi.Event.ID);
+                    cart.AddOrderItem(oi);
                 }
             }
 
-            //check if session contains records if so add them to new cart value
-            try
-            {
-                List<OrderItem> basket = (List<OrderItem>)Session["Cart"];
-                foreach (OrderItem record in basket)
-                {
-                    sessionBasket.Add(record);
-                }
-            }
-            catch
-            {
-                Session["Cart"] = null;
-            }
-            finally
-            {
-                Session["Cart"] = sessionBasket;
-            }
+            Session["Cart"] = cart;
 
             //send user to basket after things are added to basket
             return RedirectToAction("Index", "Cart");
+            
 
-            #region addToSession copy with extra documentation
+            #region OLD DO NOT USE addToSession copy with extra documentation
             ////put this at the end of your book/reservation/buy post method ActionResult and add your records to session basket as described below
             ////please use the complete thing so it works the same in all places
 
@@ -149,6 +145,47 @@ namespace WebAppHF.Controllers
             ////send user to basket after things are added to basket
             //return RedirectToAction("Index", "Basket");
             #endregion
+        }
+
+        /*HttpPost*/
+        public void NEW_addToSession(/* Data van je book pagina*/)
+        {
+
+            //krijg amount description etc uit je form
+
+            //maak een lege cart
+            CartModel cart;
+
+            //als cart in de session leeg is maak een nieuwe
+            if ((CartModel)Session["Cart"] == null)
+            {
+                cart = new CartModel();
+            }
+            //anders stop de inhoud van de session in de cart
+            else
+            {
+                cart = (CartModel)Session["Cart"];
+            }
+            /*
+             * als amount hoger is als 0 stop het in cart met de volgende regel code:
+             * 
+             * cart.AddOrderItem(onderdeel uit je cart);
+             *
+             * een orderItem is nu wat vroeger record was met als verschil dat het
+             * nu een heel event bevat ipv alleen een event id, dit maakt het meer
+             * O.O. en beter uitbreidbaar
+             * 
+             * om het goed te laten werken moet in een orderItem hetvolgende zitten:
+             * - Event
+             * - Amount
+             * - TotalPrice 
+             * 
+             * TotalPrice wordt automatisch gedaan op het moment dat je AddOrderItem doet
+             * Hiervoor moet je wel zorgen dat amount > 0 en Event != null
+            */
+
+            //stop de hele cart weer terug in de session
+            Session["Cart"] = cart;
         }
 
     }

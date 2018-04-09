@@ -8,21 +8,31 @@ namespace WebAppHF.Models
     public class OrderItem
     {
         public int ID { get; set; }
-        public int EventID { get; set; }
+        public Event Event { get; set; }
         public int OrderID { get; set; }
         public int Amount { get; set; }
         public int TotalPrice { get; set; }
         public string Comment { get; set; }
-        public string EventType { get; set; }
 
         //empty constructor needed for form
         public OrderItem() { }
 
         //constructor that should be used when adding a record to cart
-        public OrderItem(int EventID, string EventType)
+        public OrderItem(Event Event)
         {
-            this.EventID = EventID;
-            this.EventType = EventType;
+            this.Event = Event;
+        }
+
+        public void calculateTotalPrice()
+        {
+            if(Amount > 0 && Event != null)
+            {
+                this.TotalPrice = Amount * Event.Price;
+            }
+            else
+            {
+                TotalPrice = -1;
+            }
         }
     }
 }

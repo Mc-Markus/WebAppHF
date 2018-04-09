@@ -4,7 +4,7 @@
     ViewBag.Title = "Book";
 }
 @*<form action="~/Controllers/AddToSession">*@
-@using (Html.BeginForm("AddToSession", "Jazz", FormMethod.Post, new { MyTestParameter = Model }))
+@using (Html.BeginForm("AddToSession", "Jazz", FormMethod.Post, new { FormResponse = Model }))
 {
     <div class="row">
         <div class="col-md-12">
@@ -32,18 +32,16 @@
                     </tr>
                     <tr>
                         @*Show the passe-partout tickets*@
-                        <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
+                        <th scope="row">@Html.TextBoxFor(m => m.DayPassePartout.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
                         <td>@Model.DayPassePartout.Event.Name</td>
                         <td>@Model.DayPassePartout.Event.GetPriceString()</td>
-                        @Html.HiddenFor(m => m.DayPassePartout.Record.EventID)
-                        @Html.HiddenFor(m => m.DayPassePartout.Record.EventType)
+                        @Html.HiddenFor(m => m.DayPassePartout.Event.ID)
                     </tr>
                     <tr>
-                        <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Record.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
+                        <th scope="row">@Html.TextBoxFor(m => m.WeekendPassePartout.Amount, "0", new { type = "number", min = "0", max = "300", })</th>
                         <td>@Model.WeekendPassePartout.Event.Name</td>
                         <td>@Model.WeekendPassePartout.Event.GetPriceString()</td>
-                        @Html.HiddenFor(m => m.WeekendPassePartout.Record.EventID)
-                        @Html.HiddenFor(m => m.WeekendPassePartout.Record.EventType)
+                        @Html.HiddenFor(m => m.WeekendPassePartout.Event.ID)
                     </tr>
                 </tbody>
             </table>
@@ -65,13 +63,12 @@
                     @for (int i = 0; i < Model.DayEvents.Count; i++)
                     {
                         <tr>
-                            <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Record.Amount, "0", new { type = "number", min = "0", max = "300" })</th>
+                            <th scope="row">@Html.TextBoxFor(dr => dr.DayEvents[i].Amount, "0", new { type = "number", min = "0", max = "300" })</th>
                             <td>@Model.DayEvents[i].Event.Name</td>
                             <td>@Model.DayEvents[i].Event.GetPriceString()</td>
                             <td>@Model.DayEvents[i].Event.Date.DayOfWeek @Model.DayEvents[i].Event.Date.ToShortDateString() | @Model.DayEvents[i].Event.StartTime.ToShortTimeString() - @Model.DayEvents[i].Event.EndTime.ToShortTimeString()</td>
                             <td>@Model.DayEvents[i].Event.LocationName - @(((Jazz)Model.DayEvents[i].Event).Hall)</td>
-                            @Html.HiddenFor(m => m.DayEvents[i].Record.EventID)
-                            @Html.HiddenFor(m => m.DayEvents[i].Record.EventType)
+                            @Html.HiddenFor(m => m.DayEvents[i].Event.ID)
                         </tr>
                     }
                 </tbody>

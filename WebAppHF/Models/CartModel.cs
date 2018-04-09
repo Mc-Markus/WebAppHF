@@ -8,18 +8,24 @@ namespace WebAppHF.Models
 {
     public class CartModel
     {
-        public List<Event> Items { get; set; }
-        public List<TalkModel> TalkModelItems { get; set; }
-        public List<Restaurant> RestItems { get; set; }
-        public List<Event> CrossSellItems { get; set; }
-        public PaymentMethod PaymentMethod { get; set; }
-        public int Price { get; set; }
+        public List<OrderItem> orderItems { get; set; }
+        public List<Event> crossSellingEvents { get; set; } 
 
         public CartModel()
         {
-            this.Items = new List<Event>();
-            this.TalkModelItems = new List<TalkModel>();
-            this.RestItems = new List<Restaurant>();
+            orderItems = new List<OrderItem>();
+            crossSellingEvents = new List<Event>();
+        }
+
+        public void AddOrderItem(OrderItem orderItem)
+        {
+            orderItem.calculateTotalPrice();
+            orderItems.Add(orderItem);
+        }
+
+        public void RemoveOrderItem(OrderItem orderItem)
+        {
+            orderItems.Remove(orderItem);
         }
     }
 }

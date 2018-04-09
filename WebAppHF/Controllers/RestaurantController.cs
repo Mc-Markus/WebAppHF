@@ -86,13 +86,15 @@ namespace WebAppHF.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToDataBase(ReservationVM MyTestParameter)
+        public ActionResult AddToDataBase(ReservationVM FormResponse)
         {
-            ReservationVM reservation = MyTestParameter;
+            ReservationVM reservation = FormResponse;
 
             // Giving the record value of eventid and eventtype
-            reservation.Record.orderItem.EventType = eventType;
-            reservation.Record.orderItem.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.Date, reservation.Record.Event.StartTime);
+
+            //TO DO - Mark
+            //reservation.Record.orderItem.EventType = eventType;
+            //reservation.Record.orderItem.EventID = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Record.Event.Date, reservation.Record.Event.StartTime);
 
             List<OrderItem> sessionBasket = new List<OrderItem>();
             sessionBasket.Add(reservation.Record.orderItem);
