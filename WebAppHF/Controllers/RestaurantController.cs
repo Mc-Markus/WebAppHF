@@ -35,7 +35,7 @@ namespace WebAppHF.Controllers
         public ActionResult Index(RestaurantIndexViewModel dropdown)
         {
             //RestaurantIndexViewModel test = dropdown;
-            List<Restaurant> allRes = new List<Restaurant>();
+            List<Restaurant> allRes;
             if (dropdown.RestaurantModel.FoodType1 == null)
             {
                 allRes = _restaurantRepo.RestaurantList();
