@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Mime;
 using System.Web;
@@ -114,6 +115,33 @@ namespace WebAppHF.Repositories
 
             }
 
+        }
+
+        public void CreateTour(Tour walk)
+        {
+            using (HFContext context = new HFContext())
+            {
+                context.Tours.Add(walk);
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateTour(Tour tour)
+        {
+            using (HFContext context = new HFContext())
+            {
+                context.Entry(tour).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void Remove(Tour e)
+        {
+            using (HFContext context = new HFContext())
+            {
+                context.Tours.Remove(e);
+                context.SaveChanges();
+            }
         }
     }
 }

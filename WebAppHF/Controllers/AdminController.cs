@@ -20,6 +20,7 @@ namespace WebAppHF.Controllers
         private ITalkRepo talkRepo = new TalkRepo();
         private IAccountRepo accountRepo = new AccountRepo();
         private IRecordRepo recordRepo = new RecordRepo();
+        private ITourRepo tourRepo = new TourRepo();
 
         public ActionResult Login()
         {
@@ -449,6 +450,102 @@ namespace WebAppHF.Controllers
         {
             var allRecords = recordRepo.GetAllRecords();
             return View(allRecords);
+        }
+
+
+        [Authorize]
+        public ActionResult WalksList()
+        {
+            var allWalks = tourRepo.GetAll();
+            return View(allWalks);
+        }
+
+        [Authorize]
+        public ActionResult CreateWalk()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateWalk(Tour walk)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    tourRepo.CreateTour(walk);
+                    return RedirectToAction("WalksList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(walk);
+        }
+        [Authorize]
+
+        public ActionResult UpdateWalk(int id)
+        {
+            Tour retrieved = tourRepo.GetWalkByID(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateWalk(Tour tour)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    tourRepo.UpdateTour(tour);
+                    return RedirectToAction("WalksList");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(tour);
+        }
+
+        [Authorize]
+
+        public ActionResult DeleteWalk(int id)
+        {
+            Tour retrieved = tourRepo.GetWalkByID(id);
+            if (retrieved == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(retrieved);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult DeleteWalk(int id, FormCollection fcNotUsed)
+        {
+            try
+            {
+                Tour e = tourRepo.GetWalkByID(id);
+                tourRepo.Remove(e);
+
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+            return RedirectToAction("WalksList");
         }
 
 
