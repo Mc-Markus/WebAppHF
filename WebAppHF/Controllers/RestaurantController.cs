@@ -15,9 +15,6 @@ namespace WebAppHF.Controllers
         private readonly IRestaurantSitting _restaurantSessionRepo = new RestaurantSittingRepo();
         private readonly IRestaurantRepo _restaurantRepo = new RestaurantRepo();
 
-        // Hardcode eventtype to give to the record eventId
-        private string eventType = "RestaurantSession";
-
         // GET: Restaurant
         // Toon in een lijst alle restauranten
         public ActionResult Index()
@@ -86,10 +83,10 @@ namespace WebAppHF.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToDataBase(ReservationVM FormResponse)
+        public ActionResult AddToBasket(ReservationVM FormResponse)
         {
             ReservationVM reservation = FormResponse;
-            FormResponse.Order.Event = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID,reservation.Order.Event.Date,reservation.Order.Event.StartTime);
+            reservation.Order.Event = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);
 
             //maak een lege cart
             CartModel cart;
@@ -106,15 +103,7 @@ namespace WebAppHF.Controllers
             }
             cart.AddOrderItem(reservation.Order);
             Session["Cart"] = cart;
-            
-            
             return RedirectToAction("Index", "Cart");
-        }
-
-        public ActionResult testEvents()
-        {
-            var events = _restaurantSessionRepo.Events();
-            return View(events.ToList());
         }
     }
 }
