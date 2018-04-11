@@ -11,7 +11,9 @@ namespace WebAppHF.Models
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
+        [Required]
         public DateTime Date { get; set; }
+        [Required]
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string LocationName { get; set; }
