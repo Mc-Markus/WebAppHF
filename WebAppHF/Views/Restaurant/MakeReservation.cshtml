@@ -1,5 +1,5 @@
 ﻿@using WebAppHF.Models
-@model WebAppHF.Models.ReservationVM
+@model WebAppHF.Models.ReservationViewModel
 
 <h2>Go make a reservation for @Html.DisplayFor(x => x.Restaurant.Name)</h2>
 @using (Html.BeginForm("AddToBasket", "Restaurant", FormMethod.Post, new { MyTestParameter = Model }))

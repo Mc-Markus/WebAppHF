@@ -18,7 +18,7 @@
         <h3>Cuisine</h3>
         @using (Html.BeginForm("Index", "Restaurant", FormMethod.Post, new { dropdown = Model }))
         {
-            @Html.DropDownListFor(Model => Model.RestaurantModel.FoodType1, Model.foodtypes,"All Categories");
+            @Html.DropDownListFor(Model => Model.RestaurantModel.FoodType1, Model.Foodtypes,"All Categories");
             <input class="btn btn-primary main-btn" type="submit" value="Filter" />
         }
     </div>

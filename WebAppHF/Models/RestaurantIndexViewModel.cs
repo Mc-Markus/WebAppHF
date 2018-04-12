@@ -10,12 +10,12 @@ namespace WebAppHF.Models
     {
         public List<Restaurant> Restaurants { get; set; }
         public Restaurant RestaurantModel { get; set; }
-        public IEnumerable<SelectListItem> foodtypes { get; set; }
+        public IEnumerable<SelectListItem> Foodtypes { get; set; }
 
-        public RestaurantIndexViewModel(List<Restaurant> Restaurants, IEnumerable<SelectListItem> fooodies)
+        public RestaurantIndexViewModel(List<Restaurant> restaurants, IEnumerable<SelectListItem> dropdownlistFoodTypes)
         {
-            this.Restaurants = Restaurants;
-            this.foodtypes = fooodies;
+            this.Restaurants = restaurants;
+            this.Foodtypes = dropdownlistFoodTypes;
         }
 
         public RestaurantIndexViewModel() { }

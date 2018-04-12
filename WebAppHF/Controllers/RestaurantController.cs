@@ -90,16 +90,19 @@ namespace WebAppHF.Controllers
             OrderItem order = new OrderItem();
 
             //Passing viewmodel to the View
-            ReservationVM vm = new ReservationVM(restaurant, dayListItem, timeListItem, order);
-            return View(vm);
+            ReservationViewModel viewModel = new ReservationViewModel(restaurant, dayListItem, timeListItem, order);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult AddToBasket(ReservationVM FormResponse)
+        public ActionResult AddToBasket(ReservationViewModel FormResponse)
         {
-            ReservationVM reservation = FormResponse;
+            ReservationViewModel reservation = FormResponse;
             reservation.Order.Event = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);
-
+            if (reservation.Order.Event == null)
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
             //maak een lege cart
             CartModel cart;
 

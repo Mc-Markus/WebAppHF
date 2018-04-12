@@ -278,7 +278,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderTourViewModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
-    <Compile Include="Models\ReservationVM.cs" />
+    <Compile Include="Models\ReservationViewModel.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantIndexViewModel.cs" />
     <Compile Include="Models\RestaurantSession.cs" />
@@ -466,7 +466,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
