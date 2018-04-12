@@ -43,5 +43,11 @@ namespace WebAppHF.Repositories
             List<Event> list = ctx.Events.ToList();
             return list;
         }
+
+        public void CreateOrder(Order order)
+        {
+            ctx.Orders.Add(order);
+            ctx.SaveChanges();
+        }
     }
 }

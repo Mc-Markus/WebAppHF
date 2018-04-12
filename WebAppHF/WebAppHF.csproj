@@ -295,6 +295,7 @@
     <Compile Include="Repositories\IAccountRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
     <Compile Include="Repositories\IJazzRepo.cs" />
+    <Compile Include="Repositories\IOrderRepo.cs" />
     <Compile Include="Repositories\IRecordRepo.cs" />
     <Compile Include="Repositories\IRestaurantRepo.cs" />
     <Compile Include="Repositories\IRestaurantSitting.cs" />
@@ -302,6 +303,7 @@
     <Compile Include="Repositories\IVenueRepo.cs" />
     <Compile Include="Repositories\ITourRepo.cs" />
     <Compile Include="Repositories\JazzRepo.cs" />
+    <Compile Include="Repositories\OrderRepo.cs" />
     <Compile Include="Repositories\RecordRepo.cs" />
     <Compile Include="Repositories\RestaurantRepo.cs" />
     <Compile Include="Repositories\RestaurantSittingRepo.cs" />

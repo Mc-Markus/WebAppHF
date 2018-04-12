@@ -8,9 +8,11 @@ using WebAppHF.Repositories;
 
 namespace WebAppHF.Controllers
 {
+  
     public class CartController : Controller
     {
         // GET: Cart
+        private readonly IOrderRepo _orderRepo = new OrderRepo();
         ITalkRepo rep = new TalkRepo();
         public ActionResult Index()
         {
@@ -92,7 +94,7 @@ namespace WebAppHF.Controllers
             var selectlistitems = allPayments.Select(payment =>
                 new SelectListItem() {Value = allPayments[0], Text = allPayments[0]});
 
-            for (int i = 0; i < allPayments.Count; i++)
+            for (int i = 0; i < allPayments.Count-1; i++)
             {
                 selectlistitems = allPayments.Select(payment => new SelectListItem() { Value = allPayments[i], Text = allPayments[i] });
             }
@@ -100,6 +102,24 @@ namespace WebAppHF.Controllers
             Order order = new Order(); 
             OrderViewModel viewModel = new OrderViewModel(order, selectlistitems,"");
             return View(viewModel);
-        } 
+        }
+
+        [HttpPost]
+        public ActionResult AddToDatabase(OrderViewModel FormResponse)
+        {
+            Order CartOrder = FormResponse.Order;
+
+            // find existing order
+            Order existingOrder = _orderRepo.FindOrder(FormResponse.Order.Email);
+            if (existingOrder == null)
+            {
+                _orderRepo.CreateOrder(CartOrder);
+            }
+            else
+            {
+                
+            }           
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
