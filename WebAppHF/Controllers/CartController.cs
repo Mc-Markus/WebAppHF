@@ -74,5 +74,26 @@ namespace WebAppHF.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateOrder()
+        {
+            List<String> allPayments = new List<string>();
+            
+            allPayments.Add("IDeal");
+            allPayments.Add("Visa");
+            allPayments.Add("MasterCard");
+            allPayments.Add("PayPal");
+            var selectlistitems = allPayments.Select(payment =>
+                new SelectListItem() {Value = allPayments[0], Text = allPayments[0]});
+
+            for (int i = 0; i < allPayments.Count; i++)
+            {
+                selectlistitems = allPayments.Select(payment => new SelectListItem() { Value = allPayments[i], Text = allPayments[i] });
+            }
+
+            Order order = new Order(); 
+            OrderViewModel viewModel = new OrderViewModel(order, selectlistitems,"");
+            return View(viewModel);
+        } 
     }
 }

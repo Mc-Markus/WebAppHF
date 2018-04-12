@@ -278,6 +278,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderTourViewModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\ReservationViewModel.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantIndexViewModel.cs" />
@@ -539,6 +540,7 @@
     <Content Include="Views\Admin\UpdateWalk.cshtml" />
     <Content Include="Views\Admin\DeleteWalk.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />
+    <Content Include="Views\Cart\CreateOrder.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
