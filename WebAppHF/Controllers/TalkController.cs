@@ -69,7 +69,7 @@ namespace WebAppHF.Controllers
 
                 //stop de hele cart weer terug in de session
                 Session["Cart"] = cart;
-                return RedirectToAction("Success", "Cart");
+                return RedirectToAction("AddedToCart", "Cart");
             }
             return RedirectToAction("Failure", "Cart");
         }

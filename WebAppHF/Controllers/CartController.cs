@@ -44,14 +44,15 @@ namespace WebAppHF.Controllers
             {
                 totalPrice += item.TotalPrice;
             }
-            if(totalPrice == 0)
-            {
-                return RedirectToAction("Success");
-            }
-            else
-            {
-                return View(cart);
-            }
+            //if(totalPrice == 0)
+            //{
+            //    return RedirectToAction("Success");
+            //}
+            //else
+            //{
+            //    return View(cart);
+            //}
+            return View(cart);
         }
 
         [HttpPost]
@@ -61,6 +62,11 @@ namespace WebAppHF.Controllers
         }
 
         public ActionResult Success()
+        {
+            return View();
+        }
+
+        public ActionResult AddedTeoCart()
         {
             return View();
         }

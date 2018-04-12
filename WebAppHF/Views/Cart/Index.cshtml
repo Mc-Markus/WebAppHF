@@ -52,29 +52,6 @@
                         </tr>
                         <input type="hidden" name="OrderItems.Event.ID" value="@Model.OrderItems[i].Event.ID" />
                     }
-                    @*@foreach (OrderItem orderItem in Model.OrderItems)
-                    {
-                        <tr>
-                            <th scope="row">
-                        <select name="orderitem.Event.Amount">
-                            @for (int v = 1; v < 3; v++)
-                            {
-                                if (orderItem.Amount == v)
-                                {
-                                    <option value="@v" selected>@orderItem.Amount</option>
-                                }
-                                else
-                                {
-                                    <option value="@v">@v</option>
-                                }
-                            }
-                        </select></th>
-                            <td>@orderItem.Event.Name</td>
-                            <td>@orderItem.Event.Date.ToShortDateString() | @orderItem.Event.StartTime.ToShortTimeString()</td>
-                            <td>@orderItem.Event.GetPriceString()</td>
-                        </tr>
-                        <input type="hidden" name="orderItem.Event.ID" />
-                    }*@
                 </tbody>
             </table>
         </div>
@@ -85,8 +62,6 @@
             <button class="btn btn-primary main-btn">Next Step</button>
         </div>
     </div>
-
-    <p><input type="submit" value="Proceed to checkout" /></p>
 }
 
 
