@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebAppHF.Models;
@@ -19,6 +20,18 @@ namespace WebAppHF.Repositories
         {
             Order order = ctx.Orders.Where(x => x.Email == email).SingleOrDefault();
             return order;
+        }
+
+        public void CreateOrderItem(OrderItem orderItem)
+        {
+            ctx.Records.Add(orderItem);
+            ctx.SaveChanges();
+        }
+
+        public void UpDateEvent(Event anEvent)
+        {
+            ctx.Entry(anEvent).State = EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

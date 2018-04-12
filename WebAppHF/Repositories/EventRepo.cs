@@ -44,10 +44,5 @@ namespace WebAppHF.Repositories
             return list;
         }
 
-        public void CreateOrder(Order order)
-        {
-            ctx.Orders.Add(order);
-            ctx.SaveChanges();
-        }
     }
 }

@@ -14,6 +14,5 @@ namespace WebAppHF.Repositories
         void UpdateEvent(Event e);
         void Remove(Event e);
         List<Event> GetEvents();
-        void CreateOrder(Order order);
     }
 }
