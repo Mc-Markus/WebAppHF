@@ -287,7 +287,6 @@
     <Compile Include="Models\OrderTourViewModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
-    <Compile Include="Models\PassePartout.cs" />
     <Compile Include="Models\ReservationViewModel.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantIndexViewModel.cs" />
@@ -305,7 +304,6 @@
     <Compile Include="Repositories\IEventRepo.cs" />
     <Compile Include="Repositories\IJazzRepo.cs" />
     <Compile Include="Repositories\IOrderRepo.cs" />
-    <Compile Include="Repositories\IPassePartoutRepo.cs" />
     <Compile Include="Repositories\IRecordRepo.cs" />
     <Compile Include="Repositories\IRestaurantRepo.cs" />
     <Compile Include="Repositories\IRestaurantSitting.cs" />
@@ -314,7 +312,6 @@
     <Compile Include="Repositories\ITourRepo.cs" />
     <Compile Include="Repositories\JazzRepo.cs" />
     <Compile Include="Repositories\OrderRepo.cs" />
-    <Compile Include="Repositories\PassePartoutRepo.cs" />
     <Compile Include="Repositories\RecordRepo.cs" />
     <Compile Include="Repositories\RestaurantRepo.cs" />
     <Compile Include="Repositories\RestaurantSittingRepo.cs" />
