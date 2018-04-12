@@ -108,8 +108,11 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult AddToSession(ReservationViewModel FormResponse)
         {
+            // Vult de model met de data
             ReservationViewModel reservation = FormResponse;
+            // zoekt de juiste event dat daarbij hoort
             reservation.Order.Event = _restaurantSessionRepo.GetEvent(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);
+            // kijken of er een event gevonden is
             if (reservation.Order.Event == null)
             {
                 return RedirectToAction("PageNotFound", "Home");
@@ -127,6 +130,7 @@ namespace WebAppHF.Controllers
             {
                 cart = (CartModel)Session["Cart"];
             }
+            // de event toevoegen aan de session
             cart.AddOrderItem(reservation.Order);
             Session["Cart"] = cart;
             return RedirectToAction("Index", "Cart");

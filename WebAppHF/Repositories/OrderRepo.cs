@@ -40,7 +40,7 @@ namespace WebAppHF.Repositories
 
         public void CreateOrderItem(OrderItem orderItem)
         {
-            ctx.Records.Add(orderItem);
+            ctx.OrderItems.Add(orderItem);
             ctx.SaveChanges();
         }
 

@@ -17,7 +17,7 @@ namespace WebAppHF.Controllers
         private IRecordRepo recordRepository = new RecordRepo();
         private IRestaurantRepo restaurantRepo = new RestaurantRepo();
         // Hardcode eventtype to give to the record eventId
-        private string eventType = "RestaurantSession";
+        //private string eventType = "RestaurantSession";
         // GET: Records
         public ActionResult Index()
         {
