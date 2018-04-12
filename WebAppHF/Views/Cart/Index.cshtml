@@ -53,7 +53,7 @@
 
                             <td>@Model.OrderItems[i].Event.Name</td>
                             <td>@Model.OrderItems[i].Event.Date.ToShortDateString() | @Model.OrderItems[i].Event.StartTime.ToShortTimeString()</td>
-                            <td>@Model.OrderItems[i].Event.GetPriceString()</td>
+                            <td>@Model.OrderItems[i].GetPriceString()</td>
                         </tr>
                         <input type="hidden" name="OrderItems.Event.ID" value="@Model.OrderItems[i].Event.ID" />
                             @Html.HiddenFor(m => m.OrderItems[i].Event.ID)
