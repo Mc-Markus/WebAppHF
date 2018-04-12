@@ -265,6 +265,14 @@
     <Compile Include="Migrations\201803232039089_renamingRestaurantSession.Designer.cs">
       <DependentUpon>201803232039089_renamingRestaurantSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804121819186_passePartout.cs" />
+    <Compile Include="Migrations\201804121819186_passePartout.Designer.cs">
+      <DependentUpon>201804121819186_passePartout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121821134_passePartout3.cs" />
+    <Compile Include="Migrations\201804121821134_passePartout3.Designer.cs">
+      <DependentUpon>201804121821134_passePartout3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\CartModel.cs" />
@@ -297,6 +305,7 @@
     <Compile Include="Repositories\IEventRepo.cs" />
     <Compile Include="Repositories\IJazzRepo.cs" />
     <Compile Include="Repositories\IOrderRepo.cs" />
+    <Compile Include="Repositories\IPassePartoutRepo.cs" />
     <Compile Include="Repositories\IRecordRepo.cs" />
     <Compile Include="Repositories\IRestaurantRepo.cs" />
     <Compile Include="Repositories\IRestaurantSitting.cs" />
@@ -305,6 +314,7 @@
     <Compile Include="Repositories\ITourRepo.cs" />
     <Compile Include="Repositories\JazzRepo.cs" />
     <Compile Include="Repositories\OrderRepo.cs" />
+    <Compile Include="Repositories\PassePartoutRepo.cs" />
     <Compile Include="Repositories\RecordRepo.cs" />
     <Compile Include="Repositories\RestaurantRepo.cs" />
     <Compile Include="Repositories\RestaurantSittingRepo.cs" />
@@ -625,6 +635,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803232039089_renamingRestaurantSession.resx">
       <DependentUpon>201803232039089_renamingRestaurantSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121819186_passePartout.resx">
+      <DependentUpon>201804121819186_passePartout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121821134_passePartout3.resx">
+      <DependentUpon>201804121821134_passePartout3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
