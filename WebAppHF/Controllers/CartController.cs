@@ -11,10 +11,10 @@ namespace WebAppHF.Controllers
     public class CartController : Controller
     {
         // GET: Cart
+        ITalkRepo rep = new TalkRepo();
         public ActionResult Index()
         {
-            CartModel cart = null;
-            cart = (CartModel)Session["Cart"];
+            CartModel cart = (CartModel)Session["Cart"];
 
             if(cart == null)
             {
@@ -28,23 +28,31 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult Index(CartModel cart)
         {
-            //...
+            foreach(OrderItem item in cart.OrderItems)
+            {
+                item.Event = rep.GetTalk(item.Event.ID);
+            }
             return RedirectToAction("PaymentMethod");
         }
         
-        //public ActionResult PaymentMethod()
-        //{
-        //    //session wordt opgehaald om af te rekenen, als de prijs 0 is wordt er direct naar de success view geredirect.
-        //    CartModel cart = (CartModel)Session["Cart"];
-        //    if(cart.Price == 0)
-        //    {
-        //        return RedirectToAction("Success");
-        //    }
-        //    else
-        //    {
-        //        return View(cart);
-        //    }
-        //}
+        public ActionResult PaymentMethod()
+        {
+            //session wordt opgehaald om af te rekenen, als de prijs 0 is wordt er direct naar de success view geredirect.
+            CartModel cart = (CartModel)Session["Cart"];
+            int totalPrice = 0;
+            foreach(OrderItem item in cart.OrderItems)
+            {
+                totalPrice += item.TotalPrice;
+            }
+            if(totalPrice == 0)
+            {
+                return RedirectToAction("Success");
+            }
+            else
+            {
+                return View(cart);
+            }
+        }
 
         [HttpPost]
         public ActionResult PaymentMethod(CartModel cart)
