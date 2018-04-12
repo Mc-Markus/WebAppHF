@@ -31,13 +31,16 @@ namespace WebAppHF.Repositories
             {
                 jazzs = context.Jazzs.AsEnumerable();
                 jazzs.OrderBy(j => j.Date);
-                jazzList = jazzs.ToList();
 
-                if (jazzs == null)
+                Console.WriteLine(jazzs);
+
+                if (jazzs is string)//probeer try catch met exception
                 {
                     return null;
                 }
 
+                jazzList = jazzs.ToList();
+                
                 //pass-partout's are not needed
                 jazzList = RemovePassPartout(jazzList);
 

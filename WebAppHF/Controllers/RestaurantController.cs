@@ -19,9 +19,16 @@ namespace WebAppHF.Controllers
         // Toon in een lijst alle restauranten
         public ActionResult Index()
         {
+            // stopt een lijst van alle restaurants
             List<Restaurant> restaurants = _restaurantRepo.RestaurantList();
+
+            // stopt een lijst met cuisine voor in de filter
             List<String> foods = _restaurantRepo.GetAllFoodTypes();
+
+            // vullen de lijst met foodtpe waarde
             var selectlistitems = foods.Select(foodType => new SelectListItem() { Value = foodType, Text = foodType });
+
+            // stopt alle models in de viewemodel
             RestaurantIndexViewModel viewModel = new RestaurantIndexViewModel(restaurants, selectlistitems);
 
 
@@ -31,16 +38,21 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult Index(RestaurantIndexViewModel dropdown)
         {
-            //RestaurantIndexViewModel test = dropdown;
+            // Creer lijst
             List<Restaurant> allRes;
+
+            // Bekijk of de dropdown lijst leeg is of vol 
             if (dropdown.RestaurantModel.FoodType1 == null)
             {
+                // Stop lijst met alle restaurants, is het geval als de user klikt op all Categories
                 allRes = _restaurantRepo.RestaurantList();
             }
             else
             {
-                allRes = _restaurantRepo.Foodies(dropdown.RestaurantModel.FoodType1);
+                // stopt een lijst met alle restaurants met de cuisine die gekozen is
+                allRes = _restaurantRepo.ListRestaurantFromFoodType(dropdown.RestaurantModel.FoodType1);
             }
+            // Creeer een filter weer als de user weer wil gaan fiteren 
             List<String> foods = _restaurantRepo.GetAllFoodTypes();
             var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
             RestaurantIndexViewModel vm = new RestaurantIndexViewModel(allRes, selectlistitems);

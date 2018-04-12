@@ -12,10 +12,10 @@ namespace WebAppHF.Repositories
     {
         private HFContext database = new HFContext();
 
-        public List<DateTime> GetAllDayList(int id)
-        {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime).Distinct().ToList();
-        }
+        //public List<DateTime> GetAllDayList(int id)
+        //{
+        //    return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime).Distinct().ToList();
+        //}
 
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
@@ -23,18 +23,18 @@ namespace WebAppHF.Repositories
             return restaurant;
         }
 
-        public List<DateTime> GetAllTimeList(int id)
-        {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date).Distinct().ToList();
-        }
+        //public List<DateTime> GetAllTimeList(int id)
+        //{
+        //    return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date).Distinct().ToList();
+        //}
 
 
         public Restaurant GetRestaurant(int restaurantId)
         {
-            // Restaurant restaurant = db.Restaurants.Where(x => x.ID == restaurantId).SingleOrDefault();
             Restaurant restaurant = database.Restaurants.Find(restaurantId);
             return restaurant;
         }
+
         public void CreateRestaurant(Restaurant restaurant)
         {
             database.Restaurants.Add(restaurant);
@@ -42,33 +42,38 @@ namespace WebAppHF.Repositories
         }
 
 
-        public List<Restaurant> GetRestaurants()
-        {
-            using (HFContext database = new HFContext())
-            {
-                IEnumerable<Restaurant> restaurants;
+        //public List<Restaurant> GetRestaurants()
+        //{
+        //    using (HFContext database = new HFContext())
+        //    {
+        //        IEnumerable<Restaurant> restaurants;
 
-                restaurants = database.Restaurants.AsEnumerable();
+        //        restaurants = database.Restaurants.AsEnumerable();
 
-                return restaurants.ToList();
-            }
-        }
+        //        return restaurants.ToList();
+        //    }
+        //}
+
         public void Remove(Restaurant restaurant)
         {
             database.Restaurants.Remove(restaurant);
             database.SaveChanges();
 
         }
+
         public void UpdateRestaurant(Restaurant restaurant)
         {
             database.Entry(restaurant).State = EntityState.Modified;
             database.SaveChanges();
         }
+
         public int GetPrice(int id)
         {
-            int price = database.Restaurants.Where(m => m.ID == id).Select(m => m.Price).SingleOrDefault();
+            int price = database.Restaurants.Where(m => m.ID == id)
+                .Select(m => m.Price).SingleOrDefault();
             return price;
         }
+
         public List<Restaurant> RestaurantList()
         {
             List<Restaurant> restaurant = database.Restaurants.ToList();
@@ -82,18 +87,20 @@ namespace WebAppHF.Repositories
 
         List<DateTime> IRestaurantRepo.GetAllTime(int id)
         {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id).Select(p => p.StartTime).Distinct().ToList();
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id)
+                .Select(p => p.StartTime).Distinct().ToList();
         }
 
         List<DateTime> IRestaurantRepo.GetAllDay(int id)
         {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id).Select(p => p.Date).Distinct().ToList();
+            return database.RestaurantSessions.Where(p => p.RestaurantID == id)
+                .Select(p => p.Date).Distinct().ToList();
         }
 
-        public List<Restaurant> Foodies(string foodType)
+        public List<Restaurant> ListRestaurantFromFoodType(string foodType)
         {
-            return database.Restaurants.Where(p => p.FoodType1 == foodType || p.FoodType2 == foodType || p.FoodType3 == foodType).ToList();
-
+            return database.Restaurants.Where(p => p.FoodType1 == foodType || p.FoodType2 == foodType 
+                                                                           || p.FoodType3 == foodType).ToList();
         }
     }
 }
