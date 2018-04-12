@@ -30,15 +30,15 @@
     @foreach (Restaurant item in Model.Restaurants)
     {
     <div class="col-md-3 image-dinner min-heigth">
-        <img src="~/IMG/patronaat1.jpg" class="img-fluid" alt="Responsive image">
+        <img src="~/@Html.DisplayFor(modelIem => item.FoodIMGString)" class="img-fluid" alt="Responsive image">
         <h4 class="dag-header">@Html.DisplayFor(modelIem => item.Name)</h4>
-        <p>
+        <p class="min-p-height">
             <b>Cuisine:</b> @Html.DisplayFor(modelItem => item.FoodType1) @Html.DisplayFor(modelItem => item.FoodType2) @Html.DisplayFor(modelItem => item.FoodType3)
             <br> <b>Rating:</b> @Html.DisplayFor(modelItem => item.Stars)
-            <br> <b>Price:</b> &euro;@Html.DisplayFor(modelItem => item.Price)
+            <br> <b>Price:</b>@item.GetPriceString()
         </p>
-        @Html.ActionLink(" ", "AfterDetail", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn fa fa-info" })
-        @Html.ActionLink("Make a reservation", "MakeReservation", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn" })
+        @Html.ActionLink(" ", "AfterDetail", "Restaurant", new { id = item.ID }, new { @class = "info-button btn btn-primary main-btn fa fa-info" })
+        @Html.ActionLink("Make a reservation", "Book", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn" })
     </div>
     }
 

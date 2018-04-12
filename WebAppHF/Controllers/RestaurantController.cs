@@ -73,10 +73,13 @@ namespace WebAppHF.Controllers
         }
 
         [HttpGet]
-        public ActionResult MakeReservation(int id)
+        public ActionResult Book(int id)
         {
             // Giving the information about the restaurant
             Restaurant restaurant = _restaurantRepo.GetRestaurant(id);
+
+            if (restaurant == null)
+                return RedirectToAction("PageNotFound", "Home");
 
             // Creating two dropdowns to pick from 
             List<DateTime> day = _restaurantRepo.GetAllDay(id);
@@ -95,7 +98,7 @@ namespace WebAppHF.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToBasket(ReservationViewModel FormResponse)
+        public ActionResult AddToSession(ReservationViewModel FormResponse)
         {
             ReservationViewModel reservation = FormResponse;
             reservation.Order.Event = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);

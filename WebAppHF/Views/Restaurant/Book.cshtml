@@ -2,7 +2,7 @@
 @model WebAppHF.Models.ReservationViewModel
 
 <h2>Go make a reservation for @Html.DisplayFor(x => x.Restaurant.Name)</h2>
-@using (Html.BeginForm("AddToBasket", "Restaurant", FormMethod.Post, new { MyTestParameter = Model }))
+@using (Html.BeginForm("AddToSession", "Restaurant", FormMethod.Post, new { MyTestParameter = Model }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -33,7 +33,7 @@
                 @Html.ValidationMessageFor(model => model.Order.Comment, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="col-md-6"> <img src="~/IMG/patronaat1.jpg" class="img-fluid" alt="Responsive image"> </div>
+        <div class="col-md-6"> <img src="~/@Html.DisplayFor(x => x.Restaurant.RestaurantIMGString)" class="img-fluid" alt="Responsive image"> </div>
     </div>
     @Html.HiddenFor(x => x.Restaurant.ID, new { id = "ID", Value = Model.Restaurant.ID })
 

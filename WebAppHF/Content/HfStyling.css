@@ -18,7 +18,8 @@ body {
 
 .navbar-light .navbar-nav .nav-link {
     color: white;
-    font-weight: 500;
+    font-weight: bolder;
+
     padding-left: 40px;
     text-align: justify;
 }
@@ -163,6 +164,14 @@ hr {
 
 .min-heigth{
     min-height:430px;
+}
+
+.min-p-height {
+    min-height: 23%;
+}
+
+.info-button {
+    padding: 4%;
 }
 /*Jazz Detail*/
 .border-jazz-detail {
