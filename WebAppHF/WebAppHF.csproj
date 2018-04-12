@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\TalkController.cs" />
@@ -303,6 +304,7 @@
     <Compile Include="Repositories\IAccountRepo.cs" />
     <Compile Include="Repositories\IEventRepo.cs" />
     <Compile Include="Repositories\IJazzRepo.cs" />
+    <Compile Include="Repositories\IOrderItemRepo.cs" />
     <Compile Include="Repositories\IOrderRepo.cs" />
     <Compile Include="Repositories\IRecordRepo.cs" />
     <Compile Include="Repositories\IRestaurantRepo.cs" />
@@ -311,6 +313,7 @@
     <Compile Include="Repositories\IVenueRepo.cs" />
     <Compile Include="Repositories\ITourRepo.cs" />
     <Compile Include="Repositories\JazzRepo.cs" />
+    <Compile Include="Repositories\OrderItemRepo.cs" />
     <Compile Include="Repositories\OrderRepo.cs" />
     <Compile Include="Repositories\RecordRepo.cs" />
     <Compile Include="Repositories\RestaurantRepo.cs" />
@@ -551,7 +554,6 @@
     <Content Include="Views\Admin\DeleteWalk.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />
     <Content Include="Views\Cart\CreateOrder.cshtml" />
-    <Content Include="Views\Cart\AddedToCart.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
@@ -566,6 +568,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Backup\" />
     <Folder Include="IMG\Talks\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

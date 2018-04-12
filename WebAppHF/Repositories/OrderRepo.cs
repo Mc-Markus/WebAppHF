@@ -22,6 +22,22 @@ namespace WebAppHF.Repositories
             return order;
         }
 
+        public int getOrderIdByEmail(string email)
+        {
+            Order order;
+
+            try
+            {
+                order = ctx.Orders.Where(x => x.Email == email).SingleOrDefault();
+            }
+            catch
+            {
+                return 0;
+            }
+
+            return order.ID;
+        }
+
         public void CreateOrderItem(OrderItem orderItem)
         {
             ctx.Records.Add(orderItem);

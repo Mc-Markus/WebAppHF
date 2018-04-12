@@ -11,6 +11,7 @@ namespace WebAppHF.Repositories
     {
         void CreateOrder(Order order);
         Order FindOrder(string email);
+        int getOrderIdByEmail(string email);
         void CreateOrderItem(OrderItem orderItem);
         void UpDateEvent(Event anEvent);
     }

@@ -34,5 +34,12 @@ namespace WebAppHF.Models
                 TotalPrice = -1;
             }
         }
+
+        //Returns the price as a formatted string
+        public string GetPriceString()
+        {
+            double euro = TotalPrice / 100D;
+            return string.Format("{0:C}", euro);
+        }
     }
 }
