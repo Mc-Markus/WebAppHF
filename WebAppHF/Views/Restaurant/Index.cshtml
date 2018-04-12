@@ -34,8 +34,8 @@
         <h4 class="dag-header">@Html.DisplayFor(modelIem => item.Name)</h4>
         <p class="min-p-height">
             <b>Cuisine:</b> @Html.DisplayFor(modelItem => item.FoodType1) @Html.DisplayFor(modelItem => item.FoodType2) @Html.DisplayFor(modelItem => item.FoodType3)
-            <br> <b>Rating:</b> @Html.DisplayFor(modelItem => item.Stars)
-            <br> <b>Price:</b>@item.GetPriceString()
+            <br> <b>Rating:</b> @Html.DisplayFor(modelItem => item.Stars) out of 5
+            <br> <b>Price:</b> @item.GetPriceString()
         </p>
         @Html.ActionLink(" ", "AfterDetail", "Restaurant", new { id = item.ID }, new { @class = "info-button btn btn-primary main-btn fa fa-info" })
         @Html.ActionLink("Make a reservation", "Book", "Restaurant", new { id = item.ID }, new { @class = "btn btn-primary main-btn" })

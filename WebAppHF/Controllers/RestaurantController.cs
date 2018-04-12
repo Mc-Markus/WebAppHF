@@ -23,15 +23,18 @@ namespace WebAppHF.Controllers
             List<Restaurant> restaurants = _restaurantRepo.RestaurantList();
 
             // stopt een lijst met cuisine voor in de filter
-            List<String> foods = _restaurantRepo.GetAllFoodTypes();
+            List<String> allFoodTypes = _restaurantRepo.GetAllFoodTypes();
 
             // vullen de lijst met foodtpe waarde
-            var selectlistitems = foods.Select(foodType => new SelectListItem() { Value = foodType, Text = foodType });
+            var selectlistitems = allFoodTypes.Select(foodType => new SelectListItem() { Value = foodType, Text = foodType });
+
+            if (restaurants == null || allFoodTypes == null || selectlistitems == null) 
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
 
             // stopt alle models in de viewemodel
             RestaurantIndexViewModel viewModel = new RestaurantIndexViewModel(restaurants, selectlistitems);
-
-
             return View(viewModel);
         }
 
@@ -53,8 +56,13 @@ namespace WebAppHF.Controllers
                 allRes = _restaurantRepo.ListRestaurantFromFoodType(dropdown.RestaurantModel.FoodType1);
             }
             // Creeer een filter weer als de user weer wil gaan fiteren 
-            List<String> foods = _restaurantRepo.GetAllFoodTypes();
-            var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
+            List<String> allFoodTypes = _restaurantRepo.GetAllFoodTypes();
+            var selectlistitems = allFoodTypes.Select(x => new SelectListItem() { Value = x, Text = x });
+
+            if (allRes == null || allFoodTypes == null || selectlistitems == null)
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
             RestaurantIndexViewModel vm = new RestaurantIndexViewModel(allRes, selectlistitems);
             return View(vm);
         }
@@ -101,7 +109,7 @@ namespace WebAppHF.Controllers
         public ActionResult AddToSession(ReservationViewModel FormResponse)
         {
             ReservationViewModel reservation = FormResponse;
-            reservation.Order.Event = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);
+            reservation.Order.Event = _restaurantSessionRepo.GetEvent(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);
             if (reservation.Order.Event == null)
             {
                 return RedirectToAction("PageNotFound", "Home");

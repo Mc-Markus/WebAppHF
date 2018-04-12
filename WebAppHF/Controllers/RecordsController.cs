@@ -103,7 +103,7 @@ namespace WebAppHF.Controllers
         //    record.TotalPrice = (restaurantRepo.GetPrice(record.EventID) * record.Amount) / 100;
 
         //    // restaurant session id vinden
-        //    record.EventID = recordRepository.GetEventID(record.EventID,recordDate, recordTime);
+        //    record.EventID = recordRepository.GetEvent(record.EventID,recordDate, recordTime);
         //    if (record.EventID == 0)
         //    {
         //        return RedirectToAction("Index","Restaurant");

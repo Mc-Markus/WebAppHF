@@ -18,7 +18,7 @@ namespace WebAppHF.Repositories
             }
         }
 
-        public Event GetEventID(int resId, DateTime date, DateTime startingtime)
+        public Event GetEvent(int resId, DateTime date, DateTime startingtime)
         {
 
             Event eventId = _database.RestaurantSessions.SingleOrDefault(m => m.Date == date
