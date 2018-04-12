@@ -6,7 +6,7 @@
 
 <h2>CreateOrder</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddToDatabase", "Cart", FormMethod.Post, new { MyTestParameter = Model })) 
 {
     @Html.AntiForgeryToken()
     
@@ -54,6 +54,4 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

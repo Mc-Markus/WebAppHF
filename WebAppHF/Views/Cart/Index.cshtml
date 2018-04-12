@@ -12,7 +12,7 @@
     <div class="col-md-2"> <img src="~/IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
     <div class="col-md-2"> <img src="~/IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
 </div>
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateOrder", "Cart", FormMethod.Get))
 {
     <hr>
     <div class="row basket-send-padding">
@@ -78,7 +78,7 @@
                 <br> <b>Price:</b> @crossSellingEvent.GetPriceString()
                 <br> <b>Location:</b> @crossSellingEvent.LocationName
                 @crossSellingEvent.GetType()
-                <br> @Html.ActionLink("Meer info", "Details", "Restaurant", crossSellingEvent.ID)
+                <br> @Html.ActionLink("Meer info", "AfterDetail", "Restaurant", crossSellingEvent.ID)
             </p>
         </div>
     }
