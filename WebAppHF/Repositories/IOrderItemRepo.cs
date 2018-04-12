@@ -7,10 +7,8 @@ using WebAppHF.Models;
 
 namespace WebAppHF.Repositories
 {
-    interface IOrderRepo
+    interface IOrderItemRepo
     {
-        void CreateOrder(Order order);
-        Order FindOrder(string email);
-        int getOrderIdByEmail(string email);
+        List<OrderItem> getOrderItemsByOrderID(int id);
     }
 }

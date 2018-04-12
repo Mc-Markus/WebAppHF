@@ -13,14 +13,14 @@ namespace WebAppHF.Repositories
         // Get all Records 
         public IEnumerable<OrderItem> GetAllRecords()
         {
-            IEnumerable<OrderItem> records = database.Records.ToList();
+            IEnumerable<OrderItem> records = database.OrderItems.ToList();
             return records;
         }
 
 
         public void AddRecord(OrderItem record)
         {
-            database.Records.Add(record);
+            database.OrderItems.Add(record);
             database.SaveChanges();
         }
 
