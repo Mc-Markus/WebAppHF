@@ -278,7 +278,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderTourViewModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
-    <Compile Include="Models\ReservationVM.cs" />
+    <Compile Include="Models\ReservationViewModel.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantIndexViewModel.cs" />
     <Compile Include="Models\RestaurantSession.cs" />
@@ -324,6 +324,22 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="IMG\Dinner\Detail_Brink.jpg" />
+    <Content Include="IMG\Dinner\Detail_Fris.jpg" />
+    <Content Include="IMG\Dinner\Detail_Goldenbull.jpg" />
+    <Content Include="IMG\Dinner\Detail_ML.jpg" />
+    <Content Include="IMG\Dinner\Detail_Mr.jpg" />
+    <Content Include="IMG\Dinner\Detail_Ratatouile.jpg" />
+    <Content Include="IMG\Dinner\Detail_Specktakel.jpg" />
+    <Content Include="IMG\Dinner\Detail_Tourjours.jpg" />
+    <Content Include="IMG\Dinner\Index_Brink.jpg" />
+    <Content Include="IMG\Dinner\Index_Fris.jpg" />
+    <Content Include="IMG\Dinner\Index_Mr.jpg" />
+    <Content Include="IMG\Dinner\Index_Ratatouile.jpg" />
+    <Content Include="IMG\Dinner\Index_ML.jpg" />
+    <Content Include="IMG\Dinner\Index_Specktakel.jpg" />
+    <Content Include="IMG\Dinner\Index_Goldenbull.jpg" />
+    <Content Include="IMG\Dinner\Index_Tourjours.jpg" />
     <Content Include="IMG\Jazz\indexGare.jpg" />
     <Content Include="IMG\haarlem1.jpg" />
     <Content Include="IMG\haarlem2.jpg" />
@@ -466,7 +482,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -495,7 +511,7 @@
     <Content Include="Views\Talk\AddedToCart.cshtml" />
     <Content Include="Views\Talk\AddFailed.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
-    <Content Include="Views\Restaurant\MakeReservation.cshtml" />
+    <Content Include="Views\Restaurant\Book.cshtml" />
     <Content Include="Views\Admin\CreateJazz.cshtml" />
     <Content Include="Views\Admin\CreateRestaurant.cshtml" />
     <Content Include="Views\Admin\CreateTalk.cshtml" />
@@ -536,7 +552,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Backup\" />
-    <Folder Include="IMG\Dinner\" />
     <Folder Include="IMG\Talks\" />
   </ItemGroup>
   <ItemGroup>

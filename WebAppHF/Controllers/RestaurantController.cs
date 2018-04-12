@@ -23,15 +23,18 @@ namespace WebAppHF.Controllers
             List<Restaurant> restaurants = _restaurantRepo.RestaurantList();
 
             // stopt een lijst met cuisine voor in de filter
-            List<String> foods = _restaurantRepo.GetAllFoodTypes();
+            List<String> allFoodTypes = _restaurantRepo.GetAllFoodTypes();
 
             // vullen de lijst met foodtpe waarde
-            var selectlistitems = foods.Select(foodType => new SelectListItem() { Value = foodType, Text = foodType });
+            var selectlistitems = allFoodTypes.Select(foodType => new SelectListItem() { Value = foodType, Text = foodType });
+
+            if (restaurants == null || allFoodTypes == null || selectlistitems == null) 
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
 
             // stopt alle models in de viewemodel
             RestaurantIndexViewModel viewModel = new RestaurantIndexViewModel(restaurants, selectlistitems);
-
-
             return View(viewModel);
         }
 
@@ -53,8 +56,13 @@ namespace WebAppHF.Controllers
                 allRes = _restaurantRepo.ListRestaurantFromFoodType(dropdown.RestaurantModel.FoodType1);
             }
             // Creeer een filter weer als de user weer wil gaan fiteren 
-            List<String> foods = _restaurantRepo.GetAllFoodTypes();
-            var selectlistitems = foods.Select(x => new SelectListItem() { Value = x, Text = x });
+            List<String> allFoodTypes = _restaurantRepo.GetAllFoodTypes();
+            var selectlistitems = allFoodTypes.Select(x => new SelectListItem() { Value = x, Text = x });
+
+            if (allRes == null || allFoodTypes == null || selectlistitems == null)
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
             RestaurantIndexViewModel vm = new RestaurantIndexViewModel(allRes, selectlistitems);
             return View(vm);
         }
@@ -73,10 +81,13 @@ namespace WebAppHF.Controllers
         }
 
         [HttpGet]
-        public ActionResult MakeReservation(int id)
+        public ActionResult Book(int id)
         {
             // Giving the information about the restaurant
             Restaurant restaurant = _restaurantRepo.GetRestaurant(id);
+
+            if (restaurant == null)
+                return RedirectToAction("PageNotFound", "Home");
 
             // Creating two dropdowns to pick from 
             List<DateTime> day = _restaurantRepo.GetAllDay(id);
@@ -90,16 +101,19 @@ namespace WebAppHF.Controllers
             OrderItem order = new OrderItem();
 
             //Passing viewmodel to the View
-            ReservationVM vm = new ReservationVM(restaurant, dayListItem, timeListItem, order);
-            return View(vm);
+            ReservationViewModel viewModel = new ReservationViewModel(restaurant, dayListItem, timeListItem, order);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult AddToBasket(ReservationVM FormResponse)
+        public ActionResult AddToSession(ReservationViewModel FormResponse)
         {
-            ReservationVM reservation = FormResponse;
-            reservation.Order.Event = _restaurantSessionRepo.GetEventID(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);
-
+            ReservationViewModel reservation = FormResponse;
+            reservation.Order.Event = _restaurantSessionRepo.GetEvent(reservation.Restaurant.ID, reservation.Order.Event.Date, reservation.Order.Event.StartTime);
+            if (reservation.Order.Event == null)
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
             //maak een lege cart
             CartModel cart;
 

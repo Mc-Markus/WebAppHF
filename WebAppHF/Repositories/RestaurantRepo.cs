@@ -10,96 +10,79 @@ namespace WebAppHF.Repositories
 {
     public class RestaurantRepo : IRestaurantRepo
     {
-        private HFContext database = new HFContext();
+        private readonly HFContext _database = new HFContext();
 
-        //public List<DateTime> GetAllDayList(int id)
-        //{
-        //    return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.StartTime).Distinct().ToList();
-        //}
-
+        // Haalt een lijst met alle restaurants op 
         public IEnumerable<Restaurant> GetAllRestaurants()
         {
-            IEnumerable<Restaurant> restaurant = database.Restaurants.ToList();
+            IEnumerable<Restaurant> restaurant = _database.Restaurants.ToList();
             return restaurant;
         }
-
-        //public List<DateTime> GetAllTimeList(int id)
-        //{
-        //    return database.RestaurantSessions.Where(p => p.RestaurantID == id && p.SeatsAvailable > 0).Select(p => p.Date).Distinct().ToList();
-        //}
-
-
+        // Haalt een restaurant op met die id 
         public Restaurant GetRestaurant(int restaurantId)
         {
-            Restaurant restaurant = database.Restaurants.Find(restaurantId);
+            Restaurant restaurant = _database.Restaurants.Find(restaurantId);
             return restaurant;
         }
-
+        // Creert een restaurant
         public void CreateRestaurant(Restaurant restaurant)
         {
-            database.Restaurants.Add(restaurant);
-            database.SaveChanges();
+            _database.Restaurants.Add(restaurant);
+            _database.SaveChanges();
         }
-
-
-        //public List<Restaurant> GetRestaurants()
-        //{
-        //    using (HFContext database = new HFContext())
-        //    {
-        //        IEnumerable<Restaurant> restaurants;
-
-        //        restaurants = database.Restaurants.AsEnumerable();
-
-        //        return restaurants.ToList();
-        //    }
-        //}
-
+        // Verwijdert een restaurant
         public void Remove(Restaurant restaurant)
         {
-            database.Restaurants.Remove(restaurant);
-            database.SaveChanges();
+            _database.Restaurants.Remove(restaurant);
+            _database.SaveChanges();
 
         }
-
+        // Bewerkt een restaurant
         public void UpdateRestaurant(Restaurant restaurant)
         {
-            database.Entry(restaurant).State = EntityState.Modified;
-            database.SaveChanges();
+            _database.Entry(restaurant).State = EntityState.Modified;
+            _database.SaveChanges();
         }
 
+        // Haalt prijs op van een restaurant
         public int GetPrice(int id)
         {
-            int price = database.Restaurants.Where(m => m.ID == id)
+            int price = _database.Restaurants.Where(m => m.ID == id)
                 .Select(m => m.Price).SingleOrDefault();
             return price;
         }
 
+        // Haalt een lijst van all restaurants op 
         public List<Restaurant> RestaurantList()
         {
-            List<Restaurant> restaurant = database.Restaurants.ToList();
+            List<Restaurant> restaurant = _database.Restaurants.ToList();
             return restaurant;
         }
 
+        // Haalt een lijst van alle foodtypes en toont geen dubbele waardes
         List<string> IRestaurantRepo.GetAllFoodTypes()
         {
-            return database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
+            return _database.Restaurants.Select(p => p.FoodType1).Distinct().ToList();
         }
 
+        // haalt een lijst van alle dagtijden 
         List<DateTime> IRestaurantRepo.GetAllTime(int id)
         {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id)
+            return _database.RestaurantSessions.Where(p => p.RestaurantID == id)
                 .Select(p => p.StartTime).Distinct().ToList();
         }
 
+        //Haalt een lijst van alle dagen 
         List<DateTime> IRestaurantRepo.GetAllDay(int id)
         {
-            return database.RestaurantSessions.Where(p => p.RestaurantID == id)
+            return _database.RestaurantSessions.Where(p => p.RestaurantID == id)
                 .Select(p => p.Date).Distinct().ToList();
         }
 
+        // Zoekt in elke foodtype of die waarde in voorkomt en toont dan een lijst van alle restaurants met die waarde
         public List<Restaurant> ListRestaurantFromFoodType(string foodType)
         {
-            return database.Restaurants.Where(p => p.FoodType1 == foodType || p.FoodType2 == foodType 
+            return _database.Restaurants.Where(p => p.FoodType1 == foodType || p.FoodType2 == foodType 
                                                                            || p.FoodType3 == foodType).ToList();
         }
     }

@@ -10,8 +10,6 @@ namespace WebAppHF.Repositories
     {
         Restaurant GetRestaurant(int restaurantId);
         IEnumerable<Restaurant> GetAllRestaurants();
-        //List<DateTime> GetAllTimeList(int id);
-        //List<DateTime> GetAllDayList(int id);
         void CreateRestaurant(Restaurant restaurant);
         void Remove(Restaurant student);
         void UpdateRestaurant(Restaurant restaurant);
