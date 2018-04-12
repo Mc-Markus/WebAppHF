@@ -36,26 +36,26 @@ namespace WebAppHF.Controllers
             }
             return RedirectToAction("PaymentMethod");
         }
-        
-        public ActionResult PaymentMethod()
-        {
-            //session wordt opgehaald om af te rekenen, als de prijs 0 is wordt er direct naar de success view geredirect.
-            CartModel cart = (CartModel)Session["Cart"];
-            int totalPrice = 0;
-            foreach(OrderItem item in cart.OrderItems)
-            {
-                totalPrice += item.TotalPrice;
-            }
-            //if(totalPrice == 0)
-            //{
-            //    return RedirectToAction("Success");
-            //}
-            //else
-            //{
-            //    return View(cart);
-            //}
-            return View(cart);
-        }
+        // niet meer in gebruik
+        //public ActionResult PaymentMethod()
+        //{
+        //    //session wordt opgehaald om af te rekenen, als de prijs 0 is wordt er direct naar de success view geredirect.
+        //    CartModel cart = (CartModel)Session["Cart"];
+        //    int totalPrice = 0;
+        //    foreach(OrderItem item in cart.OrderItems)
+        //    {
+        //        totalPrice += item.TotalPrice;
+        //    }
+        //    //if(totalPrice == 0)
+        //    //{
+        //    //    return RedirectToAction("Success");
+        //    //}
+        //    //else
+        //    //{
+        //    //    return View(cart);
+        //    //}
+        //    return View(cart);
+        //}
 
         public ActionResult RemoveFromCart(int id)
         {
@@ -72,12 +72,12 @@ namespace WebAppHF.Controllers
             Session["Cart"] = cart;
             return RedirectToAction("Index");
         }
-
-        [HttpPost]
-        public ActionResult PaymentMethod(CartModel cart)
-        {
-            return RedirectToAction("Success"); 
-        }
+        // niet meer in gebruik
+        //[HttpPost]
+        //public ActionResult PaymentMethod(CartModel cart)
+        //{
+        //    return RedirectToAction("Success"); 
+        //}
 
         public ActionResult Success()
         {

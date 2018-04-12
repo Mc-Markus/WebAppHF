@@ -34,18 +34,20 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult Book(TalkModel talk)
         {
+            // check of alle velden van de viewmodel kloppen
             if (ModelState.IsValid)
             {
+                // aanmaak dummy om de event uit de database te halen
                 Talk dummy = rep.GetTalk(talk.ID);
                 talk.Talk = dummy;
                 CartModel cart = (CartModel)Session["Cart"];
-                //krijg amount description etc uit je form
 
-                //als cart in de session leeg is maak een nieuwe
+                //als cart in de session leeg is maak een nieuwe instance
                 if (cart == null)
                 {
                     cart = new CartModel();
                 }
+                // aanmaak orderitem om in de cart te stoppen
                 OrderItem order = new OrderItem(talk.Talk);
                 order.Amount = talk.Amount;
                 cart.AddOrderItem(order);

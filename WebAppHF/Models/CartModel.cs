@@ -9,12 +9,10 @@ namespace WebAppHF.Models
     public class CartModel
     {
         public List<OrderItem> OrderItems { get; set; }
-        public List<Event> CrossSellingEvents { get; set; } 
 
         public CartModel()
         {
             OrderItems = new List<OrderItem>();
-            CrossSellingEvents = new List<Event>();
         }
 
         public void AddOrderItem(OrderItem orderItem)

@@ -96,32 +96,6 @@
     <div class="col-md-12">
         <p><strong>You could also..</strong></p>
     </div>
-
-    @foreach (Event crossSellingEvent in Model.CrossSellingEvents)
-    {
-        <div class="col-md-4">
-            @*<p class="text-center font-weight-bold">Get Dinner</p> <img src="@crossSellingEvent.NoIMGStringInEvent!!!!" class="img-fluid mx-auto" alt="Responsive image">*@
-            <p>
-                <b>Name:</b> @crossSellingEvent.Name
-                <br> <b>Price:</b> @crossSellingEvent.GetPriceString()
-                <br> <b>Location:</b> @crossSellingEvent.LocationName
-                @crossSellingEvent.GetType()
-                <br> @Html.ActionLink("Meer info", "AfterDetail", "Restaurant", crossSellingEvent.ID)
-            </p>
-        </div>
-    }
-
-    @*<div class="col-md-4">
-            <p class="text-center font-weight-bold">Get Dinner</p> <img src="../images/patronaat1.jpg" class="img-fluid" alt="Responsive image">
-            <p>
-                <b>Cuisine:</b> European, Western
-                <br> <b>Rating:</b> 3/5
-                <br><b>Price:</b> 35,00 (or 17,50 for childeren under 12)
-                <br> <b>Duration:</b> 90 minutes
-                <br> <b>Start time:</b> 18.30
-                <br>
-            </p>
-        </div>*@
 </div>
 
 
