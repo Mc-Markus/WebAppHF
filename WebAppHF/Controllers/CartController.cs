@@ -18,7 +18,7 @@ namespace WebAppHF.Controllers
         {
             CartModel cart = (CartModel)Session["Cart"];
 
-            if(cart == null)
+            if(cart == null || cart.OrderItems.Count == 0)
             {
                 return RedirectToAction("CartEmpty");
             }
@@ -57,6 +57,22 @@ namespace WebAppHF.Controllers
             return View(cart);
         }
 
+        public ActionResult RemoveFromCart(int id)
+        {
+            CartModel cart = (CartModel)Session["Cart"];
+            OrderItem dummy = new OrderItem();
+            foreach (OrderItem item in cart.OrderItems)
+            {
+                if (item.Event.ID == id)
+                {
+                    dummy = item;
+                }
+            }
+            cart.OrderItems.Remove(dummy);
+            Session["Cart"] = cart;
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public ActionResult PaymentMethod(CartModel cart)
         {
@@ -65,11 +81,10 @@ namespace WebAppHF.Controllers
 
         public ActionResult Success()
         {
-            return View();
-        }
-
-        public ActionResult AddedTeoCart()
-        {
+            if((CartModel)Session["Cart"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 

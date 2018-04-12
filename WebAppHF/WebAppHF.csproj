@@ -543,7 +543,6 @@
     <Content Include="Views\Admin\DeleteWalk.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />
     <Content Include="Views\Cart\CreateOrder.cshtml" />
-    <Content Include="Views\Cart\AddedToCart.cshtml" />
     <None Include="Views\Walks\OrderPageTour.cshtml" />
     <Content Include="Views\Jazz\Book.cshtml" />
     <Content Include="Views\Walks\OrderPageTour.cshtml" />
