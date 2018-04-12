@@ -12,44 +12,64 @@
     <div class="col-md-2"> <img src="~/IMG/patronaat2.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
     <div class="col-md-2"> <img src="~/IMG/patronaat3.jpg" class="img-fluid  topside-images" alt="Responsive image"> </div>
 </div>
-<hr>
-<div class="row basket-send-padding">
-    <div class="col-md-12">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Tickets</th>
-                    <th scope="col">Event</th>
-                    <th scope="col">Date and time</th>
-                    <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (OrderItem orderItem in Model.orderItems)
-                {
+@using (Html.BeginForm())
+{
+    <hr>
+    <div class="row basket-send-padding">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">@orderItem.Amount</th>
-                        <td>@orderItem.Event.Name</td>
-                        <td>@orderItem.Event.Date.ToShortDateString() | @orderItem.Event.StartTime.ToShortTimeString()</td>
-                        <td>@orderItem.Event.GetPriceString()</td>
+                        <th scope="col">Tickets</th>
+                        <th scope="col">Event</th>
+                        <th scope="col">Date and time</th>
+                        <th scope="col">Price</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (OrderItem orderItem in Model.OrderItems)
+                    {
+                        <tr>
+                            <th scope="row">
+                        <select name="orderitem.Amount">
+                            @for (int v = 1; v < 3; v++)
+                            {
+                                if (orderItem.Amount == v)
+                                {
+                                    <option value="@v" selected>@orderItem.Amount</option>
+                                }
+                                else
+                                {
+                                    <option value="@v">@v</option>
+                                }
+                            }
+                        </select></th>
+                            <td>@orderItem.Event.Name</td>
+                            <td>@orderItem.Event.Date.ToShortDateString() | @orderItem.Event.StartTime.ToShortTimeString()</td>
+                            <td>@orderItem.Event.GetPriceString()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-<div class="row basket-send-padding">
-    <div class="col-md-10"> </div>
-    <div class="col-md-2">
-        <button class="btn btn-primary main-btn">Next Step</button>
+    <div class="row basket-send-padding">
+        <div class="col-md-10"> </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary main-btn">Next Step</button>
+        </div>
     </div>
-</div>
+
+    <p><input type="submit" value="Proceed to checkout" /></p>
+}
+
+
 <div class="row">
     <div class="col-md-12">
         <p><strong>You could also..</strong></p>
     </div>
 
-    @foreach (Event crossSellingEvent in Model.crossSellingEvents)
+    @foreach (Event crossSellingEvent in Model.CrossSellingEvents)
     {
         <div class="col-md-4">
             @*<p class="text-center font-weight-bold">Get Dinner</p> <img src="@crossSellingEvent.NoIMGStringInEvent!!!!" class="img-fluid mx-auto" alt="Responsive image">*@
@@ -62,18 +82,18 @@
             </p>
         </div>
     }
-    
+
     @*<div class="col-md-4">
-        <p class="text-center font-weight-bold">Get Dinner</p> <img src="../images/patronaat1.jpg" class="img-fluid" alt="Responsive image">
-        <p>
-            <b>Cuisine:</b> European, Western
-            <br> <b>Rating:</b> 3/5
-            <br><b>Price:</b> 35,00 (or 17,50 for childeren under 12)
-            <br> <b>Duration:</b> 90 minutes
-            <br> <b>Start time:</b> 18.30
-            <br>
-        </p>
-    </div>*@
+            <p class="text-center font-weight-bold">Get Dinner</p> <img src="../images/patronaat1.jpg" class="img-fluid" alt="Responsive image">
+            <p>
+                <b>Cuisine:</b> European, Western
+                <br> <b>Rating:</b> 3/5
+                <br><b>Price:</b> 35,00 (or 17,50 for childeren under 12)
+                <br> <b>Duration:</b> 90 minutes
+                <br> <b>Start time:</b> 18.30
+                <br>
+            </p>
+        </div>*@
 </div>
 
 

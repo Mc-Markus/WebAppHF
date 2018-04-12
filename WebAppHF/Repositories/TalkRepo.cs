@@ -16,17 +16,12 @@ namespace WebAppHF.Repositories
             return list;
         }
 
-        public Talk GetTalk(int id)
-        {
-            Talk talk = ctx.Talks.Single(m => m.ID == id);
-            return talk;
-        }
         public void AddTalk(Talk talk)
         {
             ctx.Talks.Add(talk);
             ctx.SaveChanges();
         }
-        public Talk GetTalkById(int id)
+        public Talk GetTalk(int id)
         {
             Talk talk = ctx.Talks.SingleOrDefault(m => m.ID == id);
             return talk;
