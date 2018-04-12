@@ -23,6 +23,14 @@ namespace WebAppHF.Controllers
 
             return View(cart);
         }
+
+        // deze httppost index wordt checktout begin
+        [HttpPost]
+        public ActionResult Index(CartModel cart)
+        {
+            //...
+            return RedirectToAction("PaymentMethod");
+        }
         
         //public ActionResult PaymentMethod()
         //{

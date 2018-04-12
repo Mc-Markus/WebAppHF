@@ -361,7 +361,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult UpdateTalk(int id)
         {
-            Event retrieved = talkRepo.GetTalkById(id);
+            Event retrieved = talkRepo.GetTalk(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -393,7 +393,7 @@ namespace WebAppHF.Controllers
 
         public ActionResult DeleteTalk(int id)
         {
-            Event retrieved = talkRepo.GetTalkById(id);
+            Event retrieved = talkRepo.GetTalk(id);
             if (retrieved == null)
             {
                 return RedirectToAction("NotFound");
@@ -407,7 +407,7 @@ namespace WebAppHF.Controllers
         {
             try
             {
-                Talk e = talkRepo.GetTalkById(id);
+                Talk e = talkRepo.GetTalk(id);
                 talkRepo.Remove(e);
 
             }
