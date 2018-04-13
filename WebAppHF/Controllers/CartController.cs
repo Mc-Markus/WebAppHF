@@ -36,29 +36,10 @@ namespace WebAppHF.Controllers
             }
             return RedirectToAction("PaymentMethod");
         }
-        // niet meer in gebruik
-        //public ActionResult PaymentMethod()
-        //{
-        //    //session wordt opgehaald om af te rekenen, als de prijs 0 is wordt er direct naar de success view geredirect.
-        //    CartModel cart = (CartModel)Session["Cart"];
-        //    int totalPrice = 0;
-        //    foreach(OrderItem item in cart.OrderItems)
-        //    {
-        //        totalPrice += item.TotalPrice;
-        //    }
-        //    //if(totalPrice == 0)
-        //    //{
-        //    //    return RedirectToAction("Success");
-        //    //}
-        //    //else
-        //    //{
-        //    //    return View(cart);
-        //    //}
-        //    return View(cart);
-        //}
 
         public ActionResult RemoveFromCart(int id)
         {
+            // aanmaak dummy om vast te stellen welke event verwijderd moet worden uit de cart.
             CartModel cart = (CartModel)Session["Cart"];
             OrderItem dummy = new OrderItem();
             foreach (OrderItem item in cart.OrderItems)

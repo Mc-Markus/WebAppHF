@@ -14,18 +14,21 @@ namespace WebAppHF.Controllers
         // GET: Talk
         public ActionResult Index()
         {
+            // simpel talk events ophalen en doorgeven aan view
             IEnumerable<Talk> list = rep.GetTalks();
             return View(list);
         }
 
         public ActionResult Detail(int id)
         {
+            //vanuit index view wordt er id doorgegeven om de gehele event op te halen
             Talk talk = rep.GetTalk(id);
             return View(talk);
         }
 
         public ActionResult Book(int id)
         {
+            //vanuit detail view wordt id van de corresponderende doorgegeven om opnieuw de gehele op te halen
             Talk talk = rep.GetTalk(id);
             TalkModel viewmodel = new TalkModel(talk);
             return View(viewmodel);
@@ -34,6 +37,7 @@ namespace WebAppHF.Controllers
         [HttpPost]
         public ActionResult Book(TalkModel talk)
         {
+            // postback variant van book, hier wordt de talk event gegeven met een amount field mbv een viewmodel, vervolgens in de cart session gestopt
             // check of alle velden van de viewmodel kloppen
             if (ModelState.IsValid)
             {

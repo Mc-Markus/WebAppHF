@@ -29,25 +29,10 @@
                 <tbody>
                     @for(int i = 0; i < Model.OrderItems.Count; i++)
                     {
-                        //if (Model.OrderItems[i].Event is Talk)
-                        //{
                         @Html.HiddenFor(m => m.OrderItems[i].Event.ID)
                         
                         <tr>
                             <th scope="row">
-                                @*<select name="OrderItems[@i].Amount">
-            @for (int v = 1; v < 3; v++)
-            {
-                if (Model.OrderItems[i].Amount == v)
-                {
-                    <option value="@v" selected>@Model.OrderItems[i].Amount</option>
-                }
-                else
-                {
-                    <option value="@v">@v</option>
-                }
-            }
-        </select>*@
                                 <p>@Html.ActionLink("Remove", "RemoveFromCart", "Cart", new { id = Model.OrderItems[i].Event.ID }, new { @class = "btn btn-primary main-btn" }) @Model.OrderItems[i].Amount <p />
                             </th>
 
@@ -58,25 +43,6 @@
                         <input type="hidden" name="OrderItems.Event.ID" value="@Model.OrderItems[i].Event.ID" />
                             @Html.HiddenFor(m => m.OrderItems[i].Event.ID)
                         
-                        @*<tr>
-                            <th scope="row">
-                        <select name="OrderItems[@i].Amount">
-                            @for (int v = 1; v <= Model.OrderItems[i].Event.SeatsAvailable; v++)
-                            {
-                                if (Model.OrderItems[i].Amount == v)
-                                {
-                                    <option value="@v" selected>@Model.OrderItems[i].Amount</option>
-                                }
-                                else
-                                {
-                                    <option value="@v">@v</option>
-                                }
-                            }
-                        </select></th>
-                            <td>@Model.OrderItems[i].Event.Name</td>
-                            <td>@Model.OrderItems[i].Event.Date.ToShortDateString() | @Model.OrderItems[i].Event.StartTime.ToShortTimeString()</td>
-                            <td>@Model.OrderItems[i].Event.GetPriceString()</td>
-                        </tr>*@
                         <input type="hidden" name="OrderItems.Event.ID" value="@Model.OrderItems[i].Event.ID" />
                         }
                 </tbody>
@@ -90,12 +56,5 @@
         </div>
     </div>
 }
-
-
-@*<div class="row">
-    <div class="col-md-12">
-        <p><strong>You could also..</strong></p>
-    </div>
-</div>*@
 
 
